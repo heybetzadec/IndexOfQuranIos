@@ -1,0 +1,6 @@
+framework module Pods_KuranFihristi_KuranFihristiUITests {
+  umbrella header "Pods-KuranFihristi-KuranFihristiUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
