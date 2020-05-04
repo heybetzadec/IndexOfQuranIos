@@ -9,15 +9,26 @@
 import UIKit
 
 class WordViewController: UITableViewController {
+    
+    var letter = Letter()
+    var languageId = 0
+    var tranlationId = 0
+    var searchString = ""
+    
+    private let dataBase = DataBase()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .systemBackground
+        navigationItem.standardAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
+        navigationItem.title = "\(letter.letterName)"
+        
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 600
+        
     }
 
     // MARK: - Table view data source

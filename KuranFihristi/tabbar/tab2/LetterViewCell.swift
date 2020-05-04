@@ -10,6 +10,9 @@ import UIKit
 
 class LetterViewCell: UITableViewCell {
 
+    
+    @IBOutlet weak var letterNameLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

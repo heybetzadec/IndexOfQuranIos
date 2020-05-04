@@ -11,8 +11,6 @@ import SQLite3
 
 class ChapterViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
-    
-    
     private let dataBase = DataBase()
     private var chapters = Array<Chapter>()
     private var fullChapters = Array<Chapter>()
