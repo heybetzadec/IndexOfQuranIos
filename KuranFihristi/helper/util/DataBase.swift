@@ -120,7 +120,7 @@ class DataBase: NSObject {
         let db = self.getDatabase()
         var statement: OpaquePointer?
         
-        if sqlite3_prepare_v2(db, "SELECT ChapterID, VerseID, VerseText  FROM Verse WHERE TranslationID=\(tranlationId) AND ChapterID=\(chapterId) AND VerseID =\(verseId)", -1, &statement, nil) != SQLITE_OK {
+        if sqlite3_prepare_v2(db, "SELECT VerseID, VerseText  FROM Verse WHERE TranslationID=\(tranlationId) AND ChapterID=\(chapterId) AND VerseID =\(verseId)", -1, &statement, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error preparing select: \(errmsg)")
         }

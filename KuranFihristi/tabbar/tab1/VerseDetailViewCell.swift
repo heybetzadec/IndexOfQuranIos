@@ -1,19 +1,17 @@
 //
-//  BottomViewCell.swift
+//  VerseDetailViewCell.swift
 //  KuranFihristi
 //
-//  Created by Cavad Heybetzade on 5/3/20.
+//  Created by Cavad Heybetzade on 5/4/20.
 //  Copyright © 2020 Cavad Heybetzade. All rights reserved.
 //
 
 import UIKit
 
-class BottomViewCell: UITableViewCell {
-    
-    
-    @IBOutlet weak var iconView: UIImageView!
-    @IBOutlet weak var labelText: UILabel!
+class VerseDetailViewCell: UITableViewCell {
 
+    @IBOutlet weak var textView: UITextView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,5 +22,6 @@ class BottomViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
 
 }

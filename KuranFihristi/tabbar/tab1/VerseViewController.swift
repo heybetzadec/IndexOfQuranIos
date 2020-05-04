@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class VerseViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
@@ -19,7 +20,9 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
     private let dataBase = DataBase()
     private var verses = Array<Verse>()
     private var fullVerses = Array<Verse>()
+    private var selectedVerses = Array<Verse>()
     private var searchController = UISearchController()
+    var bottomItems =  Array<BottomItem>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,11 +43,96 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 600
         
+        
+        bottomItems.append(BottomItem(id: 1, name: "Başkalarını seçin", icon: "hand.point.left"))
+        bottomItems.append(BottomItem(id: 2, name: "Seçilenleri Paylaş", icon: "square.and.arrow.up"))
+        bottomItems.append(BottomItem(id: 3, name: "Seçilenleri Kopyala", icon: "doc.on.doc"))
+        bottomItems.append(BottomItem(id: 4, name: "Seçilenleri Pinle", icon: "pin"))
+        
         prepareSearchController()
+        setupLongPressGesture()
+//        tableView.allowsSelection = true
+    }
+    
+    func setupLongPressGesture() {
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        longPressGesture.minimumPressDuration = 0.8
+        self.tableView.addGestureRecognizer(longPressGesture)
+    }
+
+    @objc func handleLongPress(longPressGesture: UILongPressGestureRecognizer) {
+        let p = longPressGesture.location(in: self.tableView)
+        let indexPath = self.tableView.indexPathForRow(at: p)
+        if indexPath == nil {
+            print("Long press on table view, not row.")
+        } else if longPressGesture.state == UIGestureRecognizer.State.began {
+            AudioServicesPlaySystemSound(1520) // 1519 - peek, 1521 - nope
+            
+            print("Long press on row, at \(indexPath!.row)")
+            tableView.selectRow(at: indexPath, animated: false, scrollPosition: UITableView.ScrollPosition.middle)
+            tableView.allowsMultipleSelection = true
+            self.appendVerse(insertVerse: verses[indexPath!.row])
+            let actionSheetAlertController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            
+            // Select others
+            var action = UIAlertAction(title: bottomItems[0].name, style: .default) { (action) in
+              
+            }
+            var icon = UIImage(systemName: bottomItems[0].icon)
+            action.setValue(icon, forKey: "image")
+            action.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+            actionSheetAlertController.addAction(action)
+            
+            // Share selected
+            action = UIAlertAction(title: bottomItems[1].name, style: .default) { (action) in
+                let text = self.getSelectedText()
+                let textShare = [ text ]
+                let activityViewController = UIActivityViewController(activityItems: textShare , applicationActivities: nil)
+                activityViewController.popoverPresentationController?.sourceView = self.view
+                self.present(activityViewController, animated: true, completion: nil)
+            }
+            icon = UIImage(systemName: bottomItems[1].icon) ?? .add
+            action.setValue(icon, forKey: "image")
+            action.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+            actionSheetAlertController.addAction(action)
+            
+            // Copy selected
+            action = UIAlertAction(title: bottomItems[2].name, style: .default) { (action) in
+                UIPasteboard.general.string = self.getSelectedText()
+                self.showToast(message: "Kopyalandı")
+                let selectedRows = self.tableView.indexPathsForSelectedRows
+                for row in selectedRows! {
+                    self.tableView.deselectRow(at: row, animated: true)
+                }
+                
+            }
+            icon =  UIImage(systemName: bottomItems[2].icon) ?? .add
+            action.setValue(icon, forKey: "image")
+            action.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+            actionSheetAlertController.addAction(action)
+            
+            
+            // Pin selected
+            action = UIAlertAction(title: bottomItems[3].name, style: .default) { (action) in
+                self.dataBase.insertSavedVerse(verses: self.selectedVerses)
+                self.showToast(message: "Pinlendi")
+            }
+            icon =  UIImage(systemName: bottomItems[3].icon) ?? .add
+            action.setValue(icon, forKey: "image")
+            action.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+            actionSheetAlertController.addAction(action)
+
+            let cancelActionButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            actionSheetAlertController.addAction(cancelActionButton)
+
+            self.present(actionSheetAlertController, animated: true, completion: nil)
+            
+            
+        }
     }
     
     
-    func prepareSearchController() {
+    private func prepareSearchController() {
         // Setup the Search Controller
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
@@ -125,19 +213,27 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
     }
 
     
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let removeItem = verses[indexPath.row]
+        selectedVerses.removeAll { (Verse) -> Bool in
+            Verse.chapterId == removeItem.chapterId && Verse.verseId == removeItem.verseId
+        }
+        if selectedVerses.count == 0 {
+            tableView.allowsMultipleSelection =  false
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showVerseDetail", sender: verses[indexPath.row])
-//        let verseItem = verses[indexPath.row]
-//        let storyBoard = UIStoryboard(name: "Main", bundle:nil)
-//        let verseDetailController = storyBoard.instantiateViewController(withIdentifier: "verseDetailViewController") as! VerseDetailViewController
-//        verseDetailController.verseId = verseItem.verseId
-//        verseDetailController.chapterId = chapterId
-//        verseDetailController.chapterName = chapterName
-//        verseDetailController.languageId = languageId
-//        verseDetailController.tranlationId = tranlationId
-//        self.navigationController?.pushViewController(verseDetailController, animated: false)
-//        filter(searchText: "")
-//        navigationItem.searchController?.isActive = false
+        
+        if tableView.allowsMultipleSelection {
+            self.appendVerse(insertVerse: verses[indexPath.row])
+            
+        }
+        
+        if selectedVerses.count == 0 {
+            performSegue(withIdentifier: "showVerseDetail", sender: verses[indexPath.row])
+        }
+        
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -154,6 +250,51 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
                 navigationItem.backBarButtonItem = backItem
             }
         }
+    }
+    
+    
+    private func appendVerse(insertVerse:Verse){
+        let filtered = selectedVerses.filter { (Verse) -> Bool in
+            Verse.chapterId == insertVerse.chapterId && Verse.verseId == insertVerse.verseId
+        }
+        if filtered.count == 0 {
+            selectedVerses.append(insertVerse)
+        }
+    }
+    
+    
+    
+    private func getSelectedText() -> String {
+        var text = ""
+        selectedVerses.sort { (Verse1, Verse2) -> Bool in
+            Verse1.verseId < Verse2.verseId
+        }
+        for verse in selectedVerses {
+            text = "\(text)\(verse.verseText)\n\(chapterId). \(chapterName), \(verse.verseId)\n\n"
+        }
+        if text != "" {
+            let index = text.count - 2
+            text = String(text.prefix(index))
+        }
+        return text
+    }
+    
+    func showToast(message : String) {
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.tableView.contentSize.height - 150 , width: 150, height: 35))
+        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        toastLabel.textColor = UIColor.white
+        toastLabel.textAlignment = .center;
+        toastLabel.font = UIFont(name: "Montserrat-Light", size: 12.0)
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10;
+        toastLabel.clipsToBounds  =  true
+        self.view.addSubview(toastLabel)
+        UIView.animate(withDuration: 3.0, delay: 0.1, options: .curveEaseOut, animations: {
+            toastLabel.alpha = 0.0
+        }, completion: {(isCompleted) in
+            toastLabel.removeFromSuperview()
+        })
     }
 
 }

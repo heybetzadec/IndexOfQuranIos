@@ -13,13 +13,13 @@ class BottomItem {
     
     var id: Int = 0
     var name: String = ""
-    var icon: UIImage = .add
+    var icon: String = "add"
     
     init() {
 
     }
     
-    init(id:Int, name: String, icon: UIImage) {
+    init(id:Int, name: String, icon: String) {
         self.id = id
         self.name = name
         self.icon = icon
