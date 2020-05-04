@@ -8,94 +8,123 @@
 
 import UIKit
 
-class WordViewController: UITableViewController {
+class WordViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
+    
+    
+    private let dataBase = DataBase()
+    private var words = Array<Word>()
+    private var fullWords = Array<Word>()
+    private var searchController = UISearchController()
     
     var letter = Letter()
     var languageId = 0
     var tranlationId = 0
     var searchString = ""
     
-    private let dataBase = DataBase()
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if let button = self.navigationItem.rightBarButtonItem {
+            button.isEnabled = false
+            button.tintColor = UIColor.clear
+        }
+        
+        fullWords = dataBase.getWords(letterId: letter.letterId, languageId: languageId)
+        words = fullWords
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = .systemBackground
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
-        navigationItem.title = "\(letter.letterName)"
-        
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 600
+        prepareSearchController()
         
     }
 
-    // MARK: - Table view data source
+   func prepareSearchController() {
+             // Setup the Search Controller
+             searchController.searchResultsUpdater = self
+             searchController.searchBar.delegate = self
+             searchController.obscuresBackgroundDuringPresentation = false
+             searchController.searchBar.placeholder = "Search Items"
+             navigationItem.searchController = searchController
+             definesPresentationContext = true
+         }
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+         
+         func updateSearchResults(for searchController: UISearchController) {
+         }
+         
+         func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+             filter(searchText: "")
+         }
+
+         func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+             filter(searchText: searchText)
+         }
+         
+         func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+             guard let searchText = searchBar.text else { return }
+             filter(searchText: searchText)
+         }
+         
+         func filter(searchText:String){
+             if !searchText.isEmpty {
+                 let loverSearch = searchText.lowercased()
+                 let textAz = loverSearch.replacingOccurrences(ofes: ["e","i"], withes: ["ə", "i̇"])
+                 words = fullWords.filter { (Word) -> Bool in
+                     let itemText = Word.wordName.lowercased()
+                     return itemText.contains(loverSearch) || itemText.contains(textAz)
+                 }
+                 
+                 if searchText.count > 2 {
+                     words.insert(Word(wordId: 0, wordName: ""), at: 0)
+                 }
+             } else {
+                 words = fullWords
+             }
+             tableView.reloadData()
+         }
+         
+         
+         @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
+             searchController.searchBar.endEditing(true)
+         }
+         
+         override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+             // #warning Incomplete implementation, return the number of rows
+             return words.count
+         }
+
+        
+         override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+             let wordItem = words[indexPath.row]
+             if wordItem.wordId == 0 {
+                 let cell = tableView.dequeueReusableCell(withIdentifier: "searchFullViewCell", for: indexPath as IndexPath) as! SearchFullViewCell
+                 return cell
+             } else {
+                 let cell = tableView.dequeueReusableCell(withIdentifier: "wordViewCell", for: indexPath as IndexPath) as! WordViewCell
+                 cell.wordNameLabel.text = " \(wordItem.wordName)"
+                 return cell
+             }
+         }
+         
+         
+         override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+             performSegue(withIdentifier: "showVerseByWord", sender: words[indexPath.row])
+         }
+         
+         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+             if segue.identifier == "showVerseByWord" {
+                 if let verseByWordController = segue.destination as? VerseByWordViewController {
+                     let selectedWordItem = sender as! Word
+                     verseByWordController.word = selectedWordItem
+                     verseByWordController.letter = letter
+                     verseByWordController.languageId = languageId
+                     verseByWordController.tranlationId = tranlationId
+                     let backItem = UIBarButtonItem()
+                     backItem.title = "Geri"
+                     navigationItem.backBarButtonItem = backItem
+                 }
+             }
+         }
+
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}

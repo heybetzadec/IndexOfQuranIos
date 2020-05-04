@@ -12,6 +12,7 @@
 		B49A435B60EE6A06BFBF205B /* Pods_KuranFihristi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F09E22C6521E22266B6D447 /* Pods_KuranFihristi.framework */; };
 		EF025589245F282B0031D190 /* BottomItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF025588245F282B0031D190 /* BottomItem.swift */; };
 		EF0F577D245F1C4D0042AEB2 /* BottomViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0F577C245F1C4D0042AEB2 /* BottomViewCell.swift */; };
+		EF1976C32460C092007F1462 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1976C22460C092007F1462 /* Functions.swift */; };
 		EF8376AA245F689300335185 /* VerseDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8376A9245F689300335185 /* VerseDetailViewCell.swift */; };
 		EFB5ADF6245EACB100BCDF61 /* SearchFullViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB5ADF5245EACB100BCDF61 /* SearchFullViewCell.swift */; };
 		EFCEA7FA245DC26D00B971B0 /* CustomSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCEA7F9245DC26D00B971B0 /* CustomSearchController.swift */; };
@@ -97,6 +98,7 @@
 		DBE8A78B4FBC954CED1BDBB3 /* Pods-KuranFihristi-KuranFihristiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KuranFihristi-KuranFihristiUITests.debug.xcconfig"; path = "Target Support Files/Pods-KuranFihristi-KuranFihristiUITests/Pods-KuranFihristi-KuranFihristiUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		EF025588245F282B0031D190 /* BottomItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomItem.swift; sourceTree = "<group>"; };
 		EF0F577C245F1C4D0042AEB2 /* BottomViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomViewCell.swift; sourceTree = "<group>"; };
+		EF1976C22460C092007F1462 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		EF8376A9245F689300335185 /* VerseDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseDetailViewCell.swift; sourceTree = "<group>"; };
 		EFB5ADF5245EACB100BCDF61 /* SearchFullViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFullViewCell.swift; sourceTree = "<group>"; };
 		EFCEA7F9245DC26D00B971B0 /* CustomSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchController.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				EFCF78BA245CA00A00E32BFD /* DataBase.swift */,
 				EFCEA7F9245DC26D00B971B0 /* CustomSearchController.swift */,
 				EFCEA7FB245DC28900B971B0 /* CustomSearchBar.swift */,
+				EF1976C22460C092007F1462 /* Functions.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -602,6 +605,7 @@
 				EFCF787B245C88E400E32BFD /* WordViewController.swift in Sources */,
 				EFCF7891245C8F1000E32BFD /* SearchViewController.swift in Sources */,
 				EFCF78AE245C96AF00E32BFD /* SearchViewCell.swift in Sources */,
+				EF1976C32460C092007F1462 /* Functions.swift in Sources */,
 				EFCF7873245C860400E32BFD /* ChapterViewController.swift in Sources */,
 				EFD4DFBE245D7AF200FA5EF4 /* Name.swift in Sources */,
 				EFCF789A245C959800E32BFD /* VerseViewCell.swift in Sources */,

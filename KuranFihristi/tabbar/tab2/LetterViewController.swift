@@ -10,7 +10,7 @@ import UIKit
 
 class LetterViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
 
-    private let dataBase = DataBase()
+     private let dataBase = DataBase()
      private var letters = Array<Letter>()
      private var fullLetters = Array<Letter>()
      private var searchController = UISearchController()
@@ -107,11 +107,11 @@ class LetterViewController: UITableViewController, UISearchResultsUpdating, UISe
      
      
      override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-         performSegue(withIdentifier: "showVerses", sender: letters[indexPath.row])
+         performSegue(withIdentifier: "showWords", sender: letters[indexPath.row])
      }
      
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         if segue.identifier == "showVerses" {
+         if segue.identifier == "showWords" {
              if let wordController = segue.destination as? WordViewController {
                  let selectedLetterItem = sender as! Letter
                  wordController.letter = selectedLetterItem

@@ -22,7 +22,7 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
     private var fullVerses = Array<Verse>()
     private var selectedVerses = Array<Verse>()
     private var searchController = UISearchController()
-    var bottomItems =  Array<BottomItem>()
+    private var bottomItems =  Array<BottomItem>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,11 +43,12 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 600
         
-        
-        bottomItems.append(BottomItem(id: 1, name: "Başkalarını seçin", icon: "hand.point.left"))
-        bottomItems.append(BottomItem(id: 2, name: "Seçilenleri Paylaş", icon: "square.and.arrow.up"))
-        bottomItems.append(BottomItem(id: 3, name: "Seçilenleri Kopyala", icon: "doc.on.doc"))
-        bottomItems.append(BottomItem(id: 4, name: "Seçilenleri Pinle", icon: "pin"))
+        let funcs = Functions()
+        bottomItems = funcs.getDefaultBottomItems()
+//        bottomItems.append(BottomItem(id: 1, name: "Başkalarını seçin", icon: "hand.point.left"))
+//        bottomItems.append(BottomItem(id: 2, name: "Seçilenleri Paylaş", icon: "square.and.arrow.up"))
+//        bottomItems.append(BottomItem(id: 3, name: "Seçilenleri Kopyala", icon: "doc.on.doc"))
+//        bottomItems.append(BottomItem(id: 4, name: "Seçilenleri Pinle", icon: "pin"))
         
         prepareSearchController()
         setupLongPressGesture()

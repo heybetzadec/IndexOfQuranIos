@@ -10,6 +10,11 @@ import UIKit
 
 class VerseByWordViewCell: UITableViewCell {
 
+    
+    @IBOutlet weak var verseNameLabel: UILabel!
+    @IBOutlet weak var verseTextLabel: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
