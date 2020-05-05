@@ -14,7 +14,6 @@
 		EF0F577D245F1C4D0042AEB2 /* BottomViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0F577C245F1C4D0042AEB2 /* BottomViewCell.swift */; };
 		EF1976C32460C092007F1462 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1976C22460C092007F1462 /* Functions.swift */; };
 		EF1AC0D22461DE08004941C2 /* ItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1AC0D12461DE08004941C2 /* ItemViewCell.swift */; };
-		EF1AC0D42461DE2D004941C2 /* VerseViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1AC0D32461DE2D004941C2 /* VerseViewCell.swift */; };
 		EF1AC0D62461DE4F004941C2 /* VerseByViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1AC0D52461DE4F004941C2 /* VerseByViewCell.swift */; };
 		EF1AC0D92461DEC7004941C2 /* ItemDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1AC0D82461DEC7004941C2 /* ItemDetailViewCell.swift */; };
 		EF8376AA245F689300335185 /* VerseDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8376A9245F689300335185 /* VerseDetailViewCell.swift */; };
@@ -44,14 +43,7 @@
 		EFCF788F245C8EF900E32BFD /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF788E245C8EF900E32BFD /* PinViewController.swift */; };
 		EFCF7891245C8F1000E32BFD /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF7890245C8F1000E32BFD /* SearchViewController.swift */; };
 		EFCF7893245C8F1E00E32BFD /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF7892245C8F1E00E32BFD /* SettingViewController.swift */; };
-		EFCF7898245C957300E32BFD /* ChapterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF7897245C957300E32BFD /* ChapterViewCell.swift */; };
 		EFCF789A245C959800E32BFD /* VerseViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF7899245C959800E32BFD /* VerseViewCell.swift */; };
-		EFCF789C245C95B200E32BFD /* LetterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF789B245C95B200E32BFD /* LetterViewCell.swift */; };
-		EFCF789E245C95FF00E32BFD /* WordViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF789D245C95FF00E32BFD /* WordViewCell.swift */; };
-		EFCF78A0245C961700E32BFD /* VerseByWordViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF789F245C961700E32BFD /* VerseByWordViewCell.swift */; };
-		EFCF78A2245C962E00E32BFD /* TopicViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF78A1245C962E00E32BFD /* TopicViewCell.swift */; };
-		EFCF78A4245C964500E32BFD /* PhraseViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF78A3245C964500E32BFD /* PhraseViewCell.swift */; };
-		EFCF78A6245C965C00E32BFD /* VerseByTopicViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF78A5245C965C00E32BFD /* VerseByTopicViewCell.swift */; };
 		EFCF78A8245C967200E32BFD /* NameViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF78A7245C967200E32BFD /* NameViewCell.swift */; };
 		EFCF78AA245C968500E32BFD /* OtherViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF78A9245C968500E32BFD /* OtherViewCell.swift */; };
 		EFCF78AC245C969600E32BFD /* PinViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF78AB245C969600E32BFD /* PinViewCell.swift */; };
@@ -104,7 +96,6 @@
 		EF0F577C245F1C4D0042AEB2 /* BottomViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomViewCell.swift; sourceTree = "<group>"; };
 		EF1976C22460C092007F1462 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		EF1AC0D12461DE08004941C2 /* ItemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewCell.swift; sourceTree = "<group>"; };
-		EF1AC0D32461DE2D004941C2 /* VerseViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseViewCell.swift; sourceTree = "<group>"; };
 		EF1AC0D52461DE4F004941C2 /* VerseByViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseByViewCell.swift; sourceTree = "<group>"; };
 		EF1AC0D82461DEC7004941C2 /* ItemDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewCell.swift; sourceTree = "<group>"; };
 		EF8376A9245F689300335185 /* VerseDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseDetailViewCell.swift; sourceTree = "<group>"; };
@@ -140,14 +131,7 @@
 		EFCF788E245C8EF900E32BFD /* PinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
 		EFCF7890245C8F1000E32BFD /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		EFCF7892245C8F1E00E32BFD /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		EFCF7897245C957300E32BFD /* ChapterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterViewCell.swift; sourceTree = "<group>"; };
 		EFCF7899245C959800E32BFD /* VerseViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseViewCell.swift; sourceTree = "<group>"; };
-		EFCF789B245C95B200E32BFD /* LetterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterViewCell.swift; sourceTree = "<group>"; };
-		EFCF789D245C95FF00E32BFD /* WordViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordViewCell.swift; sourceTree = "<group>"; };
-		EFCF789F245C961700E32BFD /* VerseByWordViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseByWordViewCell.swift; sourceTree = "<group>"; };
-		EFCF78A1245C962E00E32BFD /* TopicViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicViewCell.swift; sourceTree = "<group>"; };
-		EFCF78A3245C964500E32BFD /* PhraseViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseViewCell.swift; sourceTree = "<group>"; };
-		EFCF78A5245C965C00E32BFD /* VerseByTopicViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseByTopicViewCell.swift; sourceTree = "<group>"; };
 		EFCF78A7245C967200E32BFD /* NameViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewCell.swift; sourceTree = "<group>"; };
 		EFCF78A9245C968500E32BFD /* OtherViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherViewCell.swift; sourceTree = "<group>"; };
 		EFCF78AB245C969600E32BFD /* PinViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinViewCell.swift; sourceTree = "<group>"; };
@@ -226,12 +210,23 @@
 			isa = PBXGroup;
 			children = (
 				EFCF78B1245C989100E32BFD /* AppTabBarViewController.swift */,
-				EF1AC0D12461DE08004941C2 /* ItemViewCell.swift */,
-				EF1AC0D32461DE2D004941C2 /* VerseViewCell.swift */,
-				EF1AC0D52461DE4F004941C2 /* VerseByViewCell.swift */,
-				EF1AC0D82461DEC7004941C2 /* ItemDetailViewCell.swift */,
+				EF1AC0DB2461E925004941C2 /* cells */,
 			);
 			path = main;
+			sourceTree = "<group>";
+		};
+		EF1AC0DB2461E925004941C2 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				EF1AC0D12461DE08004941C2 /* ItemViewCell.swift */,
+				EF1AC0D52461DE4F004941C2 /* VerseByViewCell.swift */,
+				EF1AC0D82461DEC7004941C2 /* ItemDetailViewCell.swift */,
+				EFB5ADF5245EACB100BCDF61 /* SearchFullViewCell.swift */,
+				EFCF7899245C959800E32BFD /* VerseViewCell.swift */,
+				EF8376A9245F689300335185 /* VerseDetailViewCell.swift */,
+				EF0F577C245F1C4D0042AEB2 /* BottomViewCell.swift */,
+			);
+			path = cells;
 			sourceTree = "<group>";
 		};
 		EFCEA7FD245DC61000B971B0 /* util */ = {
@@ -308,11 +303,6 @@
 				EFCF7872245C860400E32BFD /* ChapterViewController.swift */,
 				EFCF7876245C879A00E32BFD /* VerseViewController.swift */,
 				EFCF787C245C897000E32BFD /* VerseDetailViewController.swift */,
-				EFCF7897245C957300E32BFD /* ChapterViewCell.swift */,
-				EFB5ADF5245EACB100BCDF61 /* SearchFullViewCell.swift */,
-				EFCF7899245C959800E32BFD /* VerseViewCell.swift */,
-				EF8376A9245F689300335185 /* VerseDetailViewCell.swift */,
-				EF0F577C245F1C4D0042AEB2 /* BottomViewCell.swift */,
 			);
 			path = tab1;
 			sourceTree = "<group>";
@@ -323,9 +313,6 @@
 				EFCF7874245C863600E32BFD /* LetterViewController.swift */,
 				EFCF787A245C88E400E32BFD /* WordViewController.swift */,
 				EFCF7878245C87C600E32BFD /* VerseByWordViewController.swift */,
-				EFCF789B245C95B200E32BFD /* LetterViewCell.swift */,
-				EFCF789D245C95FF00E32BFD /* WordViewCell.swift */,
-				EFCF789F245C961700E32BFD /* VerseByWordViewCell.swift */,
 			);
 			path = tab2;
 			sourceTree = "<group>";
@@ -334,11 +321,8 @@
 			isa = PBXGroup;
 			children = (
 				EFCF7882245C8A7200E32BFD /* TopicViewController.swift */,
-				EFCF78A1245C962E00E32BFD /* TopicViewCell.swift */,
 				EFCF7880245C89D800E32BFD /* PhraseViewController.swift */,
-				EFCF78A3245C964500E32BFD /* PhraseViewCell.swift */,
 				EFCF7884245C8A8700E32BFD /* VerseByTopicViewController.swift */,
-				EFCF78A5245C965C00E32BFD /* VerseByTopicViewCell.swift */,
 			);
 			path = tab3;
 			sourceTree = "<group>";
@@ -613,9 +597,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFCEA7FA245DC26D00B971B0 /* CustomSearchController.swift in Sources */,
-				EFCF7898245C957300E32BFD /* ChapterViewCell.swift in Sources */,
 				EFCF7877245C879A00E32BFD /* VerseViewController.swift in Sources */,
-				EFCF789E245C95FF00E32BFD /* WordViewCell.swift in Sources */,
 				EFD4DFB0245D4D3C00FA5EF4 /* Letter.swift in Sources */,
 				EFD4DFB4245D693B00FA5EF4 /* VerseBy.swift in Sources */,
 				EFCF788F245C8EF900E32BFD /* PinViewController.swift in Sources */,
@@ -629,25 +611,20 @@
 				EFCF7873245C860400E32BFD /* ChapterViewController.swift in Sources */,
 				EFD4DFBE245D7AF200FA5EF4 /* Name.swift in Sources */,
 				EFCF789A245C959800E32BFD /* VerseViewCell.swift in Sources */,
-				EFCF78A2245C962E00E32BFD /* TopicViewCell.swift in Sources */,
 				EFCF783E245C793A00E32BFD /* AppDelegate.swift in Sources */,
 				EFCF784A245C793A00E32BFD /* KuranFihristi.xcdatamodeld in Sources */,
 				EFD4DFC0245D85C700FA5EF4 /* Translation.swift in Sources */,
 				EFD4DFB2245D63FD00FA5EF4 /* Word.swift in Sources */,
-				EF1AC0D42461DE2D004941C2 /* VerseViewCell.swift in Sources */,
 				EFCF7883245C8A7200E32BFD /* TopicViewController.swift in Sources */,
 				EFCF787D245C897000E32BFD /* VerseDetailViewController.swift in Sources */,
 				EF1AC0D22461DE08004941C2 /* ItemViewCell.swift in Sources */,
-				EFCF78A0245C961700E32BFD /* VerseByWordViewCell.swift in Sources */,
 				EFCF78B0245C96CF00E32BFD /* SettingViewCell.swift in Sources */,
 				EFCF7879245C87C600E32BFD /* VerseByWordViewController.swift in Sources */,
 				EFCF78AA245C968500E32BFD /* OtherViewCell.swift in Sources */,
-				EFCF789C245C95B200E32BFD /* LetterViewCell.swift in Sources */,
 				EFB5ADF6245EACB100BCDF61 /* SearchFullViewCell.swift in Sources */,
 				EFD4DFAD245D454400FA5EF4 /* Verse.swift in Sources */,
 				EFD4DFBC245D7A5F00FA5EF4 /* Language.swift in Sources */,
 				EF1AC0D92461DEC7004941C2 /* ItemDetailViewCell.swift in Sources */,
-				EFCF78A4245C964500E32BFD /* PhraseViewCell.swift in Sources */,
 				EFD4DFBA245D788B00FA5EF4 /* Phrase.swift in Sources */,
 				EFCF78B9245C9EEF00E32BFD /* Chapter.swift in Sources */,
 				EFCEA7FC245DC28900B971B0 /* CustomSearchBar.swift in Sources */,
@@ -655,7 +632,6 @@
 				EFCF7885245C8A8700E32BFD /* VerseByTopicViewController.swift in Sources */,
 				EF8376AA245F689300335185 /* VerseDetailViewCell.swift in Sources */,
 				EFCF7875245C863600E32BFD /* LetterViewController.swift in Sources */,
-				EFCF78A6245C965C00E32BFD /* VerseByTopicViewCell.swift in Sources */,
 				EFCF788A245C8EA400E32BFD /* NameDetailViewController.swift in Sources */,
 				EFCF7893245C8F1E00E32BFD /* SettingViewController.swift in Sources */,
 				EFCF7840245C793A00E32BFD /* SceneDelegate.swift in Sources */,

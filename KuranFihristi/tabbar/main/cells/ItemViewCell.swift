@@ -1,5 +1,5 @@
 //
-//  VerseViewCell.swift
+//  ItemViewCell.swift
 //  KuranFihristi
 //
 //  Created by Cavad Heybetzade on 5/5/20.
@@ -8,8 +8,10 @@
 
 import UIKit
 
-class VerseViewCell: UITableViewCell {
-
+class ItemViewCell: UITableViewCell {
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

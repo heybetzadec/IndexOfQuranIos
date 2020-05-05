@@ -73,19 +73,19 @@ class VerseDetailViewController: UITableViewController {
         bottomItems.append(BottomItem(id: 1, name: "Ayeti Paylaş", icon: "square.and.arrow.up"))
         bottomItems.append(BottomItem(id: 2, name: "Ayeti Kopyala", icon: "doc.on.doc"))
         bottomItems.append(BottomItem(id: 3, name: "Ayeti Pinle", icon: "pin"))
-
+        
         tableView.delegate = self
         tableView.dataSource = self
         
         tableView.tableFooterView = UIView()
         
     }
-
+    
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return bottomItems.count
     }
@@ -142,5 +142,5 @@ class VerseDetailViewController: UITableViewController {
             toastLabel.removeFromSuperview()
         })
     }
-
+    
 }

@@ -24,7 +24,7 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
     private var selectedVerses = Array<Verse>()
     private var searchController = UISearchController()
     private var bottomItems =  Array<BottomItem>()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,10 +46,10 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
         
         let funcs = Functions()
         bottomItems = funcs.getDefaultBottomItems()
-//        bottomItems.append(BottomItem(id: 1, name: "Başkalarını seçin", icon: "hand.point.left"))
-//        bottomItems.append(BottomItem(id: 2, name: "Seçilenleri Paylaş", icon: "square.and.arrow.up"))
-//        bottomItems.append(BottomItem(id: 3, name: "Seçilenleri Kopyala", icon: "doc.on.doc"))
-//        bottomItems.append(BottomItem(id: 4, name: "Seçilenleri Pinle", icon: "pin"))
+        //        bottomItems.append(BottomItem(id: 1, name: "Başkalarını seçin", icon: "hand.point.left"))
+        //        bottomItems.append(BottomItem(id: 2, name: "Seçilenleri Paylaş", icon: "square.and.arrow.up"))
+        //        bottomItems.append(BottomItem(id: 3, name: "Seçilenleri Kopyala", icon: "doc.on.doc"))
+        //        bottomItems.append(BottomItem(id: 4, name: "Seçilenleri Pinle", icon: "pin"))
         
         prepareSearchController()
         setupLongPressGesture()
@@ -64,7 +64,7 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
         longPressGesture.minimumPressDuration = 0.8
         self.tableView.addGestureRecognizer(longPressGesture)
     }
-
+    
     @objc func handleLongPress(longPressGesture: UILongPressGestureRecognizer) {
         let p = longPressGesture.location(in: self.tableView)
         let indexPath = self.tableView.indexPathForRow(at: p)
@@ -81,7 +81,7 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
             
             // Select others
             var action = UIAlertAction(title: bottomItems[0].name, style: .default) { (action) in
-              
+                
             }
             var icon = UIImage(systemName: bottomItems[0].icon)
             action.setValue(icon, forKey: "image")
@@ -126,10 +126,10 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
             action.setValue(icon, forKey: "image")
             action.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
             actionSheetAlertController.addAction(action)
-
+            
             let cancelActionButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             actionSheetAlertController.addAction(cancelActionButton)
-
+            
             self.present(actionSheetAlertController, animated: true, completion: nil)
             
             
@@ -146,7 +146,7 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
         navigationItem.searchController = searchController
         definesPresentationContext = true
     }
-
+    
     
     func updateSearchResults(for searchController: UISearchController) {
     }
@@ -154,7 +154,7 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         filter(searchText: "")
     }
-
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filter(searchText: searchText)
     }
@@ -186,7 +186,7 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return verses.count
     }
@@ -203,7 +203,7 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
             let inputLength = attrStr.string.count
             let searchLength = searchString.count
             var range = NSRange(location: 0, length: attrStr.length)
-
+            
             while (range.location != NSNotFound) {
                 range = (attrStr.string as NSString).range(of: searchString, options: [.caseInsensitive], range: range)
                 if (range.location != NSNotFound) {
@@ -216,7 +216,7 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
             return cell
         }
     }
-
+    
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let removeItem = verses[indexPath.row]
@@ -240,7 +240,7 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
         }
         
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showVerseDetail" {
             if let verseDetailController = segue.destination as? VerseDetailViewController {
@@ -301,5 +301,5 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
             toastLabel.removeFromSuperview()
         })
     }
-
+    
 }

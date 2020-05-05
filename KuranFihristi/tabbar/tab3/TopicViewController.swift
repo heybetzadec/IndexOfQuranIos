@@ -8,83 +8,122 @@
 
 import UIKit
 
-class TopicViewController: UITableViewController {
-
+class TopicViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
+    
+    private let dataBase = DataBase()
+    private var topics = Array<Topic>()
+    private var fullTopics = Array<Topic>()
+    private var searchController = UISearchController()
+    
+    private var languageId = 1
+    private var tranlationId = 154
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        if let button = self.navigationItem.rightBarButtonItem {
+            button.isEnabled = false
+            button.tintColor = UIColor.clear
+        }
+        
+        fullTopics = dataBase.getTopics(languageId: languageId)
+        topics = fullTopics
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .systemBackground
+        navigationItem.standardAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
+        prepareSearchController()
+        tableView.tableFooterView = UIView()
     }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    
+    
+    func prepareSearchController() {
+        // Setup the Search Controller
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Items"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
     }
-
+    
+    
+    func updateSearchResults(for searchController: UISearchController) {
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        filter(searchText: "")
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filter(searchText: searchText)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchText = searchBar.text else { return }
+        filter(searchText: searchText)
+    }
+    
+    func filter(searchText:String){
+        if !searchText.isEmpty {
+            let loverSearch = searchText.lowercased()
+            let textAz = loverSearch.replacingOccurrences(ofes: ["e","i"], withes: ["ə", "i̇"])
+            topics = fullTopics.filter { (Topic) -> Bool in
+                let itemText = Topic.topicName.lowercased()
+                return itemText.contains(loverSearch) || itemText.contains(textAz)
+            }
+            
+            if searchText.count > 2 {
+                topics.insert(Topic(topicId: 0, topicName: ""),  at: 0)
+            }
+        } else {
+            topics = fullTopics
+        }
+        tableView.reloadData()
+    }
+    
+    
+    @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
+        searchController.searchBar.endEditing(true)
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return topics.count
     }
-
-    /*
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        let topicItem = topics[indexPath.row]
+        if topicItem.topicId == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "searchFullViewCell", for: indexPath as IndexPath) as! SearchFullViewCell
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "topicItemViewCell", for: indexPath as IndexPath) as! ItemViewCell
+            cell.nameLabel.text = " \(topicItem.topicName)"
+            return cell
         }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showPhrases", sender: topics[indexPath.row])
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "showPhrases" {
+            if let phraseViewController  = segue.destination as? PhraseViewController {
+                let selectedPhraseItem = sender as! Topic
+                phraseViewController.topic = selectedPhraseItem
+                phraseViewController.languageId = languageId
+                phraseViewController.tranlationId = tranlationId
+                let backItem = UIBarButtonItem()
+                backItem.title = "Geri"
+                navigationItem.backBarButtonItem = backItem
+            }
+        }
     }
-    */
-
+    
 }

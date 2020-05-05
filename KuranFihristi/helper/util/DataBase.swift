@@ -398,7 +398,7 @@ class DataBase: NSObject {
         if sqlite3_prepare_v2(db, "SELECT v.ChapterID, c.ChapterName, v.VerseID, v.VerseText FROM VerseByPhrase AS vw  " +
         "LEFT OUTER JOIN Verse AS v ON v.ChapterID = vw.ChapterID AND v.VerseID = vw.VerseID  " +
         "LEFT OUTER JOIN Chapter AS c ON c.ChapterID = v.ChapterID AND c.TranslationID = v.TranslationID " +
-        "WHERE vw.LangID=\(languageId) AND v.TranslationID=\(translationId)AND vw.ThemeID = \(topicId) AND vw.PhraseID = \(phraseId) ", -1, &statement, nil) != SQLITE_OK {
+        "WHERE vw.LangID=\(languageId) AND v.TranslationID=\(translationId) AND vw.ThemeID = \(topicId) AND vw.PhraseID = \(phraseId) ", -1, &statement, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error preparing select: \(errmsg)")
         }

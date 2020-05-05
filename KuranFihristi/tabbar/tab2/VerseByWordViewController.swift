@@ -10,7 +10,7 @@ import UIKit
 import AudioToolbox
 
 class VerseByWordViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
-
+    
     private let dataBase = DataBase()
     private var versesBy = Array<VerseBy>()
     private var fullVersesBy = Array<VerseBy>()
@@ -59,7 +59,7 @@ class VerseByWordViewController: UITableViewController, UISearchResultsUpdating,
         longPressGesture.minimumPressDuration = 0.8
         self.tableView.addGestureRecognizer(longPressGesture)
     }
-
+    
     @objc func handleLongPress(longPressGesture: UILongPressGestureRecognizer) {
         let p = longPressGesture.location(in: self.tableView)
         let indexPath = self.tableView.indexPathForRow(at: p)
@@ -76,7 +76,7 @@ class VerseByWordViewController: UITableViewController, UISearchResultsUpdating,
             
             // Select others
             var action = UIAlertAction(title: bottomItems[0].name, style: .default) { (action) in
-              
+                
             }
             var icon = UIImage(systemName: bottomItems[0].icon)
             action.setValue(icon, forKey: "image")
@@ -125,10 +125,10 @@ class VerseByWordViewController: UITableViewController, UISearchResultsUpdating,
             action.setValue(icon, forKey: "image")
             action.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
             actionSheetAlertController.addAction(action)
-
+            
             let cancelActionButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             actionSheetAlertController.addAction(cancelActionButton)
-
+            
             self.present(actionSheetAlertController, animated: true, completion: nil)
             
             
@@ -145,7 +145,7 @@ class VerseByWordViewController: UITableViewController, UISearchResultsUpdating,
         navigationItem.searchController = searchController
         definesPresentationContext = true
     }
-
+    
     
     func updateSearchResults(for searchController: UISearchController) {
     }
@@ -153,7 +153,7 @@ class VerseByWordViewController: UITableViewController, UISearchResultsUpdating,
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         filter(searchText: "")
     }
-
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filter(searchText: searchText)
     }
@@ -185,7 +185,7 @@ class VerseByWordViewController: UITableViewController, UISearchResultsUpdating,
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return versesBy.count
     }
@@ -196,13 +196,13 @@ class VerseByWordViewController: UITableViewController, UISearchResultsUpdating,
             let cell = tableView.dequeueReusableCell(withIdentifier: "searchFullViewCell", for: indexPath as IndexPath) as! SearchFullViewCell
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "verseByWordViewCell", for: indexPath as IndexPath) as! VerseByWordViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "verseByWordViewCell", for: indexPath as IndexPath) as! VerseByViewCell
             
             let attrStr = NSMutableAttributedString(string: "\(verseItem.verseText)")
             let inputLength = attrStr.string.count
             let searchLength = searchString.count
             var range = NSRange(location: 0, length: attrStr.length)
-
+            
             while (range.location != NSNotFound) {
                 range = (attrStr.string as NSString).range(of: searchString, options: [.caseInsensitive], range: range)
                 if (range.location != NSNotFound) {
@@ -211,12 +211,12 @@ class VerseByWordViewController: UITableViewController, UISearchResultsUpdating,
                 }
             }
             
-            cell.verseNameLabel.text = "\(verseItem.chapterId). \(verseItem.chapterName), \(verseItem.verseId)"
-            cell.verseTextLabel.attributedText = attrStr //"\(verseItem.verseId). \(verseItem.verseText)"
+            cell.nameLabel.text = "\(verseItem.chapterId). \(verseItem.chapterName), \(verseItem.verseId)"
+            cell.verseLabel.attributedText = attrStr //"\(verseItem.verseId). \(verseItem.verseText)"
             return cell
         }
     }
-
+    
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let removeItem = versesBy[indexPath.row]
@@ -236,7 +236,6 @@ class VerseByWordViewController: UITableViewController, UISearchResultsUpdating,
         }
         
         if selectedVersesBy.count == 0 {
-            tableView.deselectRow(at: indexPath, animated: true)
             performSegue(withIdentifier: "showVerseFromByWord", sender: versesBy[indexPath.row])
         }
         
@@ -302,6 +301,6 @@ class VerseByWordViewController: UITableViewController, UISearchResultsUpdating,
             toastLabel.removeFromSuperview()
         })
     }
-
+    
     
 }

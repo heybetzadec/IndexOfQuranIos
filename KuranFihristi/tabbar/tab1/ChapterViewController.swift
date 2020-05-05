@@ -38,7 +38,7 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
         
         tableView.tableFooterView = UIView()
     }
-
+    
     
     func prepareSearchController() {
         // Setup the Search Controller
@@ -49,7 +49,7 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
         navigationItem.searchController = searchController
         definesPresentationContext = true
     }
-
+    
     
     func updateSearchResults(for searchController: UISearchController) {
     }
@@ -57,7 +57,7 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         filter(searchText: "")
     }
-
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filter(searchText: searchText)
     }
@@ -94,16 +94,16 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
         // #warning Incomplete implementation, return the number of rows
         return chapters.count
     }
-
-   
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let chapterItem = chapters[indexPath.row]
         if chapterItem.chapterId == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "searchFullViewCell", for: indexPath as IndexPath) as! SearchFullViewCell
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "chapterViewCell", for: indexPath as IndexPath) as! ChapterViewCell
-            cell.chapterNameLabel.text = "\(chapterItem.chapterId). \(chapterItem.chapterName)"
+            let cell = tableView.dequeueReusableCell(withIdentifier: "chapterItemViewCell", for: indexPath as IndexPath) as! ItemViewCell
+            cell.nameLabel.text = "\(chapterItem.chapterId). \(chapterItem.chapterName)"
             return cell
         }
     }

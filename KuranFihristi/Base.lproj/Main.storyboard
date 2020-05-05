@@ -17,14 +17,14 @@
                         <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchFullViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchFullViewCell" id="1MJ-2B-Fgw" customClass="SearchFullViewCell" customModule="KuranFihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="42.666667938232422"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.333332061767578"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1MJ-2B-Fgw" id="Ppn-ua-bB4">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="42.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.333332061767578"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tam arama" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1i-VN-gyC">
-                                            <rect key="frame" x="16" y="11.000000000000002" width="343" height="20.666666666666671"/>
+                                            <rect key="frame" x="16" y="10.999999999999998" width="343" height="21.333333333333329"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -39,15 +39,15 @@
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="chapterViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="chapterViewCell" id="CGF-Lb-Z6l" customClass="ChapterViewCell" customModule="KuranFihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="70.666667938232422" width="375" height="43"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="chapterItemViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="chapterItemViewCell" id="CGF-Lb-Z6l" customClass="ItemViewCell" customModule="KuranFihristi" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="71.333332061767578" width="375" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CGF-Lb-Z6l" id="qQm-4D-Lmt">
-                                    <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bakara suresi 10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zcH-kE-IzD">
-                                            <rect key="frame" x="16" y="11" width="309.66666666666669" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zcH-kE-IzD">
+                                            <rect key="frame" x="16" y="11.000000000000002" width="309.66666666666669" height="21.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -62,7 +62,7 @@
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                                 <connections>
-                                    <outlet property="chapterNameLabel" destination="zcH-kE-IzD" id="b79-Fk-jyy"/>
+                                    <outlet property="nameLabel" destination="zcH-kE-IzD" id="DfC-nN-EF2"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -94,14 +94,14 @@
                         <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchFullViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="searchFullViewCell" id="7kP-Qk-bHW" customClass="SearchFullViewCell" customModule="KuranFihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="42.666667938232422"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7kP-Qk-bHW" id="M9Z-Xx-YKK">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="42.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tam arama" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUP-1T-8Td">
-                                            <rect key="frame" x="145.66666666666666" y="11.000000000000002" width="84" height="20.666666666666671"/>
+                                            <rect key="frame" x="145.66666666666666" y="11.000000000000002" width="84" height="21.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -116,7 +116,7 @@
                                 <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="verseViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="verseViewCell" rowHeight="44" id="0z6-ko-2ch" customClass="VerseViewCell" customModule="KuranFihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="70.666667938232422" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="71.666667938232422" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0z6-ko-2ch" id="E3O-N7-FFv">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -332,30 +332,30 @@
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="letterViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="letterViewCell" id="Te5-rc-waZ" customClass="LetterViewCell" customModule="KuranFihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="71.666667938232422" width="375" height="42.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="letterItemViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="letterItemViewCell" id="ANY-ZF-WJV" customClass="ItemViewCell" customModule="KuranFihristi" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="71.666667938232422" width="375" height="43.333332061767578"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Te5-rc-waZ" id="F2b-X0-z4a">
-                                    <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="42.666667938232422"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ANY-ZF-WJV" id="M3G-qZ-iIH">
+                                    <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="43.333332061767578"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NGM-E0-xJE">
-                                            <rect key="frame" x="16" y="11.000000000000002" width="309.66666666666669" height="20.666666666666671"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkk-L7-bq5">
+                                            <rect key="frame" x="16" y="10.999999999999998" width="309.66666666666669" height="21.333333333333329"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="NGM-E0-xJE" secondAttribute="trailing" constant="14" id="2pP-mH-Rfl"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="NGM-E0-xJE" secondAttribute="bottom" id="8tI-ek-yzg"/>
-                                        <constraint firstItem="NGM-E0-xJE" firstAttribute="leading" secondItem="F2b-X0-z4a" secondAttribute="leadingMargin" id="K4S-a9-RYo"/>
-                                        <constraint firstItem="NGM-E0-xJE" firstAttribute="top" secondItem="F2b-X0-z4a" secondAttribute="topMargin" id="zAH-fS-D7l"/>
+                                        <constraint firstItem="gkk-L7-bq5" firstAttribute="leading" secondItem="M3G-qZ-iIH" secondAttribute="leadingMargin" id="Hkg-mk-hWM"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="gkk-L7-bq5" secondAttribute="bottom" id="OgS-mD-ncv"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="gkk-L7-bq5" secondAttribute="trailing" constant="14" id="ZXw-bn-TWd"/>
+                                        <constraint firstItem="gkk-L7-bq5" firstAttribute="top" secondItem="M3G-qZ-iIH" secondAttribute="topMargin" id="hBy-al-G0m"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                                 <connections>
-                                    <outlet property="letterNameLabel" destination="NGM-E0-xJE" id="KzX-br-77P"/>
+                                    <outlet property="nameLabel" destination="gkk-L7-bq5" id="OKr-A3-dXe"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -386,14 +386,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchFullViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchFullViewCell" id="3Pe-ax-ebx" customClass="SearchFullViewCell" customModule="KuranFihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.333332061767578"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3Pe-ax-ebx" id="126-rz-2Dl">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.333332061767578"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tam arama" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQm-z2-yHY">
-                                            <rect key="frame" x="16" y="11.000000000000002" width="343" height="21.666666666666671"/>
+                                            <rect key="frame" x="16" y="10.999999999999998" width="343" height="21.333333333333329"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -408,14 +408,14 @@
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="letterViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="wordViewCell" id="orc-aG-TCF" customClass="WordViewCell" customModule="KuranFihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="71.666667938232422" width="375" height="43"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="wordItemViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="wordItemViewCell" id="05v-sW-VvC" customClass="ItemViewCell" customModule="KuranFihristi" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="71.333332061767578" width="375" height="43"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="orc-aG-TCF" id="wv3-Su-oNz">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="05v-sW-VvC" id="uFs-EQ-1jo">
                                     <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7Z-Dh-icA">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efE-4J-hFI">
                                             <rect key="frame" x="16" y="11" width="309.66666666666669" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -423,15 +423,15 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="p7Z-Dh-icA" firstAttribute="leading" secondItem="wv3-Su-oNz" secondAttribute="leadingMargin" id="Bgj-UY-Aey"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="p7Z-Dh-icA" secondAttribute="trailing" constant="14" id="dOg-5I-D5x"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="p7Z-Dh-icA" secondAttribute="bottom" id="lPT-vM-TIU"/>
-                                        <constraint firstItem="p7Z-Dh-icA" firstAttribute="top" secondItem="wv3-Su-oNz" secondAttribute="topMargin" id="lmW-sz-Mtc"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="efE-4J-hFI" secondAttribute="bottom" id="9zl-z9-HGw"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="efE-4J-hFI" secondAttribute="trailing" constant="14" id="BOu-HQ-TE9"/>
+                                        <constraint firstItem="efE-4J-hFI" firstAttribute="leading" secondItem="uFs-EQ-1jo" secondAttribute="leadingMargin" id="Hy1-FH-RIA"/>
+                                        <constraint firstItem="efE-4J-hFI" firstAttribute="top" secondItem="uFs-EQ-1jo" secondAttribute="topMargin" id="Tb7-uL-ooy"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                                 <connections>
-                                    <outlet property="wordNameLabel" destination="p7Z-Dh-icA" id="6cO-cW-vfo"/>
+                                    <outlet property="nameLabel" destination="efE-4J-hFI" id="xly-8F-mWQ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -462,14 +462,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchFullViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="searchFullViewCell" id="j8c-QW-5fZ" customClass="SearchFullViewCell" customModule="KuranFihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="43.333332061767578"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="42.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="j8c-QW-5fZ" id="zPs-Pg-yzN">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.333332061767578"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="42.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tam arama" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xyh-Ei-oCJ">
-                                            <rect key="frame" x="145.66666666666666" y="10.999999999999998" width="84" height="21.333333333333329"/>
+                                            <rect key="frame" x="145.66666666666666" y="11.000000000000002" width="84" height="20.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -482,8 +482,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="verseByWordViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="verseByWordViewCell" rowHeight="128" id="ep5-vG-LXd" customClass="VerseByWordViewCell" customModule="KuranFihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="71.333332061767578" width="375" height="128"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="verseByWordViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="verseByWordViewCell" rowHeight="128" id="ep5-vG-LXd" customClass="VerseByViewCell" customModule="KuranFihristi" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="70.666667938232422" width="375" height="128"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ep5-vG-LXd" id="daJ-dp-cn4">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
@@ -519,9 +519,10 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="fYR-fq-T8O" secondAttribute="bottom" constant="11" id="xxH-zi-UEm"/>
                                 </constraints>
+                                <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                                 <connections>
-                                    <outlet property="verseNameLabel" destination="6Tg-jd-2mR" id="5Tw-mf-bjk"/>
-                                    <outlet property="verseTextLabel" destination="fYR-fq-T8O" id="xgR-k1-hb1"/>
+                                    <outlet property="nameLabel" destination="6Tg-jd-2mR" id="GUS-Wx-tlo"/>
+                                    <outlet property="verseLabel" destination="fYR-fq-T8O" id="MMi-Wc-IVN"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -542,7 +543,7 @@
             </objects>
             <point key="canvasLocation" x="-1351" y="2200"/>
         </scene>
-        <!--Topic View Controller-->
+        <!--Konular-->
         <scene sceneID="lQz-eC-mFU">
             <objects>
                 <tableViewController storyboardIdentifier="topicViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Brq-fO-lJK" customClass="TopicViewController" customModule="KuranFihristi" customModuleProvider="target" sceneMemberID="viewController">
@@ -574,28 +575,31 @@
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="topicViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="topicViewCell" id="Nce-vu-W5f" customClass="TopicViewCell" customModule="KuranFihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="71" width="375" height="43.333332061767578"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="topicItemViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="topicItemViewCell" id="aTj-GV-FV9" customClass="ItemViewCell" customModule="KuranFihristi" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="71" width="375" height="43"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nce-vu-W5f" id="gMR-hX-7Mg">
-                                    <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="43.333332061767578"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aTj-GV-FV9" id="fFG-LL-BMN">
+                                    <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Topic 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gW6-2I-Dja">
-                                            <rect key="frame" x="16" y="10.999999999999998" width="309.66666666666669" height="21.333333333333329"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="whS-YI-Wwt">
+                                            <rect key="frame" x="16" y="11" width="309.66666666666669" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="gW6-2I-Dja" secondAttribute="bottom" id="UwD-Mb-WVV"/>
-                                        <constraint firstItem="gW6-2I-Dja" firstAttribute="top" secondItem="gMR-hX-7Mg" secondAttribute="topMargin" id="svN-My-TRk"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="gW6-2I-Dja" secondAttribute="trailing" constant="14" id="w8F-zd-Bcj"/>
-                                        <constraint firstItem="gW6-2I-Dja" firstAttribute="leading" secondItem="gMR-hX-7Mg" secondAttribute="leadingMargin" id="wYu-0q-sP2"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="whS-YI-Wwt" secondAttribute="bottom" id="3OJ-FQ-iT0"/>
+                                        <constraint firstItem="whS-YI-Wwt" firstAttribute="top" secondItem="fFG-LL-BMN" secondAttribute="topMargin" id="EOJ-dT-ILK"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="whS-YI-Wwt" secondAttribute="trailing" constant="14" id="gbH-NP-tSM"/>
+                                        <constraint firstItem="whS-YI-Wwt" firstAttribute="leading" secondItem="fFG-LL-BMN" secondAttribute="leadingMargin" id="ysx-Az-BxL"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="nameLabel" destination="whS-YI-Wwt" id="adL-n9-dqo"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -603,7 +607,13 @@
                             <outlet property="delegate" destination="Brq-fO-lJK" id="ife-UN-vpM"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="47h-9N-vY3"/>
+                    <navigationItem key="navigationItem" title="Konular" id="47h-9N-vY3">
+                        <barButtonItem key="rightBarButtonItem" title="İfade" id="una-bu-okF">
+                            <connections>
+                                <segue destination="b5s-7Y-vnr" kind="show" identifier="showPhrases" id="9Ud-DH-uNJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ldf-zU-lGt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -641,28 +651,32 @@
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="chapterViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="phraseViewCell" id="2Cn-Lk-sKN" customClass="PhraseViewCell" customModule="KuranFihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="70.666667938232422" width="375" height="43"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="phraseItemViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="phraseItemViewCell" id="0bR-aM-Q9A" customClass="ItemViewCell" customModule="KuranFihristi" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="70.666667938232422" width="375" height="42.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Cn-Lk-sKN" id="Xpl-yW-hVw">
-                                    <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="43"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0bR-aM-Q9A" id="Gl6-Iu-RtV">
+                                    <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="42.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phrase" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="noG-yJ-AbB">
-                                            <rect key="frame" x="16" y="11" width="309.66666666666669" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucP-4t-8c6">
+                                            <rect key="frame" x="16" y="11.000000000000002" width="322.66666666666669" height="20.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="noG-yJ-AbB" secondAttribute="bottom" id="0ey-8g-Ndb"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="noG-yJ-AbB" secondAttribute="trailing" constant="14" id="2lo-xg-5xx"/>
-                                        <constraint firstItem="noG-yJ-AbB" firstAttribute="top" secondItem="Xpl-yW-hVw" secondAttribute="topMargin" id="ndo-Ut-rrz"/>
-                                        <constraint firstItem="noG-yJ-AbB" firstAttribute="leading" secondItem="Xpl-yW-hVw" secondAttribute="leadingMargin" id="nls-25-WH1"/>
+                                        <constraint firstItem="ucP-4t-8c6" firstAttribute="leading" secondItem="Gl6-Iu-RtV" secondAttribute="leadingMargin" id="0Bs-sl-k0Q"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="ucP-4t-8c6" secondAttribute="trailing" constant="1" id="C7r-Em-6Xd"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="ucP-4t-8c6" secondAttribute="bottom" id="Wns-va-mF5"/>
+                                        <constraint firstAttribute="bottom" secondItem="ucP-4t-8c6" secondAttribute="bottom" constant="11.00000127156575" id="b5X-Gb-xOB"/>
+                                        <constraint firstItem="ucP-4t-8c6" firstAttribute="top" secondItem="Gl6-Iu-RtV" secondAttribute="topMargin" id="br3-Cm-iHh"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="nameLabel" destination="ucP-4t-8c6" id="p6X-rL-v2A"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -670,11 +684,17 @@
                             <outlet property="delegate" destination="b5s-7Y-vnr" id="03h-Xw-12t"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Z8g-A8-wLU"/>
+                    <navigationItem key="navigationItem" id="Z8g-A8-wLU">
+                        <barButtonItem key="rightBarButtonItem" title="Aye" id="nsO-ad-o0A">
+                            <connections>
+                                <segue destination="coV-dh-RbW" kind="show" identifier="showVerseByTopic" id="dKH-kO-h24"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o2O-sG-zvI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="161" y="1524"/>
+            <point key="canvasLocation" x="160.80000000000001" y="1523.6453201970444"/>
         </scene>
         <!--Diğer-->
         <scene sceneID="UG6-9u-9WC">
@@ -844,14 +864,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchFullViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="searchFullViewCell" id="TcN-wg-ZbC" customClass="SearchFullViewCell" customModule="KuranFihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="42.666667938232422"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TcN-wg-ZbC" id="n8B-OV-T1O">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="42.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tam arama" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IR3-gc-V3o">
-                                            <rect key="frame" x="145.66666666666666" y="11.000000000000002" width="84" height="20.666666666666671"/>
+                                            <rect key="frame" x="145.66666666666666" y="11.000000000000002" width="84" height="21.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -864,23 +884,23 @@
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="verseViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="verseByTopicViewCell" rowHeight="128" id="0By-DG-shY" customClass="VerseByTopicViewCell" customModule="KuranFihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="70.666667938232422" width="375" height="128"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="verseByTopicViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="verseByTopicViewCell" rowHeight="128" id="5Rg-5A-V9x" customClass="VerseByViewCell" customModule="KuranFihristi" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="71.666667938232422" width="375" height="128"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0By-DG-shY" id="hIg-Gf-45n">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Rg-5A-V9x" id="W9b-Wy-bqI">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Label, 12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FcQ-A1-VXj">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Label, 12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qft-eJ-jen">
                                             <rect key="frame" x="16" y="10.999999999999998" width="343" height="20.333333333333329"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="20.329999999999998" id="bPH-bM-Zbs"/>
+                                                <constraint firstAttribute="height" constant="20.329999999999998" id="Aye-AI-UV6"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wmN-DG-BgX">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0y-18-CSs">
                                             <rect key="frame" x="16" y="31.333333333333336" width="343" height="85.666666666666657"/>
                                             <string key="text">Lorem ipsum dolor sit er elit lamet Lorem ipsum dolor sit er elit lametLorem ipsum dolor sit er elit lametLorem ipsum dolor sit er elit lamet</string>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -889,18 +909,23 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="wmN-DG-BgX" firstAttribute="leading" secondItem="hIg-Gf-45n" secondAttribute="leadingMargin" id="5yn-hy-mD4"/>
-                                        <constraint firstItem="wmN-DG-BgX" firstAttribute="trailing" secondItem="hIg-Gf-45n" secondAttribute="trailingMargin" id="MYw-xt-K76"/>
-                                        <constraint firstItem="FcQ-A1-VXj" firstAttribute="top" secondItem="hIg-Gf-45n" secondAttribute="topMargin" id="VMh-1R-us9"/>
-                                        <constraint firstItem="FcQ-A1-VXj" firstAttribute="trailing" secondItem="hIg-Gf-45n" secondAttribute="trailingMargin" id="XDs-bS-9nm"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="wmN-DG-BgX" secondAttribute="bottom" id="oZA-aD-WvS"/>
-                                        <constraint firstItem="FcQ-A1-VXj" firstAttribute="leading" secondItem="hIg-Gf-45n" secondAttribute="leadingMargin" id="ppO-QV-oBe"/>
-                                        <constraint firstItem="wmN-DG-BgX" firstAttribute="top" secondItem="FcQ-A1-VXj" secondAttribute="bottom" id="sCg-be-jM8"/>
+                                        <constraint firstItem="qft-eJ-jen" firstAttribute="leading" secondItem="W9b-Wy-bqI" secondAttribute="leadingMargin" id="1Il-Gc-Dw3"/>
+                                        <constraint firstItem="g0y-18-CSs" firstAttribute="top" secondItem="qft-eJ-jen" secondAttribute="bottom" id="6Gc-Tq-HCi"/>
+                                        <constraint firstItem="qft-eJ-jen" firstAttribute="trailing" secondItem="W9b-Wy-bqI" secondAttribute="trailingMargin" id="8Zo-ix-lGe"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="g0y-18-CSs" secondAttribute="bottom" id="C7O-3c-bh7"/>
+                                        <constraint firstItem="g0y-18-CSs" firstAttribute="trailing" secondItem="W9b-Wy-bqI" secondAttribute="trailingMargin" id="F2l-fc-kTg"/>
+                                        <constraint firstItem="qft-eJ-jen" firstAttribute="top" secondItem="W9b-Wy-bqI" secondAttribute="topMargin" id="ZkX-G2-Acd"/>
+                                        <constraint firstItem="g0y-18-CSs" firstAttribute="leading" secondItem="W9b-Wy-bqI" secondAttribute="leadingMargin" id="fej-8k-b02"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="wmN-DG-BgX" secondAttribute="bottom" constant="11" id="ojD-iI-xW1"/>
+                                    <constraint firstAttribute="bottom" secondItem="g0y-18-CSs" secondAttribute="bottom" constant="11" id="IXJ-x2-9mw"/>
                                 </constraints>
+                                <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="nameLabel" destination="qft-eJ-jen" id="VIN-cD-Ba9"/>
+                                    <outlet property="verseLabel" destination="g0y-18-CSs" id="Iv7-fv-t6A"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -909,7 +934,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="PPV-4i-aeX">
-                        <barButtonItem key="rightBarButtonItem" title="Aye" id="eGi-jj-fKl"/>
+                        <barButtonItem key="rightBarButtonItem" title="Aye" id="eGi-jj-fKl">
+                            <connections>
+                                <segue destination="Zs3-cU-mVY" kind="show" identifier="showVerseFromByTopic" id="P3W-Wr-gKC"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vSc-2u-b4Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -943,9 +972,11 @@
         <image name="tray.fill" catalog="system" width="64" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Dtx-4p-FUK"/>
+        <segue reference="9Ud-DH-uNJ"/>
         <segue reference="BkB-yY-Maq"/>
-        <segue reference="5QW-j5-Bef"/>
-        <segue reference="pz7-ob-wO4"/>
-        <segue reference="N7W-XM-gk4"/>
+        <segue reference="11z-rj-NHC"/>
+        <segue reference="V8S-9c-E0Y"/>
+        <segue reference="PmW-l4-2xp"/>
     </inferredMetricsTieBreakers>
 </document>
