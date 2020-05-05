@@ -35,9 +35,6 @@ class VerseByWordViewController: UITableViewController, UISearchResultsUpdating,
         fullVersesBy = dataBase.getVerseByWords(letterId: letter.letterId, wordId: word.wordId, languageId: languageId, translationId: tranlationId)
         versesBy = fullVersesBy
         
-        for it in fullVersesBy {
-            print(it.chapterName)
-        }
         
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = .systemBackground
@@ -53,7 +50,8 @@ class VerseByWordViewController: UITableViewController, UISearchResultsUpdating,
         
         prepareSearchController()
         setupLongPressGesture()
-//        tableView.allowsSelection = true
+        
+        tableView.tableFooterView = UIView()
     }
     
     func setupLongPressGesture() {
@@ -238,25 +236,26 @@ class VerseByWordViewController: UITableViewController, UISearchResultsUpdating,
         }
         
         if selectedVersesBy.count == 0 {
-//            performSegue(withIdentifier: "showVerseDetail", sender: verses[indexPath.row])
+            tableView.deselectRow(at: indexPath, animated: true)
+            performSegue(withIdentifier: "showVerseFromByWord", sender: versesBy[indexPath.row])
         }
         
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showVerseDetail" {
-//            if let verseDetailController = segue.destination as? VerseDetailViewController {
-//                let selectedVerseItem = sender as! Verse
-//                verseDetailController.verseId = selectedVerseItem.verseId
-//                verseDetailController.chapterId = chapterId
-//                verseDetailController.chapterName = chapterName
-//                verseDetailController.languageId = languageId
-//                verseDetailController.tranlationId = tranlationId
-//                let backItem = UIBarButtonItem()
-//                backItem.title = "Geri"
-//                navigationItem.backBarButtonItem = backItem
-//            }
-//        }
+        if segue.identifier == "showVerseFromByWord" {
+            if let verseController = segue.destination as? VerseViewController {
+                let selectedVerseByItem = sender as! VerseBy
+                verseController.verseId = selectedVerseByItem.verseId
+                verseController.chapterId = selectedVerseByItem.chapterId
+                verseController.chapterName = selectedVerseByItem.chapterName
+                verseController.languageId = languageId
+                verseController.tranlationId = tranlationId
+                let backItem = UIBarButtonItem()
+                backItem.title = "Geri"
+                navigationItem.backBarButtonItem = backItem
+            }
+        }
     }
     
     
@@ -304,4 +303,5 @@ class VerseByWordViewController: UITableViewController, UISearchResultsUpdating,
         })
     }
 
+    
 }

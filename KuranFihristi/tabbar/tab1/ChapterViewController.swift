@@ -35,6 +35,8 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
         prepareSearchController()
+        
+        tableView.tableFooterView = UIView()
     }
 
     

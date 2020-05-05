@@ -35,8 +35,10 @@ class WordViewController: UITableViewController, UISearchResultsUpdating, UISear
         appearance.backgroundColor = .systemBackground
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
+        navigationItem.title = "\(letter.letterName)"
         prepareSearchController()
         
+        tableView.tableFooterView = UIView()
     }
 
    func prepareSearchController() {

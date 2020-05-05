@@ -12,6 +12,7 @@ import AudioToolbox
 class VerseViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
     var chapterName = ""
+    var verseId = 1
     var chapterId = 0
     var languageId = 0
     var tranlationId = 0
@@ -52,7 +53,10 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
         
         prepareSearchController()
         setupLongPressGesture()
-//        tableView.allowsSelection = true
+        
+        tableView.scrollToRow(at: IndexPath(row: verseId - 1, section: 0), at: .top, animated: false)
+        
+        tableView.tableFooterView = UIView()
     }
     
     func setupLongPressGesture() {

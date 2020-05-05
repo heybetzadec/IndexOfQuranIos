@@ -34,6 +34,7 @@ class LetterViewController: UITableViewController, UISearchResultsUpdating, UISe
          navigationItem.standardAppearance = appearance
          navigationItem.scrollEdgeAppearance = appearance
          prepareSearchController()
+         tableView.tableFooterView = UIView()
      }
 
      
