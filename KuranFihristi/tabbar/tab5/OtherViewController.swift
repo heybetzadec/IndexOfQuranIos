@@ -7,84 +7,83 @@
 //
 
 import UIKit
+import SwiftEventBus
 
 class OtherViewController: UITableViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    
+    private var languageId = 1
+    private var tranlationId = 154
+    
+    private var bottomItems =  Array<BottomItem>()
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let mainTabBar = self.tabBarController as! AppTabBarViewController
+        if !mainTabBar.searchString.isEmpty {
+//            print("mainTabBar.searchString = \(mainTabBar.searchString)")
+            let storyBoard = UIStoryboard(name: "Main", bundle:nil)
+            let searchViewController = storyBoard.instantiateViewController(withIdentifier: "searchViewController") as! SearchViewController
+            searchViewController.tranlationId = self.tranlationId
+            searchViewController.languageId = self.languageId
+//            searchViewController.searchString = mainTabBar.searchString
+//            mainTabBar.searchString = ""
+            self.navigationController?.pushViewController(searchViewController, animated: true)
         }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+//        SwiftEventBus.onMainThread(self, name:"goToSearch") { result in
+//            print("goToSearch")
+//            let searchString : String = result?.object as! String
+//            let storyBoard = UIStoryboard(name: "Main", bundle:nil)
+//            let searchViewController = storyBoard.instantiateViewController(withIdentifier: "searchViewController") as! SearchViewController
+//            searchViewController.tranlationId = self.tranlationId
+//            searchViewController.languageId = self.languageId
+//            searchViewController.searchString = searchString
+//            self.navigationController?.pushViewController(searchViewController, animated: true)
+//        }
+        
+        
+        bottomItems.append(BottomItem(id: 1, name: "Tam arama", icon: "magnifyingglass"))
+        bottomItems.append(BottomItem(id: 2, name: "Pinlenmiş ayetler", icon: "pin"))
+        bottomItems.append(BottomItem(id: 3, name: "Hatırlatıcı", icon: "checkmark.seal"))
+        bottomItems.append(BottomItem(id: 3, name: "Ayarları", icon: "gear"))
+        bottomItems.append(BottomItem(id: 4, name: "Kapat", icon: "exclamationmark.octagon"))
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .systemBackground
+        navigationItem.standardAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
+        
+        tableView.tableFooterView = UIView()
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return bottomItems.count
     }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let item = bottomItems[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "otherViewCell", for: indexPath as IndexPath) as! OtherViewCell
+        cell.itemIcon.image = UIImage(systemName: item.icon) ?? .add
+        cell.itemLabel.text = item.name
+        return cell
     }
-    */
-
+   
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyBoard = UIStoryboard(name: "Main", bundle:nil)
+        switch indexPath.row {
+        case 0:
+            let searchViewController = storyBoard.instantiateViewController(withIdentifier: "searchViewController") as! SearchViewController
+            searchViewController.tranlationId = tranlationId
+            searchViewController.languageId = languageId
+            searchViewController.searchString = ""
+            navigationController?.pushViewController(searchViewController, animated: true)
+        default:
+            break
+        }
+    }
+    
 }

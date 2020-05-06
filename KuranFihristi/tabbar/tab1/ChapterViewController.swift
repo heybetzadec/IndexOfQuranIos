@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import SQLite3
 import AudioToolbox
+import SwiftEventBus
 
 class ChapterViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
@@ -17,9 +17,10 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
     private var fullChapters = Array<Chapter>()
     private var searchController = UISearchController()
     
-    private var languageId = 1
-    private var tranlationId = 154
-    private var verseId = 1
+    var languageId = 1
+    var tranlationId = 154
+    var verseId = 1
+    var searchString = ""
     
     
     override func viewDidLoad() {
@@ -112,6 +113,7 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
     }
     
     func filter(searchText:String){
+        self.searchString = searchText
         if !searchText.isEmpty {
             let loverSearch = searchText.lowercased()
             let textAz = loverSearch.replacingOccurrences(ofes: ["e","i"], withes: ["ə", "i̇"])
@@ -154,8 +156,25 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showVerses", sender: chapters[indexPath.row])
+        let chapterItem = chapters[indexPath.row]
+        if chapterItem.chapterId == 0 {
+            SwiftEventBus.post("goToSearch", sender: searchString)
+        } else {
+            performSegue(withIdentifier: "showVerses", sender: chapters[indexPath.row])
+        }
+        
+        if !searchString.isEmpty {
+            DispatchQueue.main.async {
+                self.searchController.searchBar.text = ""
+                self.searchController.isActive = false
+                self.searchController.isEditing = false
+                self.chapters = self.fullChapters
+                self.tableView.reloadData()
+              }
+        }
+        
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showVerses" {

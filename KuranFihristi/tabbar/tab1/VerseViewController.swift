@@ -17,7 +17,8 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
     var languageId = 0
     var tranlationId = 0
     var searchString = ""
-    
+
+    private let funcs = Functions()
     private let dataBase = DataBase()
     private var verses = Array<Verse>()
     private var fullVerses = Array<Verse>()
@@ -44,12 +45,7 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 600
         
-        let funcs = Functions()
         bottomItems = funcs.getDefaultBottomItems()
-        //        bottomItems.append(BottomItem(id: 1, name: "Başkalarını seçin", icon: "hand.point.left"))
-        //        bottomItems.append(BottomItem(id: 2, name: "Seçilenleri Paylaş", icon: "square.and.arrow.up"))
-        //        bottomItems.append(BottomItem(id: 3, name: "Seçilenleri Kopyala", icon: "doc.on.doc"))
-        //        bottomItems.append(BottomItem(id: 4, name: "Seçilenleri Pinle", icon: "pin"))
         
         prepareSearchController()
         setupLongPressGesture()
@@ -95,6 +91,7 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
                 let activityViewController = UIActivityViewController(activityItems: textShare , applicationActivities: nil)
                 activityViewController.popoverPresentationController?.sourceView = self.view
                 self.present(activityViewController, animated: true, completion: nil)
+                self.deselectAll()
             }
             icon = UIImage(systemName: bottomItems[1].icon) ?? .add
             action.setValue(icon, forKey: "image")
@@ -104,12 +101,8 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
             // Copy selected
             action = UIAlertAction(title: bottomItems[2].name, style: .default) { (action) in
                 UIPasteboard.general.string = self.getSelectedText()
-                self.showToast(message: "Kopyalandı")
-                let selectedRows = self.tableView.indexPathsForSelectedRows
-                for row in selectedRows! {
-                    self.tableView.deselectRow(at: row, animated: true)
-                }
-                
+                self.funcs.showToast(message: "Kopyalandı", view: self.view)
+                self.deselectAll()
             }
             icon =  UIImage(systemName: bottomItems[2].icon) ?? .add
             action.setValue(icon, forKey: "image")
@@ -120,8 +113,10 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
             // Pin selected
             action = UIAlertAction(title: bottomItems[3].name, style: .default) { (action) in
                 self.dataBase.insertSavedVerse(verses: self.selectedVerses)
-                self.showToast(message: "Pinlendi")
+                self.funcs.showToast(message: "Pinlendi", view: self.view)
+                self.deselectAll()
             }
+            
             icon =  UIImage(systemName: bottomItems[3].icon) ?? .add
             action.setValue(icon, forKey: "image")
             action.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
@@ -268,6 +263,15 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
     }
     
     
+    private func deselectAll(){
+        let selectedRows = self.tableView.indexPathsForSelectedRows
+        for row in selectedRows! {
+            self.tableView.deselectRow(at: row, animated: true)
+        }
+        selectedVerses = Array<Verse>()
+        tableView.allowsMultipleSelection = false
+    }
+    
     
     private func getSelectedText() -> String {
         var text = ""
@@ -284,22 +288,23 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
         return text
     }
     
-    func showToast(message : String) {
-        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.tableView.contentSize.height - 150 , width: 150, height: 35))
-        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        toastLabel.textColor = UIColor.white
-        toastLabel.textAlignment = .center;
-        toastLabel.font = UIFont(name: "Montserrat-Light", size: 12.0)
-        toastLabel.text = message
-        toastLabel.alpha = 1.0
-        toastLabel.layer.cornerRadius = 10;
-        toastLabel.clipsToBounds  =  true
-        self.view.addSubview(toastLabel)
-        UIView.animate(withDuration: 3.0, delay: 0.1, options: .curveEaseOut, animations: {
-            toastLabel.alpha = 0.0
-        }, completion: {(isCompleted) in
-            toastLabel.removeFromSuperview()
-        })
-    }
+//    func showToast(message : String) {
+//        let h = self.view.frame.size.height
+//        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: h - h/2 , width: 150, height: 35))
+//        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+//        toastLabel.textColor = UIColor.white
+//        toastLabel.textAlignment = .center;
+//        toastLabel.font = UIFont(name: "Montserrat-Light", size: 12.0)
+//        toastLabel.text = message
+//        toastLabel.alpha = 1.0
+//        toastLabel.layer.cornerRadius = 10;
+//        toastLabel.clipsToBounds  =  true
+//        self.view.superview!.addSubview(toastLabel)
+//        UIView.animate(withDuration: 3.0, delay: 0.1, options: .curveEaseOut, animations: {
+//            toastLabel.alpha = 0.0
+//        }, completion: {(isCompleted) in
+//            toastLabel.removeFromSuperview()
+//        })
+//    }
     
 }

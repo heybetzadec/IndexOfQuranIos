@@ -1,14 +1,18 @@
 //
-//  OtherViewCell.swift
+//  ReminderViewCell.swift
 //  KuranFihristi
 //
-//  Created by Cavad Heybetzade on 5/1/20.
+//  Created by Cavad Heybetzade on 5/6/20.
 //  Copyright © 2020 Cavad Heybetzade. All rights reserved.
 //
 
 import UIKit
 
-class OtherViewCell: UITableViewCell {
+class ReminderViewCell: UITableViewCell {
+    
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var timeSwitch: UISwitch!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()

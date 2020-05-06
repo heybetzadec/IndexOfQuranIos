@@ -5,7 +5,7 @@ target 'KuranFihristi' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for KuranFihristi
+  pod 'SwiftEventBus', :tag => '5.0.1', :git => 'https://github.com/cesarferreira/SwiftEventBus.git'
   
 
   target 'KuranFihristiTests' do
