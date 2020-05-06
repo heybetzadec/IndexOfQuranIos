@@ -44,7 +44,6 @@
 		EFCF7891245C8F1000E32BFD /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF7890245C8F1000E32BFD /* SearchViewController.swift */; };
 		EFCF7893245C8F1E00E32BFD /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF7892245C8F1E00E32BFD /* SettingViewController.swift */; };
 		EFCF789A245C959800E32BFD /* VerseViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF7899245C959800E32BFD /* VerseViewCell.swift */; };
-		EFCF78A8245C967200E32BFD /* NameViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF78A7245C967200E32BFD /* NameViewCell.swift */; };
 		EFCF78AA245C968500E32BFD /* OtherViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF78A9245C968500E32BFD /* OtherViewCell.swift */; };
 		EFCF78AC245C969600E32BFD /* PinViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF78AB245C969600E32BFD /* PinViewCell.swift */; };
 		EFCF78AE245C96AF00E32BFD /* SearchViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF78AD245C96AF00E32BFD /* SearchViewCell.swift */; };
@@ -132,7 +131,6 @@
 		EFCF7890245C8F1000E32BFD /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		EFCF7892245C8F1E00E32BFD /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		EFCF7899245C959800E32BFD /* VerseViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseViewCell.swift; sourceTree = "<group>"; };
-		EFCF78A7245C967200E32BFD /* NameViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewCell.swift; sourceTree = "<group>"; };
 		EFCF78A9245C968500E32BFD /* OtherViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherViewCell.swift; sourceTree = "<group>"; };
 		EFCF78AB245C969600E32BFD /* PinViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinViewCell.swift; sourceTree = "<group>"; };
 		EFCF78AD245C96AF00E32BFD /* SearchViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewCell.swift; sourceTree = "<group>"; };
@@ -331,7 +329,6 @@
 			isa = PBXGroup;
 			children = (
 				EFCF7887245C8E8D00E32BFD /* NameViewController.swift */,
-				EFCF78A7245C967200E32BFD /* NameViewCell.swift */,
 				EFCF7889245C8EA400E32BFD /* NameDetailViewController.swift */,
 			);
 			path = tab4;
@@ -628,7 +625,6 @@
 				EFD4DFBA245D788B00FA5EF4 /* Phrase.swift in Sources */,
 				EFCF78B9245C9EEF00E32BFD /* Chapter.swift in Sources */,
 				EFCEA7FC245DC28900B971B0 /* CustomSearchBar.swift in Sources */,
-				EFCF78A8245C967200E32BFD /* NameViewCell.swift in Sources */,
 				EFCF7885245C8A8700E32BFD /* VerseByTopicViewController.swift in Sources */,
 				EF8376AA245F689300335185 /* VerseDetailViewCell.swift in Sources */,
 				EFCF7875245C863600E32BFD /* LetterViewController.swift in Sources */,

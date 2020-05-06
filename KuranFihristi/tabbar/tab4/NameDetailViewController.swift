@@ -9,22 +9,43 @@
 import UIKit
 
 class NameDetailViewController: UIViewController {
-
+    
+    @IBOutlet weak var nameTextView: UITextView!
+    
+    var name = Name()
+    var languageId = 0
+    var tranlationId = 0
+    var searchString = ""
+    
+    private let dataBase = DataBase()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .systemBackground
+        navigationItem.standardAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
+        navigationItem.title = name.nameText
+        
+        let showName = dataBase.getNameHtml(nameId: name.nameId, languageId: languageId)
+        
+        nameTextView.attributedText = "<div style=\"font-size:18px; margin-left:5px\"><b>\(name.nameDescription)</b><br/><br/>\(showName)</div>".htmlToAttributedString
     }
     
+}
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension String {
+    var htmlToAttributedString: NSAttributedString? {
+        guard let data = data(using: .utf8) else { return NSAttributedString() }
+        do {
+            return try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue], documentAttributes: nil)
+        } catch {
+            return NSAttributedString()
+        }
     }
-    */
-
+    var htmlToString: String {
+        return htmlToAttributedString?.string ?? ""
+    }
 }

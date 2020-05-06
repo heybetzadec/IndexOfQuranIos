@@ -431,7 +431,7 @@ class DataBase: NSObject {
         let db = self.getDatabase()
         var statement: OpaquePointer?
         
-        if sqlite3_prepare_v2(db, "SELECT NameID, NameText, NameDescription, NameHtml FROM Name WHERE LangID = \(languageId)", -1, &statement, nil) != SQLITE_OK {
+        if sqlite3_prepare_v2(db, "SELECT NameID, NameText, NameDescription FROM Name WHERE LangID = \(languageId)", -1, &statement, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error preparing select: \(errmsg)")
         }
@@ -440,8 +440,8 @@ class DataBase: NSObject {
             let item = Name()
             item.nameId = Int(sqlite3_column_int64(statement, 0))
             item.nameText = String(cString: sqlite3_column_text(statement, 1))
-            item.nameDescription = String(cString: sqlite3_column_text(statement, 1))
-            item.nameHtml = String(cString: sqlite3_column_text(statement, 1))
+            item.nameDescription = String(cString: sqlite3_column_text(statement, 2))
+            item.nameHtml = ""//String(cString: sqlite3_column_text(statement, 1))
             list.append(item)
         }
 
@@ -459,21 +459,18 @@ class DataBase: NSObject {
     
     
     
-    func getName(nameId:Int, languageId:Int) -> Name {
-        let item = Name()
+    func getNameHtml(nameId:Int, languageId:Int) -> String {
+        var text = ""
         let db = self.getDatabase()
         var statement: OpaquePointer?
         
-        if sqlite3_prepare_v2(db, "SELECT NameID, NameText, NameDescription, NameHtml FROM Name WHERE LangID = \(languageId)  AND  NameID = \(nameId)", -1, &statement, nil) != SQLITE_OK {
+        if sqlite3_prepare_v2(db, "SELECT NameHtml FROM Name WHERE LangID = \(languageId)  AND  NameID = \(nameId)", -1, &statement, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error preparing select: \(errmsg)")
         }
 
         while sqlite3_step(statement) == SQLITE_ROW {
-            item.nameId = Int(sqlite3_column_int64(statement, 0))
-            item.nameText = String(cString: sqlite3_column_text(statement, 1))
-            item.nameDescription = String(cString: sqlite3_column_text(statement, 1))
-            item.nameHtml = String(cString: sqlite3_column_text(statement, 1))
+            text = String(cString: sqlite3_column_text(statement, 0))
             break
         }
 
@@ -486,7 +483,7 @@ class DataBase: NSObject {
             print("error closing database")
         }
         statement = nil
-        return item
+        return text
     }
     
     

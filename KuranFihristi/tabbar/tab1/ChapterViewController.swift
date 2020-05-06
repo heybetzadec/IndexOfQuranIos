@@ -8,6 +8,7 @@
 
 import UIKit
 import SQLite3
+import AudioToolbox
 
 class ChapterViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
@@ -18,6 +19,7 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
     
     private var languageId = 1
     private var tranlationId = 154
+    private var verseId = 1
     
     
     override func viewDidLoad() {
@@ -35,8 +37,50 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
         prepareSearchController()
+        setupLongPressGesture() 
         
         tableView.tableFooterView = UIView()
+    }
+    
+    func setupLongPressGesture() {
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        longPressGesture.minimumPressDuration = 0.8
+        self.tableView.addGestureRecognizer(longPressGesture)
+    }
+    
+    @objc func handleLongPress(longPressGesture: UILongPressGestureRecognizer) {
+        let p = longPressGesture.location(in: self.tableView)
+        let indexPath = self.tableView.indexPathForRow(at: p)
+        if indexPath == nil {
+            print("Long press on table view, not row.")
+        } else if longPressGesture.state == UIGestureRecognizer.State.began {
+            AudioServicesPlaySystemSound(1520) // 1519 - peek, 1521 - nope
+            
+            print("Long press on row, at \(indexPath!.row)")
+            tableView.selectRow(at: indexPath, animated: false, scrollPosition: UITableView.ScrollPosition.middle)
+            tableView.allowsMultipleSelection = true
+            
+            let actionSheetAlertController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            
+            let action = UIAlertAction(title: "Her hangi bir ayete git", style: .default) { (action) in
+                let verseBy = self.dataBase.getRandomVerseBy(translationId: self.tranlationId)
+                self.verseId = verseBy.verseId
+                let openChapter = Chapter(chapterId: verseBy.chapterId, chapterName: verseBy.chapterName)
+                self.performSegue(withIdentifier: "showVerses", sender: openChapter)
+            }
+            let icon = UIImage(systemName: "wand.and.stars")
+            action.setValue(icon, forKey: "image")
+            action.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+            actionSheetAlertController.addAction(action)
+            
+            
+            let cancelActionButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            actionSheetAlertController.addAction(cancelActionButton)
+            
+            self.present(actionSheetAlertController, animated: true, completion: nil)
+            
+            
+        }
     }
     
     
@@ -117,10 +161,12 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
         if segue.identifier == "showVerses" {
             if let verseController = segue.destination as? VerseViewController {
                 let selectedChapterItem = sender as! Chapter
+                verseController.verseId = verseId
                 verseController.chapterId = selectedChapterItem.chapterId
                 verseController.chapterName = selectedChapterItem.chapterName
                 verseController.languageId = languageId
                 verseController.tranlationId = tranlationId
+                verseId = 1
                 let backItem = UIBarButtonItem()
                 backItem.title = "Geri"
                 navigationItem.backBarButtonItem = backItem
