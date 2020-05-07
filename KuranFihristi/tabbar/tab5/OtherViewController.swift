@@ -76,11 +76,30 @@ class OtherViewController: UITableViewController {
         let storyBoard = UIStoryboard(name: "Main", bundle:nil)
         switch indexPath.row {
         case 0:
+            
             let searchViewController = storyBoard.instantiateViewController(withIdentifier: "searchViewController") as! SearchViewController
             searchViewController.tranlationId = tranlationId
             searchViewController.languageId = languageId
             searchViewController.searchString = ""
             navigationController?.pushViewController(searchViewController, animated: true)
+        
+        case 1:
+            
+            let pinViewController = storyBoard.instantiateViewController(withIdentifier: "pinViewController") as! PinViewController
+            pinViewController.tranlationId = tranlationId
+            pinViewController.languageId = languageId
+            navigationController?.pushViewController(pinViewController, animated: true)
+            
+        case 2:
+            
+            let reminderViewController = storyBoard.instantiateViewController(withIdentifier: "reminderViewController") as! ReminderViewController
+            navigationController?.pushViewController(reminderViewController, animated: true)
+        
+        case 3:
+            
+            let settingViewController = storyBoard.instantiateViewController(withIdentifier: "settingViewController") as! SettingViewController
+            navigationController?.pushViewController(settingViewController, animated: true)
+            
         default:
             break
         }

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,7 @@
 		EF1AC0D22461DE08004941C2 /* ItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1AC0D12461DE08004941C2 /* ItemViewCell.swift */; };
 		EF1AC0D62461DE4F004941C2 /* VerseByViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1AC0D52461DE4F004941C2 /* VerseByViewCell.swift */; };
 		EF1AC0D92461DEC7004941C2 /* ItemDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1AC0D82461DEC7004941C2 /* ItemDetailViewCell.swift */; };
+		EF6B5CC82464A01A00B1D3BB /* SettingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B5CC72464A01A00B1D3BB /* SettingItem.swift */; };
 		EF8376AA245F689300335185 /* VerseDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8376A9245F689300335185 /* VerseDetailViewCell.swift */; };
 		EFB5ADF6245EACB100BCDF61 /* SearchFullViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB5ADF5245EACB100BCDF61 /* SearchFullViewCell.swift */; };
 		EFBAC3892462B83200D54B2E /* ReminderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBAC3882462B83200D54B2E /* ReminderViewCell.swift */; };
@@ -98,6 +99,7 @@
 		EF1AC0D12461DE08004941C2 /* ItemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewCell.swift; sourceTree = "<group>"; };
 		EF1AC0D52461DE4F004941C2 /* VerseByViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseByViewCell.swift; sourceTree = "<group>"; };
 		EF1AC0D82461DEC7004941C2 /* ItemDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewCell.swift; sourceTree = "<group>"; };
+		EF6B5CC72464A01A00B1D3BB /* SettingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItem.swift; sourceTree = "<group>"; };
 		EF8376A9245F689300335185 /* VerseDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseDetailViewCell.swift; sourceTree = "<group>"; };
 		EFB5ADF5245EACB100BCDF61 /* SearchFullViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFullViewCell.swift; sourceTree = "<group>"; };
 		EFBAC3882462B83200D54B2E /* ReminderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewCell.swift; sourceTree = "<group>"; };
@@ -388,6 +390,7 @@
 				EFD4DFBD245D7AF200FA5EF4 /* Name.swift */,
 				EFD4DFBF245D85C700FA5EF4 /* Translation.swift */,
 				EF025588245F282B0031D190 /* BottomItem.swift */,
+				EF6B5CC72464A01A00B1D3BB /* SettingItem.swift */,
 			);
 			path = entity;
 			sourceTree = "<group>";
@@ -637,6 +640,7 @@
 				EFD4DFB0245D4D3C00FA5EF4 /* Letter.swift in Sources */,
 				EFD4DFB4245D693B00FA5EF4 /* VerseBy.swift in Sources */,
 				EFCF788F245C8EF900E32BFD /* PinViewController.swift in Sources */,
+				EF6B5CC82464A01A00B1D3BB /* SettingItem.swift in Sources */,
 				EF0F577D245F1C4D0042AEB2 /* BottomViewCell.swift in Sources */,
 				EFCF78BB245CA00A00E32BFD /* DataBase.swift in Sources */,
 				EFCF78B2245C989100E32BFD /* AppTabBarViewController.swift in Sources */,
