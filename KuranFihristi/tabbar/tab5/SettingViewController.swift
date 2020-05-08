@@ -49,12 +49,15 @@ class SettingViewController: UITableViewController, UIPickerViewDelegate, UIPick
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        translationId = defaults.integer(forKey: "translationId")
+        
         selectedLanguage = defaults.integer(forKey: "selectedLanguage")
         selectedTranslation = defaults.integer(forKey: "selectedTranslation")
         selectedOrder = defaults.integer(forKey: "selectedOrder")
         selectedFontSize = defaults.integer(forKey: "selectedFontSize")
         selectedInterfaceMode = defaults.integer(forKey: "selectedInterfaceMode")
         
+        print("selectedTranslation -> \(selectedTranslation)")
         
         languages = dataBase.getLanguages()
         languageItems.removeAll()
@@ -76,8 +79,6 @@ class SettingViewController: UITableViewController, UIPickerViewDelegate, UIPick
         settingItem.append(SettingItem(id: 3, name: "Sıralama", value: orderByItems[selectedOrder]))
         settingItem.append(SettingItem(id: 4, name: "Yazı boyutu", value: fontSizeItems[selectedFontSize]))
         settingItem.append(SettingItem(id: 5, name: "Arayüz modu", value: interfaceModeItems[selectedInterfaceMode]))
-        
-        
         
         emptyGesture = UITapGestureRecognizer(target: self, action:  #selector(self.emptyClickAction))
         
@@ -113,11 +114,9 @@ class SettingViewController: UITableViewController, UIPickerViewDelegate, UIPick
         return pickerData[row]
     }
     
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-    
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerData.count
