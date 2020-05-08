@@ -14,7 +14,7 @@ class SearchViewController: UITableViewController , UISearchResultsUpdating, UIS
     
     var chapterName = ""
     var languageId = 0
-    var tranlationId = 154
+    var translationId = 154
     var searchString = ""
     
     private let dataBase = DataBase()
@@ -212,7 +212,7 @@ class SearchViewController: UITableViewController , UISearchResultsUpdating, UIS
     func filter(searchText:String){
         searchString = searchText
         if !searchText.isEmpty {
-            verses = dataBase.getSearchVerses(searchWord: searchText, tranlationId: tranlationId)
+            verses = dataBase.getSearchVerses(searchWord: searchText, translationId: translationId)
             
         } else {
             verses = Array<Verse>()
@@ -283,9 +283,9 @@ class SearchViewController: UITableViewController , UISearchResultsUpdating, UIS
                 let selectedVerseItem = sender as! Verse
                 verseController.verseId = selectedVerseItem.verseId
                 verseController.chapterId = selectedVerseItem.chapterId
-                verseController.chapterName = dataBase.getChapterName(chapterId: selectedVerseItem.chapterId, tranlationId: tranlationId)
+                verseController.chapterName = dataBase.getChapterName(chapterId: selectedVerseItem.chapterId, translationId: translationId)
                 verseController.languageId = languageId
-                verseController.tranlationId = tranlationId
+                verseController.translationId = translationId
                 let backItem = UIBarButtonItem()
                 backItem.title = "Geri"
                 navigationItem.backBarButtonItem = backItem
@@ -311,7 +311,7 @@ class SearchViewController: UITableViewController , UISearchResultsUpdating, UIS
             Verse1.verseId < Verse2.verseId
         }
         for verse in selectedVerses {
-            let chapterName = dataBase.getChapterName(chapterId: verse.chapterId, tranlationId: tranlationId)
+            let chapterName = dataBase.getChapterName(chapterId: verse.chapterId, translationId: translationId)
             text = "\(text)\(verse.verseText)\n\(verse.chapterId). \(chapterName), \(verse.verseId)\n\n"
         }
         if text != "" {

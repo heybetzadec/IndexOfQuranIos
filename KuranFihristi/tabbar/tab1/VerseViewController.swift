@@ -15,7 +15,7 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
     var verseId = 1
     var chapterId = 0
     var languageId = 0
-    var tranlationId = 0
+    var translationId = 0
     var searchString = ""
 
     private let funcs = Functions()
@@ -34,7 +34,7 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
             button.tintColor = UIColor.clear
         }
         
-        fullVerses = dataBase.getVerses(chapterId: chapterId, tranlationId: tranlationId)
+        fullVerses = dataBase.getVerses(chapterId: chapterId, translationId: translationId)
         verses = fullVerses
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = .systemBackground
@@ -233,7 +233,7 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
         if selectedVerses.count == 0 {
             performSegue(withIdentifier: "showVerseDetail", sender: verses[indexPath.row])
         }
-        
+       
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -244,7 +244,7 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
                 verseDetailController.chapterId = chapterId
                 verseDetailController.chapterName = chapterName
                 verseDetailController.languageId = languageId
-                verseDetailController.tranlationId = tranlationId
+                verseDetailController.translationId = translationId
                 let backItem = UIBarButtonItem()
                 backItem.title = "Geri"
                 navigationItem.backBarButtonItem = backItem

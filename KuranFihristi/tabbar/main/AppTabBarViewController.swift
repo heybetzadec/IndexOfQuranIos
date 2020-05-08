@@ -20,7 +20,18 @@ class AppTabBarViewController: UITabBarController{
             self.searchString = result?.object as! String
             self.selectedIndex = 4
         }
+        
+        SwiftEventBus.onMainThread(self, name:"darkMode") { result in
+            let darkMode = result?.object as! Bool
+            if darkMode {
+                self.overrideUserInterfaceStyle = .dark
+            } else {
+                self.overrideUserInterfaceStyle = .light
+            }
+        }
+        
     }
+    
 
 
 }

@@ -18,7 +18,7 @@ class WordViewController: UITableViewController, UISearchResultsUpdating, UISear
     
     var letter = Letter()
     var languageId = 0
-    var tranlationId = 0
+    var translationId = 0
     var searchString = ""
     
     override func viewDidLoad() {
@@ -121,7 +121,7 @@ class WordViewController: UITableViewController, UISearchResultsUpdating, UISear
                 verseByWordController.word = selectedWordItem
                 verseByWordController.letter = letter
                 verseByWordController.languageId = languageId
-                verseByWordController.tranlationId = tranlationId
+                verseByWordController.translationId = translationId
                 let backItem = UIBarButtonItem()
                 backItem.title = "Geri"
                 navigationItem.backBarButtonItem = backItem

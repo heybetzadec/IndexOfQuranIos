@@ -16,7 +16,7 @@ class LetterViewController: UITableViewController, UISearchResultsUpdating, UISe
     private var searchController = UISearchController()
     
     private var languageId = 1
-    private var tranlationId = 154
+    private var translationId = 154
     
     
     override func viewDidLoad() {
@@ -117,7 +117,7 @@ class LetterViewController: UITableViewController, UISearchResultsUpdating, UISe
                 let selectedLetterItem = sender as! Letter
                 wordController.letter = selectedLetterItem
                 wordController.languageId = languageId
-                wordController.tranlationId = tranlationId
+                wordController.translationId = translationId
                 let backItem = UIBarButtonItem()
                 backItem.title = "Geri"
                 navigationItem.backBarButtonItem = backItem

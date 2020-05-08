@@ -15,7 +15,7 @@ class VerseDetailViewController: UITableViewController {
     var chapterId = 0
     var verseId = 0
     var languageId = 0
-    var tranlationId = 0
+    var translationId = 0
     
     var bottomItems =  Array<BottomItem>()
     var attributedString = NSMutableAttributedString()
@@ -36,9 +36,9 @@ class VerseDetailViewController: UITableViewController {
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
         
-        let verse = dataBase.getVerse(chapterId: chapterId, verseId: verseId, tranlationId: tranlationId)
-        let verseLatin = dataBase.getVerse(chapterId: chapterId, verseId: verseId, tranlationId: 9)
-        let verseOriginal = dataBase.getVerse(chapterId: chapterId, verseId: verseId, tranlationId: 1)
+        let verse = dataBase.getVerse(chapterId: chapterId, verseId: verseId, translationId: translationId)
+        let verseLatin = dataBase.getVerse(chapterId: chapterId, verseId: verseId, translationId: 9)
+        let verseOriginal = dataBase.getVerse(chapterId: chapterId, verseId: verseId, translationId: 1)
         
         verseText = "\(verse.verseText)\n\(verseName)"
         

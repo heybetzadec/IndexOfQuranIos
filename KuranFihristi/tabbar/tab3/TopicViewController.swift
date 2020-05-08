@@ -16,7 +16,7 @@ class TopicViewController: UITableViewController, UISearchResultsUpdating, UISea
     private var searchController = UISearchController()
     
     private var languageId = 1
-    private var tranlationId = 154
+    private var translationId = 154
     
     
     override func viewDidLoad() {
@@ -118,7 +118,7 @@ class TopicViewController: UITableViewController, UISearchResultsUpdating, UISea
                 let selectedPhraseItem = sender as! Topic
                 phraseViewController.topic = selectedPhraseItem
                 phraseViewController.languageId = languageId
-                phraseViewController.tranlationId = tranlationId
+                phraseViewController.translationId = translationId
                 let backItem = UIBarButtonItem()
                 backItem.title = "Geri"
                 navigationItem.backBarButtonItem = backItem

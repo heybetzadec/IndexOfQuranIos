@@ -28,12 +28,15 @@ class DataBase: NSObject {
     }
     
     
-    func getChapters(tranlationId:Int) -> Array<Chapter> {
+    func getChapters(translationId:Int, orderBySurah: Bool) -> Array<Chapter> {
         var list = Array<Chapter>()
         let db = self.getDatabase()
         var statement: OpaquePointer?
-        
-        if sqlite3_prepare_v2(db, "SELECT ChapterID, ChapterName from Chapter WHERE TranslationID = \(tranlationId)", -1, &statement, nil) != SQLITE_OK {
+        var orderBy = ""
+        if !orderBySurah {
+            orderBy = " ORDER BY DescentID ASC";
+        }
+        if sqlite3_prepare_v2(db, "SELECT ChapterID, ChapterName from Chapter WHERE TranslationID = \(translationId) \(orderBy)", -1, &statement, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error preparing select: \(errmsg)")
         }
@@ -57,12 +60,12 @@ class DataBase: NSObject {
         return list
     }
     
-    func getChapterName(chapterId: Int, tranlationId:Int) -> String {
+    func getChapterName(chapterId: Int, translationId:Int) -> String {
         let db = self.getDatabase()
         var statement: OpaquePointer?
         var chapterName = ""
         
-        if sqlite3_prepare_v2(db, "SELECT ChapterName FROM Chapter WHERE TranslationID=\(tranlationId) AND ChapterID =\(chapterId)", -1, &statement, nil) != SQLITE_OK {
+        if sqlite3_prepare_v2(db, "SELECT ChapterName FROM Chapter WHERE TranslationID=\(translationId) AND ChapterID =\(chapterId)", -1, &statement, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error preparing select: \(errmsg)")
         }
@@ -85,12 +88,12 @@ class DataBase: NSObject {
     }
     
     
-    func getVerses(chapterId:Int, tranlationId:Int) -> Array<Verse> {
+    func getVerses(chapterId:Int, translationId:Int) -> Array<Verse> {
         var list = Array<Verse>()
         let db = self.getDatabase()
         var statement: OpaquePointer?
         
-        if sqlite3_prepare_v2(db, "SELECT VerseID, VerseText  FROM Verse WHERE TranslationID=\(tranlationId) AND ChapterID=\(chapterId)", -1, &statement, nil) != SQLITE_OK {
+        if sqlite3_prepare_v2(db, "SELECT VerseID, VerseText  FROM Verse WHERE TranslationID=\(translationId) AND ChapterID=\(chapterId)", -1, &statement, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error preparing select: \(errmsg)")
         }
@@ -115,12 +118,12 @@ class DataBase: NSObject {
         return list
     }
     
-    func getVerse(chapterId:Int, verseId:Int, tranlationId:Int) -> Verse {
+    func getVerse(chapterId:Int, verseId:Int, translationId:Int) -> Verse {
         let item = Verse()
         let db = self.getDatabase()
         var statement: OpaquePointer?
         
-        if sqlite3_prepare_v2(db, "SELECT VerseID, VerseText  FROM Verse WHERE TranslationID=\(tranlationId) AND ChapterID=\(chapterId) AND VerseID =\(verseId)", -1, &statement, nil) != SQLITE_OK {
+        if sqlite3_prepare_v2(db, "SELECT VerseID, VerseText  FROM Verse WHERE TranslationID=\(translationId) AND ChapterID=\(chapterId) AND VerseID =\(verseId)", -1, &statement, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error preparing select: \(errmsg)")
         }
@@ -145,12 +148,12 @@ class DataBase: NSObject {
     }
     
     
-    func getSearchVerses(searchWord:String, tranlationId:Int) -> Array<Verse> {
+    func getSearchVerses(searchWord:String, translationId:Int) -> Array<Verse> {
         var list = Array<Verse>()
         let db = self.getDatabase()
         var statement: OpaquePointer?
         
-        if sqlite3_prepare_v2(db, "SELECT ChapterID, VerseID, VerseText  FROM Verse WHERE TranslationID = \(tranlationId) AND VerseText LIKE '%\(searchWord)%'", -1, &statement, nil) != SQLITE_OK {
+        if sqlite3_prepare_v2(db, "SELECT ChapterID, VerseID, VerseText  FROM Verse WHERE TranslationID = \(translationId) AND VerseText LIKE '%\(searchWord)%'", -1, &statement, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error preparing select: \(errmsg)")
         }
@@ -488,7 +491,7 @@ class DataBase: NSObject {
     
     
     
-    func getLanguages(languageId:Int) -> Array<Language> {
+    func getLanguages() -> Array<Language> {
         var list = Array<Language>()
         let db = self.getDatabase()
         var statement: OpaquePointer?

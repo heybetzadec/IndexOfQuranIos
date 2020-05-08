@@ -21,7 +21,7 @@ class VerseByTopicViewController: UITableViewController , UISearchResultsUpdatin
     var topic = Topic()
     var phrase = Phrase()
     var languageId = 0
-    var tranlationId = 0
+    var translationId = 0
     var searchString = ""
     
     override func viewDidLoad() {
@@ -32,7 +32,7 @@ class VerseByTopicViewController: UITableViewController , UISearchResultsUpdatin
             button.tintColor = UIColor.clear
         }
         
-        fullVersesBy = dataBase.getVerseByTopic(topicId: topic.topicId, phraseId: phrase.phraseId, languageId: languageId, translationId: tranlationId)
+        fullVersesBy = dataBase.getVerseByTopic(topicId: topic.topicId, phraseId: phrase.phraseId, languageId: languageId, translationId: translationId)
         versesBy = fullVersesBy
         
         
@@ -248,7 +248,7 @@ class VerseByTopicViewController: UITableViewController , UISearchResultsUpdatin
                 verseController.chapterId = selectedVerseByItem.chapterId
                 verseController.chapterName = selectedVerseByItem.chapterName
                 verseController.languageId = languageId
-                verseController.tranlationId = tranlationId
+                verseController.translationId = translationId
                 let backItem = UIBarButtonItem()
                 backItem.title = "Geri"
                 navigationItem.backBarButtonItem = backItem

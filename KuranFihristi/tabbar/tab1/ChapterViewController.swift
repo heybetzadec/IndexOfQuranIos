@@ -16,23 +16,88 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
     private var chapters = Array<Chapter>()
     private var fullChapters = Array<Chapter>()
     private var searchController = UISearchController()
+    private var defaults = UserDefaults.standard
     
     var languageId = 1
-    var tranlationId = 154
+    var translationId = 154
+    var fontSize = 18
+    var orderBySurah = true
+    var darkMode = true
     var verseId = 1
     var searchString = ""
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let button = self.navigationItem.rightBarButtonItem {
-            button.isEnabled = false
-            button.tintColor = UIColor.clear
+        if !defaults.bool(forKey: "opened") {
+            
+            var selectedLanguage = 0
+            let languageCode:String = Locale.current.languageCode ?? "tr"
+            
+            switch languageCode {
+            case "tr":
+                languageId = 1
+                selectedLanguage = 2
+            case "az":
+                languageId = 2
+                selectedLanguage = 0
+            case "ru":
+                languageId = 3
+                selectedLanguage = 3
+            case "en":
+                languageId = 4
+                selectedLanguage = 1
+            default:
+                languageId = 1
+                selectedLanguage = 2
+            }
+
+            let translations = dataBase.getTranslations(languageId: languageId)
+            translationId = translations.first!.translationId
+            
+            fontSize = 18
+            
+            defaults.set(selectedLanguage, forKey: "selectedLanguage")
+            defaults.set(languageId, forKey: "languageId")
+            defaults.set(translationId, forKey: "translationId")
+            defaults.set(true, forKey: "opened")
+            
+            defaults.set(4, forKey: "selectedFontSize")
+            defaults.set(fontSize, forKey: "fontSize")
+            
+        } else {
+            
+            languageId = defaults.integer(forKey: "languageId")
+            translationId = defaults.integer(forKey: "translationId")
+            fontSize = defaults.integer(forKey: "fontSize")
+            orderBySurah = defaults.bool(forKey: "orderBySurah")
+            darkMode = defaults.bool(forKey: "darkMode")
+
+            if darkMode {
+                SwiftEventBus.post("darkMode", sender: darkMode)
+            }
+            
+        }
+//        SwiftEventBus.post("optionChange", sender: Option(languageId: languageId, translationId: translationId, fontSize: fontSize, orderBySurah: selectedOrder == 0))
+        
+        SwiftEventBus.onMainThread(self, name:"optionChange") { result in
+            let option = result?.object as! Option
+            if option.orderBySurah != self.orderBySurah  || option.translationId != self.translationId{
+                self.translationId = option.translationId
+                self.orderBySurah = option.orderBySurah
+                print("changed")
+                self.fullChapters = self.dataBase.getChapters(translationId: self.translationId, orderBySurah: true)
+                self.chapters = self.fullChapters
+            }
+            self.fontSize = option.fontSize
+            self.tableView.reloadData()
         }
         
-        fullChapters = dataBase.getChapters(tranlationId: tranlationId)
+        
+        fullChapters = dataBase.getChapters(translationId: translationId, orderBySurah: true)
         chapters = fullChapters
+        
+        
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = .systemBackground
         navigationItem.standardAppearance = appearance
@@ -64,7 +129,7 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
             let actionSheetAlertController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             
             let action = UIAlertAction(title: "Her hangi bir ayete git", style: .default) { (action) in
-                let verseBy = self.dataBase.getRandomVerseBy(translationId: self.tranlationId)
+                let verseBy = self.dataBase.getRandomVerseBy(translationId: self.translationId)
                 self.verseId = verseBy.verseId
                 let openChapter = Chapter(chapterId: verseBy.chapterId, chapterName: verseBy.chapterName)
                 self.performSegue(withIdentifier: "showVerses", sender: openChapter)
@@ -150,6 +215,7 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "chapterItemViewCell", for: indexPath as IndexPath) as! ItemViewCell
             cell.nameLabel.text = "\(chapterItem.chapterId). \(chapterItem.chapterName)"
+            cell.nameLabel.font = .systemFont(ofSize: CGFloat(fontSize))
             return cell
         }
     }
@@ -184,7 +250,7 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
                 verseController.chapterId = selectedChapterItem.chapterId
                 verseController.chapterName = selectedChapterItem.chapterName
                 verseController.languageId = languageId
-                verseController.tranlationId = tranlationId
+                verseController.translationId = translationId
                 verseId = 1
                 let backItem = UIBarButtonItem()
                 backItem.title = "Geri"

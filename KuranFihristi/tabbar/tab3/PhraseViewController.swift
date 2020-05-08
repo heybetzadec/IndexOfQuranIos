@@ -18,7 +18,7 @@ class PhraseViewController: UITableViewController, UISearchResultsUpdating, UISe
     
     var topic = Topic()
     var languageId = 0
-    var tranlationId = 0
+    var translationId = 0
     var searchString = ""
     
     override func viewDidLoad() {
@@ -122,7 +122,7 @@ class PhraseViewController: UITableViewController, UISearchResultsUpdating, UISe
                 verseByTopicController.phrase = selectedPhraseItem
                 verseByTopicController.topic = topic
                 verseByTopicController.languageId = languageId
-                verseByTopicController.tranlationId = tranlationId
+                verseByTopicController.translationId = translationId
                 let backItem = UIBarButtonItem()
                 backItem.title = "Geri"
                 navigationItem.backBarButtonItem = backItem

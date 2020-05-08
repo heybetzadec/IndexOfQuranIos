@@ -30,7 +30,8 @@ class NameDetailViewController: UIViewController {
         
         let showName = dataBase.getNameHtml(nameId: name.nameId, languageId: languageId)
         
-        nameTextView.attributedText = "<div style=\"font-size:18px; margin-left:5px\"><b>\(name.nameDescription)</b><br/><br/>\(showName)<br/></div>".htmlToAttributedString
+        nameTextView.attributedText = "<div style=\"font-size:18px; margin-left:5px\"><b>\(name.nameDescription)</b><br/><br/>\(showName)<br/><br/></div>".htmlToAttributedString
+        nameTextView.textColor = UIColor.label
     }
     
 }

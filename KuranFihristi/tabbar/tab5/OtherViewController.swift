@@ -12,7 +12,7 @@ import SwiftEventBus
 class OtherViewController: UITableViewController {
     
     private var languageId = 1
-    private var tranlationId = 154
+    private var translationId = 154
     
     private var bottomItems =  Array<BottomItem>()
     
@@ -23,7 +23,7 @@ class OtherViewController: UITableViewController {
 //            print("mainTabBar.searchString = \(mainTabBar.searchString)")
             let storyBoard = UIStoryboard(name: "Main", bundle:nil)
             let searchViewController = storyBoard.instantiateViewController(withIdentifier: "searchViewController") as! SearchViewController
-            searchViewController.tranlationId = self.tranlationId
+            searchViewController.translationId = self.translationId
             searchViewController.languageId = self.languageId
 //            searchViewController.searchString = mainTabBar.searchString
 //            mainTabBar.searchString = ""
@@ -78,7 +78,7 @@ class OtherViewController: UITableViewController {
         case 0:
             
             let searchViewController = storyBoard.instantiateViewController(withIdentifier: "searchViewController") as! SearchViewController
-            searchViewController.tranlationId = tranlationId
+            searchViewController.translationId = translationId
             searchViewController.languageId = languageId
             searchViewController.searchString = ""
             navigationController?.pushViewController(searchViewController, animated: true)
@@ -86,7 +86,7 @@ class OtherViewController: UITableViewController {
         case 1:
             
             let pinViewController = storyBoard.instantiateViewController(withIdentifier: "pinViewController") as! PinViewController
-            pinViewController.tranlationId = tranlationId
+            pinViewController.translationId = translationId
             pinViewController.languageId = languageId
             navigationController?.pushViewController(pinViewController, animated: true)
             

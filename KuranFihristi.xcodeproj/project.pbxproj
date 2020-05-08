@@ -17,6 +17,7 @@
 		EF1AC0D62461DE4F004941C2 /* VerseByViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1AC0D52461DE4F004941C2 /* VerseByViewCell.swift */; };
 		EF1AC0D92461DEC7004941C2 /* ItemDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1AC0D82461DEC7004941C2 /* ItemDetailViewCell.swift */; };
 		EF6B5CC82464A01A00B1D3BB /* SettingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B5CC72464A01A00B1D3BB /* SettingItem.swift */; };
+		EF7539C12465F838001853FE /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7539C02465F837001853FE /* Option.swift */; };
 		EF8376AA245F689300335185 /* VerseDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8376A9245F689300335185 /* VerseDetailViewCell.swift */; };
 		EFB5ADF6245EACB100BCDF61 /* SearchFullViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB5ADF5245EACB100BCDF61 /* SearchFullViewCell.swift */; };
 		EFBAC3892462B83200D54B2E /* ReminderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBAC3882462B83200D54B2E /* ReminderViewCell.swift */; };
@@ -100,6 +101,7 @@
 		EF1AC0D52461DE4F004941C2 /* VerseByViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseByViewCell.swift; sourceTree = "<group>"; };
 		EF1AC0D82461DEC7004941C2 /* ItemDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewCell.swift; sourceTree = "<group>"; };
 		EF6B5CC72464A01A00B1D3BB /* SettingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItem.swift; sourceTree = "<group>"; };
+		EF7539C02465F837001853FE /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
 		EF8376A9245F689300335185 /* VerseDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseDetailViewCell.swift; sourceTree = "<group>"; };
 		EFB5ADF5245EACB100BCDF61 /* SearchFullViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFullViewCell.swift; sourceTree = "<group>"; };
 		EFBAC3882462B83200D54B2E /* ReminderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewCell.swift; sourceTree = "<group>"; };
@@ -391,6 +393,7 @@
 				EFD4DFBF245D85C700FA5EF4 /* Translation.swift */,
 				EF025588245F282B0031D190 /* BottomItem.swift */,
 				EF6B5CC72464A01A00B1D3BB /* SettingItem.swift */,
+				EF7539C02465F837001853FE /* Option.swift */,
 			);
 			path = entity;
 			sourceTree = "<group>";
@@ -651,6 +654,7 @@
 				EFCF7873245C860400E32BFD /* ChapterViewController.swift in Sources */,
 				EFD4DFBE245D7AF200FA5EF4 /* Name.swift in Sources */,
 				EFCF789A245C959800E32BFD /* VerseViewCell.swift in Sources */,
+				EF7539C12465F838001853FE /* Option.swift in Sources */,
 				EFCF783E245C793A00E32BFD /* AppDelegate.swift in Sources */,
 				EFCF784A245C793A00E32BFD /* KuranFihristi.xcdatamodeld in Sources */,
 				EFD4DFC0245D85C700FA5EF4 /* Translation.swift in Sources */,

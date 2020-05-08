@@ -19,7 +19,7 @@ class PinViewController: UITableViewController , UISearchResultsUpdating, UISear
     var bottomItems =  Array<BottomItem>()
     
     var languageId = 0
-    var tranlationId = 0
+    var translationId = 0
     var searchString = ""
     
     override func viewDidLoad() {
@@ -30,7 +30,7 @@ class PinViewController: UITableViewController , UISearchResultsUpdating, UISear
             button.tintColor = UIColor.clear
         }
         
-        fullVersesBy = dataBase.getVerseByPin(translationId: tranlationId)
+        fullVersesBy = dataBase.getVerseByPin(translationId: translationId)
         versesBy = fullVersesBy
         
         let appearance = UINavigationBarAppearance()
@@ -245,7 +245,7 @@ class PinViewController: UITableViewController , UISearchResultsUpdating, UISear
                 verseController.chapterId = selectedVerseByItem.chapterId
                 verseController.chapterName = selectedVerseByItem.chapterName
                 verseController.languageId = languageId
-                verseController.tranlationId = tranlationId
+                verseController.translationId = translationId
                 let backItem = UIBarButtonItem()
                 backItem.title = "Geri"
                 navigationItem.backBarButtonItem = backItem
