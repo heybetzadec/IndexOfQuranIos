@@ -18,6 +18,7 @@
 		EF1AC0D92461DEC7004941C2 /* ItemDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1AC0D82461DEC7004941C2 /* ItemDetailViewCell.swift */; };
 		EF6B5CC82464A01A00B1D3BB /* SettingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B5CC72464A01A00B1D3BB /* SettingItem.swift */; };
 		EF7539C12465F838001853FE /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7539C02465F837001853FE /* Option.swift */; };
+		EF7539C724660C3D001853FE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EF7539C924660C3D001853FE /* Localizable.strings */; };
 		EF8376AA245F689300335185 /* VerseDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8376A9245F689300335185 /* VerseDetailViewCell.swift */; };
 		EFB5ADF6245EACB100BCDF61 /* SearchFullViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB5ADF5245EACB100BCDF61 /* SearchFullViewCell.swift */; };
 		EFBAC3892462B83200D54B2E /* ReminderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBAC3882462B83200D54B2E /* ReminderViewCell.swift */; };
@@ -102,6 +103,13 @@
 		EF1AC0D82461DEC7004941C2 /* ItemDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewCell.swift; sourceTree = "<group>"; };
 		EF6B5CC72464A01A00B1D3BB /* SettingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItem.swift; sourceTree = "<group>"; };
 		EF7539C02465F837001853FE /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
+		EF7539C224660B39001853FE /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Main.strings; sourceTree = "<group>"; };
+		EF7539C324660B5E001853FE /* az */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = az; path = az.lproj/Main.strings; sourceTree = "<group>"; };
+		EF7539C424660B6C001853FE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		EF7539C824660C3D001853FE /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EF7539CA24660C46001853FE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EF7539CB24660C47001853FE /* az */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = az; path = az.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EF7539CC24660C48001853FE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EF8376A9245F689300335185 /* VerseDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseDetailViewCell.swift; sourceTree = "<group>"; };
 		EFB5ADF5245EACB100BCDF61 /* SearchFullViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFullViewCell.swift; sourceTree = "<group>"; };
 		EFBAC3882462B83200D54B2E /* ReminderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewCell.swift; sourceTree = "<group>"; };
@@ -283,6 +291,7 @@
 				EFCF7850245C793C00E32BFD /* Info.plist */,
 				EFCF784D245C793C00E32BFD /* LaunchScreen.storyboard */,
 				EFCF7848245C793A00E32BFD /* KuranFihristi.xcdatamodeld */,
+				EF7539C924660C3D001853FE /* Localizable.strings */,
 			);
 			path = KuranFihristi;
 			sourceTree = "<group>";
@@ -489,6 +498,9 @@
 			knownRegions = (
 				en,
 				Base,
+				tr,
+				az,
+				ru,
 			);
 			mainGroup = EFCF7831245C793A00E32BFD;
 			productRefGroup = EFCF783B245C793A00E32BFD /* Products */;
@@ -507,6 +519,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF7539C724660C3D001853FE /* Localizable.strings in Resources */,
 				EFCF784F245C793C00E32BFD /* LaunchScreen.storyboard in Resources */,
 				EFCF78B6245C9CC500E32BFD /* databases in Resources */,
 				EFCF784C245C793C00E32BFD /* Assets.xcassets in Resources */,
@@ -721,10 +734,24 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		EF7539C924660C3D001853FE /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EF7539C824660C3D001853FE /* tr */,
+				EF7539CA24660C46001853FE /* ru */,
+				EF7539CB24660C47001853FE /* az */,
+				EF7539CC24660C48001853FE /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		EFCF7845245C793A00E32BFD /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				EFCF7846245C793A00E32BFD /* Base */,
+				EF7539C224660B39001853FE /* tr */,
+				EF7539C324660B5E001853FE /* az */,
+				EF7539C424660B6C001853FE /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -744,6 +771,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -804,6 +832,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

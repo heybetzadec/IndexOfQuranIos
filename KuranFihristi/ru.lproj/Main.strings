@@ -1,0 +1,162 @@
+
+/* Class = "UILabel"; text = "Item"; ObjectID = "0DY-Sp-7e0"; */
+"0DY-Sp-7e0.text" = "Item";
+
+/* Class = "UIBarButtonItem"; title = "Detay"; ObjectID = "2ya-vc-shA"; */
+"2ya-vc-shA.title" = "Detay";
+
+/* Class = "UILabel"; text = "Lorem ipsum dolor sit er elit lamet Lorem ipsum dolor sit er elit lametLorem ipsum dolor sit er elit lametLorem ipsum dolor sit er elit lamet"; ObjectID = "3Ve-rM-Qrp"; */
+"3Ve-rM-Qrp.text" = "Lorem ipsum dolor sit er elit lamet Lorem ipsum dolor sit er elit lametLorem ipsum dolor sit er elit lametLorem ipsum dolor sit er elit lamet";
+
+/* Class = "UINavigationItem"; title = "Konular"; ObjectID = "47h-9N-vY3"; */
+"47h-9N-vY3.title" = "Konular";
+
+/* Class = "UIBarButtonItem"; title = "Aye"; ObjectID = "5aN-za-nfI"; */
+"5aN-za-nfI.title" = "Aye";
+
+/* Class = "UILabel"; text = "1. Label, 12"; ObjectID = "6Tg-jd-2mR"; */
+"6Tg-jd-2mR.text" = "1. Label, 12";
+
+/* Class = "UINavigationItem"; title = "Sureler"; ObjectID = "6ot-4n-5xv"; */
+"6ot-4n-5xv.title" = "Sureler";
+
+/* Class = "UINavigationItem"; title = "Diğer"; ObjectID = "9am-yV-Lgl"; */
+"9am-yV-Lgl.title" = "Diğer";
+
+/* Class = "UITabBarItem"; title = "Sözlük"; ObjectID = "AJk-r8-KpA"; */
+"AJk-r8-KpA.title" = "Sözlük";
+
+/* Class = "UIBarButtonItem"; title = "Aye"; ObjectID = "Ayv-xi-tnz"; */
+"Ayv-xi-tnz.title" = "Aye";
+
+/* Class = "UILabel"; text = "Tam arama"; ObjectID = "BUP-1T-8Td"; */
+"BUP-1T-8Td.text" = "Tam arama";
+
+/* Class = "UIBarButtonItem"; title = "Aye"; ObjectID = "Bp4-yR-1Il"; */
+"Bp4-yR-1Il.title" = "Aye";
+
+/* Class = "UILabel"; text = "Tam arama"; ObjectID = "GQm-z2-yHY"; */
+"GQm-z2-yHY.text" = "Tam arama";
+
+/* Class = "UILabel"; text = "Tam arama"; ObjectID = "IR3-gc-V3o"; */
+"IR3-gc-V3o.text" = "Tam arama";
+
+/* Class = "UILabel"; text = "Tam arama"; ObjectID = "K1i-VN-gyC"; */
+"K1i-VN-gyC.text" = "Tam arama";
+
+/* Class = "UINavigationItem"; title = "Hatırlatıcı"; ObjectID = "MOU-SW-UUx"; */
+"MOU-SW-UUx.title" = "Hatırlatıcı";
+
+/* Class = "UIBarButtonItem"; title = "Detay"; ObjectID = "PE7-1t-o2u"; */
+"PE7-1t-o2u.title" = "Detay";
+
+/* Class = "UITabBarItem"; title = "Sure"; ObjectID = "SF9-sD-5FM"; */
+"SF9-sD-5FM.title" = "Sure";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "TfJ-62-NF1"; */
+"TfJ-62-NF1.text" = "Title";
+
+/* Class = "UINavigationItem"; title = "Tam arama"; ObjectID = "Tt8-vM-6Hh"; */
+"Tt8-vM-6Hh.title" = "Tam arama";
+
+/* Class = "UILabel"; text = "Tam arama"; ObjectID = "Xyh-Ei-oCJ"; */
+"Xyh-Ei-oCJ.text" = "Tam arama";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "YDj-oe-0X3"; */
+"YDj-oe-0X3.text" = "Subtitle";
+
+/* Class = "UITabBarItem"; title = "İsim"; ObjectID = "Ysz-tA-ENF"; */
+"Ysz-tA-ENF.title" = "İsim";
+
+/* Class = "UITabBarItem"; title = "Diğer"; ObjectID = "aCK-Dw-XMl"; */
+"aCK-Dw-XMl.title" = "Diğer";
+
+/* Class = "UINavigationItem"; title = "Ayarlar"; ObjectID = "b4n-Wc-0sH"; */
+"b4n-Wc-0sH.title" = "Ayarlar";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "dGi-hg-UVE"; */
+"dGi-hg-UVE.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UIBarButtonItem"; title = "Aye"; ObjectID = "eGi-jj-fKl"; */
+"eGi-jj-fKl.title" = "Aye";
+
+/* Class = "UILabel"; text = "1. Label"; ObjectID = "efE-4J-hFI"; */
+"efE-4J-hFI.text" = "1. Label";
+
+/* Class = "UILabel"; text = "Lorem ipsum dolor sit er elit lamet Lorem ipsum dolor sit er elit lametLorem ipsum dolor sit er elit lametLorem ipsum dolor sit er elit lamet"; ObjectID = "fYR-fq-T8O"; */
+"fYR-fq-T8O.text" = "Lorem ipsum dolor sit er elit lamet Lorem ipsum dolor sit er elit lametLorem ipsum dolor sit er elit lametLorem ipsum dolor sit er elit lamet";
+
+/* Class = "UILabel"; text = "Lorem ipsum dolor sit er elit lamet Lorem ipsum dolor sit er elit lametLorem ipsum dolor sit er elit lametLorem ipsum dolor sit er elit lamet"; ObjectID = "g0y-18-CSs"; */
+"g0y-18-CSs.text" = "Lorem ipsum dolor sit er elit lamet Lorem ipsum dolor sit er elit lametLorem ipsum dolor sit er elit lametLorem ipsum dolor sit er elit lamet";
+
+/* Class = "UILabel"; text = "1. Label"; ObjectID = "gkk-L7-bq5"; */
+"gkk-L7-bq5.text" = "1. Label";
+
+/* Class = "UILabel"; text = "Tam arama"; ObjectID = "hnW-lZ-VhU"; */
+"hnW-lZ-VhU.text" = "Tam arama";
+
+/* Class = "UILabel"; text = "Tam arama"; ObjectID = "j0P-Mq-7gd"; */
+"j0P-Mq-7gd.text" = "Tam arama";
+
+/* Class = "UILabel"; text = "Tam arama"; ObjectID = "kgB-7i-kG6"; */
+"kgB-7i-kG6.text" = "Tam arama";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "kxd-JY-hNJ"; */
+"kxd-JY-hNJ.text" = "Name";
+
+/* Class = "UILabel"; text = "9:20AM"; ObjectID = "lFX-Cu-m2Y"; */
+"lFX-Cu-m2Y.text" = "9:20AM";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "mAt-L6-cr0"; */
+"mAt-L6-cr0.text" = "Label";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "nn2-s4-Vwp"; */
+"nn2-s4-Vwp.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UIBarButtonItem"; title = "Aye"; ObjectID = "nsO-ad-o0A"; */
+"nsO-ad-o0A.title" = "Aye";
+
+/* Class = "UILabel"; text = "1. Label, 12"; ObjectID = "oOX-T0-Zer"; */
+"oOX-T0-Zer.text" = "1. Label, 12";
+
+/* Class = "UIBarButtonItem"; title = "Söz"; ObjectID = "ovr-gT-3Ew"; */
+"ovr-gT-3Ew.title" = "Söz";
+
+/* Class = "UINavigationItem"; title = "Allahın İsimleri"; ObjectID = "qf9-dn-4qT"; */
+"qf9-dn-4qT.title" = "Allahın İsimleri";
+
+/* Class = "UILabel"; text = "1. Label, 12"; ObjectID = "qft-eJ-jen"; */
+"qft-eJ-jen.text" = "1. Label, 12";
+
+/* Class = "UINavigationItem"; title = "Sözlük"; ObjectID = "sDs-CG-VPb"; */
+"sDs-CG-VPb.title" = "Sözlük";
+
+/* Class = "UILabel"; text = "Value"; ObjectID = "sue-sM-NXC"; */
+"sue-sM-NXC.text" = "Value";
+
+/* Class = "UIBarButtonItem"; title = "Detay"; ObjectID = "t6A-8K-EMv"; */
+"t6A-8K-EMv.title" = "Detay";
+
+/* Class = "UILabel"; text = "Tam arama"; ObjectID = "uF2-Jw-7XB"; */
+"uF2-Jw-7XB.text" = "Tam arama";
+
+/* Class = "UILabel"; text = "1. Label"; ObjectID = "ucP-4t-8c6"; */
+"ucP-4t-8c6.text" = "1. Label";
+
+/* Class = "UIBarButtonItem"; title = "İfade"; ObjectID = "una-bu-okF"; */
+"una-bu-okF.title" = "İfade";
+
+/* Class = "UITabBarItem"; title = "Konular"; ObjectID = "vL5-5X-mZs"; */
+"vL5-5X-mZs.title" = "Konular";
+
+/* Class = "UILabel"; text = "1. Label"; ObjectID = "whS-YI-Wwt"; */
+"whS-YI-Wwt.text" = "1. Label";
+
+/* Class = "UILabel"; text = "Tam arama"; ObjectID = "xgf-Ft-vBj"; */
+"xgf-Ft-vBj.text" = "Tam arama";
+
+/* Class = "UIBarButtonItem"; title = "Aye"; ObjectID = "xwS-5y-1xn"; */
+"xwS-5y-1xn.title" = "Aye";
+
+/* Class = "UILabel"; text = "1. Label"; ObjectID = "zcH-kE-IzD"; */
+"zcH-kE-IzD.text" = "1. Label";
