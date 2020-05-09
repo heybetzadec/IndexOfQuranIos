@@ -20,8 +20,8 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
     
     var languageId = 1
     var translationId = 154
-    var fontSize = 18
     var orderBySurah = true
+    var fontSize = 17
     var darkMode = true
     var verseId = 1
     var searchString = ""
@@ -29,8 +29,12 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let button = self.navigationItem.rightBarButtonItem {
+            button.isEnabled = false
+            button.tintColor = UIColor.clear
+        }
+        
         if !defaults.bool(forKey: "opened") {
-            
             var selectedLanguage = 0
             let languageCode:String = Locale.current.languageCode ?? "tr"
             
@@ -55,46 +59,46 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
             let translations = dataBase.getTranslations(languageId: languageId)
             translationId = translations.first!.translationId
             
-            fontSize = 18
+            fontSize = 17
             
             defaults.set(selectedLanguage, forKey: "selectedLanguage")
             defaults.set(languageId, forKey: "languageId")
             defaults.set(translationId, forKey: "translationId")
             defaults.set(true, forKey: "opened")
             
-            defaults.set(4, forKey: "selectedFontSize")
+            defaults.set(3, forKey: "selectedFontSize")
             defaults.set(fontSize, forKey: "fontSize")
+            defaults.set(languageCode, forKey: "i18n_language")
             
         } else {
-            
             languageId = defaults.integer(forKey: "languageId")
             translationId = defaults.integer(forKey: "translationId")
             fontSize = defaults.integer(forKey: "fontSize")
             orderBySurah = defaults.bool(forKey: "orderBySurah")
             darkMode = defaults.bool(forKey: "darkMode")
-
+            
             if darkMode {
                 SwiftEventBus.post("darkMode", sender: darkMode)
             }
             
         }
-//        SwiftEventBus.post("optionChange", sender: Option(languageId: languageId, translationId: translationId, fontSize: fontSize, orderBySurah: selectedOrder == 0))
         
         SwiftEventBus.onMainThread(self, name:"optionChange") { result in
             let option = result?.object as! Option
             if option.orderBySurah != self.orderBySurah  || option.translationId != self.translationId{
                 self.translationId = option.translationId
                 self.orderBySurah = option.orderBySurah
-                print("changed")
-                self.fullChapters = self.dataBase.getChapters(translationId: self.translationId, orderBySurah: true)
+                self.fullChapters = self.dataBase.getChapters(translationId: self.translationId, orderBySurah: option.orderBySurah)
                 self.chapters = self.fullChapters
             }
             self.fontSize = option.fontSize
             self.tableView.reloadData()
+            
+            self.navigationItem.title = "chapters".localized
         }
         
         
-        fullChapters = dataBase.getChapters(translationId: translationId, orderBySurah: true)
+        fullChapters = dataBase.getChapters(translationId: translationId, orderBySurah: orderBySurah)
         chapters = fullChapters
         
         
@@ -102,6 +106,7 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
         appearance.backgroundColor = .systemBackground
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
+        self.navigationItem.title = "chapters".localized
         prepareSearchController()
         setupLongPressGesture() 
         
@@ -247,13 +252,14 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
             if let verseController = segue.destination as? VerseViewController {
                 let selectedChapterItem = sender as! Chapter
                 verseController.verseId = verseId
+                verseController.fontSize = fontSize
                 verseController.chapterId = selectedChapterItem.chapterId
                 verseController.chapterName = selectedChapterItem.chapterName
                 verseController.languageId = languageId
                 verseController.translationId = translationId
                 verseId = 1
                 let backItem = UIBarButtonItem()
-                backItem.title = "Geri"
+                backItem.title = "back".localized
                 navigationItem.backBarButtonItem = backItem
             }
         }

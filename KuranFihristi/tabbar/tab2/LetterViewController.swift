@@ -33,6 +33,8 @@ class LetterViewController: UITableViewController, UISearchResultsUpdating, UISe
         appearance.backgroundColor = .systemBackground
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
+        self.navigationItem.title = "dictionary".localized
+        
         prepareSearchController()
         tableView.tableFooterView = UIView()
     }
@@ -119,7 +121,7 @@ class LetterViewController: UITableViewController, UISearchResultsUpdating, UISe
                 wordController.languageId = languageId
                 wordController.translationId = translationId
                 let backItem = UIBarButtonItem()
-                backItem.title = "Geri"
+                backItem.title = "back".localized
                 navigationItem.backBarButtonItem = backItem
             }
         }

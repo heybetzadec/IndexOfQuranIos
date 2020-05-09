@@ -124,7 +124,7 @@ class PhraseViewController: UITableViewController, UISearchResultsUpdating, UISe
                 verseByTopicController.languageId = languageId
                 verseByTopicController.translationId = translationId
                 let backItem = UIBarButtonItem()
-                backItem.title = "Geri"
+                backItem.title = "back".localized
                 navigationItem.backBarButtonItem = backItem
             }
         }

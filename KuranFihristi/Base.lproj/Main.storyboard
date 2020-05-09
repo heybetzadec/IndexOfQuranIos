@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Sureler-->
+        <!--Suras-->
         <scene sceneID="Gk7-NS-di1">
             <objects>
                 <tableViewController storyboardIdentifier="chapterViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2da-Ov-93X" customClass="ChapterViewController" customModule="KuranFihristi" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,14 +18,14 @@
                         <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchFullViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchFullViewCell" id="1MJ-2B-Fgw" customClass="SearchFullViewCell" customModule="KuranFihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="43.333332061767578"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="43"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1MJ-2B-Fgw" id="Ppn-ua-bB4">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.333332061767578"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tam arama" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1i-VN-gyC">
-                                            <rect key="frame" x="16" y="10.999999999999998" width="343" height="21.333333333333329"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1i-VN-gyC">
+                                            <rect key="frame" x="16" y="11" width="343" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -41,14 +41,14 @@
                                 <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="chapterItemViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="chapterItemViewCell" id="CGF-Lb-Z6l" customClass="ItemViewCell" customModule="KuranFihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="71.333332061767578" width="375" height="43.666667938232422"/>
+                                <rect key="frame" x="0.0" y="71" width="375" height="43.333332061767578"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CGF-Lb-Z6l" id="qQm-4D-Lmt">
-                                    <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="43.333332061767578"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zcH-kE-IzD">
-                                            <rect key="frame" x="16" y="11.000000000000002" width="309.66666666666669" height="21.666666666666671"/>
+                                            <rect key="frame" x="16" y="10.999999999999998" width="309.66666666666669" height="21.333333333333329"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -72,8 +72,8 @@
                             <outlet property="delegate" destination="2da-Ov-93X" id="B4f-Rr-mMy"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Sureler" id="6ot-4n-5xv">
-                        <barButtonItem key="rightBarButtonItem" title="Aye" id="xwS-5y-1xn">
+                    <navigationItem key="navigationItem" title="Suras" id="6ot-4n-5xv">
+                        <barButtonItem key="rightBarButtonItem" title="Ayat" id="xwS-5y-1xn">
                             <connections>
                                 <segue destination="Zs3-cU-mVY" kind="show" identifier="showVerses" id="N7W-XM-gk4"/>
                             </connections>
@@ -95,29 +95,30 @@
                         <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchFullViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="searchFullViewCell" id="7kP-Qk-bHW" customClass="SearchFullViewCell" customModule="KuranFihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="42.666667938232422"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.333332061767578"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7kP-Qk-bHW" id="M9Z-Xx-YKK">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="42.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.333332061767578"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tam arama" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUP-1T-8Td">
-                                            <rect key="frame" x="145.66666666666666" y="11.000000000000002" width="84" height="20.666666666666671"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUP-1T-8Td">
+                                            <rect key="frame" x="16" y="10.999999999999998" width="343" height="21.333333333333329"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="BUP-1T-8Td" firstAttribute="centerX" secondItem="M9Z-Xx-YKK" secondAttribute="centerX" id="Upy-Fa-5Ky"/>
-                                        <constraint firstItem="BUP-1T-8Td" firstAttribute="top" secondItem="M9Z-Xx-YKK" secondAttribute="topMargin" id="aRj-Az-SmD"/>
-                                        <constraint firstItem="BUP-1T-8Td" firstAttribute="centerY" secondItem="M9Z-Xx-YKK" secondAttribute="centerY" id="dy4-S4-SJE"/>
+                                        <constraint firstItem="BUP-1T-8Td" firstAttribute="leading" secondItem="M9Z-Xx-YKK" secondAttribute="leadingMargin" id="Awh-zE-IYD"/>
+                                        <constraint firstItem="BUP-1T-8Td" firstAttribute="top" secondItem="M9Z-Xx-YKK" secondAttribute="topMargin" id="BZk-Zf-dbz"/>
+                                        <constraint firstItem="BUP-1T-8Td" firstAttribute="trailing" secondItem="M9Z-Xx-YKK" secondAttribute="trailingMargin" id="knN-pI-3Mj"/>
+                                        <constraint firstItem="BUP-1T-8Td" firstAttribute="centerY" secondItem="M9Z-Xx-YKK" secondAttribute="centerY" id="zT4-Mm-slo"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="verseViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="verseViewCell" rowHeight="44" id="0z6-ko-2ch" customClass="VerseViewCell" customModule="KuranFihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="70.666667938232422" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="71.333332061767578" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0z6-ko-2ch" id="E3O-N7-FFv">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -158,7 +159,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mwX-Ct-NRr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2881" y="1532"/>
+            <point key="canvasLocation" x="-4382" y="1535"/>
         </scene>
         <!--Verse Detail View Controller-->
         <scene sceneID="Zf8-dF-8RZ">
@@ -249,7 +250,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KNO-Vg-Y4u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3569" y="1532"/>
+            <point key="canvasLocation" x="-5070" y="1535"/>
         </scene>
         <!--App Tab Bar View Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -272,7 +273,7 @@
             </objects>
             <point key="canvasLocation" x="-18" y="-7"/>
         </scene>
-        <!--Allahın İsimleri-->
+        <!--Names of Allah-->
         <scene sceneID="EYk-2S-gEH">
             <objects>
                 <tableViewController storyboardIdentifier="nameViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yCe-hL-My7" customClass="NameViewController" customModule="KuranFihristi" customModuleProvider="target" sceneMemberID="viewController">
@@ -288,7 +289,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tam arama" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uF2-Jw-7XB">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uF2-Jw-7XB">
                                             <rect key="frame" x="16" y="11.000000000000002" width="343" height="21.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -338,7 +339,7 @@
                             <outlet property="delegate" destination="yCe-hL-My7" id="yTl-XJ-iFG"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Allahın İsimleri" id="qf9-dn-4qT">
+                    <navigationItem key="navigationItem" title="Names of Allah" id="qf9-dn-4qT">
                         <barButtonItem key="rightBarButtonItem" title="Detay" id="PE7-1t-o2u">
                             <connections>
                                 <segue destination="6g3-cm-t53" kind="show" identifier="nameDetail" id="UIV-7X-MDR"/>
@@ -400,7 +401,7 @@
             </objects>
             <point key="canvasLocation" x="1680.8" y="1525.8620689655172"/>
         </scene>
-        <!--Sözlük-->
+        <!--Dictionary-->
         <scene sceneID="2ci-KE-iuA">
             <objects>
                 <tableViewController storyboardIdentifier="letterViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ywk-Xw-WAZ" customClass="LetterViewController" customModule="KuranFihristi" customModuleProvider="target" sceneMemberID="viewController">
@@ -410,14 +411,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchFullViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchFullViewCell" id="eJg-Bj-MJb" customClass="SearchFullViewCell" customModule="KuranFihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="42.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eJg-Bj-MJb" id="KRg-cA-doA">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="42.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tam arama" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kgB-7i-kG6">
-                                            <rect key="frame" x="16" y="11.000000000000002" width="343" height="21.666666666666671"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kgB-7i-kG6">
+                                            <rect key="frame" x="16" y="11.000000000000002" width="343" height="20.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -433,14 +434,14 @@
                                 <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="letterItemViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="letterItemViewCell" id="ANY-ZF-WJV" customClass="ItemViewCell" customModule="KuranFihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="71.666667938232422" width="375" height="43.333332061767578"/>
+                                <rect key="frame" x="0.0" y="70.666667938232422" width="375" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ANY-ZF-WJV" id="M3G-qZ-iIH">
-                                    <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="43.333332061767578"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkk-L7-bq5">
-                                            <rect key="frame" x="16" y="10.999999999999998" width="309.66666666666669" height="21.333333333333329"/>
+                                            <rect key="frame" x="16" y="11.000000000000002" width="309.66666666666669" height="21.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -464,8 +465,8 @@
                             <outlet property="delegate" destination="Ywk-Xw-WAZ" id="1JN-7k-fWE"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Sözlük" id="sDs-CG-VPb">
-                        <barButtonItem key="rightBarButtonItem" title="Söz" id="ovr-gT-3Ew">
+                    <navigationItem key="navigationItem" title="Dictionary" id="sDs-CG-VPb">
+                        <barButtonItem key="rightBarButtonItem" title="Word" id="ovr-gT-3Ew">
                             <connections>
                                 <segue destination="y0h-yw-th5" kind="show" identifier="showWords" id="11z-rj-NHC"/>
                             </connections>
@@ -486,14 +487,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchFullViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchFullViewCell" id="3Pe-ax-ebx" customClass="SearchFullViewCell" customModule="KuranFihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="43.333332061767578"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="42.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3Pe-ax-ebx" id="126-rz-2Dl">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.333332061767578"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="42.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tam arama" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQm-z2-yHY">
-                                            <rect key="frame" x="16" y="10.999999999999998" width="343" height="21.333333333333329"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQm-z2-yHY">
+                                            <rect key="frame" x="16" y="11.000000000000002" width="343" height="20.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -509,14 +510,14 @@
                                 <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="wordItemViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="wordItemViewCell" id="05v-sW-VvC" customClass="ItemViewCell" customModule="KuranFihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="71.333332061767578" width="375" height="43"/>
+                                <rect key="frame" x="0.0" y="70.666667938232422" width="375" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="05v-sW-VvC" id="uFs-EQ-1jo">
-                                    <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efE-4J-hFI">
-                                            <rect key="frame" x="16" y="11" width="309.66666666666669" height="21"/>
+                                            <rect key="frame" x="16" y="11.000000000000002" width="309.66666666666669" height="21.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -541,7 +542,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Liw-VZ-0ma">
-                        <barButtonItem key="rightBarButtonItem" title="Aye" id="Bp4-yR-1Il">
+                        <barButtonItem key="rightBarButtonItem" title="Ayat" id="Bp4-yR-1Il">
                             <connections>
                                 <segue destination="5c2-T9-BoA" kind="show" identifier="showVerseByWord" id="cWu-vr-OBb"/>
                             </connections>
@@ -562,14 +563,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchFullViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="searchFullViewCell" id="j8c-QW-5fZ" customClass="SearchFullViewCell" customModule="KuranFihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="42.666667938232422"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="43"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="j8c-QW-5fZ" id="zPs-Pg-yzN">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="42.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tam arama" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xyh-Ei-oCJ">
-                                            <rect key="frame" x="145.66666666666666" y="11.000000000000002" width="84" height="20.666666666666671"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xyh-Ei-oCJ">
+                                            <rect key="frame" x="145.66666666666666" y="11" width="84" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -583,7 +584,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="verseByWordViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="verseByWordViewCell" rowHeight="128" id="ep5-vG-LXd" customClass="VerseByViewCell" customModule="KuranFihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="70.666667938232422" width="375" height="128"/>
+                                <rect key="frame" x="0.0" y="71" width="375" height="128"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ep5-vG-LXd" id="daJ-dp-cn4">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
@@ -643,7 +644,7 @@
             </objects>
             <point key="canvasLocation" x="-1351" y="2200"/>
         </scene>
-        <!--Konular-->
+        <!--Topics-->
         <scene sceneID="lQz-eC-mFU">
             <objects>
                 <tableViewController storyboardIdentifier="topicViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Brq-fO-lJK" customClass="TopicViewController" customModule="KuranFihristi" customModuleProvider="target" sceneMemberID="viewController">
@@ -659,7 +660,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tam arama" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hnW-lZ-VhU">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hnW-lZ-VhU">
                                             <rect key="frame" x="16" y="11" width="343" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -707,7 +708,7 @@
                             <outlet property="delegate" destination="Brq-fO-lJK" id="ife-UN-vpM"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Konular" id="47h-9N-vY3">
+                    <navigationItem key="navigationItem" title="Topics" id="47h-9N-vY3">
                         <barButtonItem key="rightBarButtonItem" title="İfade" id="una-bu-okF">
                             <connections>
                                 <segue destination="b5s-7Y-vnr" kind="show" identifier="showPhrases" id="9Ud-DH-uNJ"/>
@@ -729,14 +730,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchFullViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchFullViewCell" id="zDK-d8-9Ww" customClass="SearchFullViewCell" customModule="KuranFihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="43.333332061767578"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zDK-d8-9Ww" id="lex-kc-4tz">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.333332061767578"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tam arama" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xgf-Ft-vBj">
-                                            <rect key="frame" x="16" y="10.999999999999998" width="343" height="21.333333333333329"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xgf-Ft-vBj">
+                                            <rect key="frame" x="16" y="11.000000000000002" width="343" height="21.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -752,7 +753,7 @@
                                 <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="phraseItemViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="phraseItemViewCell" id="0bR-aM-Q9A" customClass="ItemViewCell" customModule="KuranFihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="71.333332061767578" width="375" height="42.666667938232422"/>
+                                <rect key="frame" x="0.0" y="71.666667938232422" width="375" height="42.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0bR-aM-Q9A" id="Gl6-Iu-RtV">
                                     <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="42.666667938232422"/>
@@ -785,7 +786,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Z8g-A8-wLU">
-                        <barButtonItem key="rightBarButtonItem" title="Aye" id="nsO-ad-o0A">
+                        <barButtonItem key="rightBarButtonItem" title="Ayat" id="nsO-ad-o0A">
                             <connections>
                                 <segue destination="coV-dh-RbW" kind="show" identifier="showVerseByTopic" id="dKH-kO-h24"/>
                             </connections>
@@ -796,7 +797,7 @@
             </objects>
             <point key="canvasLocation" x="160.80000000000001" y="1523.6453201970444"/>
         </scene>
-        <!--Diğer-->
+        <!--Other-->
         <scene sceneID="UG6-9u-9WC">
             <objects>
                 <tableViewController storyboardIdentifier="otherViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sUq-P2-jVl" customClass="OtherViewController" customModule="KuranFihristi" customModuleProvider="target" sceneMemberID="viewController">
@@ -837,17 +838,17 @@
                             <outlet property="delegate" destination="sUq-P2-jVl" id="Xev-Ju-Xkf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Diğer" id="9am-yV-Lgl"/>
+                    <navigationItem key="navigationItem" title="Other" id="9am-yV-Lgl"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oo4-Od-xnn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3240.8000000000002" y="855.66502463054189"/>
         </scene>
-        <!--Sure-->
+        <!--Suras-->
         <scene sceneID="hu5-cM-AiG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cIK-oR-5z6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Sure" image="book.fill" catalog="system" id="SF9-sD-5FM"/>
+                    <tabBarItem key="tabBarItem" title="Suras" image="book.fill" catalog="system" id="SF9-sD-5FM"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9iT-uX-xPF">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -880,11 +881,11 @@
             </objects>
             <point key="canvasLocation" x="-3569" y="2198"/>
         </scene>
-        <!--Sözlük-->
+        <!--Dictionary-->
         <scene sceneID="B9U-Bz-8Qh">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HUc-dz-bWm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Sözlük" image="tag.fill" catalog="system" id="AJk-r8-KpA"/>
+                    <tabBarItem key="tabBarItem" title="Dictionary" image="tag.fill" catalog="system" id="AJk-r8-KpA"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9U2-L9-feN">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -935,11 +936,11 @@
             </objects>
             <point key="canvasLocation" x="-2041" y="2200"/>
         </scene>
-        <!--Konular-->
+        <!--Topics-->
         <scene sceneID="dkB-ve-Lug">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="djM-3n-qPA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Konular" image="tray.fill" catalog="system" id="vL5-5X-mZs"/>
+                    <tabBarItem key="tabBarItem" title="Topics" image="tray.fill" catalog="system" id="vL5-5X-mZs"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ypg-On-EYV">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -988,7 +989,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="42.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tam arama" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IR3-gc-V3o">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IR3-gc-V3o">
                                             <rect key="frame" x="145.66666666666666" y="11.000000000000002" width="84" height="20.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -1081,11 +1082,11 @@
             </objects>
             <point key="canvasLocation" x="-511" y="2198"/>
         </scene>
-        <!--İsim-->
+        <!--Names-->
         <scene sceneID="kNU-hu-cx1">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="L2P-pk-gly" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="İsim" image="doc.text.fill" catalog="system" id="Ysz-tA-ENF"/>
+                    <tabBarItem key="tabBarItem" title="Names" image="doc.text.fill" catalog="system" id="Ysz-tA-ENF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3c2-Y3-dfH">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -1118,11 +1119,11 @@
             </objects>
             <point key="canvasLocation" x="966" y="1524"/>
         </scene>
-        <!--Diğer-->
+        <!--Other-->
         <scene sceneID="oel-5l-QGT">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0jt-vQ-Zhv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Diğer" image="flag.fill" catalog="system" id="aCK-Dw-XMl"/>
+                    <tabBarItem key="tabBarItem" title="Other" image="flag.fill" catalog="system" id="aCK-Dw-XMl"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Eo3-No-C1B">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -1137,7 +1138,7 @@
             </objects>
             <point key="canvasLocation" x="2535" y="856"/>
         </scene>
-        <!--Tam arama-->
+        <!--Full Search-->
         <scene sceneID="Nw0-Q7-JqY">
             <objects>
                 <tableViewController storyboardIdentifier="searchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Hbq-dH-pRF" customClass="SearchViewController" customModule="KuranFihristi" customModuleProvider="target" sceneMemberID="viewController">
@@ -1179,8 +1180,8 @@
                             <outlet property="delegate" destination="Hbq-dH-pRF" id="zhW-NS-iEX"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Tam arama" id="Tt8-vM-6Hh">
-                        <barButtonItem key="rightBarButtonItem" title="Detay" id="2ya-vc-shA">
+                    <navigationItem key="navigationItem" title="Full Search" id="Tt8-vM-6Hh">
+                        <barButtonItem key="rightBarButtonItem" title="Detail" id="2ya-vc-shA">
                             <connections>
                                 <segue destination="Zs3-cU-mVY" kind="show" identifier="showVerseBySearch" id="Ldm-1U-g0U"/>
                             </connections>
@@ -1224,17 +1225,18 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tam arama" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j0P-Mq-7gd">
-                                            <rect key="frame" x="145.66666666666666" y="11" width="84" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j0P-Mq-7gd">
+                                            <rect key="frame" x="16" y="11" width="341" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="j0P-Mq-7gd" firstAttribute="top" secondItem="jTU-ze-dds" secondAttribute="topMargin" id="8JG-Vk-j2e"/>
-                                        <constraint firstItem="j0P-Mq-7gd" firstAttribute="centerX" secondItem="jTU-ze-dds" secondAttribute="centerX" id="Kvt-3i-mFo"/>
-                                        <constraint firstItem="j0P-Mq-7gd" firstAttribute="centerY" secondItem="jTU-ze-dds" secondAttribute="centerY" id="Wfu-1W-ayh"/>
+                                        <constraint firstItem="j0P-Mq-7gd" firstAttribute="top" secondItem="jTU-ze-dds" secondAttribute="topMargin" constant="-1.7763568394002505e-15" id="045-pq-Pt1"/>
+                                        <constraint firstItem="j0P-Mq-7gd" firstAttribute="centerY" secondItem="jTU-ze-dds" secondAttribute="centerY" id="EhI-W0-XMW"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="j0P-Mq-7gd" secondAttribute="trailing" constant="2" id="PWb-9j-hpU"/>
+                                        <constraint firstItem="j0P-Mq-7gd" firstAttribute="leading" secondItem="jTU-ze-dds" secondAttribute="leadingMargin" id="Xt5-De-hqD"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -1245,36 +1247,23 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Label, 12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oOX-T0-Zer">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1. Label, 12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oOX-T0-Zer">
                                             <rect key="frame" x="16" y="10.999999999999998" width="343" height="20.333333333333329"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="20.329999999999998" id="EoX-Id-qLm"/>
-                                            </constraints>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ve-rM-Qrp">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ve-rM-Qrp">
                                             <rect key="frame" x="16" y="31.333333333333336" width="343" height="85.666666666666657"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <string key="text">Lorem ipsum dolor sit er elit lamet Lorem ipsum dolor sit er elit lametLorem ipsum dolor sit er elit lametLorem ipsum dolor sit er elit lamet</string>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="3Ve-rM-Qrp" firstAttribute="top" secondItem="oOX-T0-Zer" secondAttribute="bottom" id="Bzv-Cy-IZe"/>
-                                        <constraint firstItem="oOX-T0-Zer" firstAttribute="top" secondItem="Gk9-Zh-ihf" secondAttribute="topMargin" id="Cdd-B3-z3h"/>
-                                        <constraint firstItem="3Ve-rM-Qrp" firstAttribute="leading" secondItem="Gk9-Zh-ihf" secondAttribute="leadingMargin" id="JRW-fo-qXf"/>
-                                        <constraint firstItem="3Ve-rM-Qrp" firstAttribute="trailing" secondItem="Gk9-Zh-ihf" secondAttribute="trailingMargin" id="T4a-gM-pmK"/>
-                                        <constraint firstItem="oOX-T0-Zer" firstAttribute="trailing" secondItem="Gk9-Zh-ihf" secondAttribute="trailingMargin" id="cx9-kr-ieb"/>
-                                        <constraint firstItem="oOX-T0-Zer" firstAttribute="leading" secondItem="Gk9-Zh-ihf" secondAttribute="leadingMargin" id="fvn-5Q-5nq"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="3Ve-rM-Qrp" secondAttribute="bottom" id="ixO-4i-cYT"/>
-                                    </constraints>
                                 </tableViewCellContentView>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="3Ve-rM-Qrp" secondAttribute="bottom" constant="11" id="odV-HM-axo"/>
-                                </constraints>
                                 <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                                 <connections>
                                     <outlet property="nameLabel" destination="oOX-T0-Zer" id="4tB-88-EGj"/>
@@ -1288,14 +1277,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Ri0-qb-gOa">
-                        <barButtonItem key="rightBarButtonItem" title="Aye" id="5aN-za-nfI"/>
+                        <barButtonItem key="rightBarButtonItem" title="Ayat" id="5aN-za-nfI"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vKy-ob-uzS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4702" y="1524"/>
         </scene>
-        <!--Hatırlatıcı-->
+        <!--Reminder-->
         <scene sceneID="HKh-LX-koL">
             <objects>
                 <tableViewController storyboardIdentifier="reminderViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gZV-gQ-4fE" customClass="ReminderViewController" customModule="KuranFihristi" customModuleProvider="target" sceneMemberID="viewController">
@@ -1343,7 +1332,7 @@
                             <outlet property="delegate" destination="gZV-gQ-4fE" id="4lW-rH-msd"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Hatırlatıcı" id="MOU-SW-UUx">
+                    <navigationItem key="navigationItem" title="Reminder" id="MOU-SW-UUx">
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="hpK-Cv-ypQ"/>
                     </navigationItem>
                     <connections>
@@ -1354,7 +1343,7 @@
             </objects>
             <point key="canvasLocation" x="6188" y="1524"/>
         </scene>
-        <!--Ayarlar-->
+        <!--Settings-->
         <scene sceneID="knR-ak-rtY">
             <objects>
                 <tableViewController storyboardIdentifier="settingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WHu-B4-ZIk" customClass="SettingViewController" customModule="KuranFihristi" customModuleProvider="target" sceneMemberID="viewController">
@@ -1381,7 +1370,7 @@
                                             <rect key="frame" x="207" y="10" width="158" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -1398,7 +1387,7 @@
                             <outlet property="delegate" destination="WHu-B4-ZIk" id="2OV-ms-Rkf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Ayarlar" id="b4n-Wc-0sH"/>
+                    <navigationItem key="navigationItem" title="Settings" id="b4n-Wc-0sH"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dEu-tB-Bn3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1468,12 +1457,12 @@
         <image name="tray.fill" catalog="system" width="64" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Dtx-4p-FUK"/>
+        <segue reference="dKH-kO-h24"/>
         <segue reference="9Ud-DH-uNJ"/>
         <segue reference="cWu-vr-OBb"/>
-        <segue reference="5QW-j5-Bef"/>
+        <segue reference="11z-rj-NHC"/>
         <segue reference="UIV-7X-MDR"/>
         <segue reference="V8S-9c-E0Y"/>
-        <segue reference="N7W-XM-gk4"/>
+        <segue reference="P3W-Wr-gKC"/>
     </inferredMetricsTieBreakers>
 </document>

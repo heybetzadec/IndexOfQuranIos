@@ -7,20 +7,25 @@
 //
 
 import UIKit
+import SwiftEventBus
 
 class VerseDetailViewController: UITableViewController {
     
     
+    var fontSize = 17
     var chapterName = ""
     var chapterId = 0
     var verseId = 0
     var languageId = 0
     var translationId = 0
     
-    var bottomItems =  Array<BottomItem>()
-    var attributedString = NSMutableAttributedString()
-    var verseText = ""
+    private var bottomItems =  Array<BottomItem>()
+    private var attributedString = NSMutableAttributedString()
+    private var verseText = ""
     
+    private var verse = Verse()
+    private var verseLatin = Verse()
+    private var verseOriginal = Verse()
     
     private let dataBase = DataBase()
     
@@ -28,45 +33,35 @@ class VerseDetailViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let verseName = "\(chapterId). \(chapterName), \(verseId)"
-        navigationItem.title = verseName
+        SwiftEventBus.onMainThread(self, name:"optionChange") { result in
+            let option = result?.object as! Option
+            
+            if self.translationId != option.translationId {
+                self.translationId = option.translationId
+                self.chapterName = self.dataBase.getChapterName(chapterId: self.chapterId, translationId: self.translationId)
+                self.verse = self.dataBase.getVerse(chapterId: self.chapterId, verseId: self.verseId, translationId: self.translationId)
+                self.verseDetailText()
+                self.tableView.reloadData()
+            }
+            
+            if self.fontSize != option.fontSize {
+                self.fontSize = option.fontSize
+                self.verseDetailText()
+                self.tableView.reloadData()
+            }
+        }
+        
         
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = .systemBackground
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
         
-        let verse = dataBase.getVerse(chapterId: chapterId, verseId: verseId, translationId: translationId)
-        let verseLatin = dataBase.getVerse(chapterId: chapterId, verseId: verseId, translationId: 9)
-        let verseOriginal = dataBase.getVerse(chapterId: chapterId, verseId: verseId, translationId: 1)
+        verse = dataBase.getVerse(chapterId: chapterId, verseId: verseId, translationId: translationId)
+        verseLatin = dataBase.getVerse(chapterId: chapterId, verseId: verseId, translationId: 9)
+        verseOriginal = dataBase.getVerse(chapterId: chapterId, verseId: verseId, translationId: 1)
         
-        verseText = "\(verse.verseText)\n\(verseName)"
-        
-        let attrsBold = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 18)]
-        let attrsNormal = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18)]
-        
-        var boldText = "Seçili meal\n"
-        var boldString = NSMutableAttributedString(string:boldText, attributes:attrsBold)
-        var normalString = NSMutableAttributedString(string:verse.verseText, attributes:attrsNormal)
-        attributedString = boldString
-        attributedString.append(normalString)
-        
-        boldText = "\n\nLatin alfabesi\n"
-        boldString = NSMutableAttributedString(string:boldText, attributes:attrsBold)
-        normalString = NSMutableAttributedString(string:verseLatin.verseText, attributes:attrsNormal)
-        attributedString.append(boldString)
-        attributedString.append(normalString)
-        
-        
-        boldText = "\n\nArapça\n"
-        let paragraph = NSMutableParagraphStyle()
-        paragraph.alignment = .right
-        let attrsArabicNormal = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 22),
-                                 NSAttributedString.Key.paragraphStyle: paragraph]
-        boldString = NSMutableAttributedString(string:boldText, attributes:attrsBold)
-        normalString = NSMutableAttributedString(string:verseOriginal.verseText, attributes:attrsArabicNormal)
-        attributedString.append(boldString)
-        attributedString.append(normalString)
+        verseDetailText()
         
         
         bottomItems.append(BottomItem(id: 0, name: "", icon: "add"))
@@ -78,6 +73,40 @@ class VerseDetailViewController: UITableViewController {
         tableView.dataSource = self
         
         tableView.tableFooterView = UIView()
+        
+    }
+    
+    func verseDetailText() {
+        let verseName = "\(chapterId). \(chapterName), \(verseId)"
+        self.navigationItem.title = verseName
+        print(verseName)
+        verseText = "\(verse.verseText)\n\(verseName)"
+        
+        let attrsBold = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize:  CGFloat(fontSize))]
+        let attrsNormal = [NSAttributedString.Key.font : UIFont.systemFont(ofSize:  CGFloat(fontSize))]
+        
+        var boldText = "\("selected_translation".localized)\n"
+        var boldString = NSMutableAttributedString(string:boldText, attributes:attrsBold)
+        var normalString = NSMutableAttributedString(string:verse.verseText, attributes:attrsNormal)
+        attributedString = boldString
+        attributedString.append(normalString)
+        
+        boldText = "\n\n\("arabic_latin".localized)\n"
+        boldString = NSMutableAttributedString(string:boldText, attributes:attrsBold)
+        normalString = NSMutableAttributedString(string:verseLatin.verseText, attributes:attrsNormal)
+        attributedString.append(boldString)
+        attributedString.append(normalString)
+        
+        
+        boldText = "\n\n\("arabic".localized)\n"
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.alignment = .right
+        let attrsArabicNormal = [NSAttributedString.Key.font : UIFont.systemFont(ofSize:  CGFloat(fontSize + 4)),
+                                 NSAttributedString.Key.paragraphStyle: paragraph]
+        boldString = NSMutableAttributedString(string:boldText, attributes:attrsBold)
+        normalString = NSMutableAttributedString(string:verseOriginal.verseText, attributes:attrsArabicNormal)
+        attributedString.append(boldString)
+        attributedString.append(normalString)
         
     }
     
@@ -95,12 +124,15 @@ class VerseDetailViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "verseDetailViewCell", for: indexPath as IndexPath) as! VerseDetailViewCell
             cell.textView.attributedText = attributedString
             cell.textView.textColor = UIColor.label
+//            cell.textView.font = .systemFont(ofSize: CGFloat(fontSize))
             return cell
         } else {
             let bottomItem = bottomItems[indexPath.row]
             let cell = tableView.dequeueReusableCell(withIdentifier: "bottomViewCell", for: indexPath as IndexPath) as! BottomViewCell
             cell.labelText.text = bottomItem.name
             cell.iconView.image =  UIImage(systemName: bottomItem.icon) ?? .add
+            
+            cell.labelText.font = .systemFont(ofSize: CGFloat(fontSize))
             
             return cell
         }

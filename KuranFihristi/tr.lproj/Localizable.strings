@@ -1,7 +1,49 @@
-/* 
-  Localizable.strings
-  KuranFihristi
-
-  Created by Cavad Heybetzade on 5/9/20.
-  Copyright © 2020 Cavad Heybetzade. All rights reserved.
-*/
+"app_name" = "Kuran Fihristi";
+"chapters" = "Sureler";
+"dictionary" = "Sözlük";
+"topics" = "Konular";
+"names" = "İsimler";
+"other" = "Diğer";
+"verse" = "Aye";
+"language" = "Dil";
+"translation" = "Meal";
+"alignment" = "Sıralama";
+"by_sura" = "Sure";
+"by_down" = "İndirilme";
+"search" = "Arama";
+"copied" = "Kopyalandı";
+"share" = "Paylaş";
+"pinned" = "Pinlendi";
+"share_selected" = "Seçilenleri Paylaş";
+"copy_selected" = "Seçilenleri Kopyala";
+"pin_selected" = "Seçilenleri Pinle";
+"arabic_original" = "Arapça orijinal";
+"arabic_latin" = "Latin alfabesi";
+"arabic" = "Arapça";
+"share_ayat" = "Ayeti Paylaş";
+"copy_ayat" = "Ayeti Kopyala";
+"pin_ayat" = "Ayeti Pinle";
+"selected_translation" = "Seçili meal";
+"settings" = "Uygulama Ayarları";
+"clear" = "Temizle";
+"ok" = "Tamam";
+"cancel" = "İptal et";
+"clear_all" = "Tümünü sil";
+"clear_selected" = "Seçilenleri sil";
+"pinned_ayats" = "Pinlenmiş ayetler";
+"font_size" = "Yazı Boyutu";
+"interface_mode" = "Arayüz modu";
+"reminder_ayat_daily" = "Günlük ayet hatırlat";
+"reminder_time" = "Hatırlatma zamanı";
+"close_app" = "Uygulamayı kapat";
+"light_mode" = "Işıklı mod";
+"dark_mode" = "Karanlık mod";
+"on" = "Açık";
+"off" = "Kapalı";
+"show_in_verse" = "Ayetlerde gör";
+"reminder_ayat" = "Ayet hatırlatması";
+"ayat_reminder" = "Ayet hatırlatıcı";
+"search_all" = "Tam arama";
+"system" = "Cihazı kullan";
+"select_others" = "Başkalarını seçin";
+"back" = "Geri";

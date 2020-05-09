@@ -1,7 +1,49 @@
-/* 
-  Localizable.strings
-  KuranFihristi
-
-  Created by Cavad Heybetzade on 5/9/20.
-  Copyright © 2020 Cavad Heybetzade. All rights reserved.
-*/
+"app_name" = "Коранический указатель";
+"chapters" = "Суры";
+"dictionary" = "Словарь";
+"topics" = "Тема";
+"names" = "Имена";
+"other" = "Другое";
+"verse" = "Аят";
+"language" = "Язык";
+"translation" = "Перевод";
+"alignment" = "Порядок";
+"by_sura" = "Сура";
+"by_down" = "Вниз";
+"search" = "Поиск";
+"copied" = "Копировать";
+"share" = "Поделиться ";
+"pinned" = "Закрепить";
+"share_selected" = "Поделиться Выбранным";
+"copy_selected" = "Копировать Выбранное";
+"pin_selected" = "Закрепить выбранное";
+"arabic_original" = "Арабский оригинал";
+"arabic_latin" = "Арабо-латинский";
+"arabic" = "Арабский";
+"share_ayat" = "Поделиться аятом";
+"copy_ayat" = "Копировать аят";
+"pin_ayat" = "Закреплённый аят";
+"selected_translation" = "Выбранный перевод";
+"settings" = "Настройки";
+"clear" = "Очистить";
+"ok" = "Хорошо";
+"cancel" = "Отмена";
+"clear_all" = "Очистить все";
+"clear_selected" = "Очистить выбранное";
+"pinned_ayats" = "Закреплённые аяты";
+"font_size" = "Размер шрифта";
+"interface_mode" = "Интерфейсный режим";
+"reminder_ayat_daily" = "Ежедневное напоминание аята ";
+"reminder_time" = "Время напоминания";
+"close_app" = "Закрыть приложение";
+"light_mode" = "Дневной режим";
+"dark_mode" = "Ночной режим";
+"on" = "Включить";
+"off" = "Выключить";
+"show_in_verse" = "Смотрите в аяты";
+"reminder_ayat" = "Напоминание аяты";
+"ayat_reminder" = "Ayat reminder";
+"search_all" = "Полный поиск";
+"system" = "Системный стандарт";
+"select_others" = "Выбери других";
+"back" = "Назад";

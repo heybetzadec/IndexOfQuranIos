@@ -120,7 +120,7 @@ class TopicViewController: UITableViewController, UISearchResultsUpdating, UISea
                 phraseViewController.languageId = languageId
                 phraseViewController.translationId = translationId
                 let backItem = UIBarButtonItem()
-                backItem.title = "Geri"
+                backItem.title = "back".localized
                 navigationItem.backBarButtonItem = backItem
             }
         }

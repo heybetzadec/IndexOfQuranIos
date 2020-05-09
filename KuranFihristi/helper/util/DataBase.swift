@@ -36,6 +36,7 @@ class DataBase: NSObject {
         if !orderBySurah {
             orderBy = " ORDER BY DescentID ASC";
         }
+        
         if sqlite3_prepare_v2(db, "SELECT ChapterID, ChapterName from Chapter WHERE TranslationID = \(translationId) \(orderBy)", -1, &statement, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error preparing select: \(errmsg)")
@@ -500,12 +501,12 @@ class DataBase: NSObject {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error preparing select: \(errmsg)")
         }
-
+        
         while sqlite3_step(statement) == SQLITE_ROW {
             let item = Language()
             item.languageId = Int(sqlite3_column_int64(statement, 0))
             item.languageName = String(cString: sqlite3_column_text(statement, 1))
-            item.languageCode = String(cString: sqlite3_column_text(statement, 1))
+            item.languageCode = String(cString: sqlite3_column_text(statement, 2))
             list.append(item)
         }
 

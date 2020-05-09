@@ -250,7 +250,7 @@ class VerseByTopicViewController: UITableViewController , UISearchResultsUpdatin
                 verseController.languageId = languageId
                 verseController.translationId = translationId
                 let backItem = UIBarButtonItem()
-                backItem.title = "Geri"
+                backItem.title = "back".localized
                 navigationItem.backBarButtonItem = backItem
             }
         }

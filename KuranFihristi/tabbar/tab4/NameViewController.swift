@@ -120,7 +120,7 @@ class NameViewController: UITableViewController, UISearchResultsUpdating, UISear
                 verseController.languageId = languageId
                 verseController.tranlationId = tranlationId
                 let backItem = UIBarButtonItem()
-                backItem.title = "Geri"
+                backItem.title = "back".localized
                 navigationItem.backBarButtonItem = backItem
             }
         }

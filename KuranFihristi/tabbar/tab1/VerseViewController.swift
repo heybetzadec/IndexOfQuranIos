@@ -8,9 +8,11 @@
 
 import UIKit
 import AudioToolbox
+import SwiftEventBus
 
 class VerseViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
+    var fontSize = 17
     var chapterName = ""
     var verseId = 1
     var chapterId = 0
@@ -28,6 +30,27 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        SwiftEventBus.onMainThread(self, name:"optionChange") { result in
+            let option = result?.object as! Option
+            
+            if self.translationId != option.translationId {
+                self.translationId = option.translationId
+                self.fullVerses = self.dataBase.getVerses(chapterId: self.chapterId, translationId: self.translationId)
+                self.verses = self.fullVerses
+                self.tableView.reloadData()
+                
+                self.chapterName = self.dataBase.getChapterName(chapterId: self.chapterId, translationId: self.translationId)
+                self.navigationItem.title = "\(self.chapterId). \(self.chapterName)"
+                
+            }
+            
+            if self.fontSize != option.fontSize {
+                self.fontSize = option.fontSize
+                self.tableView.reloadData()
+            }
+        }
+        
         
         if let button = self.navigationItem.rightBarButtonItem {
             button.isEnabled = false
@@ -207,7 +230,9 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
                 }
             }
             
-            cell.verseTextLabel.attributedText = attrStr //"\(verseItem.verseId). \(verseItem.verseText)"
+            cell.verseTextLabel.attributedText = attrStr
+            cell.verseTextLabel.font = .systemFont(ofSize: CGFloat(fontSize))
+            
             return cell
         }
     }
@@ -224,14 +249,17 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let verseItem = verses[indexPath.row]
         
-        if tableView.allowsMultipleSelection {
-            self.appendVerse(insertVerse: verses[indexPath.row])
-            
-        }
-        
-        if selectedVerses.count == 0 {
-            performSegue(withIdentifier: "showVerseDetail", sender: verses[indexPath.row])
+        if verseItem.chapterId == 0 {
+            SwiftEventBus.post("goToSearch", sender: searchString)
+        } else {
+            if tableView.allowsMultipleSelection {
+                self.appendVerse(insertVerse: verses[indexPath.row])
+            }
+            if selectedVerses.count == 0 {
+                performSegue(withIdentifier: "showVerseDetail", sender: verseItem)
+            }
         }
        
     }
@@ -240,13 +268,14 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
         if segue.identifier == "showVerseDetail" {
             if let verseDetailController = segue.destination as? VerseDetailViewController {
                 let selectedVerseItem = sender as! Verse
+                verseDetailController.fontSize = fontSize
                 verseDetailController.verseId = selectedVerseItem.verseId
                 verseDetailController.chapterId = chapterId
                 verseDetailController.chapterName = chapterName
                 verseDetailController.languageId = languageId
                 verseDetailController.translationId = translationId
                 let backItem = UIBarButtonItem()
-                backItem.title = "Geri"
+                backItem.title = "back".localized
                 navigationItem.backBarButtonItem = backItem
             }
         }

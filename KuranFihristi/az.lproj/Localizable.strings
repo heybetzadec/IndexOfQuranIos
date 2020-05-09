@@ -1,7 +1,49 @@
-/* 
-  Localizable.strings
-  KuranFihristi
-
-  Created by Cavad Heybetzade on 5/9/20.
-  Copyright © 2020 Cavad Heybetzade. All rights reserved.
-*/
+"app_name" = "Quran Fehristi";
+"chapters" = "Surələr";
+"dictionary" = "Sözlük";
+"topics" = "Mövzu";
+"names" = "Adlar";
+"other" = "Digər";
+"verse" = "Ayə";
+"language" = "Dil";
+"translation" = "Tərcümə";
+"alignment" = "Sıralama";
+"by_sura" = "Surə";
+"by_down" = "Endirilmə";
+"search" = "Axtarış";
+"copied" = "Kopyalandı";
+"share" = "Paylaş";
+"pinned" = "Pinləndi";
+"arabic_original" = "Ərəbcə orginal";
+"arabic_latin" = "Latın əlifbası";
+"arabic" = "Ərəbcə";
+"share_ayat" = "Ayəti Paylaş";
+"copy_ayat" = "Ayəti Kopyala";
+"pin_ayat" = "Ayəti Pinlə";
+"share_selected" = "Seçilənləri Paylaş";
+"copy_selected" = "Seçilənləri Kopyala";
+"pin_selected" = "Seçilənləri Pinlə";
+"selected_translation" = "Seçilmiş tərcümə";
+"settings" = "Tətbiq parametrləri";
+"clear" = "Temizle";
+"ok" = "Oldu";
+"cancel" = "Ləğv et";
+"clear_all" = "Hamsını sil";
+"clear_selected" = "Seçilənləri sil";
+"pinned_ayats" = "Pinlənmiş ayələr";
+"font_size" = "Şrift ölçüsü";
+"interface_mode" = "İnterfeys modu";
+"reminder_ayat_daily" = "Gündəlik ayə xatırlat";
+"reminder_time" = "Xatırlatma vaxtı";
+"close_app" = "Tətbiqi bağlayın";
+"light_mode" = "İşıqlı rejimi";
+"dark_mode" = "Qaranlıq rejim";
+"on" = "Aktiv";
+"off" = "Deaktiv";
+"show_in_verse" = "Ayələrdə gör";
+"reminder_ayat" = "Ayə xatırlatması";
+"ayat_reminder" = "Ayat reminder";
+"search_all" = "Tam axtarış";
+"system" = "Sistem standart";
+"select_others" = "Digərlərini seçin";
+"back" = "Geri";

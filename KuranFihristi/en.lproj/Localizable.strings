@@ -1,7 +1,49 @@
-/* 
-  Localizable.strings
-  KuranFihristi
-
-  Created by Cavad Heybetzade on 5/9/20.
-  Copyright © 2020 Cavad Heybetzade. All rights reserved.
-*/
+"app_name" = "The Quran Index";
+"chapters" = "Suras";
+"dictionary" = "Dictionary";
+"topics" = "Topics";
+"names" = "Names";
+"other" = "Other";
+"verse" = "Ayat";
+"language" = "Language";
+"translation" = "Translation";
+"alignment" = "Alignment";
+"by_sura" = "Sura";
+"by_down" = "By Down";
+"search" = "Search";
+"copied" = "Copied";
+"share" = "Share";
+"pinned" = "Pinned";
+"arabic_original" = "Arabic Original";
+"arabic_latin" = "Latin alphabet";
+"arabic" = "Arabic";
+"share_ayat" = "Share Ayat";
+"copy_ayat" = "Copy Ayat";
+"pin_ayat" = "Pin Ayat";
+"share_selected" = "Share Selected";
+"copy_selected" = "Copy Selected";
+"pin_selected" = "Pin Selected";
+"selected_translation" = "Selected translation";
+"settings" = "App settings";
+"clear" = "Temizle";
+"ok" = "Ok";
+"cancel" = "Cancel";
+"clear_all" = "Clear All";
+"clear_selected" = "Clear Selected";
+"pinned_ayats" = "Pinned ayats";
+"font_size" = "Font size";
+"interface_mode" = "Interface mode";
+"reminder_ayat_daily" = "Remember ayat daily";
+"reminder_time" = "Remember time";
+"close_app" = "Close app";
+"light_mode" = "Light mode";
+"dark_mode" = "Dark mode";
+"on" = "On";
+"off" = "Off";
+"show_in_verse" = "Show in ayats";
+"ayat_reminder" = "Verse reminder";
+"search_all" = "Full Search";
+"reminder_ayat" = "Verse reminder";
+"system" = "Use Device";
+"select_others" = "Select others";
+"back" = "Back";

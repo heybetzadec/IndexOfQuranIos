@@ -49,6 +49,13 @@ class SettingViewController: UITableViewController, UIPickerViewDelegate, UIPick
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .systemBackground
+        navigationItem.standardAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
+        navigationItem.title = "settings".localized
+        
+        languageId = defaults.integer(forKey: "languageId")
         translationId = defaults.integer(forKey: "translationId")
         
         selectedLanguage = defaults.integer(forKey: "selectedLanguage")
@@ -57,6 +64,9 @@ class SettingViewController: UITableViewController, UIPickerViewDelegate, UIPick
         selectedFontSize = defaults.integer(forKey: "selectedFontSize")
         selectedInterfaceMode = defaults.integer(forKey: "selectedInterfaceMode")
         
+        print("languageId -> \(languageId)")
+        print("translationId -> \(translationId)")
+        print("selectedLanguage -> \(selectedLanguage)")
         print("selectedTranslation -> \(selectedTranslation)")
         
         languages = dataBase.getLanguages()
@@ -70,15 +80,15 @@ class SettingViewController: UITableViewController, UIPickerViewDelegate, UIPick
         for translate in translations {
             translationItems.append(translate.translationName)
         }
-        orderByItems = ["Sure","İndirilme"]
+        orderByItems = ["by_sura".localized, "by_down".localized]
         fontSizeItems = ["14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"]
-        interfaceModeItems = ["Cihazı kullan", "Işıklı mod", "Karanlık mod"]
+        interfaceModeItems = ["system".localized, "light_mode".localized, "dark_mode".localized]
         
-        settingItem.append(SettingItem(id: 1, name: "Dil", value: languageItems[selectedLanguage]))
-        settingItem.append(SettingItem(id: 2, name: "Meal", value: translationItems[selectedTranslation]))
-        settingItem.append(SettingItem(id: 3, name: "Sıralama", value: orderByItems[selectedOrder]))
-        settingItem.append(SettingItem(id: 4, name: "Yazı boyutu", value: fontSizeItems[selectedFontSize]))
-        settingItem.append(SettingItem(id: 5, name: "Arayüz modu", value: interfaceModeItems[selectedInterfaceMode]))
+        settingItem.append(SettingItem(id: 1, name: "language".localized, value: languageItems[selectedLanguage]))
+        settingItem.append(SettingItem(id: 2, name: "translation".localized, value: translationItems[selectedTranslation]))
+        settingItem.append(SettingItem(id: 3, name: "alignment".localized, value: orderByItems[selectedOrder]))
+        settingItem.append(SettingItem(id: 4, name: "font_size".localized, value: fontSizeItems[selectedFontSize]))
+        settingItem.append(SettingItem(id: 5, name: "interface_mode".localized, value: interfaceModeItems[selectedInterfaceMode]))
         
         emptyGesture = UITapGestureRecognizer(target: self, action:  #selector(self.emptyClickAction))
         
@@ -142,6 +152,42 @@ class SettingViewController: UITableViewController, UIPickerViewDelegate, UIPick
             defaults.set(selectedTranslation, forKey: "selectedTranslation")
             defaults.set(languageId, forKey: "languageId")
             defaults.set(translationId, forKey: "translationId")
+            defaults.set(language.languageCode, forKey: "i18n_language")
+            
+
+            tabBarController?.viewControllers?[0].tabBarItem.title = "chapters".localized
+            tabBarController?.viewControllers?[1].tabBarItem.title = "letters".localized
+            tabBarController?.viewControllers?[2].tabBarItem.title = "topics".localized
+            tabBarController?.viewControllers?[3].tabBarItem.title = "names".localized
+            tabBarController?.viewControllers?[4].tabBarItem.title = "other".localized
+            tabBarItem.title = "settings".localized
+            
+
+            orderByItems = ["by_sura".localized, "by_down".localized]
+            interfaceModeItems = ["system".localized, "light_mode".localized, "dark_mode".localized]
+            
+            settingItem[0].name = "language".localized
+            settingItem[1].name = "translation".localized
+            settingItem[2].name = "alignment".localized
+            settingItem[2].value = orderByItems[selectedOrder]
+            settingItem[3].name = "font_size".localized
+            settingItem[4].name = "interface_mode".localized
+            settingItem[4].value = interfaceModeItems[selectedInterfaceMode]
+            
+            navigationItem.title = "settings".localized
+            
+            tableView.reloadData()
+            
+//            settingItem.append(SettingItem(id: 1, name: "language".localized, value: languageItems[selectedLanguage]))
+//            settingItem.append(SettingItem(id: 2, name: "translation".localized, value: translationItems[selectedTranslation]))
+//            settingItem.append(SettingItem(id: 3, name: "alignment".localized, value: orderByItems[selectedOrder]))
+//            settingItem.append(SettingItem(id: 4, name: "font_size".localized, value: fontSizeItems[selectedFontSize]))
+//            settingItem.append(SettingItem(id: 5, name: "interface_mode".localized, value: interfaceModeItems[selectedInterfaceMode]))
+            
+//            print("languageId ---> \(defaults.integer(forKey: "languageId"))")
+//            print("translationId ---> \(defaults.integer(forKey: "translationId"))")
+//            print("i18n_language ---> \(String(describing: defaults.string(forKey: "i18n_language")))")
+            
         case 1:
             selectedTranslation = row
             settingItem[1].value = translationItems[row]
@@ -260,4 +306,24 @@ class SettingViewController: UITableViewController, UIPickerViewDelegate, UIPick
         return cell
     }
     
+}
+
+
+
+extension String {
+    var localized: String {
+        if let _ = UserDefaults.standard.string(forKey: "i18n_language") {} else {
+            // we set a default, just in case
+            UserDefaults.standard.set("Base", forKey: "i18n_language")
+            UserDefaults.standard.synchronize()
+        }
+        let lang = UserDefaults.standard.string(forKey: "i18n_language")
+        guard let path = Bundle.main.path(forResource: lang, ofType: "lproj") else {
+            return self
+        }
+        guard let bundle = Bundle(path: path) else {
+            return self
+        }
+        return NSLocalizedString(self, tableName: nil, bundle: bundle, value: "", comment: "")
+    }
 }

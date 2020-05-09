@@ -123,7 +123,7 @@ class WordViewController: UITableViewController, UISearchResultsUpdating, UISear
                 verseByWordController.languageId = languageId
                 verseByWordController.translationId = translationId
                 let backItem = UIBarButtonItem()
-                backItem.title = "Geri"
+                backItem.title = "back".localized
                 navigationItem.backBarButtonItem = backItem
             }
         }
