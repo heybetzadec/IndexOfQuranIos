@@ -97,6 +97,18 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
             self.navigationItem.title = "chapters".localized
         }
         
+        SwiftEventBus.onMainThread(self, name:"goToVerse") { result in
+            let goToVerseBy = result?.object as! VerseBy
+            let mainTabBar = self.tabBarController as! AppTabBarViewController
+            mainTabBar.selectedIndex = 0
+            self.navigationController?.popToRootViewController(animated: true)
+            self.verseId = goToVerseBy.verseId
+            _ = Timer.scheduledTimer(withTimeInterval: 0.7, repeats: false) { timer in
+                 self.performSegue(withIdentifier: "showVerses", sender: Chapter(chapterId: goToVerseBy.chapterId, chapterName: goToVerseBy.chapterName))
+            }
+            
+        }
+        
         
         fullChapters = dataBase.getChapters(translationId: translationId, orderBySurah: orderBySurah)
         chapters = fullChapters
@@ -122,12 +134,11 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
     @objc func handleLongPress(longPressGesture: UILongPressGestureRecognizer) {
         let p = longPressGesture.location(in: self.tableView)
         let indexPath = self.tableView.indexPathForRow(at: p)
-        if indexPath == nil {
+        if indexPath != nil {
             print("Long press on table view, not row.")
         } else if longPressGesture.state == UIGestureRecognizer.State.began {
             AudioServicesPlaySystemSound(1520) // 1519 - peek, 1521 - nope
             
-            print("Long press on row, at \(indexPath!.row)")
             tableView.selectRow(at: indexPath, animated: false, scrollPosition: UITableView.ScrollPosition.middle)
             tableView.allowsMultipleSelection = true
             

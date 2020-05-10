@@ -7,20 +7,35 @@
 //
 
 import UIKit
+import SwiftEventBus
 
 class NameDetailViewController: UIViewController {
     
     @IBOutlet weak var nameTextView: UITextView!
     
     var name = Name()
-    var languageId = 0
-    var tranlationId = 0
-    var searchString = ""
+    var languageId = 1
+    var translationId = 154
+    var fontSize = 17
     
     private let dataBase = DataBase()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        SwiftEventBus.onMainThread(self, name:"optionChange") { result in
+            let option = result?.object as! Option
+            
+            if option.languageId != self.languageId {
+                self.languageId = option.languageId
+                self.load()
+            }
+            
+            if self.fontSize != option.fontSize {
+                self.fontSize = option.fontSize
+                self.load()
+            }
+        }
         
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = .systemBackground
@@ -28,10 +43,14 @@ class NameDetailViewController: UIViewController {
         navigationItem.scrollEdgeAppearance = appearance
         navigationItem.title = name.nameText
         
+        load()
+        nameTextView.textColor = UIColor.label
+    }
+    
+    func load(){
         let showName = dataBase.getNameHtml(nameId: name.nameId, languageId: languageId)
         
-        nameTextView.attributedText = "<div style=\"font-size:18px; margin-left:5px\"><b>\(name.nameDescription)</b><br/><br/>\(showName)<br/><br/></div>".htmlToAttributedString
-        nameTextView.textColor = UIColor.label
+        nameTextView.attributedText = "<div style=\"font-size:\(fontSize+1)px;\"><b>\(name.nameDescription)</b><br/><br/>\(showName)<br/><br/></div>".htmlToAttributedString
     }
     
 }

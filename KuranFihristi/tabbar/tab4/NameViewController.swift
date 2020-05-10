@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftEventBus
 
 class NameViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
@@ -14,13 +15,38 @@ class NameViewController: UITableViewController, UISearchResultsUpdating, UISear
     private var names = Array<Name>()
     private var fullNames = Array<Name>()
     private var searchController = UISearchController()
+    private var defaults = UserDefaults.standard
+    private var searchString = ""
     
     private var languageId = 1
-    private var tranlationId = 154
+    private var fontSize = 17
+    private var translationId = 154
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        languageId = defaults.integer(forKey: "languageId")
+        translationId = defaults.integer(forKey: "translationId")
+        fontSize = defaults.integer(forKey: "fontSize")
+        
+        SwiftEventBus.onMainThread(self, name:"optionChange") { result in
+            let option = result?.object as! Option
+            
+            if option.languageId != self.languageId {
+                self.languageId = option.languageId
+                self.fullNames = self.dataBase.getNames(languageId: self.languageId)
+                self.names = self.fullNames
+                self.navigationItem.title = "names".localized
+                self.tableView.reloadData()
+            }
+            
+            if self.fontSize != option.fontSize {
+                self.fontSize = option.fontSize
+                self.tableView.reloadData()
+            }
+        }
+        
         
         if let button = self.navigationItem.rightBarButtonItem {
             button.isEnabled = false
@@ -33,6 +59,7 @@ class NameViewController: UITableViewController, UISearchResultsUpdating, UISear
         appearance.backgroundColor = .systemBackground
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
+        self.navigationItem.title = "names".localized
         prepareSearchController()
         
         tableView.tableFooterView = UIView()
@@ -67,6 +94,7 @@ class NameViewController: UITableViewController, UISearchResultsUpdating, UISear
     }
     
     func filter(searchText:String){
+        searchString = searchText
         if !searchText.isEmpty {
             let loverSearch = searchText.lowercased()
             let textAz = loverSearch.replacingOccurrences(ofes: ["e","i"], withes: ["ə", "i̇"])
@@ -104,6 +132,9 @@ class NameViewController: UITableViewController, UISearchResultsUpdating, UISear
             let cell = tableView.dequeueReusableCell(withIdentifier: "nameViewCell", for: indexPath as IndexPath) as! ItemDetailViewCell
             cell.titleLabel.text = nameItem.nameText
             cell.subTitleLabel.text = nameItem.nameDescription
+            cell.titleLabel.font = .systemFont(ofSize: CGFloat(fontSize))
+            cell.subTitleLabel.font = .systemFont(ofSize: CGFloat(fontSize-3))
+            
             return cell
         }
     }
@@ -115,10 +146,11 @@ class NameViewController: UITableViewController, UISearchResultsUpdating, UISear
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "nameDetail" {
-            if let verseController = segue.destination as? NameDetailViewController {
-                verseController.name = sender as! Name
-                verseController.languageId = languageId
-                verseController.tranlationId = tranlationId
+            if let nameController = segue.destination as? NameDetailViewController {
+                nameController.name = sender as! Name
+                nameController.fontSize = fontSize
+                nameController.languageId = languageId
+                nameController.translationId = translationId
                 let backItem = UIBarButtonItem()
                 backItem.title = "back".localized
                 navigationItem.backBarButtonItem = backItem

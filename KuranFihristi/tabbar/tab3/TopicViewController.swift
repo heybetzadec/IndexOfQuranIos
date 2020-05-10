@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftEventBus
 
 class TopicViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
@@ -14,13 +15,38 @@ class TopicViewController: UITableViewController, UISearchResultsUpdating, UISea
     private var topics = Array<Topic>()
     private var fullTopics = Array<Topic>()
     private var searchController = UISearchController()
+    private var defaults = UserDefaults.standard
+    private var searchString = ""
     
     private var languageId = 1
     private var translationId = 154
+    private var fontSize = 17
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        languageId = defaults.integer(forKey: "languageId")
+        translationId = defaults.integer(forKey: "translationId")
+        fontSize = defaults.integer(forKey: "fontSize")
+        
+        SwiftEventBus.onMainThread(self, name:"optionChange") { result in
+            let option = result?.object as! Option
+            self.translationId = option.translationId
+            
+            if option.languageId != self.languageId {
+                self.languageId = option.languageId
+                self.fullTopics = self.dataBase.getTopics(languageId: self.languageId)
+                self.topics = self.fullTopics
+                self.navigationItem.title = "topics".localized
+                self.tableView.reloadData()
+            }
+            
+            if self.fontSize != option.fontSize {
+                self.fontSize = option.fontSize
+                self.tableView.reloadData()
+            }
+        }
         
         if let button = self.navigationItem.rightBarButtonItem {
             button.isEnabled = false
@@ -34,6 +60,8 @@ class TopicViewController: UITableViewController, UISearchResultsUpdating, UISea
         appearance.backgroundColor = .systemBackground
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
+        self.navigationItem.title = "topics".localized
+        
         prepareSearchController()
         tableView.tableFooterView = UIView()
     }
@@ -67,6 +95,7 @@ class TopicViewController: UITableViewController, UISearchResultsUpdating, UISea
     }
     
     func filter(searchText:String){
+        self.searchString = searchText
         if !searchText.isEmpty {
             let loverSearch = searchText.lowercased()
             let textAz = loverSearch.replacingOccurrences(ofes: ["e","i"], withes: ["ə", "i̇"])
@@ -103,13 +132,20 @@ class TopicViewController: UITableViewController, UISearchResultsUpdating, UISea
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "topicItemViewCell", for: indexPath as IndexPath) as! ItemViewCell
             cell.nameLabel.text = " \(topicItem.topicName)"
+            cell.nameLabel.font = .systemFont(ofSize: CGFloat(fontSize))
             return cell
         }
     }
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showPhrases", sender: topics[indexPath.row])
+        let topicItem = topics[indexPath.row]
+        if topicItem.topicId == 0 {
+            SwiftEventBus.post("goToSearch", sender: self.searchString)
+        } else {
+            performSegue(withIdentifier: "showPhrases", sender: topics[indexPath.row])
+        }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -117,6 +153,7 @@ class TopicViewController: UITableViewController, UISearchResultsUpdating, UISea
             if let phraseViewController  = segue.destination as? PhraseViewController {
                 let selectedPhraseItem = sender as! Topic
                 phraseViewController.topic = selectedPhraseItem
+                phraseViewController.fontSize = fontSize
                 phraseViewController.languageId = languageId
                 phraseViewController.translationId = translationId
                 let backItem = UIBarButtonItem()

@@ -8,6 +8,7 @@
 
 import UIKit
 import AudioToolbox
+import SwiftEventBus
 
 class VerseByWordViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
@@ -20,12 +21,30 @@ class VerseByWordViewController: UITableViewController, UISearchResultsUpdating,
     
     var letter = Letter()
     var word = Word()
+    var fontSize = 17
     var languageId = 0
     var translationId = 0
     var searchString = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        SwiftEventBus.onMainThread(self, name:"optionChange") { result in
+            let option = result?.object as! Option
+            
+            if option.languageId != self.languageId || self.translationId != option.translationId{
+                self.languageId = option.languageId
+                self.translationId = option.translationId
+                self.fullVersesBy = self.dataBase.getVerseByWords(letterId: self.letter.letterId, wordId: self.word.wordId, languageId: self.languageId, translationId: self.translationId)
+                self.versesBy = self.fullVersesBy
+                self.tableView.reloadData()
+            }
+            
+            if self.fontSize != option.fontSize {
+                self.fontSize = option.fontSize
+                self.tableView.reloadData()
+            }
+        }
         
         if let button = self.navigationItem.rightBarButtonItem {
             button.isEnabled = false
@@ -213,6 +232,9 @@ class VerseByWordViewController: UITableViewController, UISearchResultsUpdating,
             
             cell.nameLabel.text = "\(verseItem.chapterId). \(verseItem.chapterName), \(verseItem.verseId)"
             cell.verseLabel.attributedText = attrStr //"\(verseItem.verseId). \(verseItem.verseText)"
+            cell.nameLabel.font = .boldSystemFont(ofSize: CGFloat(fontSize))
+            cell.verseLabel.font = .systemFont(ofSize: CGFloat(fontSize))
+            
             return cell
         }
     }
@@ -229,33 +251,48 @@ class VerseByWordViewController: UITableViewController, UISearchResultsUpdating,
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let verseByItem = versesBy[indexPath.row]
         if tableView.allowsMultipleSelection {
-            self.appendVerseBy(insertVerse: versesBy[indexPath.row])
+            self.appendVerseBy(insertVerse: verseByItem)
             
         }
         
         if selectedVersesBy.count == 0 {
-            performSegue(withIdentifier: "showVerseFromByWord", sender: versesBy[indexPath.row])
+            if verseByItem.verseId == 0 {
+                SwiftEventBus.post("goToSearch", sender: self.searchString)
+            } else {
+                SwiftEventBus.post("goToVerse", sender: verseByItem)
+            }
+            
+            if !searchString.isEmpty {
+                DispatchQueue.main.async {
+                    self.searchController.searchBar.text = ""
+                    self.searchController.isActive = false
+                    self.searchController.isEditing = false
+                    self.versesBy = self.fullVersesBy
+                    self.tableView.reloadData()
+                }
+            }
+            
         }
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showVerseFromByWord" {
-            if let verseController = segue.destination as? VerseViewController {
-                let selectedVerseByItem = sender as! VerseBy
-                verseController.verseId = selectedVerseByItem.verseId
-                verseController.chapterId = selectedVerseByItem.chapterId
-                verseController.chapterName = selectedVerseByItem.chapterName
-                verseController.languageId = languageId
-                verseController.translationId = translationId
-                let backItem = UIBarButtonItem()
-                backItem.title = "back".localized
-                navigationItem.backBarButtonItem = backItem
-            }
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "showVerseFromByWord" {
+//            if let verseController = segue.destination as? VerseViewController {
+//                let selectedVerseByItem = sender as! VerseBy
+//                verseController.verseId = selectedVerseByItem.verseId
+//                verseController.chapterId = selectedVerseByItem.chapterId
+//                verseController.chapterName = selectedVerseByItem.chapterName
+//                verseController.languageId = languageId
+//                verseController.translationId = translationId
+//                let backItem = UIBarButtonItem()
+//                backItem.title = "back".localized
+//                navigationItem.backBarButtonItem = backItem
+//            }
+//        }
+//    }
     
     
     private func appendVerseBy(insertVerse:VerseBy){

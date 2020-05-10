@@ -92,7 +92,6 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
         } else if longPressGesture.state == UIGestureRecognizer.State.began {
             AudioServicesPlaySystemSound(1520) // 1519 - peek, 1521 - nope
             
-            print("Long press on row, at \(indexPath!.row)")
             tableView.selectRow(at: indexPath, animated: false, scrollPosition: UITableView.ScrollPosition.middle)
             tableView.allowsMultipleSelection = true
             self.appendVerse(insertVerse: verses[indexPath!.row])
@@ -260,6 +259,16 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
             if selectedVerses.count == 0 {
                 performSegue(withIdentifier: "showVerseDetail", sender: verseItem)
             }
+        }
+        
+        if !searchString.isEmpty {
+            DispatchQueue.main.async {
+                self.searchController.searchBar.text = ""
+                self.searchController.isActive = false
+                self.searchController.isEditing = false
+                self.verses = self.fullVerses
+                self.tableView.reloadData()
+              }
         }
        
     }

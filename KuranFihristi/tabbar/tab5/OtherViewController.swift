@@ -20,13 +20,10 @@ class OtherViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         let mainTabBar = self.tabBarController as! AppTabBarViewController
         if !mainTabBar.searchString.isEmpty {
-//            print("mainTabBar.searchString = \(mainTabBar.searchString)")
             let storyBoard = UIStoryboard(name: "Main", bundle:nil)
             let searchViewController = storyBoard.instantiateViewController(withIdentifier: "searchViewController") as! SearchViewController
             searchViewController.translationId = self.translationId
             searchViewController.languageId = self.languageId
-//            searchViewController.searchString = mainTabBar.searchString
-//            mainTabBar.searchString = ""
             self.navigationController?.pushViewController(searchViewController, animated: true)
         }
     }

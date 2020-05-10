@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftEventBus
 
 class LetterViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
@@ -14,13 +15,38 @@ class LetterViewController: UITableViewController, UISearchResultsUpdating, UISe
     private var letters = Array<Letter>()
     private var fullLetters = Array<Letter>()
     private var searchController = UISearchController()
+    private var defaults = UserDefaults.standard
+    private var searchString = ""
     
     private var languageId = 1
     private var translationId = 154
+    private var fontSize = 17
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        languageId = defaults.integer(forKey: "languageId")
+        translationId = defaults.integer(forKey: "translationId")
+        fontSize = defaults.integer(forKey: "fontSize")
+        
+        SwiftEventBus.onMainThread(self, name:"optionChange") { result in
+            let option = result?.object as! Option
+            self.translationId = option.translationId
+            
+            if option.languageId != self.languageId {
+                self.languageId = option.languageId
+                self.fullLetters = self.dataBase.getLetters(languageId: self.languageId)
+                self.letters = self.fullLetters
+                self.navigationItem.title = "dictionary".localized
+                self.tableView.reloadData()
+            }
+            
+            if self.fontSize != option.fontSize {
+                self.fontSize = option.fontSize
+                self.tableView.reloadData()
+            }
+        }
         
         if let button = self.navigationItem.rightBarButtonItem {
             button.isEnabled = false
@@ -68,6 +94,7 @@ class LetterViewController: UITableViewController, UISearchResultsUpdating, UISe
     }
     
     func filter(searchText:String){
+        self.searchString = searchText
         if !searchText.isEmpty {
             let loverSearch = searchText.lowercased()
             let textAz = loverSearch.replacingOccurrences(ofes: ["e","i"], withes: ["ə", "i̇"])
@@ -104,13 +131,30 @@ class LetterViewController: UITableViewController, UISearchResultsUpdating, UISe
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "letterItemViewCell", for: indexPath as IndexPath) as! ItemViewCell
             cell.nameLabel.text = " \(letterItem.letterName)"
+            cell.nameLabel.font = .systemFont(ofSize: CGFloat(fontSize))
             return cell
         }
     }
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showWords", sender: letters[indexPath.row])
+        let letterItem = letters[indexPath.row]
+        if letterItem.letterId == 0 {
+            SwiftEventBus.post("goToSearch", sender: self.searchString)
+        } else {
+            performSegue(withIdentifier: "showWords", sender: letters[indexPath.row])
+        }
+        
+        if !searchString.isEmpty {
+            DispatchQueue.main.async {
+                self.searchController.searchBar.text = ""
+                self.searchController.isActive = false
+                self.searchController.isEditing = false
+                self.letters = self.fullLetters
+                self.tableView.reloadData()
+              }
+        }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -119,6 +163,7 @@ class LetterViewController: UITableViewController, UISearchResultsUpdating, UISe
                 let selectedLetterItem = sender as! Letter
                 wordController.letter = selectedLetterItem
                 wordController.languageId = languageId
+                wordController.fontSize = fontSize
                 wordController.translationId = translationId
                 let backItem = UIBarButtonItem()
                 backItem.title = "back".localized

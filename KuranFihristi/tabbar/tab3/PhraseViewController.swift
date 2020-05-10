@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftEventBus
 
 class PhraseViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
@@ -17,12 +18,30 @@ class PhraseViewController: UITableViewController, UISearchResultsUpdating, UISe
     private var searchController = UISearchController()
     
     var topic = Topic()
-    var languageId = 0
-    var translationId = 0
+    var fontSize = 17
+    var languageId = 1
+    var translationId = 154
     var searchString = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        SwiftEventBus.onMainThread(self, name:"optionChange") { result in
+            let option = result?.object as! Option
+            self.translationId = option.translationId
+            
+            if option.languageId != self.languageId {
+                self.languageId = option.languageId
+                self.fullPhrases = self.dataBase.getPhrase(topicId: self.topic.topicId, languageId: self.languageId)
+                self.phrases = self.fullPhrases
+                self.tableView.reloadData()
+            }
+            
+            if self.fontSize != option.fontSize {
+                self.fontSize = option.fontSize
+                self.tableView.reloadData()
+            }
+        }
         
         if let button = self.navigationItem.rightBarButtonItem {
             button.isEnabled = false
@@ -106,13 +125,20 @@ class PhraseViewController: UITableViewController, UISearchResultsUpdating, UISe
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "phraseItemViewCell", for: indexPath as IndexPath) as! ItemViewCell
             cell.nameLabel.text = " \(phraseItem.phraseName)"
+            cell.nameLabel.font = .systemFont(ofSize: CGFloat(fontSize))
             return cell
         }
     }
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showVerseByTopic", sender: phrases[indexPath.row])
+        let phraseItem = phrases[indexPath.row]
+        if phraseItem.phraseId == 0 {
+            SwiftEventBus.post("goToSearch", sender: self.searchString)
+        } else {
+            performSegue(withIdentifier: "showVerseByTopic", sender: phrases[indexPath.row])
+        }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -121,6 +147,7 @@ class PhraseViewController: UITableViewController, UISearchResultsUpdating, UISe
                 let selectedPhraseItem = sender as! Phrase
                 verseByTopicController.phrase = selectedPhraseItem
                 verseByTopicController.topic = topic
+                verseByTopicController.fontSize = fontSize
                 verseByTopicController.languageId = languageId
                 verseByTopicController.translationId = translationId
                 let backItem = UIBarButtonItem()

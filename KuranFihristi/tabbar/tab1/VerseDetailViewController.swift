@@ -79,7 +79,6 @@ class VerseDetailViewController: UITableViewController {
     func verseDetailText() {
         let verseName = "\(chapterId). \(chapterName), \(verseId)"
         self.navigationItem.title = verseName
-        print(verseName)
         verseText = "\(verse.verseText)\n\(verseName)"
         
         let attrsBold = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize:  CGFloat(fontSize))]

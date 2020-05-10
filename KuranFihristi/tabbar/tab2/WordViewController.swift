@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftEventBus
 
 class WordViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
@@ -17,12 +18,31 @@ class WordViewController: UITableViewController, UISearchResultsUpdating, UISear
     private var searchController = UISearchController()
     
     var letter = Letter()
-    var languageId = 0
-    var translationId = 0
+    var fontSize = 17
+    var languageId = 1
+    var translationId = 154
     var searchString = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        SwiftEventBus.onMainThread(self, name:"optionChange") { result in
+            let option = result?.object as! Option
+            self.translationId = option.translationId
+            
+            if option.languageId != self.languageId {
+                self.languageId = option.languageId
+                self.fullWords = self.dataBase.getWords(letterId: self.letter.letterId, languageId: self.languageId)
+                self.words = self.fullWords
+                self.tableView.reloadData()
+            }
+            
+            if self.fontSize != option.fontSize {
+                self.fontSize = option.fontSize
+                self.tableView.reloadData()
+            }
+        }
         
         if let button = self.navigationItem.rightBarButtonItem {
             button.isEnabled = false
@@ -69,6 +89,7 @@ class WordViewController: UITableViewController, UISearchResultsUpdating, UISear
     }
     
     func filter(searchText:String){
+        searchString = searchText
         if !searchText.isEmpty {
             let loverSearch = searchText.lowercased()
             let textAz = loverSearch.replacingOccurrences(ofes: ["e","i"], withes: ["ə", "i̇"])
@@ -105,19 +126,38 @@ class WordViewController: UITableViewController, UISearchResultsUpdating, UISear
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "wordItemViewCell", for: indexPath as IndexPath) as! ItemViewCell
             cell.nameLabel.text = " \(wordItem.wordName)"
+            cell.nameLabel.font = .systemFont(ofSize: CGFloat(fontSize))
             return cell
         }
     }
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showVerseByWord", sender: words[indexPath.row])
+        let wordItem = words[indexPath.row]
+        
+        if wordItem.wordId == 0 {
+            SwiftEventBus.post("goToSearch", sender: self.searchString)
+        } else {
+            performSegue(withIdentifier: "showVerseByWord", sender: words[indexPath.row])
+        }
+        
+        if !searchString.isEmpty {
+            DispatchQueue.main.async {
+                self.searchController.searchBar.text = ""
+                self.searchController.isActive = false
+                self.searchController.isEditing = false
+                self.words = self.fullWords
+                self.tableView.reloadData()
+              }
+        }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showVerseByWord" {
             if let verseByWordController = segue.destination as? VerseByWordViewController {
                 let selectedWordItem = sender as! Word
+                verseByWordController.fontSize = fontSize
                 verseByWordController.word = selectedWordItem
                 verseByWordController.letter = letter
                 verseByWordController.languageId = languageId

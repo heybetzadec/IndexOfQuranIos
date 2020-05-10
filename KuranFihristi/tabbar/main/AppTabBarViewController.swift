@@ -12,6 +12,7 @@ import SwiftEventBus
 class AppTabBarViewController: UITabBarController{
 
     var searchString = ""
+//    var goToVerseBy = VerseBy()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,11 @@ class AppTabBarViewController: UITabBarController{
             self.searchString = result?.object as! String
             self.selectedIndex = 4
         }
+        
+//        SwiftEventBus.onMainThread(self, name:"goToVerse") { result in
+////            self.goToVerseBy = result?.object as! VerseBy
+//            self.selectedIndex = 0
+//        }
         
         SwiftEventBus.onMainThread(self, name:"darkMode") { result in
             let darkMode = result?.object as! Bool
