@@ -49,6 +49,7 @@ class SettingViewController: UITableViewController, UIPickerViewDelegate, UIPick
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = .systemBackground
         navigationItem.standardAppearance = appearance
@@ -178,16 +179,6 @@ class SettingViewController: UITableViewController, UIPickerViewDelegate, UIPick
             
             tableView.reloadData()
             
-//            settingItem.append(SettingItem(id: 1, name: "language".localized, value: languageItems[selectedLanguage]))
-//            settingItem.append(SettingItem(id: 2, name: "translation".localized, value: translationItems[selectedTranslation]))
-//            settingItem.append(SettingItem(id: 3, name: "alignment".localized, value: orderByItems[selectedOrder]))
-//            settingItem.append(SettingItem(id: 4, name: "font_size".localized, value: fontSizeItems[selectedFontSize]))
-//            settingItem.append(SettingItem(id: 5, name: "interface_mode".localized, value: interfaceModeItems[selectedInterfaceMode]))
-            
-//            print("languageId ---> \(defaults.integer(forKey: "languageId"))")
-//            print("translationId ---> \(defaults.integer(forKey: "translationId"))")
-//            print("i18n_language ---> \(String(describing: defaults.string(forKey: "i18n_language")))")
-            
         case 1:
             selectedTranslation = row
             settingItem[1].value = translationItems[row]
@@ -199,7 +190,6 @@ class SettingViewController: UITableViewController, UIPickerViewDelegate, UIPick
             selectedOrder = row
             settingItem[2].value = orderByItems[row]
             defaults.set(selectedOrder, forKey: "selectedOrder")
-            defaults.set(selectedOrder == 0, forKey: "orderBySurah")
         case 3:
             selectedFontSize = row
             settingItem[3].value = fontSizeItems[row]
@@ -240,39 +230,13 @@ class SettingViewController: UITableViewController, UIPickerViewDelegate, UIPick
         }
         
         if selectedTableRow != 4 {
-            SwiftEventBus.post("optionChange", sender: Option(languageId: languageId, translationId: translationId, fontSize: fontSize, orderBySurah: selectedOrder == 0))
+            SwiftEventBus.post("optionChange", sender: Option(languageId: languageId, translationId: translationId, fontSize: fontSize, selectedOrder: selectedOrder))
         }
         
         tableView.reloadRows(at: [IndexPath(row: selectedTableRow, section: 0)], with: .none)
     }
     
-    
-//    func setupTimePicker(){
-//        let height = view.frame.height
-//        datePicker.datePickerMode = .time
-//        datePicker.frame = CGRect(x: 0, y: height - height / 2, width: view.frame.width, height: height / 3)
-//        datePicker.timeZone = NSTimeZone.local
-//        datePicker.locale = Locale(identifier: "en_GB")
-//
-//        datePicker.backgroundColor = UIColor.systemFill
-//
-//        datePicker.addTarget(self, action: #selector(self.datePickerValueChanged(_:)), for: .valueChanged)
-//
-//        self.view.addSubview(datePicker)
-//
-//    }
-//
-//    @objc func datePickerValueChanged(_ sender: UIDatePicker){
-//
-//        let dateFormatter: DateFormatter = DateFormatter()
-//
-//        dateFormatter.dateFormat = "HH:mm"
-//
-//        let selectedDate: String = dateFormatter.string(from: sender.date)
-//
-//        print("Selected value \(selectedDate)")
-//    }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedTableRow = indexPath.row
         switch  selectedTableRow {

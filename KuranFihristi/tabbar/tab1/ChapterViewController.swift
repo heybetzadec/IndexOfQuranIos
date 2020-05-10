@@ -20,7 +20,7 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
     
     var languageId = 1
     var translationId = 154
-    var orderBySurah = true
+    var selectedOrder = 0
     var fontSize = 17
     var darkMode = true
     var verseId = 1
@@ -74,7 +74,7 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
             languageId = defaults.integer(forKey: "languageId")
             translationId = defaults.integer(forKey: "translationId")
             fontSize = defaults.integer(forKey: "fontSize")
-            orderBySurah = defaults.bool(forKey: "orderBySurah")
+            selectedOrder = defaults.integer(forKey: "selectedOrder")
             darkMode = defaults.bool(forKey: "darkMode")
             
             if darkMode {
@@ -85,10 +85,10 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
         
         SwiftEventBus.onMainThread(self, name:"optionChange") { result in
             let option = result?.object as! Option
-            if option.orderBySurah != self.orderBySurah  || option.translationId != self.translationId{
+            if option.selectedOrder != self.selectedOrder  || option.translationId != self.translationId{
                 self.translationId = option.translationId
-                self.orderBySurah = option.orderBySurah
-                self.fullChapters = self.dataBase.getChapters(translationId: self.translationId, orderBySurah: option.orderBySurah)
+                self.selectedOrder = option.selectedOrder
+                self.fullChapters = self.dataBase.getChapters(translationId: self.translationId, selectedOrder: self.selectedOrder)
                 self.chapters = self.fullChapters
             }
             self.fontSize = option.fontSize
@@ -110,8 +110,9 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
         }
         
         
-        fullChapters = dataBase.getChapters(translationId: translationId, orderBySurah: orderBySurah)
+        fullChapters = dataBase.getChapters(translationId: translationId, selectedOrder: selectedOrder)
         chapters = fullChapters
+        
         
         
         let appearance = UINavigationBarAppearance()

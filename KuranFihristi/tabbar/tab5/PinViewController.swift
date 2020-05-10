@@ -178,6 +178,25 @@ class PinViewController: UITableViewController , UISearchResultsUpdating, UISear
         tableView.reloadData()
     }
     
+    
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if searchString.count > 2 && indexPath.row == 0 {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCell.EditingStyle.delete) {
+            let removeItem = versesBy[indexPath.row]
+            dataBase.clearSaved(chapterId: removeItem.chapterId, verseId: removeItem.verseId)
+            versesBy.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
@@ -279,6 +298,11 @@ class PinViewController: UITableViewController , UISearchResultsUpdating, UISear
         }
         return text
     }
+    
+    @IBAction func clearAllAction(_ sender: Any) {
+        print("Clear all")
+    }
+    
     
     func showToast(message : String) {
         let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.tableView.contentSize.height - 150 , width: 150, height: 35))

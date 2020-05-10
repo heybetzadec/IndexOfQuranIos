@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import SwiftEventBus
 
 class AddReminderViewCell: UITableViewCell {
     
     @IBOutlet weak var timePicker: UIDatePicker!
-    @IBOutlet weak var addButton: UIButton!
+//    @IBOutlet weak var addButton: UIButton!
     
 
     override func awakeFromNib() {
@@ -25,8 +26,15 @@ class AddReminderViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    
     @IBAction func addButtonAction(_ sender: Any) {
-        print("reminder added")
+        let dateFormatter: DateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let selectedDate: String = dateFormatter.string(from: timePicker.date)
+        SwiftEventBus.post("addReminder", sender: selectedDate)
     }
     
+    @IBAction func cancelButtonAction(_ sender: Any) {
+        SwiftEventBus.post("cancelAddReminder", sender: "cancel")
+    }
 }

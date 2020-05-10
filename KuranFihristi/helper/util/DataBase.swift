@@ -15,7 +15,7 @@ class DataBase: NSObject {
 
     
     func getDatabase() -> OpaquePointer? {
-        let fileURL = Bundle.main.url(forResource: "index_app", withExtension: "db", subdirectory: "databases")!
+        let fileURL = Bundle.main.url(forResource: "index_app", withExtension: "db", subdirectory: "Library/Application support")!
         
         var db: OpaquePointer?
         guard sqlite3_open(fileURL.path, &db) == SQLITE_OK else {
@@ -28,12 +28,12 @@ class DataBase: NSObject {
     }
     
     
-    func getChapters(translationId:Int, orderBySurah: Bool) -> Array<Chapter> {
+    func getChapters(translationId:Int, selectedOrder: Int) -> Array<Chapter> {
         var list = Array<Chapter>()
         let db = self.getDatabase()
         var statement: OpaquePointer?
         var orderBy = ""
-        if !orderBySurah {
+        if selectedOrder == 1 {
             orderBy = " ORDER BY DescentID ASC";
         }
         

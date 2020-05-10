@@ -18,6 +18,8 @@
 		EF1AC0D92461DEC7004941C2 /* ItemDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1AC0D82461DEC7004941C2 /* ItemDetailViewCell.swift */; };
 		EF583ED4246848470095A490 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF583ED3246848470095A490 /* Reminder.swift */; };
 		EF583ED624684BD20095A490 /* AddReminderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF583ED524684BD20095A490 /* AddReminderViewCell.swift */; };
+		EF583ED824687A8C0095A490 /* SwiftEventBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF583ED724687A8C0095A490 /* SwiftEventBus.framework */; };
+		EF583EDB246880450095A490 /* Documents in Resources */ = {isa = PBXBuildFile; fileRef = EF583EDA246880450095A490 /* Documents */; };
 		EF6B5CC82464A01A00B1D3BB /* SettingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B5CC72464A01A00B1D3BB /* SettingItem.swift */; };
 		EF7539C12465F838001853FE /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7539C02465F837001853FE /* Option.swift */; };
 		EF7539C724660C3D001853FE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EF7539C924660C3D001853FE /* Localizable.strings */; };
@@ -56,7 +58,7 @@
 		EFCF78B0245C96CF00E32BFD /* SettingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF78AF245C96CF00E32BFD /* SettingViewCell.swift */; };
 		EFCF78B2245C989100E32BFD /* AppTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF78B1245C989100E32BFD /* AppTabBarViewController.swift */; };
 		EFCF78B4245C997F00E32BFD /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EFCF78B3245C997F00E32BFD /* libsqlite3.tbd */; };
-		EFCF78B6245C9CC500E32BFD /* databases in Resources */ = {isa = PBXBuildFile; fileRef = EFCF78B5245C9CC500E32BFD /* databases */; };
+		EFCF78B6245C9CC500E32BFD /* Library in Resources */ = {isa = PBXBuildFile; fileRef = EFCF78B5245C9CC500E32BFD /* Library */; };
 		EFCF78B9245C9EEF00E32BFD /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF78B8245C9EEF00E32BFD /* Chapter.swift */; };
 		EFCF78BB245CA00A00E32BFD /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF78BA245CA00A00E32BFD /* DataBase.swift */; };
 		EFD4DFAD245D454400FA5EF4 /* Verse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD4DFAC245D454400FA5EF4 /* Verse.swift */; };
@@ -106,6 +108,8 @@
 		EF1AC0D82461DEC7004941C2 /* ItemDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewCell.swift; sourceTree = "<group>"; };
 		EF583ED3246848470095A490 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		EF583ED524684BD20095A490 /* AddReminderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderViewCell.swift; sourceTree = "<group>"; };
+		EF583ED724687A8C0095A490 /* SwiftEventBus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftEventBus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF583EDA246880450095A490 /* Documents */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Documents; sourceTree = "<group>"; };
 		EF6B5CC72464A01A00B1D3BB /* SettingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItem.swift; sourceTree = "<group>"; };
 		EF7539C02465F837001853FE /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
 		EF7539C224660B39001853FE /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Main.strings; sourceTree = "<group>"; };
@@ -156,7 +160,7 @@
 		EFCF78AF245C96CF00E32BFD /* SettingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewCell.swift; sourceTree = "<group>"; };
 		EFCF78B1245C989100E32BFD /* AppTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarViewController.swift; sourceTree = "<group>"; };
 		EFCF78B3245C997F00E32BFD /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		EFCF78B5245C9CC500E32BFD /* databases */ = {isa = PBXFileReference; lastKnownFileType = folder; path = databases; sourceTree = "<group>"; };
+		EFCF78B5245C9CC500E32BFD /* Library */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Library; sourceTree = "<group>"; };
 		EFCF78B8245C9EEF00E32BFD /* Chapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 		EFCF78BA245CA00A00E32BFD /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 		EFD4DFAC245D454400FA5EF4 /* Verse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Verse.swift; sourceTree = "<group>"; };
@@ -176,6 +180,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF583ED824687A8C0095A490 /* SwiftEventBus.framework in Frameworks */,
 				EFCF78B4245C997F00E32BFD /* libsqlite3.tbd in Frameworks */,
 				B49A435B60EE6A06BFBF205B /* Pods_KuranFihristi.framework in Frameworks */,
 			);
@@ -216,6 +221,7 @@
 		E2E48396384D0151CF9E923C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EF583ED724687A8C0095A490 /* SwiftEventBus.framework */,
 				EFCF78B3245C997F00E32BFD /* libsqlite3.tbd */,
 				6F09E22C6521E22266B6D447 /* Pods_KuranFihristi.framework */,
 				196B89EBC8FDBD2E1D074949 /* Pods_KuranFihristi_KuranFihristiUITests.framework */,
@@ -294,7 +300,8 @@
 				EFCF78B7245C9E8800E32BFD /* tabbar */,
 				EFCF7845245C793A00E32BFD /* Main.storyboard */,
 				EFCF784B245C793C00E32BFD /* Assets.xcassets */,
-				EFCF78B5245C9CC500E32BFD /* databases */,
+				EF583EDA246880450095A490 /* Documents */,
+				EFCF78B5245C9CC500E32BFD /* Library */,
 				EFCF7850245C793C00E32BFD /* Info.plist */,
 				EFCF784D245C793C00E32BFD /* LaunchScreen.storyboard */,
 				EFCF7848245C793A00E32BFD /* KuranFihristi.xcdatamodeld */,
@@ -530,9 +537,10 @@
 			files = (
 				EF7539C724660C3D001853FE /* Localizable.strings in Resources */,
 				EFCF784F245C793C00E32BFD /* LaunchScreen.storyboard in Resources */,
-				EFCF78B6245C9CC500E32BFD /* databases in Resources */,
+				EFCF78B6245C9CC500E32BFD /* Library in Resources */,
 				EFCF784C245C793C00E32BFD /* Assets.xcassets in Resources */,
 				EFCF7847245C793A00E32BFD /* Main.storyboard in Resources */,
+				EF583EDB246880450095A490 /* Documents in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

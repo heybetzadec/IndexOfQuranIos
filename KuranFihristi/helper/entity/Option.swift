@@ -13,17 +13,17 @@ class Option {
     var languageId = 1
     var translationId = 154
     var fontSize = 18
-    var orderBySurah = true
+    var selectedOrder = 0
     
     init() {
         
     }
     
-    init(languageId:Int, translationId:Int, fontSize:Int, orderBySurah:Bool) {
+    init(languageId:Int, translationId:Int, fontSize:Int, selectedOrder:Int) {
         self.languageId = languageId
         self.translationId = translationId
         self.fontSize = fontSize
-        self.orderBySurah = orderBySurah
+        self.selectedOrder = selectedOrder
     }
     
 }
