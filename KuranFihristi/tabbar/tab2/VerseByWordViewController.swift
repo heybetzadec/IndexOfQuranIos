@@ -120,7 +120,7 @@ class VerseByWordViewController: UITableViewController, UISearchResultsUpdating,
             // Copy selected
             action = UIAlertAction(title: bottomItems[2].name, style: .default) { (action) in
                 UIPasteboard.general.string = self.getSelectedText()
-                self.funcs.showToast(message: "Kopyalandı", view: self.view)
+                self.funcs.showToast(message: "copied".localized, view: self.view)
                 let selectedRows = self.tableView.indexPathsForSelectedRows
                 for row in selectedRows! {
                     self.tableView.deselectRow(at: row, animated: true)
@@ -140,7 +140,7 @@ class VerseByWordViewController: UITableViewController, UISearchResultsUpdating,
                     verses.append(Verse(chapterId: verseBy.chapterId, verseId: verseBy.verseId, verseText: verseBy.verseText))
                 }
                 self.dataBase.insertSavedVerse(verses: verses)
-                self.funcs.showToast(message: "Pinlendi", view: self.view)
+                self.funcs.showToast(message: "pinned".localized, view: self.view)
                 self.deselectAll()
             }
             icon =  UIImage(systemName: bottomItems[3].icon) ?? .add
@@ -148,7 +148,9 @@ class VerseByWordViewController: UITableViewController, UISearchResultsUpdating,
             action.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
             actionSheetAlertController.addAction(action)
             
-            let cancelActionButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            let cancelActionButton = UIAlertAction(title: "cancel".localized, style: .cancel, handler: { (action) in
+                self.deselectAll()
+            })
             actionSheetAlertController.addAction(cancelActionButton)
             
             self.present(actionSheetAlertController, animated: true, completion: nil)

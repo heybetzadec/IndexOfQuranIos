@@ -43,7 +43,6 @@
 		EFCF7875245C863600E32BFD /* LetterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF7874245C863600E32BFD /* LetterViewController.swift */; };
 		EFCF7877245C879A00E32BFD /* VerseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF7876245C879A00E32BFD /* VerseViewController.swift */; };
 		EFCF7879245C87C600E32BFD /* VerseByWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF7878245C87C600E32BFD /* VerseByWordViewController.swift */; };
-		EFCF787B245C88E400E32BFD /* WordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF787A245C88E400E32BFD /* WordViewController.swift */; };
 		EFCF787D245C897000E32BFD /* VerseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF787C245C897000E32BFD /* VerseDetailViewController.swift */; };
 		EFCF7881245C89D800E32BFD /* PhraseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF7880245C89D800E32BFD /* PhraseViewController.swift */; };
 		EFCF7883245C8A7200E32BFD /* TopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF7882245C8A7200E32BFD /* TopicViewController.swift */; };
@@ -145,7 +144,6 @@
 		EFCF7874245C863600E32BFD /* LetterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterViewController.swift; sourceTree = "<group>"; };
 		EFCF7876245C879A00E32BFD /* VerseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseViewController.swift; sourceTree = "<group>"; };
 		EFCF7878245C87C600E32BFD /* VerseByWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseByWordViewController.swift; sourceTree = "<group>"; };
-		EFCF787A245C88E400E32BFD /* WordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordViewController.swift; sourceTree = "<group>"; };
 		EFCF787C245C897000E32BFD /* VerseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseDetailViewController.swift; sourceTree = "<group>"; };
 		EFCF7880245C89D800E32BFD /* PhraseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseViewController.swift; sourceTree = "<group>"; };
 		EFCF7882245C8A7200E32BFD /* TopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicViewController.swift; sourceTree = "<group>"; };
@@ -342,7 +340,6 @@
 			isa = PBXGroup;
 			children = (
 				EFCF7874245C863600E32BFD /* LetterViewController.swift */,
-				EFCF787A245C88E400E32BFD /* WordViewController.swift */,
 				EFCF7878245C87C600E32BFD /* VerseByWordViewController.swift */,
 			);
 			path = tab2;
@@ -679,7 +676,6 @@
 				EFCF78BB245CA00A00E32BFD /* DataBase.swift in Sources */,
 				EFCF78B2245C989100E32BFD /* AppTabBarViewController.swift in Sources */,
 				EFBAC38F2462D9B500D54B2E /* OtherCell.swift in Sources */,
-				EFCF787B245C88E400E32BFD /* WordViewController.swift in Sources */,
 				EFCF7891245C8F1000E32BFD /* SearchViewController.swift in Sources */,
 				EF1976C32460C092007F1462 /* Functions.swift in Sources */,
 				EFCF7873245C860400E32BFD /* ChapterViewController.swift in Sources */,
