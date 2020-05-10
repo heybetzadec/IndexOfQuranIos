@@ -12,6 +12,7 @@ class Letter {
     
     var letterId: Int = 0
     var letterName: String = ""
+    var words: Array<Word> = Array<Word>()
     
     init() {
 

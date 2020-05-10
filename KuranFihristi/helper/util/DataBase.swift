@@ -179,7 +179,53 @@ class DataBase: NSObject {
         return list
     }
     
-    
+    func getLettersWords(languageId:Int, searchText: String) -> Array<Letter> {
+        var list = Array<Letter>()
+        var letterId = 0
+        let db = self.getDatabase()
+        var statement: OpaquePointer?
+        var search = ""
+        
+        if !searchText.isEmpty {
+            search = " AND WordName LIKE '%\(searchText)%'"
+        }
+        
+        if sqlite3_prepare_v2(db, "SELECT l.LetterID, l.LetterName, w.WordID,  w.WordName FROM Word w LEFT OUTER JOIN Letter l ON l.LetterID == w.LetterId WHERE w.LangID = \(languageId) AND w.LangID = \(languageId) \(search) GROUP BY w.ID", -1, &statement, nil) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing select: \(errmsg)")
+        }
+
+        while sqlite3_step(statement) == SQLITE_ROW {
+            let thisLetterId = Int(sqlite3_column_int64(statement, 0))
+            if thisLetterId != letterId {
+                letterId = thisLetterId
+                let item = Letter()
+                item.letterId = Int(sqlite3_column_int64(statement, 0))
+                item.letterName = String(cString: sqlite3_column_text(statement, 1))
+                let word = Word(wordId: Int(sqlite3_column_int64(statement, 2)), wordName:  String(cString: sqlite3_column_text(statement, 3)))
+                item.words = [word]
+                print(item.letterName)
+                list.append(item)
+            } else {
+                let letter = list.first { (Letter) -> Bool in
+                    Letter.letterId == letterId
+                }
+                let word = Word(wordId: Int(sqlite3_column_int64(statement, 2)), wordName:  String(cString: sqlite3_column_text(statement, 3)))
+                letter?.words.append(word)
+            }
+        }
+
+        if sqlite3_finalize(statement) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error finalizing prepared statement: \(errmsg)")
+        }
+
+        if sqlite3_close(db) != SQLITE_OK {
+            print("error closing database")
+        }
+        statement = nil
+        return list
+    }
     
     func getLetters(languageId:Int) -> Array<Letter> {
         var list = Array<Letter>()
