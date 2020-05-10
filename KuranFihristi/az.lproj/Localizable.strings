@@ -24,7 +24,7 @@
 "copy_selected" = "Seçilənləri Kopyala";
 "pin_selected" = "Seçilənləri Pinlə";
 "selected_translation" = "Seçilmiş tərcümə";
-"settings" = "Tətbiq parametrləri";
+"settings" = "Parametrlər";
 "clear" = "Temizle";
 "ok" = "Oldu";
 "cancel" = "Ləğv et";
@@ -35,7 +35,7 @@
 "interface_mode" = "İnterfeys modu";
 "reminder_ayat_daily" = "Gündəlik ayə xatırlat";
 "reminder_time" = "Xatırlatma vaxtı";
-"close_app" = "Tətbiqi bağlayın";
+"close_app" = "Çıxış";
 "light_mode" = "İşıqlı rejimi";
 "dark_mode" = "Qaranlıq rejim";
 "on" = "Aktiv";

@@ -13,10 +13,10 @@ class Functions {
     
     func getDefaultBottomItems() -> Array<BottomItem> {
         var bottomItems =  Array<BottomItem>()
-        bottomItems.append(BottomItem(id: 1, name: "Başkalarını seçin", icon: "hand.point.left"))
-        bottomItems.append(BottomItem(id: 2, name: "Seçilenleri Paylaş", icon: "square.and.arrow.up"))
-        bottomItems.append(BottomItem(id: 3, name: "Seçilenleri Kopyala", icon: "doc.on.doc"))
-        bottomItems.append(BottomItem(id: 4, name: "Seçilenleri Pinle", icon: "pin"))
+        bottomItems.append(BottomItem(id: 1, name: "select_others".localized, icon: "hand.point.left"))
+        bottomItems.append(BottomItem(id: 2, name: "pin_selected".localized, icon: "square.and.arrow.up"))
+        bottomItems.append(BottomItem(id: 3, name: "copy_selected".localized, icon: "doc.on.doc"))
+        bottomItems.append(BottomItem(id: 4, name: "pin_selected".localized, icon: "pin"))
         return bottomItems
     }
     

@@ -24,7 +24,7 @@
 "copy_ayat" = "Ayeti Kopyala";
 "pin_ayat" = "Ayeti Pinle";
 "selected_translation" = "Seçili meal";
-"settings" = "Uygulama Ayarları";
+"settings" = "Ayarlar";
 "clear" = "Temizle";
 "ok" = "Tamam";
 "cancel" = "İptal et";
@@ -35,14 +35,14 @@
 "interface_mode" = "Arayüz modu";
 "reminder_ayat_daily" = "Günlük ayet hatırlat";
 "reminder_time" = "Hatırlatma zamanı";
-"close_app" = "Uygulamayı kapat";
+"close_app" = "Kapat";
 "light_mode" = "Işıklı mod";
 "dark_mode" = "Karanlık mod";
 "on" = "Açık";
 "off" = "Kapalı";
 "show_in_verse" = "Ayetlerde gör";
 "reminder_ayat" = "Ayet hatırlatması";
-"ayat_reminder" = "Ayet hatırlatıcı";
+"ayat_reminder" = "Hatırlatıcı";
 "search_all" = "Tam arama";
 "system" = "Cihazı kullan";
 "select_others" = "Başkalarını seçin";

@@ -206,11 +206,13 @@ class LetterViewController: UITableViewController, UISearchResultsUpdating, UISe
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let letterItem = letters[indexPath.row]
+        let letterItem = letters[indexPath.section]
+        let wordItem = letterItem.words[indexPath.row]
         if letterItem.letterId == 0 {
             SwiftEventBus.post("goToSearch", sender: self.searchString)
         } else {
-            performSegue(withIdentifier: "showWords", sender: letters[indexPath.row])
+            let letterWord = LetterWord(letter: letterItem, word: wordItem)
+            performSegue(withIdentifier: "showVerseByWord", sender: letterWord)
         }
         
         if !searchString.isEmpty {
@@ -226,13 +228,18 @@ class LetterViewController: UITableViewController, UISearchResultsUpdating, UISe
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showWords" {
-            if let wordController = segue.destination as? WordViewController {
-                let selectedLetterItem = sender as! Letter
-                wordController.letter = selectedLetterItem
-                wordController.languageId = languageId
-                wordController.fontSize = fontSize
-                wordController.translationId = translationId
+        if segue.identifier == "showVerseByWord" {
+            if let verseByWordController = segue.destination as? VerseByWordViewController {
+                let selectedLetterWord = sender as! LetterWord
+                verseByWordController.fontSize = fontSize
+                verseByWordController.word = selectedLetterWord.word
+                verseByWordController.letter = selectedLetterWord.letter
+                verseByWordController.languageId = languageId
+                verseByWordController.translationId = translationId
+//                wordController.letter = selectedLetterWord.letter
+//                wordController.languageId = languageId
+//                wordController.fontSize = fontSize
+//                wordController.translationId = translationId
                 let backItem = UIBarButtonItem()
                 backItem.title = "back".localized
                 navigationItem.backBarButtonItem = backItem

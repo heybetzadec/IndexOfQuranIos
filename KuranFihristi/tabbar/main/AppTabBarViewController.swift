@@ -12,6 +12,7 @@ import SwiftEventBus
 class AppTabBarViewController: UITabBarController{
 
     var searchString = ""
+    var notRegisterSearch = true
 //    var goToVerseBy = VerseBy()
     
     override func viewDidLoad() {

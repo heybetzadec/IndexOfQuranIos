@@ -24,7 +24,7 @@
 "copy_selected" = "Copy Selected";
 "pin_selected" = "Pin Selected";
 "selected_translation" = "Selected translation";
-"settings" = "App settings";
+"settings" = "Settings";
 "clear" = "Temizle";
 "ok" = "Ok";
 "cancel" = "Cancel";
@@ -35,15 +35,15 @@
 "interface_mode" = "Interface mode";
 "reminder_ayat_daily" = "Remember ayat daily";
 "reminder_time" = "Remember time";
-"close_app" = "Close app";
+"close_app" = "Close";
 "light_mode" = "Light mode";
 "dark_mode" = "Dark mode";
 "on" = "On";
 "off" = "Off";
 "show_in_verse" = "Show in ayats";
-"ayat_reminder" = "Verse reminder";
+"ayat_reminder" = "Reminder";
 "search_all" = "Full Search";
-"reminder_ayat" = "Verse reminder";
+"reminder_ayat" = "Reminder";
 "system" = "Use Device";
 "select_others" = "Select others";
 "back" = "Back";

@@ -189,8 +189,8 @@ class DataBase: NSObject {
         if !searchText.isEmpty {
             search = " AND WordName LIKE '%\(searchText)%'"
         }
-        
-        if sqlite3_prepare_v2(db, "SELECT l.LetterID, l.LetterName, w.WordID,  w.WordName FROM Word w LEFT OUTER JOIN Letter l ON l.LetterID == w.LetterId WHERE w.LangID = \(languageId) AND w.LangID = \(languageId) \(search) GROUP BY w.ID", -1, &statement, nil) != SQLITE_OK {
+//        "SELECT l.LetterID, w.WordID,  w.WordName FROM Word w LEFT OUTER JOIN Letter l ON l.LetterID == w.LetterId WHERE w.LangID = \(languageId) AND w.LangID = \(languageId) \(search) GROUP BY w.ID"
+        if sqlite3_prepare_v2(db, "SELECT LetterID, WordID,  WordName FROM Word WHERE LangID = \(languageId)  \(search)", -1, &statement, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error preparing select: \(errmsg)")
         }
@@ -200,17 +200,17 @@ class DataBase: NSObject {
             if thisLetterId != letterId {
                 letterId = thisLetterId
                 let item = Letter()
-                item.letterId = Int(sqlite3_column_int64(statement, 0))
-                item.letterName = String(cString: sqlite3_column_text(statement, 1))
-                let word = Word(wordId: Int(sqlite3_column_int64(statement, 2)), wordName:  String(cString: sqlite3_column_text(statement, 3)))
+                let wordName = String(cString: sqlite3_column_text(statement, 2))
+                item.letterId = thisLetterId
+                item.letterName = String(wordName.prefix(1)) //String(cString: sqlite3_column_text(statement, 1))
+                let word = Word(wordId: Int(sqlite3_column_int64(statement, 1)), wordName:  wordName)
                 item.words = [word]
-                print(item.letterName)
                 list.append(item)
             } else {
                 let letter = list.first { (Letter) -> Bool in
                     Letter.letterId == letterId
                 }
-                let word = Word(wordId: Int(sqlite3_column_int64(statement, 2)), wordName:  String(cString: sqlite3_column_text(statement, 3)))
+                let word = Word(wordId: Int(sqlite3_column_int64(statement, 1)), wordName:  String(cString: sqlite3_column_text(statement, 2)))
                 letter?.words.append(word)
             }
         }

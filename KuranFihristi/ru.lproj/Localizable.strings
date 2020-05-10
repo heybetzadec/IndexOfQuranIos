@@ -16,7 +16,7 @@
 "pinned" = "Закрепить";
 "share_selected" = "Поделиться Выбранным";
 "copy_selected" = "Копировать Выбранное";
-"pin_selected" = "Закрепить выбранное";
+"pin_selected" = "Закрепить Выбранное";
 "arabic_original" = "Арабский оригинал";
 "arabic_latin" = "Арабо-латинский";
 "arabic" = "Арабский";
@@ -35,14 +35,14 @@
 "interface_mode" = "Интерфейсный режим";
 "reminder_ayat_daily" = "Ежедневное напоминание аята ";
 "reminder_time" = "Время напоминания";
-"close_app" = "Закрыть приложение";
+"close_app" = "Закрыть";
 "light_mode" = "Дневной режим";
 "dark_mode" = "Ночной режим";
 "on" = "Включить";
 "off" = "Выключить";
 "show_in_verse" = "Смотрите в аяты";
 "reminder_ayat" = "Напоминание аяты";
-"ayat_reminder" = "Ayat reminder";
+"ayat_reminder" = "Напоминание";
 "search_all" = "Полный поиск";
 "system" = "Системный стандарт";
 "select_others" = "Выбери других";

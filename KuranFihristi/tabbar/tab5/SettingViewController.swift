@@ -64,10 +64,10 @@ class SettingViewController: UITableViewController, UIPickerViewDelegate, UIPick
         selectedFontSize = defaults.integer(forKey: "selectedFontSize")
         selectedInterfaceMode = defaults.integer(forKey: "selectedInterfaceMode")
         
-        print("languageId -> \(languageId)")
-        print("translationId -> \(translationId)")
-        print("selectedLanguage -> \(selectedLanguage)")
-        print("selectedTranslation -> \(selectedTranslation)")
+//        print("languageId -> \(languageId)")
+//        print("translationId -> \(translationId)")
+//        print("selectedLanguage -> \(selectedLanguage)")
+//        print("selectedTranslation -> \(selectedTranslation)")
         
         languages = dataBase.getLanguages()
         languageItems.removeAll()

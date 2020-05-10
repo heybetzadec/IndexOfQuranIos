@@ -65,9 +65,9 @@ class VerseDetailViewController: UITableViewController {
         
         
         bottomItems.append(BottomItem(id: 0, name: "", icon: "add"))
-        bottomItems.append(BottomItem(id: 1, name: "Ayeti Paylaş", icon: "square.and.arrow.up"))
-        bottomItems.append(BottomItem(id: 2, name: "Ayeti Kopyala", icon: "doc.on.doc"))
-        bottomItems.append(BottomItem(id: 3, name: "Ayeti Pinle", icon: "pin"))
+        bottomItems.append(BottomItem(id: 1, name: "share_ayat".localized, icon: "square.and.arrow.up"))
+        bottomItems.append(BottomItem(id: 2, name: "copy_ayat".localized, icon: "doc.on.doc"))
+        bottomItems.append(BottomItem(id: 3, name: "pin_ayat".localized, icon: "pin"))
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -147,10 +147,10 @@ class VerseDetailViewController: UITableViewController {
             self.present(activityViewController, animated: true, completion: nil)
         case 2:
             UIPasteboard.general.string = verseText
-            showToast(message: "Kopyalandı")
+            showToast(message: "copied".localized)
         case 3:
             dataBase.insertSavedVerse(verses: [Verse(chapterId: chapterId, verseId: verseId, verseText: "")])
-            showToast(message: "Pinlendi")
+            showToast(message: "pinned".localized)
         default: break
         }
     }

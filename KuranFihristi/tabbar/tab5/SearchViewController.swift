@@ -53,22 +53,22 @@ class SearchViewController: UITableViewController , UISearchResultsUpdating, UIS
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        SwiftEventBus.onMainThread(self, name:"goToSearch") { result in
-            if self.tabBarController != nil {
-                let mainTabBar = self.tabBarController as! AppTabBarViewController
-                mainTabBar.searchString = ""
-            }
-            self.searchString = result?.object as! String
-            self.searchController.isActive = true
-            self.searchController.isEditing = true
-            self.searchController.searchBar.text = self.searchString
-            DispatchQueue.main.async {
-                self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { timer in
-                print(timer)
-                self.filter(searchText: self.searchString)
-              }
-            }
-        }
+//        SwiftEventBus.onMainThread(self, name:"goToSearch") { result in
+//            if self.tabBarController != nil {
+//                let mainTabBar = self.tabBarController as! AppTabBarViewController
+//                mainTabBar.searchString = ""
+//            }
+//            self.searchString = result?.object as! String
+//            self.searchController.isActive = true
+//            self.searchController.isEditing = true
+//            self.searchController.searchBar.text = self.searchString
+//            DispatchQueue.main.async {
+//                self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { timer in
+//                print(timer)
+//                self.filter(searchText: self.searchString)
+//              }
+//            }
+//        }
         
         let mainTabBar = self.tabBarController as! AppTabBarViewController
         self.searchString = mainTabBar.searchString

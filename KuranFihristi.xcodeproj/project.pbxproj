@@ -16,6 +16,8 @@
 		EF1AC0D22461DE08004941C2 /* ItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1AC0D12461DE08004941C2 /* ItemViewCell.swift */; };
 		EF1AC0D62461DE4F004941C2 /* VerseByViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1AC0D52461DE4F004941C2 /* VerseByViewCell.swift */; };
 		EF1AC0D92461DEC7004941C2 /* ItemDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1AC0D82461DEC7004941C2 /* ItemDetailViewCell.swift */; };
+		EF583ED4246848470095A490 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF583ED3246848470095A490 /* Reminder.swift */; };
+		EF583ED624684BD20095A490 /* AddReminderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF583ED524684BD20095A490 /* AddReminderViewCell.swift */; };
 		EF6B5CC82464A01A00B1D3BB /* SettingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B5CC72464A01A00B1D3BB /* SettingItem.swift */; };
 		EF7539C12465F838001853FE /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7539C02465F837001853FE /* Option.swift */; };
 		EF7539C724660C3D001853FE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EF7539C924660C3D001853FE /* Localizable.strings */; };
@@ -66,6 +68,7 @@
 		EFD4DFBC245D7A5F00FA5EF4 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD4DFBB245D7A5F00FA5EF4 /* Language.swift */; };
 		EFD4DFBE245D7AF200FA5EF4 /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD4DFBD245D7AF200FA5EF4 /* Name.swift */; };
 		EFD4DFC0245D85C700FA5EF4 /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD4DFBF245D85C700FA5EF4 /* Translation.swift */; };
+		EFF356A32468287800EBA9A0 /* LetterWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF356A22468287800EBA9A0 /* LetterWord.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +104,8 @@
 		EF1AC0D12461DE08004941C2 /* ItemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewCell.swift; sourceTree = "<group>"; };
 		EF1AC0D52461DE4F004941C2 /* VerseByViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseByViewCell.swift; sourceTree = "<group>"; };
 		EF1AC0D82461DEC7004941C2 /* ItemDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewCell.swift; sourceTree = "<group>"; };
+		EF583ED3246848470095A490 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
+		EF583ED524684BD20095A490 /* AddReminderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderViewCell.swift; sourceTree = "<group>"; };
 		EF6B5CC72464A01A00B1D3BB /* SettingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItem.swift; sourceTree = "<group>"; };
 		EF7539C02465F837001853FE /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
 		EF7539C224660B39001853FE /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Main.strings; sourceTree = "<group>"; };
@@ -163,6 +168,7 @@
 		EFD4DFBB245D7A5F00FA5EF4 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		EFD4DFBD245D7AF200FA5EF4 /* Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Name.swift; sourceTree = "<group>"; };
 		EFD4DFBF245D85C700FA5EF4 /* Translation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
+		EFF356A22468287800EBA9A0 /* LetterWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterWord.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +247,7 @@
 				EFBAC3882462B83200D54B2E /* ReminderViewCell.swift */,
 				EFBAC38C2462BADD00D54B2E /* OtherViewCell.swift */,
 				EFBAC38E2462D9B500D54B2E /* OtherCell.swift */,
+				EF583ED524684BD20095A490 /* AddReminderViewCell.swift */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -403,6 +410,8 @@
 				EF025588245F282B0031D190 /* BottomItem.swift */,
 				EF6B5CC72464A01A00B1D3BB /* SettingItem.swift */,
 				EF7539C02465F837001853FE /* Option.swift */,
+				EFF356A22468287800EBA9A0 /* LetterWord.swift */,
+				EF583ED3246848470095A490 /* Reminder.swift */,
 			);
 			path = entity;
 			sourceTree = "<group>";
@@ -655,6 +664,7 @@
 				EFCF7877245C879A00E32BFD /* VerseViewController.swift in Sources */,
 				EFD4DFB0245D4D3C00FA5EF4 /* Letter.swift in Sources */,
 				EFD4DFB4245D693B00FA5EF4 /* VerseBy.swift in Sources */,
+				EF583ED624684BD20095A490 /* AddReminderViewCell.swift in Sources */,
 				EFCF788F245C8EF900E32BFD /* PinViewController.swift in Sources */,
 				EF6B5CC82464A01A00B1D3BB /* SettingItem.swift in Sources */,
 				EF0F577D245F1C4D0042AEB2 /* BottomViewCell.swift in Sources */,
@@ -670,6 +680,7 @@
 				EF7539C12465F838001853FE /* Option.swift in Sources */,
 				EFCF783E245C793A00E32BFD /* AppDelegate.swift in Sources */,
 				EFCF784A245C793A00E32BFD /* KuranFihristi.xcdatamodeld in Sources */,
+				EFF356A32468287800EBA9A0 /* LetterWord.swift in Sources */,
 				EFD4DFC0245D85C700FA5EF4 /* Translation.swift in Sources */,
 				EFD4DFB2245D63FD00FA5EF4 /* Word.swift in Sources */,
 				EFCF7883245C8A7200E32BFD /* TopicViewController.swift in Sources */,
@@ -679,6 +690,7 @@
 				EFCF7879245C87C600E32BFD /* VerseByWordViewController.swift in Sources */,
 				EFB5ADF6245EACB100BCDF61 /* SearchFullViewCell.swift in Sources */,
 				EFD4DFAD245D454400FA5EF4 /* Verse.swift in Sources */,
+				EF583ED4246848470095A490 /* Reminder.swift in Sources */,
 				EFD4DFBC245D7A5F00FA5EF4 /* Language.swift in Sources */,
 				EF1AC0D92461DEC7004941C2 /* ItemDetailViewCell.swift in Sources */,
 				EFD4DFBA245D788B00FA5EF4 /* Phrase.swift in Sources */,
