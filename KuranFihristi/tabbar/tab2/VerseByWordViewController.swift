@@ -292,23 +292,6 @@ class VerseByWordViewController: UITableViewController, UISearchResultsUpdating,
         
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showVerseFromByWord" {
-//            if let verseController = segue.destination as? VerseViewController {
-//                let selectedVerseByItem = sender as! VerseBy
-//                verseController.verseId = selectedVerseByItem.verseId
-//                verseController.chapterId = selectedVerseByItem.chapterId
-//                verseController.chapterName = selectedVerseByItem.chapterName
-//                verseController.languageId = languageId
-//                verseController.translationId = translationId
-//                let backItem = UIBarButtonItem()
-//                backItem.title = "back".localized
-//                navigationItem.backBarButtonItem = backItem
-//            }
-//        }
-//    }
-    
-    
     private func appendVerseBy(insertVerse:VerseBy){
         let filtered = selectedVersesBy.filter { (Verse) -> Bool in
             Verse.chapterId == insertVerse.chapterId && Verse.verseId == insertVerse.verseId

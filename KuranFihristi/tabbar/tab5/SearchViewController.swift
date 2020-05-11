@@ -17,6 +17,7 @@ class SearchViewController: UITableViewController , UISearchResultsUpdating, UIS
     var translationId = 154
     var searchString = ""
     
+    private let funcs = Functions()
     private let dataBase = DataBase()
     private var verses = Array<Verse>()
     private var selectedVerses = Array<Verse>()
@@ -27,16 +28,6 @@ class SearchViewController: UITableViewController , UISearchResultsUpdating, UIS
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-//        let mainTabBar = self.tabBarController as! AppTabBarViewController
-//        self.searchString = mainTabBar.searchString
-//        mainTabBar.searchString = ""
-//        
-//        DispatchQueue.main.async {
-//            self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { timer in
-//            print(timer)
-//            self.filter(searchText: self.searchString)
-//          }
-//        }
         
         searchController.isActive = true
         searchController.isEditing = true
@@ -113,8 +104,10 @@ class SearchViewController: UITableViewController , UISearchResultsUpdating, UIS
         let p = longPressGesture.location(in: self.tableView)
         let indexPath = self.tableView.indexPathForRow(at: p)
         if indexPath == nil {
+            print("Long press on table view, not row.")
         } else if longPressGesture.state == UIGestureRecognizer.State.began {
             AudioServicesPlaySystemSound(1520) // 1519 - peek, 1521 - nope
+            
             tableView.selectRow(at: indexPath, animated: false, scrollPosition: UITableView.ScrollPosition.middle)
             tableView.allowsMultipleSelection = true
             self.appendVerse(insertVerse: verses[indexPath!.row])
@@ -136,6 +129,7 @@ class SearchViewController: UITableViewController , UISearchResultsUpdating, UIS
                 let activityViewController = UIActivityViewController(activityItems: textShare , applicationActivities: nil)
                 activityViewController.popoverPresentationController?.sourceView = self.view
                 self.present(activityViewController, animated: true, completion: nil)
+                self.deselectAll()
             }
             icon = UIImage(systemName: bottomItems[1].icon) ?? .add
             action.setValue(icon, forKey: "image")
@@ -145,12 +139,8 @@ class SearchViewController: UITableViewController , UISearchResultsUpdating, UIS
             // Copy selected
             action = UIAlertAction(title: bottomItems[2].name, style: .default) { (action) in
                 UIPasteboard.general.string = self.getSelectedText()
-                self.showToast(message: "Kopyalandı")
-                let selectedRows = self.tableView.indexPathsForSelectedRows
-                for row in selectedRows! {
-                    self.tableView.deselectRow(at: row, animated: true)
-                }
-                
+                self.funcs.showToast(message: "copied".localized, view: self.view)
+                self.deselectAll()
             }
             icon =  UIImage(systemName: bottomItems[2].icon) ?? .add
             action.setValue(icon, forKey: "image")
@@ -161,14 +151,18 @@ class SearchViewController: UITableViewController , UISearchResultsUpdating, UIS
             // Pin selected
             action = UIAlertAction(title: bottomItems[3].name, style: .default) { (action) in
                 self.dataBase.insertSavedVerse(verses: self.selectedVerses)
-                self.showToast(message: "Pinlendi")
+                self.funcs.showToast(message: "pinned".localized, view: self.view)
+                self.deselectAll()
             }
+            
             icon =  UIImage(systemName: bottomItems[3].icon) ?? .add
             action.setValue(icon, forKey: "image")
             action.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
             actionSheetAlertController.addAction(action)
             
-            let cancelActionButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            let cancelActionButton = UIAlertAction(title: "cancel".localized, style: .cancel, handler: { (action) in
+                self.deselectAll()
+            })
             actionSheetAlertController.addAction(cancelActionButton)
             
             self.present(actionSheetAlertController, animated: true, completion: nil)
@@ -218,6 +212,16 @@ class SearchViewController: UITableViewController , UISearchResultsUpdating, UIS
             verses = Array<Verse>()
         }
         tableView.reloadData()
+    }
+    
+    
+    private func deselectAll(){
+        let selectedRows = self.tableView.indexPathsForSelectedRows
+        for row in selectedRows! {
+            self.tableView.deselectRow(at: row, animated: true)
+        }
+        selectedVerses = Array<Verse>()
+        tableView.allowsMultipleSelection = false
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -321,23 +325,6 @@ class SearchViewController: UITableViewController , UISearchResultsUpdating, UIS
         return text
     }
     
-    func showToast(message : String) {
-        let h = self.view.frame.size.height
-        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: h - h/2 , width: 150, height: 35))
-        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        toastLabel.textColor = UIColor.white
-        toastLabel.textAlignment = .center;
-        toastLabel.font = UIFont(name: "Montserrat-Light", size: 12.0)
-        toastLabel.text = message
-        toastLabel.alpha = 1.0
-        toastLabel.layer.cornerRadius = 10;
-        toastLabel.clipsToBounds  =  true
-        self.view.superview!.addSubview(toastLabel)
-        UIView.animate(withDuration: 3.0, delay: 0.1, options: .curveEaseOut, animations: {
-            toastLabel.alpha = 0.0
-        }, completion: {(isCompleted) in
-            toastLabel.removeFromSuperview()
-        })
-    }
+
     
 }

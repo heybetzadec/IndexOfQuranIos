@@ -22,7 +22,9 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
     var translationId = 154
     var selectedOrder = 0
     var fontSize = 17
-    var darkMode = true
+//    var darkMode = true
+    var systemDarkMode = true
+    var selectedInterfaceMode = 0
     var verseId = 1
     var searchString = ""
     
@@ -34,10 +36,22 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
             button.tintColor = UIColor.clear
         }
         
+        switch traitCollection.userInterfaceStyle {
+            case .light, .unspecified:
+                systemDarkMode = false
+                defaults.set(false, forKey: "systemInterfaceDark")
+            case .dark:
+                systemDarkMode = true
+                defaults.set(true, forKey: "systemInterfaceDark")
+        @unknown default:
+            systemDarkMode = false
+            defaults.set(false, forKey: "systemInterfaceDark")
+        }
+        
+        
         if !defaults.bool(forKey: "opened") {
             var selectedLanguage = 0
             let languageCode:String = Locale.current.languageCode ?? "tr"
-            
             switch languageCode {
             case "tr":
                 languageId = 1
@@ -75,13 +89,24 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
             translationId = defaults.integer(forKey: "translationId")
             fontSize = defaults.integer(forKey: "fontSize")
             selectedOrder = defaults.integer(forKey: "selectedOrder")
-            darkMode = defaults.bool(forKey: "darkMode")
-            
-            if darkMode {
-                SwiftEventBus.post("darkMode", sender: darkMode)
-            }
-            
+            selectedInterfaceMode = defaults.integer(forKey: "selectedInterfaceMode")
+//            darkMode = defaults.bool(forKey: "darkMode")
         }
+        
+        switch selectedInterfaceMode {
+        case 0:
+            SwiftEventBus.post("darkMode", sender: systemDarkMode)
+        case 1:
+            SwiftEventBus.post("darkMode", sender: false)
+        case 2:
+            SwiftEventBus.post("darkMode", sender: true)
+        default:
+            SwiftEventBus.post("darkMode", sender: systemDarkMode)
+        }
+
+//        if selectedInterfaceMode == 0 {
+//            SwiftEventBus.post("darkMode", sender: darkMode)
+//        }
         
         tabBarController?.viewControllers?[0].tabBarItem.title = "chapters".localized
         tabBarController?.viewControllers?[1].tabBarItem.title = "letters".localized
@@ -119,7 +144,6 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
         
         fullChapters = dataBase.getChapters(translationId: translationId, selectedOrder: selectedOrder)
         chapters = fullChapters
-        
         
         
         let appearance = UINavigationBarAppearance()

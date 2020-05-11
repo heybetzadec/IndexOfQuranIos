@@ -377,6 +377,65 @@ class DataBase: NSObject {
         return item
     }
     
+    func getLifes(languageId:Int) -> Array<Life> {
+        var list = Array<Life>()
+        let db = self.getDatabase()
+        var statement: OpaquePointer?
+        
+        if sqlite3_prepare_v2(db, "SELECT LifeId, LifeName From Life WHERE LangID = \(languageId)", -1, &statement, nil) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing select: \(errmsg)")
+        }
+
+        while sqlite3_step(statement) == SQLITE_ROW {
+            let item = Life()
+            item.lifeId = Int(sqlite3_column_int64(statement, 0))
+            item.lifeName = String(cString: sqlite3_column_text(statement, 1))
+            list.append(item)
+        }
+
+        if sqlite3_finalize(statement) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error finalizing prepared statement: \(errmsg)")
+        }
+
+        if sqlite3_close(db) != SQLITE_OK {
+            print("error closing database")
+        }
+        statement = nil
+        return list
+    }
+    
+    func getVerseByLife(lifeId:Int, translationId:Int) -> Array<VerseBy> {
+        var list = Array<VerseBy>()
+        let db = self.getDatabase()
+        var statement: OpaquePointer?
+        
+        if sqlite3_prepare_v2(db, "SELECT v.ChapterID, c.ChapterName, v.VerseID, v.VerseText FROM VerseByLife AS vl LEFT OUTER JOIN Verse AS v ON v.ChapterID = vl.ChapterID AND v.VerseID = vl.VerseID LEFT OUTER JOIN Chapter AS c ON c.ChapterID = v.ChapterID AND c.TranslationID = v.TranslationID WHERE v.TranslationID=\(translationId) AND vl.LifeId = \(lifeId)", -1, &statement, nil) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing select: \(errmsg)")
+        }
+
+        while sqlite3_step(statement) == SQLITE_ROW {
+            let item = VerseBy()
+            item.chapterId = Int(sqlite3_column_int64(statement, 0))
+            item.chapterName = String(cString: sqlite3_column_text(statement, 1))
+            item.verseId = Int(sqlite3_column_int64(statement, 2))
+            item.verseText = String(cString: sqlite3_column_text(statement, 3))
+            list.append(item)
+        }
+
+        if sqlite3_finalize(statement) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error finalizing prepared statement: \(errmsg)")
+        }
+
+        if sqlite3_close(db) != SQLITE_OK {
+            print("error closing database")
+        }
+        statement = nil
+        return list
+    }
     
     
     func getTopics(languageId:Int) -> Array<Topic> {
@@ -440,7 +499,7 @@ class DataBase: NSObject {
     }
     
     
-    func getVerseByTopic(topicId:Int, phraseId:Int, languageId:Int, translationId:Int) -> Array<VerseBy> {
+    func getVerseByTopic(topicId:Int, phraseId:Int, translationId:Int) -> Array<VerseBy> {
         var list = Array<VerseBy>()
         let db = self.getDatabase()
         var statement: OpaquePointer?
@@ -448,7 +507,7 @@ class DataBase: NSObject {
         if sqlite3_prepare_v2(db, "SELECT v.ChapterID, c.ChapterName, v.VerseID, v.VerseText FROM VerseByPhrase AS vw  " +
         "LEFT OUTER JOIN Verse AS v ON v.ChapterID = vw.ChapterID AND v.VerseID = vw.VerseID  " +
         "LEFT OUTER JOIN Chapter AS c ON c.ChapterID = v.ChapterID AND c.TranslationID = v.TranslationID " +
-        "WHERE vw.LangID=\(languageId) AND v.TranslationID=\(translationId) AND vw.ThemeID = \(topicId) AND vw.PhraseID = \(phraseId) ", -1, &statement, nil) != SQLITE_OK {
+        "WHERE v.TranslationID=\(translationId) AND vw.ThemeID = \(topicId) AND vw.PhraseID = \(phraseId) ", -1, &statement, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error preparing select: \(errmsg)")
         }

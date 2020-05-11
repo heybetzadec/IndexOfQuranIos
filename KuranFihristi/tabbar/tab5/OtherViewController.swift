@@ -74,27 +74,35 @@ class OtherViewController: UITableViewController {
                 self.languageId = option.languageId
                 self.navigationItem.title = "other".localized
                 self.bottomItems.removeAll()
-                self.bottomItems.append(BottomItem(id: 1, name: "search_all".localized, icon: "magnifyingglass"))
-                self.bottomItems.append(BottomItem(id: 2, name: "pinned_ayats".localized, icon: "pin"))
-                self.bottomItems.append(BottomItem(id: 3, name: "ayat_reminder".localized, icon: "checkmark.seal"))
-                self.bottomItems.append(BottomItem(id: 3, name: "settings".localized, icon: "gear"))
-                self.bottomItems.append(BottomItem(id: 4, name: "close_app".localized, icon: "exclamationmark.octagon"))
+                self.bottomItems.append(BottomItem(id: 1, name: "quran_life".localized, icon: "book"))
+                self.bottomItems.append(BottomItem(id: 2, name: "search_all".localized, icon: "magnifyingglass"))
+                self.bottomItems.append(BottomItem(id: 3, name: "pinned_ayats".localized, icon: "pin"))
+                self.bottomItems.append(BottomItem(id: 4, name: "ayat_reminder".localized, icon: "checkmark.seal"))
+                self.bottomItems.append(BottomItem(id: 5, name: "settings".localized, icon: "gear"))
+                self.bottomItems.append(BottomItem(id: 6, name: "close_app".localized, icon: "exclamationmark.octagon"))
+                self.tableView.reloadData()
+            }
+            
+            if self.fontSize != option.fontSize {
+                self.fontSize = option.fontSize
                 self.tableView.reloadData()
             }
 
         }
         
         
-        bottomItems.append(BottomItem(id: 1, name: "search_all".localized, icon: "magnifyingglass"))
-        bottomItems.append(BottomItem(id: 2, name: "pinned_ayats".localized, icon: "pin"))
-        bottomItems.append(BottomItem(id: 3, name: "ayat_reminder".localized, icon: "checkmark.seal"))
-        bottomItems.append(BottomItem(id: 3, name: "settings".localized, icon: "gear"))
-        bottomItems.append(BottomItem(id: 4, name: "close_app".localized, icon: "exclamationmark.octagon"))
+        bottomItems.append(BottomItem(id: 1, name: "quran_life".localized, icon: "book"))
+        bottomItems.append(BottomItem(id: 2, name: "search_all".localized, icon: "magnifyingglass"))
+        bottomItems.append(BottomItem(id: 3, name: "pinned_ayats".localized, icon: "pin"))
+        bottomItems.append(BottomItem(id: 4, name: "ayat_reminder".localized, icon: "checkmark.seal"))
+        bottomItems.append(BottomItem(id: 5, name: "settings".localized, icon: "gear"))
+        bottomItems.append(BottomItem(id: 6, name: "close_app".localized, icon: "exclamationmark.octagon"))
         
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = .systemBackground
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
+        navigationItem.title = "other".localized
         
         tableView.tableFooterView = UIView()
     }
@@ -108,6 +116,7 @@ class OtherViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "otherViewCell", for: indexPath as IndexPath) as! OtherViewCell
         cell.itemIcon.image = UIImage(systemName: item.icon) ?? .add
         cell.itemLabel.text = item.name
+        cell.itemLabel.font = .systemFont(ofSize: CGFloat(fontSize))
         return cell
     }
    
@@ -116,25 +125,33 @@ class OtherViewController: UITableViewController {
         switch indexPath.row {
         case 0:
             
+            let lifeViewController = storyBoard.instantiateViewController(withIdentifier: "lifeViewController") as! LifeViewController
+            lifeViewController.translationId = translationId
+            lifeViewController.languageId = languageId
+            lifeViewController.fontSize = fontSize
+            navigationController?.pushViewController(lifeViewController, animated: true)
+        case 1:
+            
             let searchViewController = storyBoard.instantiateViewController(withIdentifier: "searchViewController") as! SearchViewController
             searchViewController.translationId = translationId
             searchViewController.languageId = languageId
             searchViewController.searchString = ""
             navigationController?.pushViewController(searchViewController, animated: true)
+
         
-        case 1:
+        case 2:
             
             let pinViewController = storyBoard.instantiateViewController(withIdentifier: "pinViewController") as! PinViewController
             pinViewController.translationId = translationId
             pinViewController.languageId = languageId
             navigationController?.pushViewController(pinViewController, animated: true)
             
-        case 2:
+        case 3:
             
             let reminderViewController = storyBoard.instantiateViewController(withIdentifier: "reminderViewController") as! ReminderViewController
             navigationController?.pushViewController(reminderViewController, animated: true)
         
-        case 3:
+        case 4:
             
             let settingViewController = storyBoard.instantiateViewController(withIdentifier: "settingViewController") as! SettingViewController
             navigationController?.pushViewController(settingViewController, animated: true)

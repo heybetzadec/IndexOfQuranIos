@@ -137,6 +137,7 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
                 self.dataBase.insertSavedVerse(verses: self.selectedVerses)
                 self.funcs.showToast(message: "pinned".localized, view: self.view)
                 self.deselectAll()
+                SwiftEventBus.post("refreshPinned", sender: "-")
             }
             
             icon =  UIImage(systemName: bottomItems[3].icon) ?? .add

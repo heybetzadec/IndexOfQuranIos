@@ -11,6 +11,9 @@
 		9F6F04A8F7AB553B21EDC15F /* Pods_KuranFihristiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 179C91EB4EAE9ECFAC1C9680 /* Pods_KuranFihristiTests.framework */; };
 		B49A435B60EE6A06BFBF205B /* Pods_KuranFihristi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F09E22C6521E22266B6D447 /* Pods_KuranFihristi.framework */; };
 		EF025589245F282B0031D190 /* BottomItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF025588245F282B0031D190 /* BottomItem.swift */; };
+		EF0E39A82469C7E400DCBECE /* LifeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0E39A72469C7E400DCBECE /* LifeViewController.swift */; };
+		EF0E39AA2469C7FF00DCBECE /* VerseByLifeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0E39A92469C7FF00DCBECE /* VerseByLifeViewController.swift */; };
+		EF0E39AC2469C8BE00DCBECE /* Life.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0E39AB2469C8BE00DCBECE /* Life.swift */; };
 		EF0F577D245F1C4D0042AEB2 /* BottomViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0F577C245F1C4D0042AEB2 /* BottomViewCell.swift */; };
 		EF1976C32460C092007F1462 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1976C22460C092007F1462 /* Functions.swift */; };
 		EF1AC0D22461DE08004941C2 /* ItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1AC0D12461DE08004941C2 /* ItemViewCell.swift */; };
@@ -100,6 +103,9 @@
 		9CB9C092E8CC29191DD4B5C4 /* Pods-KuranFihristiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KuranFihristiTests.debug.xcconfig"; path = "Target Support Files/Pods-KuranFihristiTests/Pods-KuranFihristiTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DBE8A78B4FBC954CED1BDBB3 /* Pods-KuranFihristi-KuranFihristiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KuranFihristi-KuranFihristiUITests.debug.xcconfig"; path = "Target Support Files/Pods-KuranFihristi-KuranFihristiUITests/Pods-KuranFihristi-KuranFihristiUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		EF025588245F282B0031D190 /* BottomItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomItem.swift; sourceTree = "<group>"; };
+		EF0E39A72469C7E400DCBECE /* LifeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeViewController.swift; sourceTree = "<group>"; };
+		EF0E39A92469C7FF00DCBECE /* VerseByLifeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseByLifeViewController.swift; sourceTree = "<group>"; };
+		EF0E39AB2469C8BE00DCBECE /* Life.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Life.swift; sourceTree = "<group>"; };
 		EF0F577C245F1C4D0042AEB2 /* BottomViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomViewCell.swift; sourceTree = "<group>"; };
 		EF1976C22460C092007F1462 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		EF1AC0D12461DE08004941C2 /* ItemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewCell.swift; sourceTree = "<group>"; };
@@ -368,6 +374,8 @@
 			isa = PBXGroup;
 			children = (
 				EFCF788C245C8EDB00E32BFD /* OtherViewController.swift */,
+				EF0E39A72469C7E400DCBECE /* LifeViewController.swift */,
+				EF0E39A92469C7FF00DCBECE /* VerseByLifeViewController.swift */,
 				EFCF7890245C8F1000E32BFD /* SearchViewController.swift */,
 				EFCF788E245C8EF900E32BFD /* PinViewController.swift */,
 				EFBAC38A2462B85600D54B2E /* ReminderViewController.swift */,
@@ -416,6 +424,7 @@
 				EF7539C02465F837001853FE /* Option.swift */,
 				EFF356A22468287800EBA9A0 /* LetterWord.swift */,
 				EF583ED3246848470095A490 /* Reminder.swift */,
+				EF0E39AB2469C8BE00DCBECE /* Life.swift */,
 			);
 			path = entity;
 			sourceTree = "<group>";
@@ -678,6 +687,7 @@
 				EFBAC38F2462D9B500D54B2E /* OtherCell.swift in Sources */,
 				EFCF7891245C8F1000E32BFD /* SearchViewController.swift in Sources */,
 				EF1976C32460C092007F1462 /* Functions.swift in Sources */,
+				EF0E39AA2469C7FF00DCBECE /* VerseByLifeViewController.swift in Sources */,
 				EFCF7873245C860400E32BFD /* ChapterViewController.swift in Sources */,
 				EFD4DFBE245D7AF200FA5EF4 /* Name.swift in Sources */,
 				EFCF789A245C959800E32BFD /* VerseViewCell.swift in Sources */,
@@ -701,6 +711,7 @@
 				EFCF78B9245C9EEF00E32BFD /* Chapter.swift in Sources */,
 				EFCEA7FC245DC28900B971B0 /* CustomSearchBar.swift in Sources */,
 				EFCF7885245C8A8700E32BFD /* VerseByTopicViewController.swift in Sources */,
+				EF0E39AC2469C8BE00DCBECE /* Life.swift in Sources */,
 				EFBAC38B2462B85600D54B2E /* ReminderViewController.swift in Sources */,
 				EF8376AA245F689300335185 /* VerseDetailViewCell.swift in Sources */,
 				EFCF7875245C863600E32BFD /* LetterViewController.swift in Sources */,
@@ -715,6 +726,7 @@
 				EF1AC0D62461DE4F004941C2 /* VerseByViewCell.swift in Sources */,
 				EF025589245F282B0031D190 /* BottomItem.swift in Sources */,
 				EFBAC38D2462BADD00D54B2E /* OtherViewCell.swift in Sources */,
+				EF0E39A82469C7E400DCBECE /* LifeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -205,14 +205,15 @@ class SettingViewController: UITableViewController, UIPickerViewDelegate, UIPick
             
             switch selectedInterfaceMode {
             case 0:
-                switch traitCollection.userInterfaceStyle {
-                    case .light, .unspecified:
-                        darkMode = false
-                    case .dark:
-                        darkMode = true
-                @unknown default:
-                    darkMode = false
-                }
+                darkMode = defaults.bool(forKey: "systemInterfaceDark")
+//                switch traitCollection.userInterfaceStyle {
+//                    case .light, .unspecified:
+//                        darkMode = false
+//                    case .dark:
+//                        darkMode = true
+//                @unknown default:
+//                    darkMode = false
+//                }
             case 1:
                 darkMode = false
             case 2:
@@ -222,7 +223,7 @@ class SettingViewController: UITableViewController, UIPickerViewDelegate, UIPick
             }
             
             SwiftEventBus.post("darkMode", sender: darkMode)
-            defaults.set(darkMode, forKey: "darkMode")
+//            defaults.set(darkMode, forKey: "darkMode")
             defaults.set(selectedInterfaceMode, forKey: "selectedInterfaceMode")
             
         default:

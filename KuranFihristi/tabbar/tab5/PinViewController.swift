@@ -8,15 +8,17 @@
 
 import UIKit
 import AudioToolbox
+import SwiftEventBus
 
 class PinViewController: UITableViewController , UISearchResultsUpdating, UISearchBarDelegate {
     
+    private let funcs = Functions()
     private let dataBase = DataBase()
     private var versesBy = Array<VerseBy>()
     private var fullVersesBy = Array<VerseBy>()
     private var selectedVersesBy = Array<VerseBy>()
     private var searchController = UISearchController()
-    var bottomItems =  Array<BottomItem>()
+    private var bottomItems =  Array<BottomItem>()
     
     var languageId = 0
     var translationId = 0
@@ -24,6 +26,12 @@ class PinViewController: UITableViewController , UISearchResultsUpdating, UISear
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        SwiftEventBus.onMainThread(self, name:"refreshPinned") { result in
+            self.fullVersesBy = self.dataBase.getVerseByPin(translationId: self.translationId)
+            self.versesBy = self.fullVersesBy
+            self.tableView.reloadData()
+        }
         
         if let button = self.navigationItem.rightBarButtonItem {
             button.isEnabled = false
@@ -37,6 +45,7 @@ class PinViewController: UITableViewController , UISearchResultsUpdating, UISear
         appearance.backgroundColor = .systemBackground
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
+        navigationItem.title = "pinned_ayats".localized
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 600
@@ -86,6 +95,7 @@ class PinViewController: UITableViewController , UISearchResultsUpdating, UISear
                 let activityViewController = UIActivityViewController(activityItems: textShare , applicationActivities: nil)
                 activityViewController.popoverPresentationController?.sourceView = self.view
                 self.present(activityViewController, animated: true, completion: nil)
+                self.deselectAll()
             }
             icon = UIImage(systemName: bottomItems[1].icon) ?? .add
             action.setValue(icon, forKey: "image")
@@ -95,12 +105,12 @@ class PinViewController: UITableViewController , UISearchResultsUpdating, UISear
             // Copy selected
             action = UIAlertAction(title: bottomItems[2].name, style: .default) { (action) in
                 UIPasteboard.general.string = self.getSelectedText()
-                self.showToast(message: "Kopyalandı")
+                self.funcs.showToast(message: "copied".localized, view: self.view)
                 let selectedRows = self.tableView.indexPathsForSelectedRows
                 for row in selectedRows! {
                     self.tableView.deselectRow(at: row, animated: true)
                 }
-                
+                self.deselectAll()
             }
             icon =  UIImage(systemName: bottomItems[2].icon) ?? .add
             action.setValue(icon, forKey: "image")
@@ -108,21 +118,24 @@ class PinViewController: UITableViewController , UISearchResultsUpdating, UISear
             actionSheetAlertController.addAction(action)
             
             
-            // Pin selected
-            action = UIAlertAction(title: bottomItems[3].name, style: .default) { (action) in
-                var verses = Array<Verse>()
-                for verseBy in self.selectedVersesBy {
-                    verses.append(Verse(chapterId: verseBy.chapterId, verseId: verseBy.verseId, verseText: verseBy.verseText))
-                }
-                self.dataBase.insertSavedVerse(verses: verses)
-                self.showToast(message: "Pinlendi")
-            }
-            icon =  UIImage(systemName: bottomItems[3].icon) ?? .add
-            action.setValue(icon, forKey: "image")
-            action.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
-            actionSheetAlertController.addAction(action)
+//            // Pin selected
+//            action = UIAlertAction(title: bottomItems[3].name, style: .default) { (action) in
+//                var verses = Array<Verse>()
+//                for verseBy in self.selectedVersesBy {
+//                    verses.append(Verse(chapterId: verseBy.chapterId, verseId: verseBy.verseId, verseText: verseBy.verseText))
+//                }
+//                self.dataBase.insertSavedVerse(verses: verses)
+//                self.funcs.showToast(message: "pinned".localized, view: self.view)
+//                self.deselectAll()
+//            }
+//            icon =  UIImage(systemName: bottomItems[3].icon) ?? .add
+//            action.setValue(icon, forKey: "image")
+//            action.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+//            actionSheetAlertController.addAction(action)
             
-            let cancelActionButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            let cancelActionButton = UIAlertAction(title: "cancel".localized, style: .cancel, handler: { (action) in
+                self.deselectAll()
+            })
             actionSheetAlertController.addAction(cancelActionButton)
             
             self.present(actionSheetAlertController, animated: true, completion: nil)
@@ -179,6 +192,15 @@ class PinViewController: UITableViewController , UISearchResultsUpdating, UISear
     }
     
     
+    
+    private func deselectAll(){
+        let selectedRows = self.tableView.indexPathsForSelectedRows ?? [IndexPath(row: 0, section: 0)]
+        for row in selectedRows {
+            self.tableView.deselectRow(at: row, animated: true)
+        }
+        selectedVersesBy = Array<VerseBy>()
+        tableView.allowsMultipleSelection = false
+    }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         if searchString.count > 2 && indexPath.row == 0 {
@@ -244,33 +266,35 @@ class PinViewController: UITableViewController , UISearchResultsUpdating, UISear
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let verseByItem = versesBy[indexPath.row]
         
         if tableView.allowsMultipleSelection {
-            self.appendVerseBy(insertVerse: versesBy[indexPath.row])
+            self.appendVerseBy(insertVerse: verseByItem)
             
         }
         
         if selectedVersesBy.count == 0 {
+            SwiftEventBus.post("goToVerse", sender: verseByItem)
 //            performSegue(withIdentifier: "showVerseFromByWord", sender: versesBy[indexPath.row])
         }
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showVerseFromByWord" {
-            if let verseController = segue.destination as? VerseViewController {
-                let selectedVerseByItem = sender as! VerseBy
-                verseController.verseId = selectedVerseByItem.verseId
-                verseController.chapterId = selectedVerseByItem.chapterId
-                verseController.chapterName = selectedVerseByItem.chapterName
-                verseController.languageId = languageId
-                verseController.translationId = translationId
-                let backItem = UIBarButtonItem()
-                backItem.title = "Geri"
-                navigationItem.backBarButtonItem = backItem
-            }
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "showVerseFromByWord" {
+//            if let verseController = segue.destination as? VerseViewController {
+//                let selectedVerseByItem = sender as! VerseBy
+//                verseController.verseId = selectedVerseByItem.verseId
+//                verseController.chapterId = selectedVerseByItem.chapterId
+//                verseController.chapterName = selectedVerseByItem.chapterName
+//                verseController.languageId = languageId
+//                verseController.translationId = translationId
+//                let backItem = UIBarButtonItem()
+//                backItem.title = "Geri"
+//                navigationItem.backBarButtonItem = backItem
+//            }
+//        }
+//    }
     
     
     private func appendVerseBy(insertVerse:VerseBy){

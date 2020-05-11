@@ -36,7 +36,7 @@ class VerseByTopicViewController: UITableViewController , UISearchResultsUpdatin
             if option.languageId != self.languageId || self.translationId != option.translationId{
                 self.languageId = option.languageId
                 self.translationId = option.translationId
-                self.fullVersesBy = self.dataBase.getVerseByTopic(topicId: self.topic.topicId, phraseId: self.phrase.phraseId, languageId: self.languageId, translationId: self.translationId)
+                self.fullVersesBy = self.dataBase.getVerseByTopic(topicId: self.topic.topicId, phraseId: self.phrase.phraseId, translationId: self.translationId)
                 self.versesBy = self.fullVersesBy
                 self.tableView.reloadData()
             }
@@ -52,7 +52,7 @@ class VerseByTopicViewController: UITableViewController , UISearchResultsUpdatin
             button.tintColor = UIColor.clear
         }
         
-        fullVersesBy = dataBase.getVerseByTopic(topicId: topic.topicId, phraseId: phrase.phraseId, languageId: languageId, translationId: translationId)
+        fullVersesBy = dataBase.getVerseByTopic(topicId: topic.topicId, phraseId: phrase.phraseId, translationId: translationId)
         versesBy = fullVersesBy
         
         
