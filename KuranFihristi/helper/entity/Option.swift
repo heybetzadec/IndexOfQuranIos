@@ -14,16 +14,18 @@ class Option {
     var translationId = 154
     var fontSize = 18
     var selectedOrder = 0
+    var darkMode = false
     
     init() {
         
     }
     
-    init(languageId:Int, translationId:Int, fontSize:Int, selectedOrder:Int) {
+    init(languageId:Int, translationId:Int, fontSize:Int, selectedOrder:Int, darkMode:Bool) {
         self.languageId = languageId
         self.translationId = translationId
         self.fontSize = fontSize
         self.selectedOrder = selectedOrder
+        self.darkMode = darkMode
     }
     
 }

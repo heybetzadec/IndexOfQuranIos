@@ -6,7 +6,13 @@ target 'KuranFihristi' do
   use_frameworks!
 
   pod 'SwiftEventBus', :tag => '5.0.1', :git => 'https://github.com/cesarferreira/SwiftEventBus.git'
-  
+  # add the Firebase pod for Google Analytics
+  pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Analytics'
+#  pod 'RichEditorView'
+  # add pods for any other desired Firebase products
+  # https://firebase.google.com/docs/ios/setup#available-pods
 
   target 'KuranFihristiTests' do
     inherit! :search_paths

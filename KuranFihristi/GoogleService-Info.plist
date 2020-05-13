@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>830951410203-fafpk7g5rrl2thta6atvdv32egeqklsa.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.830951410203-fafpk7g5rrl2thta6atvdv32egeqklsa</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>830951410203-rfjrnpf5ttssa2j354t8qvpbnfclvckd.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCMqKBtnqXxdGsai1sh5Zq5WmiXMgV_rVI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>830951410203</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.fihrist.heca.QuranFihristi</string>
+	<key>PROJECT_ID</key>
+	<string>kuran-fihristi-5cf53</string>
+	<key>STORAGE_BUCKET</key>
+	<string>kuran-fihristi-5cf53.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:830951410203:ios:ee7e367d5dbaa34d66c6be</string>
+	<key>DATABASE_URL</key>
+	<string>https://kuran-fihristi-5cf53.firebaseio.com</string>
+</dict>
+</plist>

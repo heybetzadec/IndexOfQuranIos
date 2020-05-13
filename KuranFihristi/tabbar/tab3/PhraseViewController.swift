@@ -22,6 +22,7 @@ class PhraseViewController: UITableViewController, UISearchResultsUpdating, UISe
     var languageId = 1
     var translationId = 154
     var searchString = ""
+    var darkMode = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +42,8 @@ class PhraseViewController: UITableViewController, UISearchResultsUpdating, UISe
                 self.fontSize = option.fontSize
                 self.tableView.reloadData()
             }
+            
+            self.darkMode = option.darkMode
         }
         
         if let button = self.navigationItem.rightBarButtonItem {
@@ -150,6 +153,7 @@ class PhraseViewController: UITableViewController, UISearchResultsUpdating, UISe
                 verseByTopicController.fontSize = fontSize
                 verseByTopicController.languageId = languageId
                 verseByTopicController.translationId = translationId
+                verseByTopicController.darkMode = darkMode
                 let backItem = UIBarButtonItem()
                 backItem.title = "back".localized
                 navigationItem.backBarButtonItem = backItem

@@ -16,6 +16,7 @@ class SearchViewController: UITableViewController , UISearchResultsUpdating, UIS
     var languageId = 0
     var translationId = 154
     var searchString = ""
+    var darkMode = false
     
     private let funcs = Functions()
     private let dataBase = DataBase()
@@ -112,6 +113,12 @@ class SearchViewController: UITableViewController , UISearchResultsUpdating, UIS
             tableView.allowsMultipleSelection = true
             self.appendVerse(insertVerse: verses[indexPath!.row])
             let actionSheetAlertController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            
+            if darkMode {
+                actionSheetAlertController.overrideUserInterfaceStyle = .dark
+            } else {
+                actionSheetAlertController.overrideUserInterfaceStyle = .light
+            }
             
             // Select others
             var action = UIAlertAction(title: bottomItems[0].name, style: .default) { (action) in

@@ -19,7 +19,10 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
     var languageId = 0
     var translationId = 0
     var searchString = ""
-
+    var darkMode = false
+    var savedVerse = Verse(chapterId: 0, verseId: 0, verseText: "")
+    var fromSavedVerse = false
+    
     private let funcs = Functions()
     private let dataBase = DataBase()
     private var verses = Array<Verse>()
@@ -27,6 +30,7 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
     private var selectedVerses = Array<Verse>()
     private var searchController = UISearchController()
     private var bottomItems =  Array<BottomItem>()
+    private var defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +53,9 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
                 self.fontSize = option.fontSize
                 self.tableView.reloadData()
             }
+            
+            self.darkMode = option.darkMode
+            print("in verse option.darkMode = \(option.darkMode)")
         }
         
         
@@ -76,6 +83,15 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
         tableView.scrollToRow(at: IndexPath(row: verseId - 1, section: 0), at: .top, animated: false)
         
         tableView.tableFooterView = UIView()
+        
+        
+        if fromSavedVerse {
+           _ = Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { timer in
+                self.savedVerse = Verse(chapterId: 0, verseId: 0, verseText: "")
+                self.tableView.reloadData()
+                SwiftEventBus.post("savedVerse", sender: self.savedVerse)
+            }
+        }
     }
     
     func setupLongPressGesture() {
@@ -96,6 +112,13 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
             tableView.allowsMultipleSelection = true
             self.appendVerse(insertVerse: verses[indexPath!.row])
             let actionSheetAlertController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            
+            if darkMode {
+                actionSheetAlertController.overrideUserInterfaceStyle = .dark
+            } else {
+                actionSheetAlertController.overrideUserInterfaceStyle = .light
+            }
+//
             
             // Select others
             var action = UIAlertAction(title: bottomItems[0].name, style: .default) { (action) in
@@ -144,6 +167,62 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
             action.setValue(icon, forKey: "image")
             action.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
             actionSheetAlertController.addAction(action)
+            
+            // Check, uncheck for save
+            if selectedVerses.count == 1 {
+                let selectedVerse = self.selectedVerses.first ?? Verse(chapterId: 0, verseId: 0, verseText: "")
+                
+                if (savedVerse.chapterId == selectedVerse.chapterId && savedVerse.verseId == selectedVerse.verseId ){
+                    action = UIAlertAction(title: "unmark_ayat".localized, style: .default) { (action) in
+                        self.dataBase.insertSavedVerse(verses: self.selectedVerses)
+                        self.savedVerse = Verse(chapterId: 0, verseId: 0, verseText: "")
+                        self.defaults.set(0, forKey: "savedChapterId")
+                        self.defaults.set(0, forKey: "savedVerseId")
+                        self.deselectAll()
+                        self.tableView.reloadData()
+                        SwiftEventBus.post("savedVerse", sender: self.savedVerse)
+                    }
+                    icon =  UIImage(systemName: "xmark.circle") ?? .add
+                    action.setValue(icon, forKey: "image")
+                    action.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+                    actionSheetAlertController.addAction(action)
+                } else {
+                    // Save state
+                    action = UIAlertAction(title: "mark_ayat".localized, style: .default) { (action) in
+                        self.dataBase.insertSavedVerse(verses: self.selectedVerses)
+                        self.savedVerse = selectedVerse
+                        self.defaults.set(self.savedVerse.chapterId, forKey: "savedChapterId")
+                        self.defaults.set(self.savedVerse.verseId, forKey: "savedVerseId")
+                        self.deselectAll()
+                        self.tableView.reloadData()
+                        SwiftEventBus.post("savedVerse", sender: self.savedVerse)
+                    }
+                    icon =  UIImage(systemName:"checkmark.circle") ?? .add
+                    action.setValue(icon, forKey: "image")
+                    action.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+                    actionSheetAlertController.addAction(action)
+                }
+            }
+            
+            // Text on image
+            action = UIAlertAction(title: "draw_on_image".localized, style: .default) { (action) in
+                let text = self.getSelectedText()
+                let storyBoard = UIStoryboard(name: "Main", bundle:nil)
+                let textImegeViewController = storyBoard.instantiateViewController(withIdentifier: "textImegeViewController") as! TextImegeViewController
+                textImegeViewController.text = text
+                textImegeViewController.translationId = self.translationId
+                textImegeViewController.languageId = self.languageId
+                textImegeViewController.darkMode = self.darkMode
+                self.navigationController?.pushViewController(textImegeViewController, animated: true)
+                
+                self.deselectAll()
+            }
+            
+            icon =  UIImage(systemName: "textbox") ?? .add
+            action.setValue(icon, forKey: "image")
+            action.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+            actionSheetAlertController.addAction(action)
+            
             
             let cancelActionButton = UIAlertAction(title: "cancel".localized, style: .cancel, handler: { (action) in
                 self.deselectAll()
@@ -234,6 +313,12 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
             
             cell.verseTextLabel.attributedText = attrStr
             cell.verseTextLabel.font = .systemFont(ofSize: CGFloat(fontSize))
+            
+            if verseItem.chapterId == savedVerse.chapterId && verseItem.verseId == savedVerse.verseId {
+                cell.accessoryType = .checkmark
+            } else {
+                cell.accessoryType = .disclosureIndicator
+            }
             
             return cell
         }

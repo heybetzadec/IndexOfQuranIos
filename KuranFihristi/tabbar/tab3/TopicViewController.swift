@@ -21,6 +21,7 @@ class TopicViewController: UITableViewController, UISearchResultsUpdating, UISea
     private var languageId = 1
     private var translationId = 154
     private var fontSize = 17
+    private var darkMode = false
     
     
     override func viewDidLoad() {
@@ -29,6 +30,7 @@ class TopicViewController: UITableViewController, UISearchResultsUpdating, UISea
         languageId = defaults.integer(forKey: "languageId")
         translationId = defaults.integer(forKey: "translationId")
         fontSize = defaults.integer(forKey: "fontSize")
+        darkMode = defaults.bool(forKey: "darkMode")
         
         SwiftEventBus.onMainThread(self, name:"optionChange") { result in
             let option = result?.object as! Option
@@ -46,6 +48,8 @@ class TopicViewController: UITableViewController, UISearchResultsUpdating, UISea
                 self.fontSize = option.fontSize
                 self.tableView.reloadData()
             }
+            
+            self.darkMode = option.darkMode
         }
         
         if let button = self.navigationItem.rightBarButtonItem {
@@ -156,6 +160,7 @@ class TopicViewController: UITableViewController, UISearchResultsUpdating, UISea
                 phraseViewController.fontSize = fontSize
                 phraseViewController.languageId = languageId
                 phraseViewController.translationId = translationId
+                phraseViewController.darkMode = darkMode
                 let backItem = UIBarButtonItem()
                 backItem.title = "back".localized
                 navigationItem.backBarButtonItem = backItem

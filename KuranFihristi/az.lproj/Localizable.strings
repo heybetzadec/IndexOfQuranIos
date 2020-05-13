@@ -17,9 +17,9 @@
 "arabic_original" = "Ərəbcə orginal";
 "arabic_latin" = "Latın əlifbası";
 "arabic" = "Ərəbcə";
-"share_ayat" = "Ayəti Paylaş";
-"copy_ayat" = "Ayəti Kopyala";
-"pin_ayat" = "Ayəti Pinlə";
+"share_ayat" = "Ayəni Paylaş";
+"copy_ayat" = "Ayəni Kopyala";
+"pin_ayat" = "Ayəni Pinlə";
 "share_selected" = "Seçilənləri Paylaş";
 "copy_selected" = "Seçilənləri Kopyala";
 "pin_selected" = "Seçilənləri Pinlə";
@@ -49,3 +49,9 @@
 "back" = "Geri";
 "cancel" = "Ləğv et";
 "quran_life"="Həyatı Quran ilə Necə Yaşamaq Olar?";
+"mark_ayat"="Qaldığım yer olaraq nişanla";
+"unmark_ayat"="Nişanı sil";
+"go_to_mark"="Nişanlanmış ayəyə get";
+"draw_on_image"="Rəsm üzərinə yaz";
+"random_ayat"="Hər hansı bir ayəyə get";
+

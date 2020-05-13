@@ -134,6 +134,8 @@ class SettingViewController: UITableViewController, UIPickerViewDelegate, UIPick
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        var darkMode = false
+        
         switch  selectedTableRow {
         case 0:
             selectedLanguage = row
@@ -201,7 +203,6 @@ class SettingViewController: UITableViewController, UIPickerViewDelegate, UIPick
             selectedInterfaceMode = row
             settingItem[4].value = interfaceModeItems[row]
             
-            var darkMode = false
             
             switch selectedInterfaceMode {
             case 0:
@@ -223,16 +224,16 @@ class SettingViewController: UITableViewController, UIPickerViewDelegate, UIPick
             }
             
             SwiftEventBus.post("darkMode", sender: darkMode)
-//            defaults.set(darkMode, forKey: "darkMode")
+            defaults.set(darkMode, forKey: "darkMode")
             defaults.set(selectedInterfaceMode, forKey: "selectedInterfaceMode")
             
         default:
             break;
         }
         
-        if selectedTableRow != 4 {
-            SwiftEventBus.post("optionChange", sender: Option(languageId: languageId, translationId: translationId, fontSize: fontSize, selectedOrder: selectedOrder))
-        }
+//        if selectedTableRow != 4 {
+            SwiftEventBus.post("optionChange", sender: Option(languageId: languageId, translationId: translationId, fontSize: fontSize, selectedOrder: selectedOrder, darkMode: darkMode))
+//        }
         
         tableView.reloadRows(at: [IndexPath(row: selectedTableRow, section: 0)], with: .none)
     }

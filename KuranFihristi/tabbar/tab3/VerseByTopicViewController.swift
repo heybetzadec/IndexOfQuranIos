@@ -26,6 +26,7 @@ class VerseByTopicViewController: UITableViewController , UISearchResultsUpdatin
     var languageId = 1
     var translationId = 154
     var searchString = ""
+    var darkMode = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +46,8 @@ class VerseByTopicViewController: UITableViewController , UISearchResultsUpdatin
                 self.fontSize = option.fontSize
                 self.tableView.reloadData()
             }
+            
+            self.darkMode = option.darkMode
         }
         
         if let button = self.navigationItem.rightBarButtonItem {
@@ -93,6 +96,12 @@ class VerseByTopicViewController: UITableViewController , UISearchResultsUpdatin
             tableView.allowsMultipleSelection = true
             self.appendVerseBy(insertVerse: versesBy[indexPath!.row])
             let actionSheetAlertController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            
+            if darkMode {
+                actionSheetAlertController.overrideUserInterfaceStyle = .dark
+            } else {
+                actionSheetAlertController.overrideUserInterfaceStyle = .light
+            }
             
             // Select others
             var action = UIAlertAction(title: bottomItems[0].name, style: .default) { (action) in

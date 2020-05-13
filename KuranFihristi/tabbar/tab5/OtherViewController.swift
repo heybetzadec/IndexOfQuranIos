@@ -14,6 +14,7 @@ class OtherViewController: UITableViewController {
     private var fontSize = 17
     private var languageId = 1
     private var translationId = 154
+    private var darkMode = false
     private var searchString = ""
     
     private var bottomItems =  Array<BottomItem>()
@@ -50,20 +51,9 @@ class OtherViewController: UITableViewController {
             _ = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { timer in
                  self.navigationController?.pushViewController(searchViewController, animated: true)
             }
-            
         }
         
-//        SwiftEventBus.onMainThread(self, name:"goToSearch") { result in
-//            print("goToSearch")
-//            let searchString : String = result?.object as! String
-//            let storyBoard = UIStoryboard(name: "Main", bundle:nil)
-//            let searchViewController = storyBoard.instantiateViewController(withIdentifier: "searchViewController") as! SearchViewController
-//            searchViewController.tranlationId = self.tranlationId
-//            searchViewController.languageId = self.languageId
-//            searchViewController.searchString = searchString
-//            self.navigationController?.pushViewController(searchViewController, animated: true)
-//        }
-        
+        darkMode = defaults.bool(forKey: "darkMode")
         languageId = defaults.integer(forKey: "languageId")
         translationId = defaults.integer(forKey: "translationId")
         fontSize = defaults.integer(forKey: "fontSize")
@@ -87,7 +77,10 @@ class OtherViewController: UITableViewController {
                 self.fontSize = option.fontSize
                 self.tableView.reloadData()
             }
-
+            
+            self.translationId = option.translationId
+            
+            self.darkMode = option.darkMode
         }
         
         
@@ -129,6 +122,7 @@ class OtherViewController: UITableViewController {
             lifeViewController.translationId = translationId
             lifeViewController.languageId = languageId
             lifeViewController.fontSize = fontSize
+            lifeViewController.darkMode = darkMode
             navigationController?.pushViewController(lifeViewController, animated: true)
         case 1:
             
@@ -136,19 +130,21 @@ class OtherViewController: UITableViewController {
             searchViewController.translationId = translationId
             searchViewController.languageId = languageId
             searchViewController.searchString = ""
+            searchViewController.darkMode = darkMode
             navigationController?.pushViewController(searchViewController, animated: true)
 
         
         case 2:
-            
             let pinViewController = storyBoard.instantiateViewController(withIdentifier: "pinViewController") as! PinViewController
             pinViewController.translationId = translationId
             pinViewController.languageId = languageId
+            pinViewController.darkMode = darkMode
             navigationController?.pushViewController(pinViewController, animated: true)
             
         case 3:
             
             let reminderViewController = storyBoard.instantiateViewController(withIdentifier: "reminderViewController") as! ReminderViewController
+            reminderViewController.translationId = translationId
             navigationController?.pushViewController(reminderViewController, animated: true)
         
         case 4:

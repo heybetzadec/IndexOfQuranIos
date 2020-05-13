@@ -22,6 +22,7 @@ class LetterViewController: UITableViewController, UISearchResultsUpdating, UISe
     private var languageId = 1
     private var translationId = 154
     private var fontSize = 17
+    private var darkMode = false
 
     let labelInsets: UIEdgeInsets = UIEdgeInsets(top: 0.0, left: 20.0, bottom: 0.0, right: 0.0)
     
@@ -33,6 +34,7 @@ class LetterViewController: UITableViewController, UISearchResultsUpdating, UISe
         languageId = defaults.integer(forKey: "languageId")
         translationId = defaults.integer(forKey: "translationId")
         fontSize = defaults.integer(forKey: "fontSize")
+        darkMode = defaults.bool(forKey: "darkMode")
         
         SwiftEventBus.onMainThread(self, name:"optionChange") { result in
             let option = result?.object as! Option
@@ -50,6 +52,7 @@ class LetterViewController: UITableViewController, UISearchResultsUpdating, UISe
                 self.fontSize = option.fontSize
                 self.tableView.reloadData()
             }
+            self.darkMode = option.darkMode
         }
         
         if let button = self.navigationItem.rightBarButtonItem {
@@ -236,10 +239,7 @@ class LetterViewController: UITableViewController, UISearchResultsUpdating, UISe
                 verseByWordController.letter = selectedLetterWord.letter
                 verseByWordController.languageId = languageId
                 verseByWordController.translationId = translationId
-//                wordController.letter = selectedLetterWord.letter
-//                wordController.languageId = languageId
-//                wordController.fontSize = fontSize
-//                wordController.translationId = translationId
+                verseByWordController.darkMode = darkMode
                 let backItem = UIBarButtonItem()
                 backItem.title = "back".localized
                 navigationItem.backBarButtonItem = backItem

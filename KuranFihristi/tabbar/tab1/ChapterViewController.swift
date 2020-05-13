@@ -9,27 +9,71 @@
 import UIKit
 import AudioToolbox
 import SwiftEventBus
+import UserNotifications
 
-class ChapterViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
+class ChapterViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate, UNUserNotificationCenterDelegate {
     
     private let dataBase = DataBase()
     private var chapters = Array<Chapter>()
     private var fullChapters = Array<Chapter>()
     private var searchController = UISearchController()
     private var defaults = UserDefaults.standard
+    private var savedVerse = Verse(chapterId: 0, verseId: 0, verseText: "")
+    private var fromSavedVerse = false
     
     var languageId = 1
     var translationId = 154
     var selectedOrder = 0
     var fontSize = 17
-//    var darkMode = true
+    var darkMode = false
     var systemDarkMode = true
     var selectedInterfaceMode = 0
     var verseId = 1
     var searchString = ""
     
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        print("bura isledi")
+        // pull out the buried userInfo dictionary
+        let userInfo = response.notification.request.content.userInfo
+
+        if let customData = userInfo["customData"] as? String {
+            print("Custom data received: \(customData)")
+
+            switch response.actionIdentifier {
+            case UNNotificationDefaultActionIdentifier:
+                // the user swiped to unlock
+                print("Default identifier")
+
+            case "show":
+                // the user tapped our "show more info…" button
+                print("Show more information…")
+
+            default:
+                break
+            }
+        }
+
+        // you must call the completion handler when you're done
+        completionHandler()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let center = UNUserNotificationCenter.current()
+        center.delegate = self
+        
+//        if ([UIApplication sharedApplication].applicationState == UIApplicationStateInactive)
+//        {
+//            // user has tapped notification
+//            print("user has tapped notification")
+//        }
+//        else
+//        {
+//            // user opened app from app icon
+//            print("user opened app from app icon")
+//        }
         
         if let button = self.navigationItem.rightBarButtonItem {
             button.isEnabled = false
@@ -90,20 +134,29 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
             fontSize = defaults.integer(forKey: "fontSize")
             selectedOrder = defaults.integer(forKey: "selectedOrder")
             selectedInterfaceMode = defaults.integer(forKey: "selectedInterfaceMode")
-//            darkMode = defaults.bool(forKey: "darkMode")
+            let savedChapterId = defaults.integer(forKey: "savedChapterId")
+            let savedVerseId = defaults.integer(forKey: "savedVerseId")
+            savedVerse.chapterId = savedChapterId
+            savedVerse.verseId = savedVerseId
         }
         
         switch selectedInterfaceMode {
         case 0:
             SwiftEventBus.post("darkMode", sender: systemDarkMode)
+            darkMode = systemDarkMode
         case 1:
             SwiftEventBus.post("darkMode", sender: false)
+            darkMode = false
         case 2:
             SwiftEventBus.post("darkMode", sender: true)
+            darkMode = true
         default:
             SwiftEventBus.post("darkMode", sender: systemDarkMode)
+            darkMode = systemDarkMode
         }
 
+        defaults.set(darkMode, forKey: "darkMode")
+        
 //        if selectedInterfaceMode == 0 {
 //            SwiftEventBus.post("darkMode", sender: darkMode)
 //        }
@@ -124,6 +177,7 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
                 self.chapters = self.fullChapters
             }
             self.fontSize = option.fontSize
+            self.darkMode = option.darkMode
             self.tableView.reloadData()
             
             self.navigationItem.title = "chapters".localized
@@ -141,6 +195,19 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
             
         }
         
+        SwiftEventBus.onMainThread(self, name:"savedVerse") { result in
+            let verse = result?.object as! Verse
+            self.savedVerse = verse
+            self.tableView.reloadData()
+        }
+        
+        if savedVerse.chapterId != 0 {
+            let chapterName = self.dataBase.getChapterName(chapterId: self.savedVerse.chapterId, translationId: self.translationId)
+            self.verseId = self.savedVerse.verseId
+            self.fromSavedVerse = true
+            self.performSegue(withIdentifier: "showVerses", sender: Chapter(chapterId: self.savedVerse.chapterId, chapterName: chapterName))
+        }
+        
         
         fullChapters = dataBase.getChapters(translationId: translationId, selectedOrder: selectedOrder)
         chapters = fullChapters
@@ -152,7 +219,7 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
         navigationItem.scrollEdgeAppearance = appearance
         self.navigationItem.title = "chapters".localized
         prepareSearchController()
-        setupLongPressGesture() 
+        setupLongPressGesture()
         
         tableView.tableFooterView = UIView()
     }
@@ -166,17 +233,22 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
     @objc func handleLongPress(longPressGesture: UILongPressGestureRecognizer) {
         let p = longPressGesture.location(in: self.tableView)
         let indexPath = self.tableView.indexPathForRow(at: p)
-        if indexPath != nil {
+        if indexPath == nil {
             print("Long press on table view, not row.")
         } else if longPressGesture.state == UIGestureRecognizer.State.began {
             AudioServicesPlaySystemSound(1520) // 1519 - peek, 1521 - nope
             
             tableView.selectRow(at: indexPath, animated: false, scrollPosition: UITableView.ScrollPosition.middle)
-            tableView.allowsMultipleSelection = true
             
             let actionSheetAlertController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             
-            let action = UIAlertAction(title: "Her hangi bir ayete git", style: .default) { (action) in
+            if darkMode {
+                actionSheetAlertController.overrideUserInterfaceStyle = .dark
+            } else {
+                actionSheetAlertController.overrideUserInterfaceStyle = .light
+            }
+            
+            var action = UIAlertAction(title: "random_ayat".localized, style: .default) { (action) in
                 let verseBy = self.dataBase.getRandomVerseBy(translationId: self.translationId)
                 self.verseId = verseBy.verseId
                 let openChapter = Chapter(chapterId: verseBy.chapterId, chapterName: verseBy.chapterName)
@@ -187,14 +259,54 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
             action.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
             actionSheetAlertController.addAction(action)
             
+            if self.savedVerse.chapterId != 0 {
+                action = UIAlertAction(title: "go_to_mark".localized, style: .default) { (action) in
+                    let chapterName = self.dataBase.getChapterName(chapterId: self.savedVerse.chapterId, translationId: self.translationId)
+                    self.verseId = self.savedVerse.verseId
+                    self.performSegue(withIdentifier: "showVerses", sender: Chapter(chapterId: self.savedVerse.chapterId, chapterName: chapterName))
+                }
+                let icon = UIImage(systemName: "bookmark")
+                action.setValue(icon, forKey: "image")
+                action.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+                actionSheetAlertController.addAction(action)
+            }
             
-            let cancelActionButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            let cell = tableView.cellForRow(at: indexPath!)
+            
+            if cell?.accessoryType == .checkmark {
+                action = UIAlertAction(title: "unmark_ayat".localized , style: .default) { (action) in
+                    self.savedVerse = Verse(chapterId: 0, verseId: 0, verseText: "")
+                    self.defaults.set(0, forKey: "savedChapterId")
+                    self.defaults.set(0, forKey: "savedVerseId")
+                    self.tableView.reloadData()
+                    self.deselectAll()
+                }
+                let icon = UIImage(systemName: "xmark.circle")
+                action.setValue(icon, forKey: "image")
+                action.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+                actionSheetAlertController.addAction(action)
+            }
+            
+            
+             let cancelActionButton = UIAlertAction(title: "cancel".localized, style: .cancel, handler: { (action) in
+                self.deselectAll()
+             })
             actionSheetAlertController.addAction(cancelActionButton)
             
             self.present(actionSheetAlertController, animated: true, completion: nil)
             
-            
         }
+    
+    }
+    
+    private func deselectAll(){
+        let selectedRows = self.tableView.indexPathsForSelectedRows
+        if selectedRows != nil {
+            for row in selectedRows! {
+                self.tableView.deselectRow(at: row, animated: true)
+            }
+        }
+        
     }
     
     
@@ -264,6 +376,11 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
             let cell = tableView.dequeueReusableCell(withIdentifier: "chapterItemViewCell", for: indexPath as IndexPath) as! ItemViewCell
             cell.nameLabel.text = "\(chapterItem.chapterId). \(chapterItem.chapterName)"
             cell.nameLabel.font = .systemFont(ofSize: CGFloat(fontSize))
+            if chapterItem.chapterId == savedVerse.chapterId {
+                cell.accessoryType = .checkmark
+            } else {
+                cell.accessoryType = .disclosureIndicator
+            }
             return cell
         }
     }
@@ -296,11 +413,15 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
                 let selectedChapterItem = sender as! Chapter
                 verseController.verseId = verseId
                 verseController.fontSize = fontSize
+                verseController.darkMode = darkMode
                 verseController.chapterId = selectedChapterItem.chapterId
                 verseController.chapterName = selectedChapterItem.chapterName
                 verseController.languageId = languageId
+                verseController.savedVerse = savedVerse
                 verseController.translationId = translationId
+                verseController.fromSavedVerse = fromSavedVerse
                 verseId = 1
+                fromSavedVerse = false
                 let backItem = UIBarButtonItem()
                 backItem.title = "back".localized
                 navigationItem.backBarButtonItem = backItem

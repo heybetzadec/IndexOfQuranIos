@@ -21,7 +21,7 @@ class LifeViewController: UITableViewController , UISearchResultsUpdating, UISea
     var languageId = 1
     var translationId = 154
     var fontSize = 17
-    
+    var darkMode = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,23 +30,25 @@ class LifeViewController: UITableViewController , UISearchResultsUpdating, UISea
         translationId = defaults.integer(forKey: "translationId")
         fontSize = defaults.integer(forKey: "fontSize")
         
-        SwiftEventBus.onMainThread(self, name:"optionChange") { result in
-            let option = result?.object as! Option
-            self.translationId = option.translationId
-            
-            if option.languageId != self.languageId {
-                self.languageId = option.languageId
-                self.fullLifes = self.dataBase.getLifes(languageId: self.languageId)
-                self.lifes = self.fullLifes
-                self.navigationItem.title = "quran_life".localized
-                self.tableView.reloadData()
-            }
-            
-            if self.fontSize != option.fontSize {
-                self.fontSize = option.fontSize
-                self.tableView.reloadData()
-            }
-        }
+//        SwiftEventBus.onMainThread(self, name:"optionChange") { result in
+//            let option = result?.object as! Option
+//            self.translationId = option.translationId
+//            
+//            if option.languageId != self.languageId {
+//                self.languageId = option.languageId
+//                self.fullLifes = self.dataBase.getLifes(languageId: self.languageId)
+//                self.lifes = self.fullLifes
+//                self.navigationItem.title = "quran_life".localized
+//                self.tableView.reloadData()
+//            }
+//            
+//            if self.fontSize != option.fontSize {
+//                self.fontSize = option.fontSize
+//                self.tableView.reloadData()
+//            }
+//            
+//            self.darkMode = option.darkMode
+//        }
         
         if let button = self.navigationItem.rightBarButtonItem {
             button.isEnabled = false
@@ -156,6 +158,7 @@ class LifeViewController: UITableViewController , UISearchResultsUpdating, UISea
                 verseLifeViewController.fontSize = fontSize
                 verseLifeViewController.languageId = languageId
                 verseLifeViewController.translationId = translationId
+                verseLifeViewController.darkMode = darkMode
                 let backItem = UIBarButtonItem()
                 backItem.title = "back".localized
                 navigationItem.backBarButtonItem = backItem

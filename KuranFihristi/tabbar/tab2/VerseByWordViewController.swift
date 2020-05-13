@@ -25,6 +25,7 @@ class VerseByWordViewController: UITableViewController, UISearchResultsUpdating,
     var fontSize = 17
     var languageId = 0
     var translationId = 0
+    var darkMode = false
     var searchString = ""
     
     override func viewDidLoad() {
@@ -45,6 +46,7 @@ class VerseByWordViewController: UITableViewController, UISearchResultsUpdating,
                 self.fontSize = option.fontSize
                 self.tableView.reloadData()
             }
+            self.darkMode = option.darkMode
         }
         
         if let button = self.navigationItem.rightBarButtonItem {
@@ -88,12 +90,18 @@ class VerseByWordViewController: UITableViewController, UISearchResultsUpdating,
         } else if longPressGesture.state == UIGestureRecognizer.State.began {
             AudioServicesPlaySystemSound(1520) // 1519 - peek, 1521 - nope
             
-            print("Long press on row, at \(indexPath!.row)")
+            
             tableView.selectRow(at: indexPath, animated: false, scrollPosition: UITableView.ScrollPosition.middle)
             tableView.allowsMultipleSelection = true
             self.appendVerseBy(insertVerse: versesBy[indexPath!.row])
             let actionSheetAlertController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            if darkMode {
+                actionSheetAlertController.overrideUserInterfaceStyle = .dark
+            } else {
+                actionSheetAlertController.overrideUserInterfaceStyle = .light
+            }
             
+            //
             // Select others
             var action = UIAlertAction(title: bottomItems[0].name, style: .default) { (action) in
                 

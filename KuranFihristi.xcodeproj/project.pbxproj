@@ -23,6 +23,9 @@
 		EF583ED624684BD20095A490 /* AddReminderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF583ED524684BD20095A490 /* AddReminderViewCell.swift */; };
 		EF583ED824687A8C0095A490 /* SwiftEventBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF583ED724687A8C0095A490 /* SwiftEventBus.framework */; };
 		EF583EDB246880450095A490 /* Documents in Resources */ = {isa = PBXBuildFile; fileRef = EF583EDA246880450095A490 /* Documents */; };
+		EF6794CF246ABD860010E356 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF6794CE246ABD860010E356 /* GoogleService-Info.plist */; };
+		EF6794D2246AC5640010E356 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF6794D1246AC5640010E356 /* ExternalAccessory.framework */; };
+		EF6794F5246B01780010E356 /* TextImegeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6794F4246B01780010E356 /* TextImegeViewController.swift */; };
 		EF6B5CC82464A01A00B1D3BB /* SettingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B5CC72464A01A00B1D3BB /* SettingItem.swift */; };
 		EF7539C12465F838001853FE /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7539C02465F837001853FE /* Option.swift */; };
 		EF7539C724660C3D001853FE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EF7539C924660C3D001853FE /* Localizable.strings */; };
@@ -115,6 +118,11 @@
 		EF583ED524684BD20095A490 /* AddReminderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderViewCell.swift; sourceTree = "<group>"; };
 		EF583ED724687A8C0095A490 /* SwiftEventBus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftEventBus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF583EDA246880450095A490 /* Documents */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Documents; sourceTree = "<group>"; };
+		EF6794CA246AB4610010E356 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF6794CE246ABD860010E356 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EF6794D0246AC5640010E356 /* Kuran Fihristi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Kuran Fihristi.entitlements"; sourceTree = "<group>"; };
+		EF6794D1246AC5640010E356 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
+		EF6794F4246B01780010E356 /* TextImegeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextImegeViewController.swift; sourceTree = "<group>"; };
 		EF6B5CC72464A01A00B1D3BB /* SettingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItem.swift; sourceTree = "<group>"; };
 		EF7539C02465F837001853FE /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
 		EF7539C224660B39001853FE /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Main.strings; sourceTree = "<group>"; };
@@ -132,7 +140,7 @@
 		EFBAC38E2462D9B500D54B2E /* OtherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherCell.swift; sourceTree = "<group>"; };
 		EFCEA7F9245DC26D00B971B0 /* CustomSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchController.swift; sourceTree = "<group>"; };
 		EFCEA7FB245DC28900B971B0 /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
-		EFCF783A245C793A00E32BFD /* KuranFihristi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KuranFihristi.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFCF783A245C793A00E32BFD /* Kuran Fihristi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kuran Fihristi.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFCF783D245C793A00E32BFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFCF783F245C793A00E32BFD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		EFCF7846245C793A00E32BFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -186,6 +194,7 @@
 			files = (
 				EF583ED824687A8C0095A490 /* SwiftEventBus.framework in Frameworks */,
 				EFCF78B4245C997F00E32BFD /* libsqlite3.tbd in Frameworks */,
+				EF6794D2246AC5640010E356 /* ExternalAccessory.framework in Frameworks */,
 				B49A435B60EE6A06BFBF205B /* Pods_KuranFihristi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,6 +234,8 @@
 		E2E48396384D0151CF9E923C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EF6794D1246AC5640010E356 /* ExternalAccessory.framework */,
+				EF6794CA246AB4610010E356 /* FirebaseCore.framework */,
 				EF583ED724687A8C0095A490 /* SwiftEventBus.framework */,
 				EFCF78B3245C997F00E32BFD /* libsqlite3.tbd */,
 				6F09E22C6521E22266B6D447 /* Pods_KuranFihristi.framework */,
@@ -288,7 +299,7 @@
 		EFCF783B245C793A00E32BFD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EFCF783A245C793A00E32BFD /* KuranFihristi.app */,
+				EFCF783A245C793A00E32BFD /* Kuran Fihristi.app */,
 				EFCF7855245C793D00E32BFD /* KuranFihristiTests.xctest */,
 				EFCF7860245C793D00E32BFD /* KuranFihristiUITests.xctest */,
 			);
@@ -298,6 +309,7 @@
 		EFCF783C245C793A00E32BFD /* KuranFihristi */ = {
 			isa = PBXGroup;
 			children = (
+				EF6794D0246AC5640010E356 /* Kuran Fihristi.entitlements */,
 				EFCF783D245C793A00E32BFD /* AppDelegate.swift */,
 				EFCF783F245C793A00E32BFD /* SceneDelegate.swift */,
 				EFCF78BC245CAA6B00E32BFD /* helper */,
@@ -307,6 +319,7 @@
 				EF583EDA246880450095A490 /* Documents */,
 				EFCF78B5245C9CC500E32BFD /* Library */,
 				EFCF7850245C793C00E32BFD /* Info.plist */,
+				EF6794CE246ABD860010E356 /* GoogleService-Info.plist */,
 				EFCF784D245C793C00E32BFD /* LaunchScreen.storyboard */,
 				EFCF7848245C793A00E32BFD /* KuranFihristi.xcdatamodeld */,
 				EF7539C924660C3D001853FE /* Localizable.strings */,
@@ -338,6 +351,7 @@
 				EFCF7872245C860400E32BFD /* ChapterViewController.swift */,
 				EFCF7876245C879A00E32BFD /* VerseViewController.swift */,
 				EFCF787C245C897000E32BFD /* VerseDetailViewController.swift */,
+				EF6794F4246B01780010E356 /* TextImegeViewController.swift */,
 			);
 			path = tab1;
 			sourceTree = "<group>";
@@ -448,7 +462,7 @@
 			);
 			name = KuranFihristi;
 			productName = KuranFihristi;
-			productReference = EFCF783A245C793A00E32BFD /* KuranFihristi.app */;
+			productReference = EFCF783A245C793A00E32BFD /* Kuran Fihristi.app */;
 			productType = "com.apple.product-type.application";
 		};
 		EFCF7854245C793D00E32BFD /* KuranFihristiTests */ = {
@@ -547,6 +561,7 @@
 				EFCF784C245C793C00E32BFD /* Assets.xcassets in Resources */,
 				EFCF7847245C793A00E32BFD /* Main.storyboard in Resources */,
 				EF583EDB246880450095A490 /* Documents in Resources */,
+				EF6794CF246ABD860010E356 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -719,6 +734,7 @@
 				EFCF7893245C8F1E00E32BFD /* SettingViewController.swift in Sources */,
 				EFCF7840245C793A00E32BFD /* SceneDelegate.swift in Sources */,
 				EFD4DFB8245D70D700FA5EF4 /* Topic.swift in Sources */,
+				EF6794F5246B01780010E356 /* TextImegeViewController.swift in Sources */,
 				EFBAC3892462B83200D54B2E /* ReminderViewCell.swift in Sources */,
 				EFCF788D245C8EDB00E32BFD /* OtherViewController.swift in Sources */,
 				EFCF7881245C89D800E32BFD /* PhraseViewController.swift in Sources */,
@@ -916,6 +932,7 @@
 			baseConfigurationReference = 4A7D9F5A6E1958F3889F512E /* Pods-KuranFihristi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "KuranFihristi/Kuran Fihristi.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5A6FTQ6LD4;
 				INFOPLIST_FILE = KuranFihristi/Info.plist;
@@ -924,7 +941,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fihrist.heca.QuranFihristi;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Kuran Fihristi";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -935,6 +952,7 @@
 			baseConfigurationReference = 30A79D3CC281F1D60F151ECD /* Pods-KuranFihristi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "KuranFihristi/Kuran Fihristi.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5A6FTQ6LD4;
 				INFOPLIST_FILE = KuranFihristi/Info.plist;
@@ -943,7 +961,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fihrist.heca.QuranFihristi;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Kuran Fihristi";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

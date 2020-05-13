@@ -8,16 +8,22 @@
 
 import UIKit
 import SwiftEventBus
+import UserNotifications
 
-class ReminderViewController: UITableViewController {
+class ReminderViewController: UITableViewController, UNUserNotificationCenterDelegate {
     
     @IBOutlet weak var addBarButton: UIBarButtonItem!
-    var reminders = Array<Reminder>()
-    var funcs = Functions()
-    var addReminderShow = false
-
+    private let dataBase = DataBase()
+    private var reminders = Array<Reminder>()
+    private var funcs = Functions()
+    private var addReminderShow = false
+    private var defaults = UserDefaults.standard
+    var translationId = 154
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
         reminders.append(Reminder(hour: 11, minute: 0, isActive: true))
         
@@ -42,6 +48,10 @@ class ReminderViewController: UITableViewController {
                 self.funcs.showToast(message: "Already exist", view: self.view)
             }
             self.tableView.reloadData()
+            
+            
+            self.scheduleNotification(hour: hour, minute: minute)
+            
         }
         
         SwiftEventBus.onMainThread(self, name:"cancelAddReminder") { result in
@@ -53,7 +63,57 @@ class ReminderViewController: UITableViewController {
             self.tableView.reloadData()
         }
         
+        
     }
+    
+    func scheduleNotification(hour: Int, minute:Int) {
+        let verseBy = dataBase.getRandomVerseBy(translationId: translationId)
+        
+        registerCategories()
+        
+        
+        let center = UNUserNotificationCenter.current()
+        center.delegate = self
+        let show = UNNotificationAction(identifier: "show", title: "Tell me more…", options: .foreground)
+        let category = UNNotificationCategory(identifier: "alarm", actions: [show], intentIdentifiers: [])
+        center.setNotificationCategories([category])
+
+        let content = UNMutableNotificationContent()
+        content.title = "\(verseBy.chapterId). \(verseBy.chapterName), \(verseBy.verseId)"
+        content.body = verseBy.verseText
+        content.categoryIdentifier = "alarm"
+        content.userInfo = ["customData": "fizzbuzz"]
+        content.sound = UNNotificationSound.default
+        content.badge = 1
+
+        var dateComponents = DateComponents()
+        dateComponents.hour = hour
+        dateComponents.minute = minute
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20, repeats: false)
+
+        let request = UNNotificationRequest(identifier: "reminderayat", content: content, trigger: trigger)
+        
+        center.add(request) { (error) in
+            print("notify error \(error.debugDescription)")
+        }
+        
+        
+    }
+    
+
+    
+    func registerCategories() {
+        let center = UNUserNotificationCenter.current()
+        center.delegate = self
+
+        let show = UNNotificationAction(identifier: "show", title: "Tell me more…", options: .foreground)
+        let category = UNNotificationCategory(identifier: "alarm", actions: [show], intentIdentifiers: [])
+
+        center.setNotificationCategories([category])
+    }
+    
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return reminders.count

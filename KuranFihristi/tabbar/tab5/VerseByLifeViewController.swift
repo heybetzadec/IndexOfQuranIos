@@ -25,26 +25,29 @@ class VerseByLifeViewController: UITableViewController , UISearchResultsUpdating
     var languageId = 1
     var translationId = 154
     var searchString = ""
+    var darkMode = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        SwiftEventBus.onMainThread(self, name:"optionChange") { result in
-            let option = result?.object as! Option
-            
-            if option.languageId != self.languageId || self.translationId != option.translationId{
-                self.languageId = option.languageId
-                self.translationId = option.translationId
-                self.fullVersesBy = self.dataBase.getVerseByLife(lifeId: self.life.lifeId, translationId: self.translationId)
-                self.versesBy = self.fullVersesBy
-                self.tableView.reloadData()
-            }
-            
-            if self.fontSize != option.fontSize {
-                self.fontSize = option.fontSize
-                self.tableView.reloadData()
-            }
-        }
+//        SwiftEventBus.onMainThread(self, name:"optionChange") { result in
+//            let option = result?.object as! Option
+//            
+//            if option.languageId != self.languageId || self.translationId != option.translationId{
+//                self.languageId = option.languageId
+//                self.translationId = option.translationId
+//                self.fullVersesBy = self.dataBase.getVerseByLife(lifeId: self.life.lifeId, translationId: self.translationId)
+//                self.versesBy = self.fullVersesBy
+//                self.tableView.reloadData()
+//            }
+//            
+//            if self.fontSize != option.fontSize {
+//                self.fontSize = option.fontSize
+//                self.tableView.reloadData()
+//            }
+//            
+//            self.darkMode = option.darkMode
+//        }
         
         if let button = self.navigationItem.rightBarButtonItem {
             button.isEnabled = false
@@ -92,6 +95,12 @@ class VerseByLifeViewController: UITableViewController , UISearchResultsUpdating
             tableView.allowsMultipleSelection = true
             self.appendVerseBy(insertVerse: versesBy[indexPath!.row])
             let actionSheetAlertController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            
+            if darkMode {
+                actionSheetAlertController.overrideUserInterfaceStyle = .dark
+            } else {
+                actionSheetAlertController.overrideUserInterfaceStyle = .light
+            }
             
             // Select others
             var action = UIAlertAction(title: bottomItems[0].name, style: .default) { (action) in

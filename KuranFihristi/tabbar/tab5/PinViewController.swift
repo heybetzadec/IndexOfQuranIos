@@ -23,6 +23,7 @@ class PinViewController: UITableViewController , UISearchResultsUpdating, UISear
     var languageId = 0
     var translationId = 0
     var searchString = ""
+    var darkMode = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +79,12 @@ class PinViewController: UITableViewController , UISearchResultsUpdating, UISear
             tableView.allowsMultipleSelection = true
             self.appendVerseBy(insertVerse: versesBy[indexPath!.row])
             let actionSheetAlertController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            
+            if darkMode {
+                actionSheetAlertController.overrideUserInterfaceStyle = .dark
+            } else {
+                actionSheetAlertController.overrideUserInterfaceStyle = .light
+            }
             
             // Select others
             var action = UIAlertAction(title: bottomItems[0].name, style: .default) { (action) in
