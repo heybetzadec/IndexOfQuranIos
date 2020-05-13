@@ -10,7 +10,7 @@
 "alignment" = "Sıralama";
 "by_sura" = "Sure";
 "by_down" = "İndirilme";
-"search" = "Arama";
+"search" = "Ara";
 "copied" = "Kopyalandı";
 "share" = "Paylaş";
 "pinned" = "Pinlendi";
@@ -48,9 +48,10 @@
 "select_others" = "Başkalarını seç";
 "back" = "Geri";
 "cancel" = "İptal";
-"quran_life"="Kuran ile hayat nasıl yaşanır?";
+"quran_life"="Kuran ile hayat";
 "mark_ayat"="Kaldığım yer olarak işaretle";
 "unmark_ayat"="İşareti kaldır";
 "go_to_mark"="İşaretlenmiş ayete git";
 "draw_on_image"="Resim üzerine yaz";
 "random_ayat"="Herhangi bir ayete git";
+"alert"="Uyarı";

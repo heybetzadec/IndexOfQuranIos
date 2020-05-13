@@ -17,38 +17,39 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchFullViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchFullViewCell" id="1MJ-2B-Fgw" customClass="SearchFullViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchFullViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchFullViewCell" id="emi-Lx-rtz" customClass="SearchFullViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.333332061767578"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1MJ-2B-Fgw" id="Ppn-ua-bB4">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="emi-Lx-rtz" id="iC4-3D-uqu">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.333332061767578"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1i-VN-gyC">
-                                            <rect key="frame" x="16" y="11.000000000000002" width="343" height="21.666666666666671"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVk-hz-Qhg">
+                                            <rect key="frame" x="144" y="11" width="85" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="K1i-VN-gyC" firstAttribute="top" secondItem="Ppn-ua-bB4" secondAttribute="topMargin" id="AOM-NR-h7z"/>
-                                        <constraint firstItem="K1i-VN-gyC" firstAttribute="trailing" secondItem="Ppn-ua-bB4" secondAttribute="trailingMargin" id="dEh-bn-3Wz"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="K1i-VN-gyC" secondAttribute="bottom" id="jRi-Vz-dft"/>
-                                        <constraint firstItem="K1i-VN-gyC" firstAttribute="leading" secondItem="Ppn-ua-bB4" secondAttribute="leadingMargin" id="rdg-JV-HDx"/>
+                                        <constraint firstItem="PVk-hz-Qhg" firstAttribute="centerY" secondItem="iC4-3D-uqu" secondAttribute="centerY" id="tps-oZ-qgj"/>
+                                        <constraint firstItem="PVk-hz-Qhg" firstAttribute="top" secondItem="iC4-3D-uqu" secondAttribute="topMargin" id="u8c-eL-K2y"/>
+                                        <constraint firstItem="PVk-hz-Qhg" firstAttribute="centerX" secondItem="iC4-3D-uqu" secondAttribute="centerX" id="yYr-hv-m2B"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="searchLabel" destination="PVk-hz-Qhg" id="PV7-qU-I9b"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="chapterItemViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="chapterItemViewCell" id="CGF-Lb-Z6l" customClass="ItemViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="71.666667938232422" width="375" height="42.666667938232422"/>
+                                <rect key="frame" x="0.0" y="71.333332061767578" width="375" height="43.333332061767578"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CGF-Lb-Z6l" id="qQm-4D-Lmt">
-                                    <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="42.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="43.333332061767578"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zcH-kE-IzD">
-                                            <rect key="frame" x="16" y="11.000000000000002" width="309.66666666666669" height="20.666666666666671"/>
+                                            <rect key="frame" x="16" y="10.999999999999998" width="309.66666666666669" height="21.333333333333329"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -94,28 +95,29 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchFullViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="searchFullViewCell" id="7kP-Qk-bHW" customClass="SearchFullViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchFullViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchFullViewCell" id="MfZ-95-P8P" customClass="SearchFullViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7kP-Qk-bHW" id="M9Z-Xx-YKK">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MfZ-95-P8P" id="42i-Oq-aBq">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUP-1T-8Td">
-                                            <rect key="frame" x="16" y="11.000000000000002" width="343" height="21.666666666666671"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iq8-NH-Bbw">
+                                            <rect key="frame" x="145" y="11.000000000000002" width="85" height="21.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="BUP-1T-8Td" firstAttribute="leading" secondItem="M9Z-Xx-YKK" secondAttribute="leadingMargin" id="Awh-zE-IYD"/>
-                                        <constraint firstItem="BUP-1T-8Td" firstAttribute="top" secondItem="M9Z-Xx-YKK" secondAttribute="topMargin" id="BZk-Zf-dbz"/>
-                                        <constraint firstItem="BUP-1T-8Td" firstAttribute="trailing" secondItem="M9Z-Xx-YKK" secondAttribute="trailingMargin" id="knN-pI-3Mj"/>
-                                        <constraint firstItem="BUP-1T-8Td" firstAttribute="centerY" secondItem="M9Z-Xx-YKK" secondAttribute="centerY" id="zT4-Mm-slo"/>
+                                        <constraint firstItem="Iq8-NH-Bbw" firstAttribute="centerX" secondItem="42i-Oq-aBq" secondAttribute="centerX" id="NVc-Bi-i4u"/>
+                                        <constraint firstItem="Iq8-NH-Bbw" firstAttribute="centerY" secondItem="42i-Oq-aBq" secondAttribute="centerY" id="dRK-zt-JhV"/>
+                                        <constraint firstItem="Iq8-NH-Bbw" firstAttribute="top" secondItem="42i-Oq-aBq" secondAttribute="topMargin" id="krE-XW-PIU"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="searchLabel" destination="Iq8-NH-Bbw" id="dUV-hP-f4n"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="verseViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="verseViewCell" rowHeight="44" id="0z6-ko-2ch" customClass="VerseViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="71.666667938232422" width="375" height="44"/>
@@ -291,6 +293,11 @@
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.0" green="0.4039215686" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="cIK-oR-5z6" kind="relationship" relationship="viewControllers" id="Y7l-1m-5nU"/>
@@ -313,31 +320,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchFullViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchFullViewCell" id="QQh-qn-kz6" customClass="SearchFullViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="42.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchFullViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchFullViewCell" id="8KO-gA-fbq" customClass="SearchFullViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QQh-qn-kz6" id="bjE-oR-fSN">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="42.666667938232422"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8KO-gA-fbq" id="H5j-ax-vWt">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uF2-Jw-7XB">
-                                            <rect key="frame" x="16" y="11.000000000000002" width="343" height="20.666666666666671"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ael-b3-GgR">
+                                            <rect key="frame" x="145" y="11.000000000000002" width="85" height="21.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="uF2-Jw-7XB" firstAttribute="trailing" secondItem="bjE-oR-fSN" secondAttribute="trailingMargin" id="LWm-Tw-Olv"/>
-                                        <constraint firstItem="uF2-Jw-7XB" firstAttribute="leading" secondItem="bjE-oR-fSN" secondAttribute="leadingMargin" id="Mjf-I4-ncl"/>
-                                        <constraint firstItem="uF2-Jw-7XB" firstAttribute="top" secondItem="bjE-oR-fSN" secondAttribute="topMargin" id="eIq-1W-F3l"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="uF2-Jw-7XB" secondAttribute="bottom" id="yyX-wc-rNp"/>
+                                        <constraint firstItem="Ael-b3-GgR" firstAttribute="centerX" secondItem="H5j-ax-vWt" secondAttribute="centerX" id="CNc-LY-JK0"/>
+                                        <constraint firstItem="Ael-b3-GgR" firstAttribute="top" secondItem="H5j-ax-vWt" secondAttribute="topMargin" id="IQB-s6-Qps"/>
+                                        <constraint firstItem="Ael-b3-GgR" firstAttribute="centerY" secondItem="H5j-ax-vWt" secondAttribute="centerY" id="fQy-YU-e0h"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="searchLabel" destination="Ael-b3-GgR" id="YiF-uD-4S5"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="nameViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="nameViewCell" textLabel="TfJ-62-NF1" detailTextLabel="YDj-oe-0X3" style="IBUITableViewCellStyleSubtitle" id="bjU-vG-SUw" customClass="ItemDetailViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="70.666667938232422" width="375" height="60.666667938232422"/>
+                                <rect key="frame" x="0.0" y="71.666667938232422" width="375" height="60.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bjU-vG-SUw" id="t3W-Vj-Ig5" customClass="ItemDetailViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="60.666667938232422"/>
@@ -443,38 +451,39 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchFullViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchFullViewCell" id="eJg-Bj-MJb" customClass="SearchFullViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="55.333332061767578" width="375" height="43"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchFullViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchFullViewCell" id="PAV-FS-fWk" customClass="SearchFullViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="55.333332061767578" width="375" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eJg-Bj-MJb" id="KRg-cA-doA">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PAV-FS-fWk" id="Bjk-nC-RG6">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kgB-7i-kG6">
-                                            <rect key="frame" x="16" y="11" width="343" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dru-7N-o7l">
+                                            <rect key="frame" x="145" y="11.000000000000002" width="85" height="21.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="kgB-7i-kG6" secondAttribute="bottom" id="C4D-f6-H0K"/>
-                                        <constraint firstItem="kgB-7i-kG6" firstAttribute="trailing" secondItem="KRg-cA-doA" secondAttribute="trailingMargin" id="C4r-97-MZ9"/>
-                                        <constraint firstItem="kgB-7i-kG6" firstAttribute="top" secondItem="KRg-cA-doA" secondAttribute="topMargin" id="ktR-dX-o2Z"/>
-                                        <constraint firstItem="kgB-7i-kG6" firstAttribute="leading" secondItem="KRg-cA-doA" secondAttribute="leadingMargin" id="rvo-1X-bpX"/>
+                                        <constraint firstItem="Dru-7N-o7l" firstAttribute="centerX" secondItem="Bjk-nC-RG6" secondAttribute="centerX" id="TA8-8u-UUw"/>
+                                        <constraint firstItem="Dru-7N-o7l" firstAttribute="top" secondItem="Bjk-nC-RG6" secondAttribute="topMargin" id="cIi-fn-UH7"/>
+                                        <constraint firstItem="Dru-7N-o7l" firstAttribute="centerY" secondItem="Bjk-nC-RG6" secondAttribute="centerY" id="cM6-4e-XoV"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="searchLabel" destination="Dru-7N-o7l" id="ldA-lV-XMm"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="letterItemViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="letterItemViewCell" id="ANY-ZF-WJV" customClass="ItemViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="98.333332061767578" width="375" height="42.666667938232422"/>
+                                <rect key="frame" x="0.0" y="99" width="375" height="43.333332061767578"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ANY-ZF-WJV" id="M3G-qZ-iIH">
-                                    <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="42.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="43.333332061767578"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkk-L7-bq5">
-                                            <rect key="frame" x="16" y="11.000000000000002" width="309.66666666666669" height="20.666666666666671"/>
+                                            <rect key="frame" x="16" y="10.999999999999998" width="309.66666666666669" height="21.333333333333329"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -519,26 +528,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchFullViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="searchFullViewCell" id="j8c-QW-5fZ" customClass="SearchFullViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchFullViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchFullViewCell" id="t1U-mQ-bxe" customClass="SearchFullViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="j8c-QW-5fZ" id="zPs-Pg-yzN">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t1U-mQ-bxe" id="Hpd-pR-SE4">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xyh-Ei-oCJ">
-                                            <rect key="frame" x="145.66666666666666" y="11.000000000000002" width="84" height="21.666666666666671"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKE-tI-ucH">
+                                            <rect key="frame" x="145" y="11.000000000000002" width="85" height="21.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="Xyh-Ei-oCJ" firstAttribute="centerX" secondItem="zPs-Pg-yzN" secondAttribute="centerX" id="ZVU-D1-qhB"/>
-                                        <constraint firstItem="Xyh-Ei-oCJ" firstAttribute="top" secondItem="zPs-Pg-yzN" secondAttribute="topMargin" id="ZdG-bF-G0Q"/>
-                                        <constraint firstItem="Xyh-Ei-oCJ" firstAttribute="centerY" secondItem="zPs-Pg-yzN" secondAttribute="centerY" id="jmf-sV-Xb5"/>
+                                        <constraint firstItem="jKE-tI-ucH" firstAttribute="centerX" secondItem="Hpd-pR-SE4" secondAttribute="centerX" id="POC-jL-LfO"/>
+                                        <constraint firstItem="jKE-tI-ucH" firstAttribute="top" secondItem="Hpd-pR-SE4" secondAttribute="topMargin" id="cor-7H-qca"/>
+                                        <constraint firstItem="jKE-tI-ucH" firstAttribute="centerY" secondItem="Hpd-pR-SE4" secondAttribute="centerY" id="zbu-PB-t0L"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="searchLabel" destination="jKE-tI-ucH" id="uJ2-Uy-jfq"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="verseByWordViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="verseByWordViewCell" rowHeight="128" id="ep5-vG-LXd" customClass="VerseByViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="71.666667938232422" width="375" height="128"/>
@@ -606,38 +618,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchFullViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchFullViewCell" id="b69-dj-utV" customClass="SearchFullViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchFullViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchFullViewCell" id="cso-5O-p9I" customClass="SearchFullViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="b69-dj-utV" id="vVh-Rr-35m">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cso-5O-p9I" id="p33-SV-pkb">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hnW-lZ-VhU">
-                                            <rect key="frame" x="16" y="11.000000000000002" width="343" height="21.666666666666671"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BuR-BB-nGI">
+                                            <rect key="frame" x="145" y="11.000000000000002" width="85" height="21.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="hnW-lZ-VhU" firstAttribute="top" secondItem="vVh-Rr-35m" secondAttribute="topMargin" id="Fdy-Kk-r4U"/>
-                                        <constraint firstItem="hnW-lZ-VhU" firstAttribute="leading" secondItem="vVh-Rr-35m" secondAttribute="leadingMargin" id="H0Y-qP-Jye"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="hnW-lZ-VhU" secondAttribute="bottom" id="XWW-WA-BC9"/>
-                                        <constraint firstItem="hnW-lZ-VhU" firstAttribute="trailing" secondItem="vVh-Rr-35m" secondAttribute="trailingMargin" id="r7A-ax-m3L"/>
+                                        <constraint firstItem="BuR-BB-nGI" firstAttribute="top" secondItem="p33-SV-pkb" secondAttribute="topMargin" id="GXf-hM-7fI"/>
+                                        <constraint firstItem="BuR-BB-nGI" firstAttribute="centerX" secondItem="p33-SV-pkb" secondAttribute="centerX" id="LJU-xy-d5p"/>
+                                        <constraint firstItem="BuR-BB-nGI" firstAttribute="centerY" secondItem="p33-SV-pkb" secondAttribute="centerY" id="XDM-Od-G0r"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="searchLabel" destination="BuR-BB-nGI" id="5f7-uo-XVa"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="topicItemViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="topicItemViewCell" id="aTj-GV-FV9" customClass="ItemViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="71.666667938232422" width="375" height="43.666667938232422"/>
+                                <rect key="frame" x="0.0" y="71.666667938232422" width="375" height="43"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aTj-GV-FV9" id="fFG-LL-BMN">
-                                    <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="whS-YI-Wwt">
-                                            <rect key="frame" x="16" y="11.000000000000002" width="309.66666666666669" height="21.666666666666671"/>
+                                            <rect key="frame" x="16" y="11" width="309.66666666666669" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -682,31 +695,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchFullViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchFullViewCell" id="zDK-d8-9Ww" customClass="SearchFullViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="42.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchFullViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchFullViewCell" id="Ikm-4i-PO9" customClass="SearchFullViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zDK-d8-9Ww" id="lex-kc-4tz">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="42.666667938232422"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ikm-4i-PO9" id="Wat-jp-tTe">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xgf-Ft-vBj">
-                                            <rect key="frame" x="16" y="11.000000000000002" width="343" height="20.666666666666671"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6X4-Jn-dhV">
+                                            <rect key="frame" x="145" y="11.000000000000002" width="85" height="21.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="xgf-Ft-vBj" firstAttribute="trailing" secondItem="lex-kc-4tz" secondAttribute="trailingMargin" id="IhK-xT-Q0I"/>
-                                        <constraint firstItem="xgf-Ft-vBj" firstAttribute="top" secondItem="lex-kc-4tz" secondAttribute="topMargin" id="PFc-YY-ZBL"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="xgf-Ft-vBj" secondAttribute="bottom" id="duF-pY-6Bh"/>
-                                        <constraint firstItem="xgf-Ft-vBj" firstAttribute="leading" secondItem="lex-kc-4tz" secondAttribute="leadingMargin" id="pJz-aQ-wSE"/>
+                                        <constraint firstItem="6X4-Jn-dhV" firstAttribute="top" secondItem="Wat-jp-tTe" secondAttribute="topMargin" id="Mjj-U2-3bc"/>
+                                        <constraint firstItem="6X4-Jn-dhV" firstAttribute="centerX" secondItem="Wat-jp-tTe" secondAttribute="centerX" id="pY9-vJ-fZI"/>
+                                        <constraint firstItem="6X4-Jn-dhV" firstAttribute="centerY" secondItem="Wat-jp-tTe" secondAttribute="centerY" id="wRr-oV-ygf"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="searchLabel" destination="6X4-Jn-dhV" id="aBT-Mk-xdF"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="phraseItemViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="phraseItemViewCell" id="0bR-aM-Q9A" customClass="ItemViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="70.666667938232422" width="375" height="42.666667938232422"/>
+                                <rect key="frame" x="0.0" y="71.666667938232422" width="375" height="42.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0bR-aM-Q9A" id="Gl6-Iu-RtV">
                                     <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="42.666667938232422"/>
@@ -917,29 +931,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchFullViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="searchFullViewCell" id="TcN-wg-ZbC" customClass="SearchFullViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="43"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchFullViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchFullViewCell" id="oZc-xe-3I9" customClass="SearchFullViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TcN-wg-ZbC" id="n8B-OV-T1O">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oZc-xe-3I9" id="n8V-fu-ubX">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IR3-gc-V3o">
-                                            <rect key="frame" x="145.66666666666666" y="11" width="84" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EhH-sC-C9o">
+                                            <rect key="frame" x="145" y="11.000000000000002" width="85" height="21.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="IR3-gc-V3o" firstAttribute="centerY" secondItem="n8B-OV-T1O" secondAttribute="centerY" id="Hzf-xR-qbL"/>
-                                        <constraint firstItem="IR3-gc-V3o" firstAttribute="centerX" secondItem="n8B-OV-T1O" secondAttribute="centerX" id="MEa-IF-bQs"/>
-                                        <constraint firstItem="IR3-gc-V3o" firstAttribute="top" secondItem="n8B-OV-T1O" secondAttribute="topMargin" id="Spd-Xd-sr9"/>
+                                        <constraint firstItem="EhH-sC-C9o" firstAttribute="centerX" secondItem="n8V-fu-ubX" secondAttribute="centerX" id="Kta-vd-3Nt"/>
+                                        <constraint firstItem="EhH-sC-C9o" firstAttribute="top" secondItem="n8V-fu-ubX" secondAttribute="topMargin" id="bXd-VP-bRm"/>
+                                        <constraint firstItem="EhH-sC-C9o" firstAttribute="centerY" secondItem="n8V-fu-ubX" secondAttribute="centerY" id="qot-wz-AOs"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="searchLabel" destination="EhH-sC-C9o" id="dvM-Gv-l6V"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="verseByTopicViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="verseByTopicViewCell" rowHeight="128" id="5Rg-5A-V9x" customClass="VerseByViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="71" width="375" height="128"/>
+                                <rect key="frame" x="0.0" y="71.666667938232422" width="375" height="128"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Rg-5A-V9x" id="W9b-Wy-bqI">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
@@ -1145,27 +1162,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchFullViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="searchFullViewCell" id="ao9-CF-N4F" customClass="SearchFullViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchFullViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchFullViewCell" id="9dX-gH-gx6" customClass="SearchFullViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ao9-CF-N4F" id="jTU-ze-dds">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9dX-gH-gx6" id="qmI-f0-lG4">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j0P-Mq-7gd">
-                                            <rect key="frame" x="16" y="11.000000000000002" width="341" height="21.666666666666671"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VgC-ee-QeR">
+                                            <rect key="frame" x="145" y="11.000000000000002" width="85" height="21.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="j0P-Mq-7gd" firstAttribute="top" secondItem="jTU-ze-dds" secondAttribute="topMargin" constant="-1.7763568394002505e-15" id="045-pq-Pt1"/>
-                                        <constraint firstItem="j0P-Mq-7gd" firstAttribute="centerY" secondItem="jTU-ze-dds" secondAttribute="centerY" id="EhI-W0-XMW"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="j0P-Mq-7gd" secondAttribute="trailing" constant="2" id="PWb-9j-hpU"/>
-                                        <constraint firstItem="j0P-Mq-7gd" firstAttribute="leading" secondItem="jTU-ze-dds" secondAttribute="leadingMargin" id="Xt5-De-hqD"/>
+                                        <constraint firstItem="VgC-ee-QeR" firstAttribute="centerY" secondItem="qmI-f0-lG4" secondAttribute="centerY" id="6d5-g9-IDn"/>
+                                        <constraint firstItem="VgC-ee-QeR" firstAttribute="top" secondItem="qmI-f0-lG4" secondAttribute="topMargin" id="spI-yB-nFO"/>
+                                        <constraint firstItem="VgC-ee-QeR" firstAttribute="centerX" secondItem="qmI-f0-lG4" secondAttribute="centerX" id="zx0-PR-zgL"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="searchLabel" destination="VgC-ee-QeR" id="gMJ-w6-Kln"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="verseByPinViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="verseByPinViewCell" rowHeight="128" id="qOm-p4-sZN" customClass="VerseByViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="71.666667938232422" width="375" height="128"/>
@@ -1446,31 +1465,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchFullViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchFullViewCell" id="FJS-T4-4DR" customClass="SearchFullViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="42.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchFullViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchFullViewCell" id="PAv-KT-YDS" customClass="SearchFullViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FJS-T4-4DR" id="DQN-lO-va0">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="42.666667938232422"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PAv-KT-YDS" id="Qyc-JB-eKy">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J5y-eQ-dth">
-                                            <rect key="frame" x="16" y="11.000000000000002" width="343" height="20.666666666666671"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e68-Jy-yvF">
+                                            <rect key="frame" x="145" y="11.000000000000002" width="85" height="21.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="J5y-eQ-dth" firstAttribute="leading" secondItem="DQN-lO-va0" secondAttribute="leadingMargin" id="Gb0-EB-lnB"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="J5y-eQ-dth" secondAttribute="bottom" id="LN4-zf-w0a"/>
-                                        <constraint firstItem="J5y-eQ-dth" firstAttribute="trailing" secondItem="DQN-lO-va0" secondAttribute="trailingMargin" id="Ws3-Yt-7bi"/>
-                                        <constraint firstItem="J5y-eQ-dth" firstAttribute="top" secondItem="DQN-lO-va0" secondAttribute="topMargin" id="aaT-wx-Dfr"/>
+                                        <constraint firstItem="e68-Jy-yvF" firstAttribute="centerY" secondItem="Qyc-JB-eKy" secondAttribute="centerY" id="91G-oc-g3R"/>
+                                        <constraint firstItem="e68-Jy-yvF" firstAttribute="top" secondItem="Qyc-JB-eKy" secondAttribute="topMargin" id="Puv-7K-zkY"/>
+                                        <constraint firstItem="e68-Jy-yvF" firstAttribute="centerX" secondItem="Qyc-JB-eKy" secondAttribute="centerX" id="xbK-G5-gXn"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="searchLabel" destination="e68-Jy-yvF" id="8cQ-It-nfR"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="lifeItemViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="lifeItemViewCell" id="Qpj-CX-sx4" customClass="ItemViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="70.666667938232422" width="375" height="42.666667938232422"/>
+                                <rect key="frame" x="0.0" y="71.666667938232422" width="375" height="42.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qpj-CX-sx4" id="iOR-Kl-UQO">
                                     <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="42.666667938232422"/>
@@ -1541,29 +1561,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchFullViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="searchFullViewCell" id="GfP-bV-ShC" customClass="SearchFullViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="42.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="searchFullViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchFullViewCell" id="sPD-P2-Ahv" customClass="SearchFullViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GfP-bV-ShC" id="d8Y-pM-IYS">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="42.666667938232422"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sPD-P2-Ahv" id="URe-Jr-xdZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaA-XK-bCx">
-                                            <rect key="frame" x="145.66666666666666" y="11.000000000000002" width="84" height="20.666666666666671"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3st-A7-rnh">
+                                            <rect key="frame" x="145" y="11.000000000000002" width="85" height="21.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="eaA-XK-bCx" firstAttribute="centerX" secondItem="d8Y-pM-IYS" secondAttribute="centerX" id="2hL-KW-kbR"/>
-                                        <constraint firstItem="eaA-XK-bCx" firstAttribute="centerY" secondItem="d8Y-pM-IYS" secondAttribute="centerY" id="B7O-MK-VFe"/>
-                                        <constraint firstItem="eaA-XK-bCx" firstAttribute="top" secondItem="d8Y-pM-IYS" secondAttribute="topMargin" id="MOx-vN-d5U"/>
+                                        <constraint firstItem="3st-A7-rnh" firstAttribute="centerY" secondItem="URe-Jr-xdZ" secondAttribute="centerY" id="Gau-Bo-sit"/>
+                                        <constraint firstItem="3st-A7-rnh" firstAttribute="centerX" secondItem="URe-Jr-xdZ" secondAttribute="centerX" id="GtS-ae-VPd"/>
+                                        <constraint firstItem="3st-A7-rnh" firstAttribute="top" secondItem="URe-Jr-xdZ" secondAttribute="topMargin" id="ps3-2T-GlF"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="searchLabel" destination="3st-A7-rnh" id="shW-1O-UYw"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="verseByLifeViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="verseByLifeViewCell" rowHeight="128" id="YgT-p9-CTg" customClass="VerseByViewCell" customModule="Kuran_Fihristi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="70.666667938232422" width="375" height="128"/>
+                                <rect key="frame" x="0.0" y="71.666667938232422" width="375" height="128"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YgT-p9-CTg" id="3wQ-X2-GBd">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
@@ -1653,7 +1676,8 @@
         <segue reference="9Ud-DH-uNJ"/>
         <segue reference="0Pe-EE-1B6"/>
         <segue reference="UIV-7X-MDR"/>
-        <segue reference="V8S-9c-E0Y"/>
+        <segue reference="pz7-ob-wO4"/>
         <segue reference="N7W-XM-gk4"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.0" green="0.40392156862745099" blue="0.35686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

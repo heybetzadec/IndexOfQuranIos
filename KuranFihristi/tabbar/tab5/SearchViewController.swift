@@ -13,7 +13,8 @@ import SwiftEventBus
 class SearchViewController: UITableViewController , UISearchResultsUpdating, UISearchBarDelegate {
     
     var chapterName = ""
-    var languageId = 0
+    var fontSize = 17
+    var languageId = 1
     var translationId = 154
     var searchString = ""
     var darkMode = false
@@ -45,22 +46,6 @@ class SearchViewController: UITableViewController , UISearchResultsUpdating, UIS
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        SwiftEventBus.onMainThread(self, name:"goToSearch") { result in
-//            if self.tabBarController != nil {
-//                let mainTabBar = self.tabBarController as! AppTabBarViewController
-//                mainTabBar.searchString = ""
-//            }
-//            self.searchString = result?.object as! String
-//            self.searchController.isActive = true
-//            self.searchController.isEditing = true
-//            self.searchController.searchBar.text = self.searchString
-//            DispatchQueue.main.async {
-//                self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { timer in
-//                print(timer)
-//                self.filter(searchText: self.searchString)
-//              }
-//            }
-//        }
         
         let mainTabBar = self.tabBarController as! AppTabBarViewController
         self.searchString = mainTabBar.searchString
@@ -116,8 +101,10 @@ class SearchViewController: UITableViewController , UISearchResultsUpdating, UIS
             
             if darkMode {
                 actionSheetAlertController.overrideUserInterfaceStyle = .dark
+                actionSheetAlertController.view.tintColor = .white
             } else {
                 actionSheetAlertController.overrideUserInterfaceStyle = .light
+                actionSheetAlertController.view.tintColor = UIColor(red: 0, green: 103/255.0, blue: 91/255.0, alpha: 1.0)
             }
             
             // Select others
@@ -185,7 +172,7 @@ class SearchViewController: UITableViewController , UISearchResultsUpdating, UIS
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Items"
+        searchController.searchBar.placeholder = "\("search".localized)..."
         
         navigationItem.searchController = searchController
         definesPresentationContext = true
@@ -261,6 +248,7 @@ class SearchViewController: UITableViewController , UISearchResultsUpdating, UIS
         
         
         cell.verseTextLabel.attributedText = attrStr //"\(verseItem.verseId). \(verseItem.verseText)"
+        cell.verseTextLabel.font = .systemFont(ofSize: CGFloat(fontSize))
         return cell
     }
     
@@ -276,33 +264,35 @@ class SearchViewController: UITableViewController , UISearchResultsUpdating, UIS
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let verseItem = verses[indexPath.row]
         if tableView.allowsMultipleSelection {
-            self.appendVerse(insertVerse: verses[indexPath.row])
+            self.appendVerse(insertVerse: verseItem)
             
         }
         
         if selectedVerses.count == 0 {
-            performSegue(withIdentifier: "showVerseBySearch", sender: verses[indexPath.row])
+            let chapterName = self.dataBase.getChapterName(chapterId: verseItem.chapterId, translationId: self.translationId)
+            SwiftEventBus.post("goToVerse", sender: VerseBy(chapterId: verseItem.chapterId, chapterName: chapterName, verseId: verseItem.verseId, verseText: ""))
+//            performSegue(withIdentifier: "showVerseBySearch", sender: verses[indexPath.row])
         }
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showVerseBySearch" {
-            if let verseController = segue.destination as? VerseViewController {
-                let selectedVerseItem = sender as! Verse
-                verseController.verseId = selectedVerseItem.verseId
-                verseController.chapterId = selectedVerseItem.chapterId
-                verseController.chapterName = dataBase.getChapterName(chapterId: selectedVerseItem.chapterId, translationId: translationId)
-                verseController.languageId = languageId
-                verseController.translationId = translationId
-                let backItem = UIBarButtonItem()
-                backItem.title = "Geri"
-                navigationItem.backBarButtonItem = backItem
-            }
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "showVerseBySearch" {
+//            if let verseController = segue.destination as? VerseViewController {
+//                let selectedVerseItem = sender as! Verse
+//                verseController.verseId = selectedVerseItem.verseId
+//                verseController.chapterId = selectedVerseItem.chapterId
+//                verseController.chapterName = dataBase.getChapterName(chapterId: selectedVerseItem.chapterId, translationId: translationId)
+//                verseController.languageId = languageId
+//                verseController.translationId = translationId
+//                let backItem = UIBarButtonItem()
+//                backItem.title = "Geri"
+//                navigationItem.backBarButtonItem = backItem
+//            }
+//        }
+//    }
     
     
     private func appendVerse(insertVerse:Verse){

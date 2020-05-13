@@ -98,8 +98,10 @@ class VerseByLifeViewController: UITableViewController , UISearchResultsUpdating
             
             if darkMode {
                 actionSheetAlertController.overrideUserInterfaceStyle = .dark
+                actionSheetAlertController.view.tintColor = .white
             } else {
                 actionSheetAlertController.overrideUserInterfaceStyle = .light
+                actionSheetAlertController.view.tintColor = UIColor(red: 0, green: 103/255.0, blue: 91/255.0, alpha: 1.0)
             }
             
             // Select others
@@ -172,7 +174,7 @@ class VerseByLifeViewController: UITableViewController , UISearchResultsUpdating
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Items"
+        searchController.searchBar.placeholder = "\("search".localized)..."
         navigationItem.searchController = searchController
         definesPresentationContext = true
     }
@@ -235,6 +237,8 @@ class VerseByLifeViewController: UITableViewController , UISearchResultsUpdating
         let verseItem = versesBy[indexPath.row]
         if verseItem.verseId == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "searchFullViewCell", for: indexPath as IndexPath) as! SearchFullViewCell
+            cell.searchLabel.text = "search_all".localized
+            cell.searchLabel.font = .systemFont(ofSize: CGFloat(fontSize))
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "verseByLifeViewCell", for: indexPath as IndexPath) as! VerseByViewCell
@@ -288,7 +292,7 @@ class VerseByLifeViewController: UITableViewController , UISearchResultsUpdating
             
             if !searchString.isEmpty {
                 DispatchQueue.main.async {
-                    self.searchController.searchBar.text = ""
+                    self.filter(searchText: "")
                     self.searchController.isActive = false
                     self.searchController.isEditing = false
                     self.versesBy = self.fullVersesBy

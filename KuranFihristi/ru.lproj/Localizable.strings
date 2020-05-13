@@ -48,9 +48,10 @@
 "select_others" = "Выбери других";
 "back" = "Назад";
 "cancel" = "Отмена";
-"quran_life"="Жизнь в соответствии с Кораном?";
+"quran_life"="Жизнь с Кораном";
 "mark_ayat"="Где Я Остаюсь";
 "unmark_ayat"="Удалить отметку аят";
 "go_to_mark"="Перейти к отметке";
 "draw_on_image"="Рисовать на изображении";
-"random_ayat"="Her hangi bir ayete git";
+"random_ayat"="Откройте любую страницу";
+"alert"="Предупреждение";

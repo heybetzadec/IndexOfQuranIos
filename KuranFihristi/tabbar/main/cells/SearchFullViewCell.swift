@@ -9,7 +9,9 @@
 import UIKit
 
 class SearchFullViewCell: UITableViewCell {
-
+    
+    @IBOutlet weak var searchLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

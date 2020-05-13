@@ -76,7 +76,7 @@ class TopicViewController: UITableViewController, UISearchResultsUpdating, UISea
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Items"
+        searchController.searchBar.placeholder = "\("search".localized)..."
         navigationItem.searchController = searchController
         definesPresentationContext = true
     }
@@ -132,6 +132,8 @@ class TopicViewController: UITableViewController, UISearchResultsUpdating, UISea
         let topicItem = topics[indexPath.row]
         if topicItem.topicId == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "searchFullViewCell", for: indexPath as IndexPath) as! SearchFullViewCell
+            cell.searchLabel.text = "search_all".localized
+            cell.searchLabel.font = .systemFont(ofSize: CGFloat(fontSize))
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "topicItemViewCell", for: indexPath as IndexPath) as! ItemViewCell
@@ -147,9 +149,18 @@ class TopicViewController: UITableViewController, UISearchResultsUpdating, UISea
         if topicItem.topicId == 0 {
             SwiftEventBus.post("goToSearch", sender: self.searchString)
         } else {
-            performSegue(withIdentifier: "showPhrases", sender: topics[indexPath.row])
+            performSegue(withIdentifier: "showPhrases", sender: topicItem)
         }
-        
+        if !searchString.isEmpty {
+            DispatchQueue.main.async {
+                self.filter(searchText: "")
+                self.searchController.isActive = false
+                self.searchController.isEditing = false
+                self.topics = self.fullTopics
+                self.tableView.reloadData()
+              }
+        }
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

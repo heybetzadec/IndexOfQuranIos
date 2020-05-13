@@ -71,7 +71,7 @@ class NameViewController: UITableViewController, UISearchResultsUpdating, UISear
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Items"
+        searchController.searchBar.placeholder = "\("search".localized)..."
         navigationItem.searchController = searchController
         definesPresentationContext = true
     }
@@ -127,6 +127,8 @@ class NameViewController: UITableViewController, UISearchResultsUpdating, UISear
         let nameItem = names[indexPath.row]
         if nameItem.nameId == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "searchFullViewCell", for: indexPath as IndexPath) as! SearchFullViewCell
+            cell.searchLabel.text = "search_all".localized
+            cell.searchLabel.font = .systemFont(ofSize: CGFloat(fontSize))
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "nameViewCell", for: indexPath as IndexPath) as! ItemDetailViewCell
@@ -141,7 +143,23 @@ class NameViewController: UITableViewController, UISearchResultsUpdating, UISear
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "nameDetail", sender: names[indexPath.row])
+        let nameItem = names[indexPath.row]
+        if nameItem.nameId == 0 {
+            SwiftEventBus.post("goToSearch", sender: self.searchString)
+        } else {
+            performSegue(withIdentifier: "nameDetail", sender: nameItem)
+        }
+        if !searchString.isEmpty {
+            DispatchQueue.main.async {
+                self.filter(searchText: "")
+                self.searchController.isActive = false
+                self.searchController.isEditing = false
+                self.names = self.fullNames
+                self.tableView.reloadData()
+              }
+        }
+        
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

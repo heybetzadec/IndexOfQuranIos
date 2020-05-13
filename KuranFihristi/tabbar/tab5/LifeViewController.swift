@@ -74,7 +74,7 @@ class LifeViewController: UITableViewController , UISearchResultsUpdating, UISea
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Items"
+        searchController.searchBar.placeholder = "\("search".localized)..."
         navigationItem.searchController = searchController
         definesPresentationContext = true
     }
@@ -130,6 +130,8 @@ class LifeViewController: UITableViewController , UISearchResultsUpdating, UISea
         let lifeItem = lifes[indexPath.row]
         if lifeItem.lifeId == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "searchFullViewCell", for: indexPath as IndexPath) as! SearchFullViewCell
+            cell.searchLabel.text = "search_all".localized
+            cell.searchLabel.font = .systemFont(ofSize: CGFloat(fontSize))
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "lifeItemViewCell", for: indexPath as IndexPath) as! ItemViewCell
@@ -148,6 +150,16 @@ class LifeViewController: UITableViewController , UISearchResultsUpdating, UISea
             performSegue(withIdentifier: "showVerseByLife", sender: lifeItem)
         }
         
+        if !searchString.isEmpty {
+            DispatchQueue.main.async {
+                self.filter(searchText: "")
+                self.searchController.isActive = false
+                self.searchController.isEditing = false
+                self.lifes = self.fullLifes
+                self.tableView.reloadData()
+              }
+        }
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

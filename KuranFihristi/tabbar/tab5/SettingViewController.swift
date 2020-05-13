@@ -159,7 +159,7 @@ class SettingViewController: UITableViewController, UIPickerViewDelegate, UIPick
             
 
             tabBarController?.viewControllers?[0].tabBarItem.title = "chapters".localized
-            tabBarController?.viewControllers?[1].tabBarItem.title = "letters".localized
+            tabBarController?.viewControllers?[1].tabBarItem.title = "dictionary".localized
             tabBarController?.viewControllers?[2].tabBarItem.title = "topics".localized
             tabBarController?.viewControllers?[3].tabBarItem.title = "names".localized
             tabBarController?.viewControllers?[4].tabBarItem.title = "other".localized

@@ -85,6 +85,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return true
     }
     
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .sound])
+        print("1 isledi")
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        print("2 iledi")
+    }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
       print("Unable to register for remote notifications: \(error.localizedDescription)")
@@ -144,18 +152,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 //    }
 //}
 
-extension AppDelegate : MessagingDelegate {
-  // [START refresh_token]
-  func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-    print("Firebase registration token: \(fcmToken)")
-    
-    let dataDict:[String: String] = ["token": fcmToken]
-    NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
-    // TODO: If necessary send token to application server.
-    // Note: This callback is fired at each app startup and whenever a new token is generated.
-  }
-  // [END refresh_token]
-}
+//extension AppDelegate : MessagingDelegate {
+//  // [START refresh_token]
+//  func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+//    print("Firebase registration token: \(fcmToken)")
+//
+//    let dataDict:[String: String] = ["token": fcmToken]
+//    NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
+//    // TODO: If necessary send token to application server.
+//    // Note: This callback is fired at each app startup and whenever a new token is generated.
+//  }
+//  // [END refresh_token]
+//}
 
 
 // for push notifaction

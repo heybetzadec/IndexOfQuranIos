@@ -84,9 +84,9 @@ class OtherViewController: UITableViewController {
         }
         
         
-        bottomItems.append(BottomItem(id: 1, name: "quran_life".localized, icon: "book"))
-        bottomItems.append(BottomItem(id: 2, name: "search_all".localized, icon: "magnifyingglass"))
-        bottomItems.append(BottomItem(id: 3, name: "pinned_ayats".localized, icon: "pin"))
+        bottomItems.append(BottomItem(id: 1, name: "search_all".localized, icon: "magnifyingglass"))
+        bottomItems.append(BottomItem(id: 2, name: "pinned_ayats".localized, icon: "pin"))
+        bottomItems.append(BottomItem(id: 3, name: "quran_life".localized, icon: "book"))
         bottomItems.append(BottomItem(id: 4, name: "ayat_reminder".localized, icon: "checkmark.seal"))
         bottomItems.append(BottomItem(id: 5, name: "settings".localized, icon: "gear"))
         bottomItems.append(BottomItem(id: 6, name: "close_app".localized, icon: "exclamationmark.octagon"))
@@ -118,28 +118,32 @@ class OtherViewController: UITableViewController {
         switch indexPath.row {
         case 0:
             
+            let searchViewController = storyBoard.instantiateViewController(withIdentifier: "searchViewController") as! SearchViewController
+            searchViewController.translationId = translationId
+            searchViewController.languageId = languageId
+            searchViewController.searchString = ""
+            searchViewController.darkMode = darkMode
+            searchViewController.fontSize = fontSize
+            navigationController?.pushViewController(searchViewController, animated: true)
+
+        
+        case 1:
+            let pinViewController = storyBoard.instantiateViewController(withIdentifier: "pinViewController") as! PinViewController
+            pinViewController.translationId = translationId
+            pinViewController.languageId = languageId
+            pinViewController.darkMode = darkMode
+            pinViewController.fontSize = fontSize
+            navigationController?.pushViewController(pinViewController, animated: true)
+            
+
+        case 2:
+            
             let lifeViewController = storyBoard.instantiateViewController(withIdentifier: "lifeViewController") as! LifeViewController
             lifeViewController.translationId = translationId
             lifeViewController.languageId = languageId
             lifeViewController.fontSize = fontSize
             lifeViewController.darkMode = darkMode
             navigationController?.pushViewController(lifeViewController, animated: true)
-        case 1:
-            
-            let searchViewController = storyBoard.instantiateViewController(withIdentifier: "searchViewController") as! SearchViewController
-            searchViewController.translationId = translationId
-            searchViewController.languageId = languageId
-            searchViewController.searchString = ""
-            searchViewController.darkMode = darkMode
-            navigationController?.pushViewController(searchViewController, animated: true)
-
-        
-        case 2:
-            let pinViewController = storyBoard.instantiateViewController(withIdentifier: "pinViewController") as! PinViewController
-            pinViewController.translationId = translationId
-            pinViewController.languageId = languageId
-            pinViewController.darkMode = darkMode
-            navigationController?.pushViewController(pinViewController, animated: true)
             
         case 3:
             

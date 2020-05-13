@@ -127,7 +127,7 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
             defaults.set(3, forKey: "selectedFontSize")
             defaults.set(fontSize, forKey: "fontSize")
             defaults.set(languageCode, forKey: "i18n_language")
-            
+            selectedInterfaceMode = 0
         } else {
             languageId = defaults.integer(forKey: "languageId")
             translationId = defaults.integer(forKey: "translationId")
@@ -162,7 +162,7 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
 //        }
         
         tabBarController?.viewControllers?[0].tabBarItem.title = "chapters".localized
-        tabBarController?.viewControllers?[1].tabBarItem.title = "letters".localized
+        tabBarController?.viewControllers?[1].tabBarItem.title = "dictionary".localized
         tabBarController?.viewControllers?[2].tabBarItem.title = "topics".localized
         tabBarController?.viewControllers?[3].tabBarItem.title = "names".localized
         tabBarController?.viewControllers?[4].tabBarItem.title = "other".localized
@@ -244,8 +244,10 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
             
             if darkMode {
                 actionSheetAlertController.overrideUserInterfaceStyle = .dark
+                actionSheetAlertController.view.tintColor = .white
             } else {
                 actionSheetAlertController.overrideUserInterfaceStyle = .light
+                actionSheetAlertController.view.tintColor = UIColor(red: 0, green: 103/255.0, blue: 91/255.0, alpha: 1.0)
             }
             
             var action = UIAlertAction(title: "random_ayat".localized, style: .default) { (action) in
@@ -315,7 +317,7 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Items"
+        searchController.searchBar.placeholder = "\("search".localized)..."
         navigationItem.searchController = searchController
         definesPresentationContext = true
     }
@@ -371,6 +373,8 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
         let chapterItem = chapters[indexPath.row]
         if chapterItem.chapterId == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "searchFullViewCell", for: indexPath as IndexPath) as! SearchFullViewCell
+            cell.searchLabel.text = "search_all".localized
+            cell.searchLabel.font = .systemFont(ofSize: CGFloat(fontSize))
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "chapterItemViewCell", for: indexPath as IndexPath) as! ItemViewCell

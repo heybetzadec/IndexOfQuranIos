@@ -11,6 +11,7 @@ import UIKit
 
 class Functions {
     
+    
     func getDefaultBottomItems() -> Array<BottomItem> {
         var bottomItems =  Array<BottomItem>()
         bottomItems.append(BottomItem(id: 1, name: "select_others".localized, icon: "hand.point.left"))

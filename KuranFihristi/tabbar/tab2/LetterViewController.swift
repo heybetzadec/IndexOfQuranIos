@@ -90,7 +90,7 @@ class LetterViewController: UITableViewController, UISearchResultsUpdating, UISe
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Items"
+        searchController.searchBar.placeholder = "\("search".localized)..."
         navigationItem.searchController = searchController
         definesPresentationContext = true
     }
@@ -198,6 +198,8 @@ class LetterViewController: UITableViewController, UISearchResultsUpdating, UISe
         if letterItem.letterId == 0 {
             tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNormalMagnitude))
             let cell = tableView.dequeueReusableCell(withIdentifier: "searchFullViewCell", for: indexPath as IndexPath) as! SearchFullViewCell
+            cell.searchLabel.text = "search_all".localized
+            cell.searchLabel.font = .systemFont(ofSize: CGFloat(fontSize))
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "letterItemViewCell", for: indexPath as IndexPath) as! ItemViewCell
@@ -220,7 +222,7 @@ class LetterViewController: UITableViewController, UISearchResultsUpdating, UISe
         
         if !searchString.isEmpty {
             DispatchQueue.main.async {
-                self.searchController.searchBar.text = ""
+                self.filter(searchText: "")
                 self.searchController.isActive = false
                 self.searchController.isEditing = false
                 self.letters = self.fullLetters

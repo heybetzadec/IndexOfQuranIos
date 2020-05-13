@@ -68,7 +68,7 @@ class PhraseViewController: UITableViewController, UISearchResultsUpdating, UISe
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Items"
+        searchController.searchBar.placeholder = "\("search".localized)..."
         navigationItem.searchController = searchController
         definesPresentationContext = true
     }
@@ -91,6 +91,7 @@ class PhraseViewController: UITableViewController, UISearchResultsUpdating, UISe
     }
     
     func filter(searchText:String){
+        self.searchString = searchText
         if !searchText.isEmpty {
             let loverSearch = searchText.lowercased()
             let textAz = loverSearch.replacingOccurrences(ofes: ["e","i"], withes: ["ə", "i̇"])
@@ -124,6 +125,8 @@ class PhraseViewController: UITableViewController, UISearchResultsUpdating, UISe
         let phraseItem = phrases[indexPath.row]
         if phraseItem.phraseId == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "searchFullViewCell", for: indexPath as IndexPath) as! SearchFullViewCell
+            cell.searchLabel.text = "search_all".localized
+            cell.searchLabel.font = .systemFont(ofSize: CGFloat(fontSize))
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "phraseItemViewCell", for: indexPath as IndexPath) as! ItemViewCell
@@ -142,6 +145,16 @@ class PhraseViewController: UITableViewController, UISearchResultsUpdating, UISe
             performSegue(withIdentifier: "showVerseByTopic", sender: phrases[indexPath.row])
         }
         
+        if !searchString.isEmpty {
+            DispatchQueue.main.async {
+                self.filter(searchText: "")
+                self.searchController.isActive = false
+                self.searchController.isEditing = false
+                self.phrases = self.fullPhrases
+                self.tableView.reloadData()
+              }
+        }
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

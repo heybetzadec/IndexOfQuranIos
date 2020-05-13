@@ -315,6 +315,7 @@
 				EFCF78BC245CAA6B00E32BFD /* helper */,
 				EFCF78B7245C9E8800E32BFD /* tabbar */,
 				EFCF7845245C793A00E32BFD /* Main.storyboard */,
+				EF7539C924660C3D001853FE /* Localizable.strings */,
 				EFCF784B245C793C00E32BFD /* Assets.xcassets */,
 				EF583EDA246880450095A490 /* Documents */,
 				EFCF78B5245C9CC500E32BFD /* Library */,
@@ -322,7 +323,6 @@
 				EF6794CE246ABD860010E356 /* GoogleService-Info.plist */,
 				EFCF784D245C793C00E32BFD /* LaunchScreen.storyboard */,
 				EFCF7848245C793A00E32BFD /* KuranFihristi.xcdatamodeld */,
-				EF7539C924660C3D001853FE /* Localizable.strings */,
 			);
 			path = KuranFihristi;
 			sourceTree = "<group>";

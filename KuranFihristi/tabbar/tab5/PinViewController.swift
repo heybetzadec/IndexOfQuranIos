@@ -20,8 +20,9 @@ class PinViewController: UITableViewController , UISearchResultsUpdating, UISear
     private var searchController = UISearchController()
     private var bottomItems =  Array<BottomItem>()
     
-    var languageId = 0
-    var translationId = 0
+    var fontSize = 17
+    var languageId = 1
+    var translationId = 154
     var searchString = ""
     var darkMode = false
     
@@ -34,10 +35,10 @@ class PinViewController: UITableViewController , UISearchResultsUpdating, UISear
             self.tableView.reloadData()
         }
         
-        if let button = self.navigationItem.rightBarButtonItem {
-            button.isEnabled = false
-            button.tintColor = UIColor.clear
-        }
+//        if let button = self.navigationItem.rightBarButtonItem {
+//            button.isEnabled = false
+//            button.tintColor = UIColor.clear
+//        }
         
         fullVersesBy = dataBase.getVerseByPin(translationId: translationId)
         versesBy = fullVersesBy
@@ -82,8 +83,10 @@ class PinViewController: UITableViewController , UISearchResultsUpdating, UISear
             
             if darkMode {
                 actionSheetAlertController.overrideUserInterfaceStyle = .dark
+                actionSheetAlertController.view.tintColor = .white
             } else {
                 actionSheetAlertController.overrideUserInterfaceStyle = .light
+                actionSheetAlertController.view.tintColor = UIColor(red: 0, green: 103/255.0, blue: 91/255.0, alpha: 1.0)
             }
             
             // Select others
@@ -157,7 +160,7 @@ class PinViewController: UITableViewController , UISearchResultsUpdating, UISear
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Items"
+        searchController.searchBar.placeholder = "\("search".localized)..."
         navigationItem.searchController = searchController
         definesPresentationContext = true
     }
@@ -238,6 +241,8 @@ class PinViewController: UITableViewController , UISearchResultsUpdating, UISear
         let verseItem = versesBy[indexPath.row]
         if verseItem.verseId == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "searchFullViewCell", for: indexPath as IndexPath) as! SearchFullViewCell
+            cell.searchLabel.text = "search_all".localized
+            cell.searchLabel.font = .systemFont(ofSize: CGFloat(fontSize))
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "verseByPinViewCell", for: indexPath as IndexPath) as! VerseByViewCell
@@ -257,6 +262,8 @@ class PinViewController: UITableViewController , UISearchResultsUpdating, UISear
             
             cell.nameLabel.text = "\(verseItem.chapterId). \(verseItem.chapterName), \(verseItem.verseId)"
             cell.verseLabel.attributedText = attrStr //"\(verseItem.verseId). \(verseItem.verseText)"
+            cell.nameLabel.font = .systemFont(ofSize: CGFloat(fontSize))
+            cell.verseLabel.font = .systemFont(ofSize: CGFloat(fontSize))
             return cell
         }
     }
@@ -270,7 +277,10 @@ class PinViewController: UITableViewController , UISearchResultsUpdating, UISear
         if selectedVersesBy.count == 0 {
             tableView.allowsMultipleSelection =  false
         }
+        
     }
+    
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let verseByItem = versesBy[indexPath.row]
@@ -281,11 +291,27 @@ class PinViewController: UITableViewController , UISearchResultsUpdating, UISear
         }
         
         if selectedVersesBy.count == 0 {
-            SwiftEventBus.post("goToVerse", sender: verseByItem)
-//            performSegue(withIdentifier: "showVerseFromByWord", sender: versesBy[indexPath.row])
+            if verseByItem.verseId == 0 {
+                SwiftEventBus.post("goToSearch", sender: self.searchString)
+            } else {
+                SwiftEventBus.post("goToVerse", sender: verseByItem)
+            }
+            
+            if !searchString.isEmpty {
+                DispatchQueue.main.async {
+                    self.filter(searchText: "")
+                    self.searchController.isActive = false
+                    self.searchController.isEditing = false
+                    self.versesBy = self.fullVersesBy
+                    self.tableView.reloadData()
+                }
+            }
         }
         
     }
+    
+    
+   
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if segue.identifier == "showVerseFromByWord" {
@@ -331,7 +357,35 @@ class PinViewController: UITableViewController , UISearchResultsUpdating, UISear
     }
     
     @IBAction func clearAllAction(_ sender: Any) {
-        print("Clear all")
+        
+        if self.versesBy.count > 0 {
+            let alert = UIAlertController(title: "alert".localized, message: "\("clear_all".localized)!", preferredStyle: UIAlertController.Style.alert)
+            
+            if darkMode {
+                alert.overrideUserInterfaceStyle = .dark
+                alert.view.tintColor = .white
+            } else {
+                alert.overrideUserInterfaceStyle = .light
+                alert.view.tintColor = UIColor(red: 0, green: 103/255.0, blue: 91/255.0, alpha: 1.0)
+            }
+            
+            alert.addAction(UIAlertAction(title: "cancel".localized, style: .cancel, handler: { action in
+                
+            }))
+            
+            alert.addAction(UIAlertAction(title: "ok".localized, style: .default, handler: { action in
+                self.dataBase.clearAllSaved()
+                self.versesBy = Array<VerseBy>()
+                self.fullVersesBy = Array<VerseBy>()
+                self.selectedVersesBy = Array<VerseBy>()
+                self.tableView.reloadData()
+            }))
+            
+            
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        
     }
     
     

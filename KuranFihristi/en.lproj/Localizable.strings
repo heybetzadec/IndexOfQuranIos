@@ -48,10 +48,10 @@
 "select_others" = "Select others";
 "back" = "Back";
 "cancel" = "Cancel";
-"quran_life"="Living in Accordance with the Quran?";
+"quran_life"="Life with the Quran";
 "mark_ayat"="Mark as where I stay";
 "unmark_ayat"="Unmark Ayat";
 "go_to_mark"="Go to mark";
 "draw_on_image"="Draw on image";
 "random_ayat"="Random ayat";
-
+"alert"="Alert";

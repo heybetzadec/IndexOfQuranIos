@@ -84,7 +84,7 @@ class ReminderViewController: UITableViewController, UNUserNotificationCenterDel
         content.categoryIdentifier = "alarm"
         content.userInfo = ["customData": "fizzbuzz"]
         content.sound = UNNotificationSound.default
-        content.badge = 1
+//        content.badge = 1
 
         var dateComponents = DateComponents()
         dateComponents.hour = hour
