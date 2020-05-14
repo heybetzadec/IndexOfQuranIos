@@ -67,6 +67,7 @@ class SearchViewController: UITableViewController , UISearchResultsUpdating, UIS
         appearance.backgroundColor = .systemBackground
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
+        navigationItem.title = "search_all".localized
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 600

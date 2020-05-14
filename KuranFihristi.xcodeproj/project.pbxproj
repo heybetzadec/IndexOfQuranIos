@@ -76,6 +76,7 @@
 		EFD4DFBE245D7AF200FA5EF4 /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD4DFBD245D7AF200FA5EF4 /* Name.swift */; };
 		EFD4DFC0245D85C700FA5EF4 /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD4DFBF245D85C700FA5EF4 /* Translation.swift */; };
 		EFF356A32468287800EBA9A0 /* LetterWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF356A22468287800EBA9A0 /* LetterWord.swift */; };
+		EFFDFCF3246DAE1300ECD2DC /* TableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFDFCF2246DAE1300ECD2DC /* TableViewHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -185,6 +186,7 @@
 		EFD4DFBD245D7AF200FA5EF4 /* Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Name.swift; sourceTree = "<group>"; };
 		EFD4DFBF245D85C700FA5EF4 /* Translation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
 		EFF356A22468287800EBA9A0 /* LetterWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterWord.swift; sourceTree = "<group>"; };
+		EFFDFCF2246DAE1300ECD2DC /* TableViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,9 +267,9 @@
 				EF8376A9245F689300335185 /* VerseDetailViewCell.swift */,
 				EF0F577C245F1C4D0042AEB2 /* BottomViewCell.swift */,
 				EFCF78AF245C96CF00E32BFD /* SettingViewCell.swift */,
-				EFBAC3882462B83200D54B2E /* ReminderViewCell.swift */,
 				EFBAC38C2462BADD00D54B2E /* OtherViewCell.swift */,
 				EFBAC38E2462D9B500D54B2E /* OtherCell.swift */,
+				EFBAC3882462B83200D54B2E /* ReminderViewCell.swift */,
 				EF583ED524684BD20095A490 /* AddReminderViewCell.swift */,
 			);
 			path = cells;
@@ -280,6 +282,7 @@
 				EFCEA7F9245DC26D00B971B0 /* CustomSearchController.swift */,
 				EFCEA7FB245DC28900B971B0 /* CustomSearchBar.swift */,
 				EF1976C22460C092007F1462 /* Functions.swift */,
+				EFFDFCF2246DAE1300ECD2DC /* TableViewHelper.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -722,6 +725,7 @@
 				EF583ED4246848470095A490 /* Reminder.swift in Sources */,
 				EFD4DFBC245D7A5F00FA5EF4 /* Language.swift in Sources */,
 				EF1AC0D92461DEC7004941C2 /* ItemDetailViewCell.swift in Sources */,
+				EFFDFCF3246DAE1300ECD2DC /* TableViewHelper.swift in Sources */,
 				EFD4DFBA245D788B00FA5EF4 /* Phrase.swift in Sources */,
 				EFCF78B9245C9EEF00E32BFD /* Chapter.swift in Sources */,
 				EFCEA7FC245DC28900B971B0 /* CustomSearchBar.swift in Sources */,

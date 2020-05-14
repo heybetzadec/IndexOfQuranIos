@@ -55,7 +55,6 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
             }
             
             self.darkMode = option.darkMode
-            print("in verse option.darkMode = \(option.darkMode)")
         }
         
         
@@ -89,6 +88,8 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
            _ = Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { timer in
                 self.savedVerse = Verse(chapterId: 0, verseId: 0, verseText: "")
                 self.tableView.reloadData()
+                self.defaults.set(0, forKey: "savedChapterId")
+                self.defaults.set(0, forKey: "savedVerseId")
                 SwiftEventBus.post("savedVerse", sender: self.savedVerse)
             }
         }
@@ -207,23 +208,23 @@ class VerseViewController: UITableViewController, UISearchResultsUpdating, UISea
             }
             
             // Text on image
-            action = UIAlertAction(title: "draw_on_image".localized, style: .default) { (action) in
-                let text = self.getSelectedText()
-                let storyBoard = UIStoryboard(name: "Main", bundle:nil)
-                let textImegeViewController = storyBoard.instantiateViewController(withIdentifier: "textImegeViewController") as! TextImegeViewController
-                textImegeViewController.text = text
-                textImegeViewController.translationId = self.translationId
-                textImegeViewController.languageId = self.languageId
-                textImegeViewController.darkMode = self.darkMode
-                self.navigationController?.pushViewController(textImegeViewController, animated: true)
-                
-                self.deselectAll()
-            }
-            
-            icon =  UIImage(systemName: "textbox") ?? .add
-            action.setValue(icon, forKey: "image")
-            action.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
-            actionSheetAlertController.addAction(action)
+//            action = UIAlertAction(title: "draw_on_image".localized, style: .default) { (action) in
+//                let text = self.getSelectedText()
+//                let storyBoard = UIStoryboard(name: "Main", bundle:nil)
+//                let textImegeViewController = storyBoard.instantiateViewController(withIdentifier: "textImegeViewController") as! TextImegeViewController
+//                textImegeViewController.text = text
+//                textImegeViewController.translationId = self.translationId
+//                textImegeViewController.languageId = self.languageId
+//                textImegeViewController.darkMode = self.darkMode
+//                self.navigationController?.pushViewController(textImegeViewController, animated: true)
+//
+//                self.deselectAll()
+//            }
+//
+//            icon =  UIImage(systemName: "textbox") ?? .add
+//            action.setValue(icon, forKey: "image")
+//            action.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+//            actionSheetAlertController.addAction(action)
             
             
             let cancelActionButton = UIAlertAction(title: "cancel".localized, style: .cancel, handler: { (action) in

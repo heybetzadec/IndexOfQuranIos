@@ -11,6 +11,9 @@ import SQLite3
 
 class DataBase: NSObject {
     
+    internal let SQLITE_STATIC = unsafeBitCast(0, to: sqlite3_destructor_type.self)
+    internal let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
+    
     override init() {}
 
     
@@ -321,6 +324,61 @@ class DataBase: NSObject {
     }
     
     
+    private func getVerseBeginId(translationId:Int) -> Int {
+        let db = self.getDatabase()
+        var statement: OpaquePointer?
+        var beginId = 1
+        
+        if sqlite3_prepare_v2(db, "SELECT ID FROM Verse WHERE TranslationID = \(translationId) LIMIT 1;", -1, &statement, nil) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing select: \(errmsg)")
+        }
+
+        while sqlite3_step(statement) == SQLITE_ROW {
+            beginId = Int(sqlite3_column_int64(statement, 0))
+            break
+        }
+
+        if sqlite3_finalize(statement) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error finalizing prepared statement: \(errmsg)")
+        }
+
+        if sqlite3_close(db) != SQLITE_OK {
+            print("error closing database")
+        }
+        statement = nil
+        return beginId
+    }
+    
+    private func getVerseLastId(translationId:Int) -> Int {
+        let db = self.getDatabase()
+        var statement: OpaquePointer?
+        var lastId = 1
+        
+        if sqlite3_prepare_v2(db, "SELECT ID  FROM  Verse WHERE TranslationID = \(translationId) ORDER BY ID DESC LIMIT 1;", -1, &statement, nil) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing select: \(errmsg)")
+        }
+
+        while sqlite3_step(statement) == SQLITE_ROW {
+            lastId = Int(sqlite3_column_int64(statement, 0))
+            break
+        }
+
+        if sqlite3_finalize(statement) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error finalizing prepared statement: \(errmsg)")
+        }
+
+        if sqlite3_close(db) != SQLITE_OK {
+            print("error closing database")
+        }
+        statement = nil
+        return lastId
+    }
+    
+    
     func getRandomVerseBy(translationId:Int) -> VerseBy {
         let item = VerseBy()
         let db = self.getDatabase()
@@ -328,30 +386,14 @@ class DataBase: NSObject {
         var beginId = 0
         var endId = 500
         
-        if sqlite3_prepare_v2(db, "SELECT ID FROM Verse WHERE TranslationID = \(translationId) LIMIT 1", -1, &statement, nil) != SQLITE_OK {
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("error preparing select: \(errmsg)")
-        }
-        while sqlite3_step(statement) == SQLITE_ROW {
-            beginId = Int(sqlite3_column_int64(statement, 0))
-            break
-        }
-        
-        
-        if sqlite3_prepare_v2(db, "SELECT ID  FROM  Verse WHERE TranslationID = \(translationId) ORDER BY ID DESC LIMIT 1", -1, &statement, nil) != SQLITE_OK {
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("error preparing select: \(errmsg)")
-        }
-        while sqlite3_step(statement) == SQLITE_ROW {
-            endId = Int(sqlite3_column_int64(statement, 0))
-            break
-        }
+        beginId = self.getVerseBeginId(translationId: translationId)
+        endId = self.getVerseLastId(translationId: translationId)
         
         let randomId = Int.random(in: beginId...endId)
         
         if sqlite3_prepare_v2(db, "SELECT v.ChapterID, c.ChapterName, v.VerseID, v.VerseText FROM Verse v  " +
         "LEFT OUTER JOIN Chapter c ON v.ChapterID = c.ChapterID " +
-        "WHERE v.TranslationID = \(translationId) AND c.TranslationID = \(translationId) AND v.ID = \(randomId)", -1, &statement, nil) != SQLITE_OK {
+            "WHERE v.TranslationID = \(translationId) AND c.TranslationID = \(translationId) AND v.ID = \(randomId);", -1, &statement, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error preparing select: \(errmsg)")
         }
@@ -364,7 +406,6 @@ class DataBase: NSObject {
             break
         }
         
-
         if sqlite3_finalize(statement) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error finalizing prepared statement: \(errmsg)")
@@ -374,6 +415,7 @@ class DataBase: NSObject {
             print("error closing database")
         }
         statement = nil
+        
         return item
     }
     
@@ -657,6 +699,147 @@ class DataBase: NSObject {
         return list
     }
     
+    
+    func getReminders() -> Array<Reminder> {
+        var list = Array<Reminder>()
+        let db = self.getDatabase()
+        var statement: OpaquePointer?
+        
+        if sqlite3_prepare_v2(db, "SELECT ID, Hour, Minute, IsActive FROM Reminder ORDER BY ID DESC", -1, &statement, nil) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing select: \(errmsg)")
+        }
+
+        while sqlite3_step(statement) == SQLITE_ROW {
+            let item = Reminder()
+            item.id = Int(sqlite3_column_int64(statement, 0))
+            item.hour = Int(sqlite3_column_int64(statement, 1))
+            item.minute = Int(sqlite3_column_int64(statement, 2))
+            item.isActive = Int(sqlite3_column_int64(statement, 3))
+            list.append(item)
+        }
+
+        if sqlite3_finalize(statement) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error finalizing prepared statement: \(errmsg)")
+        }
+
+        if sqlite3_close(db) != SQLITE_OK {
+            print("error closing database")
+        }
+        statement = nil
+        return list
+    }
+    
+    func insertReminder(reminder: Reminder){
+        var db = self.getDatabase()
+        
+        var statement: OpaquePointer?
+
+        if sqlite3_prepare_v2(db, "INSERT INTO Reminder (Hour, Minute, IsActive) VALUES (?, ?, ?);", -1, &statement, nil) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing insert: \(errmsg)")
+        }
+        
+        sqlite3_bind_int(statement, 1, Int32(reminder.hour))
+        sqlite3_bind_int(statement, 2, Int32(reminder.minute))
+        sqlite3_bind_int(statement, 3, Int32(reminder.isActive))
+        
+
+//        if sqlite3_bind_text(statement, 1, "foo", -1, SQLITE_TRANSIENT) != SQLITE_OK {
+//            let errmsg = String(cString: sqlite3_errmsg(db)!)
+//            print("failure binding foo: \(errmsg)")
+//        }
+
+        if sqlite3_step(statement) != SQLITE_DONE {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure inserting foo: \(errmsg)")
+        }
+        
+        if sqlite3_finalize(statement) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error finalizing prepared statement: \(errmsg)")
+        }
+
+        
+        if sqlite3_close(db) != SQLITE_OK {
+            print("error closing database: -> \(String(describing: sqlite3_errmsg(db))), \(String(describing: db))")
+        }
+
+        db = nil
+        statement = nil
+        
+//        print("close = \(sqlite3_close(db))")
+        
+        
+//        let insertStatementString = "INSERT INTO Reminder (Hour, Minute, IsActive) VALUES (?, ?, ?);"
+//        var insertStatement: OpaquePointer?
+//        if sqlite3_prepare_v2(db, insertStatementString, -1, &insertStatement, nil) ==
+//            SQLITE_OK {
+//            sqlite3_bind_int(insertStatement, 1, Int32(reminder.hour))
+//            sqlite3_bind_int(insertStatement, 2, Int32(reminder.minute))
+//            sqlite3_bind_int(insertStatement, 3, Int32(reminder.isActive))
+//          if sqlite3_step(insertStatement) == SQLITE_DONE {
+//            print("\nSuccessfully inserted row.")
+//          } else {
+//            print("\nCould not insert row.")
+//          }
+//        } else {
+//          print("\nINSERT statement is not prepared.")
+//        }
+//        sqlite3_finalize(insertStatement)
+//
+//        if sqlite3_close(db) != SQLITE_OK {
+//            print("error closing database")
+//        }
+//        insertStatement = nil
+    }
+    
+    func updateReminder(reminder: Reminder){
+        let db = self.getDatabase()
+        
+        var updateStatement: OpaquePointer?
+        
+        let updateStatementString = "UPDATE Reminder SET Hour = \(reminder.hour), Minute = \(reminder.minute), IsActive = \(reminder.isActive)  WHERE Id = \(reminder.id);"
+        
+        if sqlite3_prepare_v2(db, updateStatementString, -1, &updateStatement, nil) ==
+            SQLITE_OK {
+          if sqlite3_step(updateStatement) == SQLITE_DONE {
+            print("\nSuccessfully updated row.")
+          } else {
+            print("\nCould not update row.")
+          }
+        } else {
+          print("\nUPDATE statement is not prepared")
+        }
+        sqlite3_finalize(updateStatement)
+        
+        if sqlite3_close(db) != SQLITE_OK {
+            print("error closing database")
+        }
+    }
+    
+    
+    func deleteReminder(reminder: Reminder) {
+    let db = self.getDatabase()
+      var deleteStatement: OpaquePointer?
+        
+        let deleteStatementString = "DELETE FROM Reminder WHERE ID = \(reminder.id);"
+        
+      if sqlite3_prepare_v2(db, deleteStatementString, -1, &deleteStatement, nil) ==
+          SQLITE_OK {
+        if sqlite3_step(deleteStatement) == SQLITE_DONE {
+          print("\nSuccessfully deleted row.")
+        } else {
+          print("\nCould not delete row.")
+        }
+      } else {
+        print("\nDELETE statement could not be prepared")
+      }
+        
+      sqlite3_finalize(deleteStatement)
+    }
+    
     func insertSavedVerse(verses: Array<Verse>) {
         let db = self.getDatabase()
         let insertStatementString = "INSERT INTO SaveVerse (ChapterID, VerseID) VALUES (?, ?);"
@@ -678,7 +861,6 @@ class DataBase: NSObject {
                 }
             }
         }
-        
         // 5
         sqlite3_finalize(insertStatement)
         

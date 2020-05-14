@@ -123,10 +123,13 @@ class TopicViewController: UITableViewController, UISearchResultsUpdating, UISea
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return topics.count
+        if topics.count == 0 {
+            TableViewHelper.EmptyMessage(message: "This section is not ready\nfor the selected language yet!", viewController: self)
+            return 0
+        } else {
+            return topics.count
+        }
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let topicItem = topics[indexPath.row]

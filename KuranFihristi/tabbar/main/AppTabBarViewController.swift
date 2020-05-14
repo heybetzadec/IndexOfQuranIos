@@ -18,6 +18,7 @@ class AppTabBarViewController: UITabBarController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         SwiftEventBus.onMainThread(self, name:"goToSearch") { result in
             self.searchString = result?.object as! String
             self.selectedIndex = 4

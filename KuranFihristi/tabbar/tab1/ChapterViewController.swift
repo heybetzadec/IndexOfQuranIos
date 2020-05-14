@@ -32,68 +32,36 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
     var searchString = ""
     
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        print("bura isledi")
-        // pull out the buried userInfo dictionary
-        let userInfo = response.notification.request.content.userInfo
-
-        if let customData = userInfo["customData"] as? String {
-            print("Custom data received: \(customData)")
-
-            switch response.actionIdentifier {
-            case UNNotificationDefaultActionIdentifier:
-                // the user swiped to unlock
-                print("Default identifier")
-
-            case "show":
-                // the user tapped our "show more info…" button
-                print("Show more information…")
-
-            default:
-                break
-            }
-        }
-
-        // you must call the completion handler when you're done
-        completionHandler()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let center = UNUserNotificationCenter.current()
-        center.delegate = self
-        
-//        if ([UIApplication sharedApplication].applicationState == UIApplicationStateInactive)
-//        {
-//            // user has tapped notification
-//            print("user has tapped notification")
-//        }
-//        else
-//        {
-//            // user opened app from app icon
-//            print("user opened app from app icon")
-//        }
-        
-        if let button = self.navigationItem.rightBarButtonItem {
-            button.isEnabled = false
-            button.tintColor = UIColor.clear
-        }
-        
         switch traitCollection.userInterfaceStyle {
-            case .light, .unspecified:
-                systemDarkMode = false
-                defaults.set(false, forKey: "systemInterfaceDark")
-            case .dark:
-                systemDarkMode = true
-                defaults.set(true, forKey: "systemInterfaceDark")
+        case .light, .unspecified:
+            systemDarkMode = false
+            defaults.set(false, forKey: "systemInterfaceDark")
+        case .dark:
+            systemDarkMode = true
+            defaults.set(true, forKey: "systemInterfaceDark")
         @unknown default:
             systemDarkMode = false
             defaults.set(false, forKey: "systemInterfaceDark")
         }
         
         
-        if !defaults.bool(forKey: "opened") {
+        if defaults.bool(forKey: "opened") {
+            languageId = defaults.integer(forKey: "languageId")
+            translationId = defaults.integer(forKey: "translationId")
+            fontSize = defaults.integer(forKey: "fontSize")
+            selectedOrder = defaults.integer(forKey: "selectedOrder")
+            selectedInterfaceMode = defaults.integer(forKey: "selectedInterfaceMode")
+            let savedChapterId = defaults.integer(forKey: "savedChapterId")
+            let savedVerseId = defaults.integer(forKey: "savedVerseId")
+            savedVerse.chapterId = savedChapterId
+            savedVerse.verseId = savedVerseId
+//            let notificationChapterId = defaults.integer(forKey: "notificationChapterId")
+//            let notificationVerseId = defaults.integer(forKey: "notificationVerseId")
+        } else {
             var selectedLanguage = 0
             let languageCode:String = Locale.current.languageCode ?? "tr"
             switch languageCode {
@@ -113,7 +81,7 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
                 languageId = 1
                 selectedLanguage = 2
             }
-
+            
             let translations = dataBase.getTranslations(languageId: languageId)
             translationId = translations.first!.translationId
             
@@ -128,16 +96,6 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
             defaults.set(fontSize, forKey: "fontSize")
             defaults.set(languageCode, forKey: "i18n_language")
             selectedInterfaceMode = 0
-        } else {
-            languageId = defaults.integer(forKey: "languageId")
-            translationId = defaults.integer(forKey: "translationId")
-            fontSize = defaults.integer(forKey: "fontSize")
-            selectedOrder = defaults.integer(forKey: "selectedOrder")
-            selectedInterfaceMode = defaults.integer(forKey: "selectedInterfaceMode")
-            let savedChapterId = defaults.integer(forKey: "savedChapterId")
-            let savedVerseId = defaults.integer(forKey: "savedVerseId")
-            savedVerse.chapterId = savedChapterId
-            savedVerse.verseId = savedVerseId
         }
         
         switch selectedInterfaceMode {
@@ -154,12 +112,9 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
             SwiftEventBus.post("darkMode", sender: systemDarkMode)
             darkMode = systemDarkMode
         }
-
+        
         defaults.set(darkMode, forKey: "darkMode")
         
-//        if selectedInterfaceMode == 0 {
-//            SwiftEventBus.post("darkMode", sender: darkMode)
-//        }
         
         tabBarController?.viewControllers?[0].tabBarItem.title = "chapters".localized
         tabBarController?.viewControllers?[1].tabBarItem.title = "dictionary".localized
@@ -190,7 +145,7 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
             self.navigationController?.popToRootViewController(animated: true)
             self.verseId = goToVerseBy.verseId
             _ = Timer.scheduledTimer(withTimeInterval: 0.7, repeats: false) { timer in
-                 self.performSegue(withIdentifier: "showVerses", sender: Chapter(chapterId: goToVerseBy.chapterId, chapterName: goToVerseBy.chapterName))
+                self.performSegue(withIdentifier: "showVerses", sender: Chapter(chapterId: goToVerseBy.chapterId, chapterName: goToVerseBy.chapterName))
             }
             
         }
@@ -221,7 +176,17 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
         prepareSearchController()
         setupLongPressGesture()
         
+        UNUserNotificationCenter.current().delegate = self
         tableView.tableFooterView = UIView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        
+        if let button = self.navigationItem.rightBarButtonItem {
+            button.isEnabled = false
+            button.tintColor = UIColor.clear
+        }
     }
     
     func setupLongPressGesture() {
@@ -290,15 +255,15 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
             }
             
             
-             let cancelActionButton = UIAlertAction(title: "cancel".localized, style: .cancel, handler: { (action) in
+            let cancelActionButton = UIAlertAction(title: "cancel".localized, style: .cancel, handler: { (action) in
                 self.deselectAll()
-             })
+            })
             actionSheetAlertController.addAction(cancelActionButton)
             
             self.present(actionSheetAlertController, animated: true, completion: nil)
             
         }
-    
+        
     }
     
     private func deselectAll(){
@@ -310,7 +275,6 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
         }
         
     }
-    
     
     func prepareSearchController() {
         // Setup the Search Controller
@@ -405,7 +369,7 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
                 self.searchController.isEditing = false
                 self.chapters = self.fullChapters
                 self.tableView.reloadData()
-              }
+            }
         }
         
     }
@@ -431,6 +395,34 @@ class ChapterViewController: UITableViewController, UISearchResultsUpdating, UIS
                 navigationItem.backBarButtonItem = backItem
             }
         }
+    }
+    
+    
+    
+    //for displaying notification when app is in foreground
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .badge, .sound])
+    }
+    
+    // For handling tap and user actions
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        var chapterId = 0
+        var verseId = 0
+        let userInfo = response.notification.request.content.userInfo
+        if let chapterIdString = userInfo["chapterId"] as? String {
+            chapterId = Int(chapterIdString) ?? 0
+        }
+        if let verseIdString = userInfo["verseId"] as? String {
+            verseId = Int(verseIdString) ?? 0
+        }
+        
+        if chapterId != 0 && verseId != 0 {
+            let chapterName = self.dataBase.getChapterName(chapterId:chapterId, translationId: self.translationId)
+            self.verseId = verseId
+            SwiftEventBus.post("goToVerse", sender: VerseBy(chapterId: chapterId, chapterName: chapterName, verseId: verseId, verseText: ""))
+        }
+        
+        completionHandler()
     }
     
     

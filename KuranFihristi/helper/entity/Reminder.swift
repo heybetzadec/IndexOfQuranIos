@@ -13,13 +13,13 @@ class Reminder {
     var id = 1
     var hour = 0
     var minute = 0
-    var isActive = true
+    var isActive = 1
     
     init() {
 
     }
     
-    init(hour:Int, minute: Int, isActive: Bool) {
+    init(hour:Int, minute: Int, isActive: Int) {
         self.hour = hour
         self.minute = minute
         self.isActive = isActive

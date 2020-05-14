@@ -234,7 +234,12 @@ class PinViewController: UITableViewController , UISearchResultsUpdating, UISear
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return versesBy.count
+        if versesBy.count == 0 {
+            TableViewHelper.EmptyMessage(message: "no_pinned_ayat".localized, viewController: self)
+            return 0
+        } else {
+            return versesBy.count
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -140,7 +140,12 @@ class LetterViewController: UITableViewController, UISearchResultsUpdating, UISe
         searchController.searchBar.endEditing(true)
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return letters.count
+        if letters.count == 0 {
+           TableViewHelper.EmptyMessage(message: "Этот раздел еще не готов\nдля выбранного языка!", viewController: self)
+           return 0
+       } else {
+           return letters.count
+       }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
