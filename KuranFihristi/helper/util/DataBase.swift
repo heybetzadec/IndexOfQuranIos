@@ -192,7 +192,6 @@ class DataBase: NSObject {
         if !searchText.isEmpty {
             search = " AND WordName LIKE '%\(searchText)%'"
         }
-//        "SELECT l.LetterID, w.WordID,  w.WordName FROM Word w LEFT OUTER JOIN Letter l ON l.LetterID == w.LetterId WHERE w.LangID = \(languageId) AND w.LangID = \(languageId) \(search) GROUP BY w.ID"
         if sqlite3_prepare_v2(db, "SELECT LetterID, WordID,  WordName FROM Word WHERE LangID = \(languageId)  \(search)", -1, &statement, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error preparing select: \(errmsg)")
