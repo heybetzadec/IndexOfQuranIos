@@ -42,28 +42,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
     
-    func registerForRichNotifications() {
-
-       UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.badge,.sound]) { (granted:Bool, error:Error?) in
-            if error != nil {
-                print(error?.localizedDescription ?? "----")
-            }
-            if granted {
-                self.defaults.set(true, forKey: "permissionNotification")
-                print("Permission granted")
-            } else {
-                print("Permission not granted")
-            }
-        }
-        UNUserNotificationCenter.current().delegate = self
-        
-        let action1 = UNNotificationAction(identifier: "action1", title: "show_in_verse".localized, options: [.foreground])
-
-        let category = UNNotificationCategory(identifier: "actionCategory", actions: [action1], intentIdentifiers: [], options: [])
-
-        UNUserNotificationCenter.current().setNotificationCategories([category])
-        
-    }
+//    func registerForRichNotifications() {
+//
+//       UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.badge,.sound]) { (granted:Bool, error:Error?) in
+//            if error != nil {
+//                print(error?.localizedDescription ?? "----")
+//            }
+//            if granted {
+//                self.defaults.set(true, forKey: "permissionNotification")
+//                print("Permission granted")
+//            } else {
+//                print("Permission not granted")
+//            }
+//        }
+//        UNUserNotificationCenter.current().delegate = self
+//        
+//        let action1 = UNNotificationAction(identifier: "action1", title: "show_in_verse".localized, options: [.foreground])
+//
+//        let category = UNNotificationCategory(identifier: "actionCategory", actions: [action1], intentIdentifiers: [], options: [])
+//
+//        UNUserNotificationCenter.current().setNotificationCategories([category])
+//        
+//    }
     
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
@@ -77,9 +77,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         completionHandler()
     }
 
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.alert, .badge, .sound])
-    }
+//    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+//        completionHandler([.alert, .badge, .sound])
+//    }
 
     
     // background scherluder
