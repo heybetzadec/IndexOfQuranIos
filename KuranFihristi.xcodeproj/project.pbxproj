@@ -938,12 +938,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "KuranFihristi/Kuran Fihristi.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 5A6FTQ6LD4;
 				INFOPLIST_FILE = KuranFihristi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fihrist.heca.QuranFihristi;
 				PRODUCT_NAME = "Kuran Fihristi";
 				SWIFT_VERSION = 5.0;
@@ -958,12 +960,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "KuranFihristi/Kuran Fihristi.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 5A6FTQ6LD4;
 				INFOPLIST_FILE = KuranFihristi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fihrist.heca.QuranFihristi;
 				PRODUCT_NAME = "Kuran Fihristi";
 				SWIFT_VERSION = 5.0;

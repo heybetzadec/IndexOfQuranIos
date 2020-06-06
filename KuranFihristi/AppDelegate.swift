@@ -134,3 +134,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
 // background task
 // https://www.andyibanez.com/posts/modern-background-tasks-ios13/
+
+// image editor
+//https://github.com/iQueSoft/iQuePhoto

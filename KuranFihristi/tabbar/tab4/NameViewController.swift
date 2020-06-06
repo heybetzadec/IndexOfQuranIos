@@ -37,7 +37,7 @@ class NameViewController: UITableViewController, UISearchResultsUpdating, UISear
                 self.languageId = option.languageId
                 self.fullNames = self.dataBase.getNames(languageId: self.languageId)
                 self.names = self.fullNames
-                self.navigationItem.title = "names".localized
+                self.navigationItem.title = "names_title".localized
                 self.tableView.reloadData()
             }
             
@@ -59,7 +59,7 @@ class NameViewController: UITableViewController, UISearchResultsUpdating, UISear
         appearance.backgroundColor = .systemBackground
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
-        self.navigationItem.title = "names".localized
+        self.navigationItem.title = "names_title".localized
         prepareSearchController()
         
         tableView.tableFooterView = UIView()

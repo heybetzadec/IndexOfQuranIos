@@ -23,26 +23,26 @@ class TextImegeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let fileURL = Bundle.main.path(forResource: "texture1", ofType: "png", inDirectory: "Documents")
-      
-        let imageFromPath = UIImage(contentsOfFile: fileURL!)!
-        
-        let image = self.textToImage(drawText: text, inImage: imageFromPath, atPoint: CGPoint(x: 10, y: 50))
-
-        imageView.image = image
-        
-        let view1 = UIView()
-        let view2 = UIView()
-        
-        view1.frame = CGRect(x: 0, y: 0, width: scrollView.frame.width, height: scrollView.frame.height)
-        view1.backgroundColor = .red
-        
-        
-        view2.frame = CGRect(x: scrollView.frame.width, y: 0, width: scrollView.frame.width, height: scrollView.frame.height)
-        view2.backgroundColor = .blue
-        
-        scrollView.addSubview(view1)
-        scrollView.addSubview(view2)
+//        let fileURL = Bundle.main.path(forResource: "texture1", ofType: "png", inDirectory: "Documents")
+//
+//        let imageFromPath = UIImage(contentsOfFile: fileURL!)!
+//
+//        let image = self.textToImage(drawText: text, inImage: imageFromPath, atPoint: CGPoint(x: 10, y: 50))
+//
+//        imageView.image = image
+//
+//        let view1 = UIView()
+//        let view2 = UIView()
+//
+//        view1.frame = CGRect(x: 0, y: 0, width: scrollView.frame.width, height: scrollView.frame.height)
+//        view1.backgroundColor = .red
+//
+//
+//        view2.frame = CGRect(x: scrollView.frame.width, y: 0, width: scrollView.frame.width, height: scrollView.frame.height)
+//        view2.backgroundColor = .blue
+//
+//        scrollView.addSubview(view1)
+//        scrollView.addSubview(view2)
         
         
     }
